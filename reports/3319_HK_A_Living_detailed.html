@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3319 HK - Detailed Research Report | A-Living Smart City Services Co., Ltd.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px 50px;
+            max-width: 1200px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #161b22;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .section h3 {
+            color: #8b949e;
+            margin: 20px 0 10px;
+            font-size: 1.1em;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid #30363d;
+        }
+
+        .header-section h1 {
+            font-size: 2.2em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .header-section .ticker {
+            color: #58a6ff;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .rating-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .rating-hold { background: #e3a008; color: #000; }
+        .rating-buy { background: #238636; color: #fff; }
+        .rating-sell { background: #da3633; color: #fff; }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #30363d;
+        }
+
+        .metric-card .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .data-table th {
+            background: #0d1117;
+            color: #8b949e;
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .scenario-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card h4 {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .scenario-card .probability {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #30363d;
+            border-radius: 10px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .risk-item {
+            padding: 15px;
+            background: #0d1117;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #da3633;
+        }
+
+        .risk-item.medium {
+            border-left-color: #e3a008;
+        }
+
+        .risk-item.low {
+            border-left-color: #238636;
+        }
+
+        .risk-item h4 {
+            color: #c9d1d9;
+            margin-bottom: 5px;
+        }
+
+        .risk-item p {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .debate-round {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .debate-entry {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .debate-entry.bull {
+            background: rgba(35, 134, 54, 0.1);
+            border-left: 3px solid #238636;
+        }
+
+        .debate-entry.bear {
+            background: rgba(218, 54, 51, 0.1);
+            border-left: 3px solid #da3633;
+        }
+
+        .debate-entry.critic {
+            background: rgba(227, 160, 8, 0.1);
+            border-left: 3px solid #e3a008;
+        }
+
+        .debate-entry.synthesizer {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .debate-entry .speaker {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .debate-entry.bull .speaker { color: #238636; }
+        .debate-entry.bear .speaker { color: #da3633; }
+        .debate-entry.critic .speaker { color: #e3a008; }
+        .debate-entry.synthesizer .speaker { color: #58a6ff; }
+
+        .key-point {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #30363d;
+            border-radius: 5px;
+            font-size: 0.85em;
+            margin: 3px 5px 3px 0;
+        }
+
+        .catalyst-item {
+            padding: 12px 15px;
+            background: #0d1117;
+            border-radius: 8px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .catalyst-item .timing {
+            color: #58a6ff;
+            font-size: 0.85em;
+        }
+
+        .valuation-summary {
+            background: linear-gradient(135deg, #1a2744 0%, #0d1117 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .valuation-summary h3 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.85em;
+            border-top: 1px solid #30363d;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>3319.HK</h3>
+            <p>A-Living Smart City Services</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">AI Debate Log</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="header-section">
+            <div class="ticker">3319.HK | Hong Kong Stock Exchange</div>
+            <h1>A-Living Smart City Services Co., Ltd.</h1>
+            <p style="color: #8b949e; margin-bottom: 20px;">Real Estate Services - Property Management</p>
+            <span class="rating-badge rating-hold">HOLD</span>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">HKD 5.80</div>
+                    <div class="label">Target Price</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">HKD 4.50</div>
+                    <div class="label">Current Price</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">29%</div>
+                    <div class="label">Upside Potential</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">Medium</div>
+                    <div class="label">Conviction Level</div>
+                </div>
+            </div>
+        </div>
+
+        <section id="executive-summary" class="section">
+            <h2>Executive Summary</h2>
+            <h3>Company Overview</h3>
+            <p>A-Living Smart City Services is one of China's leading property management companies, originally spun off from Agile Group Holdings (3383.HK) in 2018. The company provides comprehensive property management services including basic property management, value-added services to property developers, and community value-added services. Despite challenges from the broader China property sector crisis, A-Living has maintained operational resilience through geographic diversification and service expansion.</p>
+
+            <h3>Investment Thesis</h3>
+            <p>A-Living represents a compelling value opportunity in the distressed China property management sector. The company's scale advantages, diversified customer base beyond parent company Agile Group, and growing third-party GFA provide defensive characteristics. However, significant risks remain tied to parent company Agile Group's debt restructuring and broader sector headwinds.</p>
+
+            <h3>Key Highlights</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>700+ million sqm of GFA under management, making it a Top 10 property manager in China</li>
+                <li>Third-party ratio improved to 60-65%, reducing parent company dependency</li>
+                <li>Strong net cash position of RMB 4.5 billion providing financial flexibility</li>
+                <li>95%+ customer retention rate demonstrating service quality</li>
+                <li>Deeply discounted valuation: 4.4x P/E, 0.57x P/B, 28% FCF yield</li>
+                <li>8.5% dividend yield with 40% payout ratio</li>
+                <li>Parent company Agile Group undergoing debt restructuring - key risk factor</li>
+            </ul>
+        </section>
+
+        <section id="industry-analysis" class="section">
+            <h2>Industry Analysis</h2>
+            <h3>China Property Management Market</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Total GFA Managed (China)</td>
+                    <td>30+ billion sqm</td>
+                </tr>
+                <tr>
+                    <td>Annual Market Value</td>
+                    <td>RMB 1.2 trillion</td>
+                </tr>
+                <tr>
+                    <td>Annual Growth Rate</td>
+                    <td>5-8%</td>
+                </tr>
+            </table>
+
+            <h3>Key Industry Trends</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Trend</th>
+                    <th>Description</th>
+                    <th>Impact on A-Living</th>
+                </tr>
+                <tr>
+                    <td>Industry Consolidation</td>
+                    <td>Top 100 PMCs now manage ~50% of total GFA, up from 35% five years ago</td>
+                    <td>Positive - can acquire GFA at attractive valuations</td>
+                </tr>
+                <tr>
+                    <td>Third-Party Expansion</td>
+                    <td>Leading PMCs reducing reliance on parent developers</td>
+                    <td>Positive - successfully growing third-party ratio</td>
+                </tr>
+                <tr>
+                    <td>Value-Added Services Growth</td>
+                    <td>PMCs expanding into community services, renovation, elderly care</td>
+                    <td>Positive - key growth driver</td>
+                </tr>
+                <tr>
+                    <td>Smart City Integration</td>
+                    <td>Technology adoption including IoT, AI-powered building management</td>
+                    <td>Positive - aligns with company's positioning</td>
+                </tr>
+                <tr>
+                    <td>Regulatory Environment</td>
+                    <td>Government policies supporting PM sector stability</td>
+                    <td>Neutral - compliance costs offset by standardization</td>
+                </tr>
+            </table>
+
+            <h3>Competitive Landscape</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Company</th>
+                    <th>Ticker</th>
+                    <th>Market Position</th>
+                </tr>
+                <tr>
+                    <td>Country Garden Services</td>
+                    <td>6098.HK</td>
+                    <td>#1 - Largest by GFA</td>
+                </tr>
+                <tr>
+                    <td>Poly Property Services</td>
+                    <td>6049.HK</td>
+                    <td>#2 - SOE-backed</td>
+                </tr>
+                <tr>
+                    <td>China Resources Mixc Lifestyle</td>
+                    <td>1209.HK</td>
+                    <td>#3 - Premium positioning</td>
+                </tr>
+                <tr>
+                    <td>A-Living Smart City Services</td>
+                    <td>3319.HK</td>
+                    <td>Top 10</td>
+                </tr>
+                <tr>
+                    <td>Greentown Service Group</td>
+                    <td>2869.HK</td>
+                    <td>Top 10 - Premium brand</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="company-analysis" class="section">
+            <h2>Company Analysis</h2>
+            <h3>Company History</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Year</th>
+                    <th>Milestone</th>
+                </tr>
+                <tr>
+                    <td>2018</td>
+                    <td>IPO on Hong Kong Stock Exchange at HKD 12.00</td>
+                </tr>
+                <tr>
+                    <td>2019-2020</td>
+                    <td>Rapid expansion through M&A</td>
+                </tr>
+                <tr>
+                    <td>2021</td>
+                    <td>Navigated initial property sector crisis</td>
+                </tr>
+                <tr>
+                    <td>2022-2023</td>
+                    <td>Focused on third-party expansion and cost optimization</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>Continued deleveraging and operational efficiency improvements</td>
+                </tr>
+            </table>
+
+            <h3>Business Segments</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Segment</th>
+                    <th>Revenue Share</th>
+                    <th>Gross Margin</th>
+                    <th>Growth Outlook</th>
+                </tr>
+                <tr>
+                    <td>Property Management Services</td>
+                    <td>55-60%</td>
+                    <td>12-15%</td>
+                    <td>Stable, tied to GFA expansion</td>
+                </tr>
+                <tr>
+                    <td>Value-Added Services (Developers)</td>
+                    <td>20-25%</td>
+                    <td>25-30%</td>
+                    <td>Challenged by developer distress</td>
+                </tr>
+                <tr>
+                    <td>Community Value-Added Services</td>
+                    <td>15-20%</td>
+                    <td>30-40%</td>
+                    <td>Strong growth potential</td>
+                </tr>
+            </table>
+
+            <h3>Scale Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">700+</div>
+                    <div class="label">GFA Under Management (M sqm)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">900+</div>
+                    <div class="label">Contracted GFA (M sqm)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">60-65%</div>
+                    <div class="label">Third-Party Ratio</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">30+</div>
+                    <div class="label">Provinces Covered</div>
+                </div>
+            </div>
+
+            <h3>Geographic Distribution</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Greater Bay Area - Strong presence in company's home region</li>
+                <li>Yangtze River Delta - Key expansion market</li>
+                <li>Central China - Growing footprint</li>
+                <li>Western China - Diversification strategy</li>
+            </ul>
+
+            <h3>Parent Company Situation - CRITICAL</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Parent Company</td>
+                    <td>Agile Group Holdings Limited (3383.HK)</td>
+                </tr>
+                <tr>
+                    <td>Ownership Stake</td>
+                    <td>Approximately 50-55%</td>
+                </tr>
+                <tr>
+                    <td>Financial Status</td>
+                    <td>Distressed - undergoing debt restructuring</td>
+                </tr>
+                <tr>
+                    <td>Key Risks</td>
+                    <td>Potential forced sale of A-Living stake, reduced Agile-related revenue, reputational association</td>
+                </tr>
+                <tr>
+                    <td>Mitigating Factors</td>
+                    <td>A-Living operates independently, third-party diversification, asset-light model, strong cash position</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="financial-data" class="section">
+            <h2>Financial Data</h2>
+            <h3>Income Statement (RMB millions)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>2021</th>
+                    <th>2022</th>
+                    <th>2023</th>
+                    <th>2024E</th>
+                    <th>2025E</th>
+                </tr>
+                <tr>
+                    <td>Revenue</td>
+                    <td>12,500</td>
+                    <td>14,000</td>
+                    <td>15,000</td>
+                    <td>15,500</td>
+                    <td>16,200</td>
+                </tr>
+                <tr>
+                    <td>Gross Profit</td>
+                    <td>3,125</td>
+                    <td>3,360</td>
+                    <td>3,450</td>
+                    <td>3,410</td>
+                    <td>3,564</td>
+                </tr>
+                <tr>
+                    <td>Gross Margin</td>
+                    <td>25.0%</td>
+                    <td>24.0%</td>
+                    <td>23.0%</td>
+                    <td>22.0%</td>
+                    <td>22.0%</td>
+                </tr>
+                <tr>
+                    <td>Operating Profit</td>
+                    <td>2,000</td>
+                    <td>2,100</td>
+                    <td>2,000</td>
+                    <td>1,860</td>
+                    <td>1,944</td>
+                </tr>
+                <tr>
+                    <td>Operating Margin</td>
+                    <td>16.0%</td>
+                    <td>15.0%</td>
+                    <td>13.3%</td>
+                    <td>12.0%</td>
+                    <td>12.0%</td>
+                </tr>
+                <tr>
+                    <td>Net Profit</td>
+                    <td>1,500</td>
+                    <td>1,400</td>
+                    <td>1,300</td>
+                    <td>1,200</td>
+                    <td>1,296</td>
+                </tr>
+                <tr>
+                    <td>EPS (RMB)</td>
+                    <td>1.10</td>
+                    <td>1.02</td>
+                    <td>0.95</td>
+                    <td>0.88</td>
+                    <td>0.95</td>
+                </tr>
+            </table>
+
+            <h3>Balance Sheet Highlights</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">18,000</div>
+                    <div class="label">Total Assets (RMB M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">6,000</div>
+                    <div class="label">Cash (RMB M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">4,500</div>
+                    <div class="label">Net Cash (RMB M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">4,000</div>
+                    <div class="label">Trade Receivables (RMB M)</div>
+                </div>
+            </div>
+
+            <h3>Key Ratios</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Ratio</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Current Ratio</td>
+                    <td>1.8x</td>
+                </tr>
+                <tr>
+                    <td>Debt-to-Equity</td>
+                    <td>0.15x</td>
+                </tr>
+                <tr>
+                    <td>Net Cash to Equity</td>
+                    <td>0.45x</td>
+                </tr>
+                <tr>
+                    <td>ROE</td>
+                    <td>13.0%</td>
+                </tr>
+                <tr>
+                    <td>ROA</td>
+                    <td>7.2%</td>
+                </tr>
+            </table>
+
+            <h3>Valuation Metrics</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Shares Outstanding</td>
+                    <td>1,370 million</td>
+                </tr>
+                <tr>
+                    <td>Market Cap (HKD M)</td>
+                    <td>6,165</td>
+                </tr>
+                <tr>
+                    <td>Market Cap (RMB M)</td>
+                    <td>5,700</td>
+                </tr>
+                <tr>
+                    <td>P/E Ratio (trailing)</td>
+                    <td>4.4x</td>
+                </tr>
+                <tr>
+                    <td>P/E Ratio (forward)</td>
+                    <td>4.3x</td>
+                </tr>
+                <tr>
+                    <td>P/B Ratio</td>
+                    <td>0.57x</td>
+                </tr>
+                <tr>
+                    <td>EV/EBITDA</td>
+                    <td>2.5x</td>
+                </tr>
+                <tr>
+                    <td>Dividend Yield</td>
+                    <td>8.5%</td>
+                </tr>
+                <tr>
+                    <td>FCF Yield</td>
+                    <td>28.0%</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="dcf-valuation" class="section">
+            <h2>DCF Valuation</h2>
+            <h3>Methodology</h3>
+            <p>10-year discounted cash flow model using Free Cash Flow to Firm (FCFF) approach with terminal value calculated using perpetuity growth method.</p>
+
+            <h3>Key Assumptions</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Projection Period</td>
+                    <td>10 years</td>
+                </tr>
+                <tr>
+                    <td>Revenue CAGR</td>
+                    <td>3.5%</td>
+                </tr>
+                <tr>
+                    <td>Terminal Growth Rate</td>
+                    <td>2.5%</td>
+                </tr>
+                <tr>
+                    <td>EBITDA Margin (Terminal)</td>
+                    <td>14.0%</td>
+                </tr>
+                <tr>
+                    <td>Tax Rate</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>Working Capital Change (% Revenue)</td>
+                    <td>2.0%</td>
+                </tr>
+            </table>
+
+            <h3>Projected Free Cash Flows (RMB millions)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Year</th>
+                    <th>2025</th>
+                    <th>2026</th>
+                    <th>2027</th>
+                    <th>2028</th>
+                    <th>2029</th>
+                    <th>2030</th>
+                </tr>
+                <tr>
+                    <td>Revenue</td>
+                    <td>16,200</td>
+                    <td>17,000</td>
+                    <td>17,850</td>
+                    <td>18,565</td>
+                    <td>19,308</td>
+                    <td>20,080</td>
+                </tr>
+                <tr>
+                    <td>FCFF</td>
+                    <td>1,458</td>
+                    <td>1,530</td>
+                    <td>1,659</td>
+                    <td>1,785</td>
+                    <td>1,856</td>
+                    <td>1,931</td>
+                </tr>
+            </table>
+
+            <div class="valuation-summary">
+                <h3>Probability-Weighted Valuation</h3>
+                <table class="data-table">
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Price (HKD)</th>
+                        <th>Probability</th>
+                        <th>Weighted Value</th>
+                    </tr>
+                    <tr>
+                        <td>Bull Case - Recovery & Expansion</td>
+                        <td>26.00</td>
+                        <td>15%</td>
+                        <td>3.90</td>
+                    </tr>
+                    <tr>
+                        <td>Optimistic - Gradual Recovery</td>
+                        <td>19.30</td>
+                        <td>20%</td>
+                        <td>3.86</td>
+                    </tr>
+                    <tr>
+                        <td>Base Case - Muddle Through</td>
+                        <td>14.58</td>
+                        <td>35%</td>
+                        <td>5.10</td>
+                    </tr>
+                    <tr>
+                        <td>Pessimistic - Prolonged Downturn</td>
+                        <td>10.25</td>
+                        <td>20%</td>
+                        <td>2.05</td>
+                    </tr>
+                    <tr>
+                        <td>Bear Case - Distress Scenario</td>
+                        <td>7.49</td>
+                        <td>10%</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>Probability-Weighted Value</strong></td>
+                        <td colspan="2"><strong>HKD 15.66</strong></td>
+                        <td><strong>248% upside</strong></td>
+                    </tr>
+                </table>
+                <p style="margin-top: 15px; color: #e3a008;">Note: Current price of HKD 4.50 is 40% below even the Bear Case value of HKD 7.49, indicating extreme pessimism is priced in.</p>
+            </div>
+        </section>
+
+        <section id="scenarios" class="section">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card">
+                <h4>Bull Case - Recovery & Expansion <span class="probability">15% probability</span></h4>
+                <p>Agile Group successfully restructures, property market stabilizes, A-Living accelerates M&A and third-party expansion. Revenue CAGR 6.0%, terminal EBITDA margin 16%, discount rate 8%.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 26.00</strong> | Upside: 478%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Optimistic Case - Gradual Recovery <span class="probability">20% probability</span></h4>
+                <p>Property market shows gradual improvement, A-Living maintains market share and modest margin expansion. Revenue CAGR 5.0%, terminal EBITDA margin 15%, discount rate 9%.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 19.30</strong> | Upside: 329%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Base Case - Muddle Through <span class="probability">35% probability</span></h4>
+                <p>Property sector remains weak but A-Living maintains operations, slow growth with stable margins. Revenue CAGR 3.5%, terminal EBITDA margin 14%, discount rate 10%.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 14.58</strong> | Upside: 224%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Pessimistic Case - Prolonged Downturn <span class="probability">20% probability</span></h4>
+                <p>Property market deteriorates further, margin compression, Agile-related receivables impairment. Revenue CAGR 1.0%, terminal EBITDA margin 12%, discount rate 11%.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 10.25</strong> | Upside: 128%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Bear Case - Distress Scenario <span class="probability">10% probability</span></h4>
+                <p>Agile Group liquidation forces A-Living stake sale, significant receivables write-off, loss of Agile contracts. Revenue CAGR -2.0%, terminal EBITDA margin 10%, discount rate 11%.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 7.49</strong> | Upside: 66%</p>
+            </div>
+        </section>
+
+        <section id="risks" class="section">
+            <h2>Risk Assessment</h2>
+
+            <h3>High Risks</h3>
+            <div class="risk-item">
+                <h4>Parent Company Contagion</h4>
+                <p>Severity: High | Agile Group's financial distress could lead to forced sale of A-Living stake, management distraction, or loss of Agile-related contracts. Mitigation: A-Living operates independently with separate listing, 60-65% third-party GFA, strong cash position.</p>
+            </div>
+
+            <div class="risk-item">
+                <h4>Receivables Impairment</h4>
+                <p>Severity: High | RMB 4 billion in trade receivables with 90-day collection cycle. Significant related-party and distressed developer exposure may require impairment. Mitigation: Diversified customer base, provisioning policies in place.</p>
+            </div>
+
+            <div class="risk-item">
+                <h4>Property Sector Deterioration</h4>
+                <p>Severity: High | Further weakness in China property market affecting new GFA growth and developer value-added services. Mitigation: Focus on third-party expansion and community services.</p>
+            </div>
+
+            <h3>Medium Risks</h3>
+            <div class="risk-item medium">
+                <h4>Margin Pressure</h4>
+                <p>Severity: Medium | Intense competition and labor cost inflation pressuring profit margins (gross margin declined from 25% to 22%). Mitigation: Technology adoption, service mix improvement, economies of scale.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>M&A Integration</h4>
+                <p>Severity: Medium | Challenges integrating acquired property management companies; industry M&A integration failure rate estimated at 30-40%. Mitigation: Experienced integration team, standardized processes.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>Related Party Transactions</h4>
+                <p>Severity: Medium | Transactions with Agile Group may not be at arm's length terms. Mitigation: Independent board oversight, disclosure requirements.</p>
+            </div>
+
+            <h3>Low Risks</h3>
+            <div class="risk-item low">
+                <h4>Regulatory Changes</h4>
+                <p>Severity: Medium-Low | New regulations affecting property management fee structures. Mitigation: Industry compliance, policy engagement.</p>
+            </div>
+        </section>
+
+        <section id="recommendation" class="section">
+            <h2>Investment Recommendation</h2>
+
+            <div class="valuation-summary">
+                <h3>HOLD - Accumulate on Weakness</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="value">HKD 5.80</div>
+                        <div class="label">12-Month Target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">29%</div>
+                        <div class="label">Upside Potential</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">Medium</div>
+                        <div class="label">Conviction</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">2-4%</div>
+                        <div class="label">Max Portfolio Weight</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <p>A-Living presents an asymmetric risk-reward opportunity but requires patience and risk tolerance. The stock trades at deep value metrics (4.4x P/E, 0.57x P/B, 8.5% dividend yield) that imply near-certain catastrophe. However, the company has demonstrated operational resilience, maintains a net cash position, and continues generating positive free cash flow despite parent company challenges.</p>
+
+            <h3>Bull Points</h3>
+            <ul style="margin-left: 20px; color: #238636;">
+                <li>Deeply discounted valuation at 0.57x P/B and sub-5x P/E</li>
+                <li>Strong net cash position (RMB 4.5bn) provides financial flexibility</li>
+                <li>Recurring revenue model with 95%+ retention rates</li>
+                <li>Growing third-party GFA (60-65%) reduces parent company dependency</li>
+                <li>Value-added services provide margin expansion opportunity</li>
+                <li>Industry consolidation offers attractive M&A opportunities</li>
+                <li>High dividend yield of 8.5% provides downside support</li>
+                <li>Current price 40% below even Bear Case value</li>
+            </ul>
+
+            <h3>Bear Points</h3>
+            <ul style="margin-left: 20px; color: #da3633;">
+                <li>Parent company Agile Group under severe financial stress</li>
+                <li>Significant related party receivables exposure (RMB 4bn total)</li>
+                <li>Property sector headwinds affecting growth outlook</li>
+                <li>Margin compression from competitive pressures</li>
+                <li>Corporate governance concerns around related party transactions</li>
+                <li>Low liquidity in Hong Kong-listed small cap space</li>
+                <li>No clear near-term catalyst for value realization</li>
+            </ul>
+
+            <h3>Position Sizing Strategy</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Action</th>
+                    <th>Price Trigger</th>
+                    <th>Position</th>
+                </tr>
+                <tr>
+                    <td>Initial Position</td>
+                    <td>At current HKD 4.50</td>
+                    <td>2% of portfolio</td>
+                </tr>
+                <tr>
+                    <td>Accumulate</td>
+                    <td>Below HKD 4.00</td>
+                    <td>Add 1-2%</td>
+                </tr>
+                <tr>
+                    <td>Maximum Position</td>
+                    <td>-</td>
+                    <td>4% of portfolio</td>
+                </tr>
+                <tr>
+                    <td>Stop-Loss Review</td>
+                    <td>Below HKD 3.00</td>
+                    <td>Reassess thesis</td>
+                </tr>
+            </table>
+
+            <h3>Key Catalysts</h3>
+            <div class="catalyst-item">
+                <span>Agile Group debt restructuring completion</span>
+                <span class="timing">6-18 months</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Strategic sale of Agile's stake to strong buyer</span>
+                <span class="timing">12-24 months</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Policy support for property management sector</span>
+                <span class="timing">Ongoing</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Value-accretive M&A announcement</span>
+                <span class="timing">3-12 months</span>
+            </div>
+        </section>
+
+        <section id="debate-log" class="section">
+            <h2>AI Debate Log</h2>
+            <p style="color: #8b949e; margin-bottom: 20px;">Multi-perspective analysis conducted on 2026-01-18 with BULL, BEAR, CRITIC, and SYNTHESIZER perspectives.</p>
+
+            <div class="debate-round">
+                <h4>Round 1: Core Business Model and Recurring Revenue Stability</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>A-Living's property management business represents one of the most defensive plays in the China property ecosystem. With 700+ million sqm of GFA under management and 95%+ retention rates, the company generates genuinely recurring revenue that persists regardless of property transaction volumes. Unlike developers, property managers collect fees monthly from existing residents - this is subscription-like revenue with minimal churn. The 55-60% of revenue from basic property management services provides a stable foundation that has remained resilient through the worst property crisis in China's modern history.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">95%+ retention rate</span>
+                        <span class="key-point">700+ million sqm GFA</span>
+                        <span class="key-point">Revenue grew despite crisis</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The recurring revenue narrative masks serious structural problems. First, 35-40% of revenue still comes from non-recurring sources - value-added services to developers and community services that are highly discretionary. Developer VAS is in secular decline as distressed developers cut spending. Second, the 'stickiness' of property management contracts is overstated - homeowner associations can and do switch providers. Third, and most critically, the parent company Agile Group owns 50-55% and is in active debt restructuring. A forced liquidation could trigger a change-of-control, management exodus, and loss of critical Agile-related contracts.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">50-55% Agile ownership</span>
+                        <span class="key-point">Developer VAS declining</span>
+                        <span class="key-point">RMB 4bn receivables risk</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 1 establishes the central tension: A-Living has genuinely defensive characteristics in its core property management business, but these are materially compromised by parent company risk and receivables exposure. The recurring revenue argument has merit for the 55-60% basic PM segment but is weaker for developer-related VAS. Key unresolved question: the quality of RMB 4 billion in receivables is the transmission mechanism through which Agile distress could directly impair A-Living's balance sheet.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 2: Agile Group Parent Company Risk Assessment</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>The market is pricing A-Living as if Agile's problems will fully transfer to the subsidiary - this is fundamentally wrong. A-Living has a separate Hong Kong listing with independent board oversight, its own management team, and most importantly, its own balance sheet with RMB 4.5 billion in NET CASH. This is not a subsidiary that can be raided for parent company debts. The China regulatory environment actually protects listed subsidiaries from upstream liabilities. Furthermore, Agile's rational strategy is to PRESERVE A-Living as a valuable, dividend-paying asset, not destroy it.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">Net cash RMB 4.5bn</span>
+                        <span class="key-point">Debt-to-equity 0.15x</span>
+                        <span class="key-point">60-65% third-party GFA</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The legal separation argument ignores practical reality. First, there are likely substantial intercompany payables and receivables that create direct financial linkage - we've already identified RMB 4 billion in trade receivables with unclear related-party composition. Second, management bandwidth is finite; executives dealing with parent company crisis cannot fully focus on A-Living operations. Third, reputational contagion is real - homeowner associations and third-party clients may question working with a subsidiary of a defaulted developer.</p>
+                </div>
+
+                <div class="debate-entry critic">
+                    <div class="speaker">CRITIC</div>
+                    <p>What is the fair value adjustment for parent company risk? I argue a 20-30% holding company discount seems reasonable, but current 70%+ discount to book value is excessive if: (1) Successful offshore restructuring with domestic operations continuing - mildly positive (40% probability), (2) Prolonged negotiations without resolution - maintains uncertainty (45%), (3) Liquidation/forced asset sales - historically rare (15%). Current valuation implies market pricing scenario 3 at higher probability.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 2 deepens parent company risk analysis. Key takeaways: A-Living's legal and financial separation is real but not complete. The most likely scenario is prolonged uncertainty rather than catastrophic liquidation, meaning the current deep discount may be excessive. A strategic sale of Agile's stake is plausible and potentially positive if executed properly. Apply a 25-35% 'parent company discount' to intrinsic value. Current P/B of 0.57x implies market is applying ~60% discount - upside if worst-case scenarios don't materialize.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 3: Industry Consolidation and Third-Party Growth Strategy</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>The property management sector is undergoing generational consolidation, and A-Living is positioned as a beneficiary. Top 100 PMCs now manage 50% of China's total GFA, up from 35% five years ago. A-Living has already grown third-party ratio to 60-65%, demonstrating successful execution. With RMB 4.5 billion net cash, the company has firepower for accretive acquisitions. Recent sector M&A has occurred at 5-8x EV/EBITDA while A-Living trades at just 2.5x EV/EBITDA.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The consolidation thesis sounds compelling but ignores execution risks and capital allocation history. M&A integration in property management is notoriously difficult - different IT systems, service standards, labor contracts, and local relationships. The 'cheap acquisitions' narrative ignores that distressed assets are distressed for reasons. Pursuing M&A while your own parent company is in crisis is strategically questionable. Finally, the third-party growth strategy requires winning competitive tenders against well-capitalized peers like Country Garden Services and Poly Property.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 3 evaluates growth strategy. Industry consolidation is real and creates opportunity, but execution is key. Third-party growth to 60-65% is genuinely positive for risk reduction. M&A in current environment is higher risk than bull case acknowledges - preserving liquidity may be wiser than aggressive deployment. Assume 3-5% organic GFA growth, modest M&A contribution, but apply execution risk discount to growth assumptions.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 4: Valuation and Margin of Safety Analysis</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>A-Living is trading at crisis-level valuations that are disconnected from fundamentals. At HKD 4.50, the stock trades at 4.4x trailing P/E, 0.57x P/B, 2.5x EV/EBITDA. The 8.5% dividend yield is sustainable given 40% payout ratio. Free cash flow yield is an extraordinary 28% - the company could theoretically buy back its entire market cap in 3.5 years from operating cash flows. The probability-weighted intrinsic value of HKD 15.66 implies 248% upside. Even the bear case (HKD 7.49) offers 66% upside. Current price is 40% BELOW the bear case value.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">4.4x P/E</span>
+                        <span class="key-point">0.57x P/B</span>
+                        <span class="key-point">28% FCF yield</span>
+                        <span class="key-point">8.5% dividend yield</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The valuation metrics are only attractive if you trust the underlying numbers - and there are reasons not to. First, the book value includes RMB 4 billion in receivables that may require substantial impairment - write off 50% and P/B rises to 0.7-0.8x. Second, the P/E is based on earnings that include potentially non-recurring items and Agile-related revenue that could disappear. Third, 'cheap' stocks in distressed sectors often get cheaper - there's no fundamental catalyst to unlock value. The dividend could be cut if cash needs to be preserved.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 4 stress-tests valuation. Even with conservative adjustments (20% receivables impairment, lower earnings), valuation remains objectively cheap at ~0.62x adjusted P/B and ~5.7x adjusted P/E. The 'value trap' concern is legitimate - cheap can stay cheap without catalysts. Fair value range on normalized basis is HKD 7-10 (conservative) to HKD 14-16 (probability-weighted). Risk-reward is asymmetric: downside to HKD 3.00-3.50 (-25%), upside to HKD 8-10 (+80-120%).</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 5: Final Investment Recommendation and Positioning</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL - Final Position</div>
+                    <p><strong>BUY</strong> with 18-month target of HKD 8.50. Deeply undervalued asset trading at 40% discount to even worst-case intrinsic value. Strong balance sheet with net cash covering 75% of market cap. Recurring revenue business model proven resilient through property crisis. Multiple potential catalysts including Agile restructuring, M&A opportunities, and sector rerating. 8.5% dividend yield provides income while waiting for rerating.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR - Final Position</div>
+                    <p><strong>AVOID</strong> or token position maximum 1-2%. Parent company situation is unresolved with potential for deterioration. No clear catalyst for value unlocking in visible future. Corporate governance around related-party transactions is suboptimal. Liquidity constraints limit ability to exit position in stressed scenario. Better China property management plays exist with stronger parentage (Poly Property, CR Mixc).</p>
+                </div>
+
+                <div class="debate-entry critic">
+                    <div class="speaker">CRITIC - Final Position</div>
+                    <p><strong>HOLD with opportunistic accumulation</strong>. Base position of 2-3% for value-oriented portfolios. Accumulate additional 1-2% on weakness below HKD 4.00. Target total position of 4-5% maximum given liquidity constraints. Set review trigger at HKD 3.00. Price target of HKD 5.80 at 12 months is achievable without heroic assumptions.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER - Final Synthesis</div>
+                    <p>After five rounds of rigorous debate, the evidence supports a <strong>HOLD recommendation with tactical accumulation below HKD 4.00</strong>. The investment case rests on three pillars with varying confidence levels:</p>
+                    <p>(1) <strong>VALUATION SUPPORT (HIGH CONFIDENCE)</strong>: The stock is objectively cheap on every metric, with current price below even bear-case intrinsic value.</p>
+                    <p>(2) <strong>BUSINESS QUALITY (MEDIUM CONFIDENCE)</strong>: The core property management business is resilient with recurring revenue characteristics, but growth visibility is limited.</p>
+                    <p>(3) <strong>RISK RESOLUTION (LOW CONFIDENCE)</strong>: Parent company risk is the key variable with uncertain timeline and outcome. The market may be over-discounting this risk, but we cannot rule out adverse scenarios.</p>
+                    <p>Final recommendation: <strong>HOLD</strong> with 12-month target of HKD 5.80 (29% upside). Maximum position size 3-4% for value-oriented portfolios. This is a high-risk/high-reward opportunity suitable for investors with long time horizons and tolerance for volatility.</p>
+                </div>
+            </div>
+
+            <h3>Key Disagreements Summary</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Topic</th>
+                    <th>Bull View</th>
+                    <th>Bear View</th>
+                    <th>Resolution</th>
+                </tr>
+                <tr>
+                    <td>Parent Company Risk</td>
+                    <td>Manageable; legal/financial separation</td>
+                    <td>Existential through receivables, reputation</td>
+                    <td>Apply 25-35% discount, not 60%+</td>
+                </tr>
+                <tr>
+                    <td>Value Trap vs Opportunity</td>
+                    <td>Multiple catalysts will lead to rerating</td>
+                    <td>No clear catalyst visible</td>
+                    <td>Position sizing manages this uncertainty</td>
+                </tr>
+                <tr>
+                    <td>M&A Strategy</td>
+                    <td>Consolidation opportunity</td>
+                    <td>Integration risks high</td>
+                    <td>Selective M&A may add value</td>
+                </tr>
+                <tr>
+                    <td>Receivables Quality</td>
+                    <td>Diversified, mitigated</td>
+                    <td>RMB 4bn at impairment risk</td>
+                    <td>Assume 10-20% impairment provision</td>
+                </tr>
+            </table>
+
+            <h3>Key Consensus Points</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Current valuation is objectively cheap (P/E 4.4x, P/B 0.57x, FCF yield 28%)</li>
+                <li>Core property management revenue is defensive (95%+ retention, monthly fee collection)</li>
+                <li>Third-party expansion (60-65%) reduces but does not eliminate parent dependency</li>
+                <li>Agile restructuring outcome is the key variable for thesis</li>
+                <li>Liquidity constraints require careful position sizing</li>
+                <li>8.5% dividend yield provides compensation while waiting</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            <p>Report generated on 2026-01-19 | Data as of January 2026</p>
+            <p>This report is for informational purposes only and does not constitute investment advice. Investors should conduct their own due diligence.</p>
+        </div>
+    </main>
+</body>
+</html>

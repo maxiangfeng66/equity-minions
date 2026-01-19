@@ -1,0 +1,18 @@
+Project Purpose: create multiple agents to do equity research
+
+Idea:
+
+1) go through list.txt, it has the equities i am interested in
+2) go through AI prompt tempalte, research each specific equity (try to use multiple AIs including GPT, Gemini, Grok, Qwen, Deepseek)
+3) use multiple agents to challenge each other's assumptions, logics
+4) the deliverable should be htmls: one index html with links for each equity; for each individual equity, gimme a decent summary of that company report: eventually i want to know that equity's intrinsic value with scenarios. of course, some equities have narrower uncertainty of its business outlook, some have a lot wider uncertainties of its business outlook. i have to have a probability weighted target price supported by scenario analysis
+
+
+Rules:
+1)try to run as parellel as possible
+2) try to interupt me as less as possible
+3) try to be as thorogh as possible, take your time
+4) try to create multiple agents to have challenges as much as possible
+5) if we often run out of the context window, we need to make sure we record what happened before so that the continuing chat does not lose context again
+6) try to be as modular as possible, so that we can easily adjust
+7) record key thoughts, design, development, updates in a file called "blueprint.md"

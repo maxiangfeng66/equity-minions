@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>762 HK - Detailed Research Report | China Unicom</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .nav-footer {
+            padding: 20px;
+            border-top: 1px solid #30363d;
+        }
+
+        .back-link {
+            display: block;
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 30px 40px;
+            max-width: 1200px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #58a6ff;
+            font-size: 2.5em;
+        }
+
+        header h2 {
+            color: #c9d1d9;
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+
+        header .sector {
+            color: #8b949e;
+            margin-top: 8px;
+        }
+
+        .recommendation-badge {
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .badge-buy { background: #238636; color: #fff; }
+        .badge-hold { background: #9e6a03; color: #fff; }
+        .badge-sell { background: #da3633; color: #fff; }
+        .badge-outperform { background: #1f6feb; color: #fff; }
+
+        section {
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        section h2 {
+            color: #58a6ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #30363d;
+        }
+
+        section h3 {
+            color: #c9d1d9;
+            font-size: 1.2em;
+            margin: 20px 0 15px;
+        }
+
+        section h4 {
+            color: #8b949e;
+            font-size: 1em;
+            margin: 15px 0 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1f3a5c 0%, #1a2733 100%);
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .key-points li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        th {
+            background: #21262d;
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #21262d;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-card .value {
+            color: #58a6ff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .metric-card .value.positive { color: #3fb950; }
+        .metric-card .value.negative { color: #f85149; }
+
+        .scenario-card {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card.very-bearish { border-left: 4px solid #da3633; }
+        .scenario-card.bearish { border-left: 4px solid #f85149; }
+        .scenario-card.base { border-left: 4px solid #58a6ff; }
+        .scenario-card.bullish { border-left: 4px solid #3fb950; }
+        .scenario-card.very-bullish { border-left: 4px solid #238636; }
+
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .scenario-header h4 {
+            margin: 0;
+            color: #c9d1d9;
+        }
+
+        .probability-badge {
+            background: #30363d;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .risk-item {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #f85149;
+        }
+
+        .risk-item.medium { border-left-color: #9e6a03; }
+        .risk-item.low { border-left-color: #3fb950; }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .risk-header h5 {
+            color: #c9d1d9;
+            margin: 0;
+        }
+
+        .impact-badge {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: #30363d;
+        }
+
+        .debate-round {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .debate-message {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #0d1117;
+        }
+
+        .debate-message.bull { border-left: 3px solid #3fb950; }
+        .debate-message.bear { border-left: 3px solid #f85149; }
+        .debate-message.critic { border-left: 3px solid #9e6a03; }
+        .debate-message.synthesizer { border-left: 3px solid #a371f7; }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+
+        .message-role {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .message-role.bull { color: #3fb950; }
+        .message-role.bear { color: #f85149; }
+        .message-role.critic { color: #9e6a03; }
+        .message-role.synthesizer { color: #a371f7; }
+
+        .consensus-box {
+            background: linear-gradient(135deg, #1a3d2e 0%, #1a2733 100%);
+            border-left: 4px solid #3fb950;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .disagreement-box {
+            background: linear-gradient(135deg, #3d1a1a 0%, #1a2733 100%);
+            border-left: 4px solid #f85149;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.9em;
+            border-top: 1px solid #30363d;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>762 HK</h3>
+            <p>China Unicom</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">Debate Log</a></li>
+        </ul>
+        <div class="nav-footer">
+            <a href="762_HK_China_Unicom.html" class="back-link">&lt;- Back to Summary</a>
+            <a href="index.html" class="back-link">&lt;- Portfolio Index</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header>
+            <div class="header-info">
+                <h1>762 HK</h1>
+                <h2>China United Network Communications Group Company Limited</h2>
+                <p class="sector">Telecommunications Services | Hong Kong Stock Exchange</p>
+                <p class="sector" style="margin-top: 5px;">Currency: RMB (CNY) for financials, HKD for stock price</p>
+            </div>
+            <div class="recommendation-badge badge-buy">BUY</div>
+        </header>
+
+        <!-- Executive Summary Section -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="highlight-box">
+                <p>China Unicom (762 HK) is one of China's three major state-owned telecommunications operators, providing mobile, fixed-line, broadband, and enterprise services to over 330 million mobile subscribers. The company has undergone significant transformation, pivoting from traditional telecom services toward digital infrastructure, cloud computing, and industrial digitalization under the "Big Connectivity, Big Computing, Big Data, Big Application, Big Security" strategy.</p>
+            </div>
+
+            <h3>Investment Thesis</h3>
+            <p>China Unicom presents a value opportunity in the Chinese telecom sector with improving fundamentals driven by 5G monetization, cloud computing expansion, and industrial digitalization. The company's network-sharing agreement with China Telecom provides capital efficiency advantages, while government digital transformation initiatives create structural tailwinds. However, competitive intensity and regulatory uncertainty warrant consideration.</p>
+
+            <h3>Key Highlights</h3>
+            <ul class="key-points">
+                <li>Third-largest mobile operator in China with approximately 330+ million mobile subscribers</li>
+                <li>Strategic 5G network sharing with China Telecom reduces capex burden by 30-40%</li>
+                <li>Cloud and data center business growing at 25-30% annually</li>
+                <li>Strong dividend yield of 5-6% with improving payout ratios</li>
+                <li>Government-backed digital infrastructure investments support long-term growth</li>
+                <li>Valuation discount to global telecom peers presents opportunity</li>
+            </ul>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Target Price</div>
+                    <div class="value">HKD 7.56</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Current Price</div>
+                    <div class="value">HKD 6.80</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Upside Potential</div>
+                    <div class="value positive">11.2%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Dividend Yield</div>
+                    <div class="value positive">5.5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Return</div>
+                    <div class="value positive">16.7%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Analysis Section -->
+        <section id="industry-analysis">
+            <h2>Industry Analysis</h2>
+
+            <h3>China Telecom Sector Overview</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Market Size (RMB)</div>
+                    <div class="value">1,650B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Traditional Growth</div>
+                    <div class="value">3-5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Digital Services Growth</div>
+                    <div class="value positive">15-25%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">5G Penetration</div>
+                    <div class="value">55-60%</div>
+                </div>
+            </div>
+
+            <p>The Chinese telecommunications market is an oligopoly dominated by three state-owned enterprises: China Mobile (941 HK), China Telecom (728 HK), and China Unicom (762 HK). Combined, they serve over 1.7 billion mobile subscribers with China Mobile holding approximately 60% market share, China Telecom ~22%, and China Unicom ~18%.</p>
+
+            <h4>Industry Trends</h4>
+            <ul class="key-points">
+                <li><strong>5G Monetization:</strong> Transition from network buildout phase to monetization phase, with focus on B2B applications including smart manufacturing, autonomous vehicles, telemedicine, and smart cities</li>
+                <li><strong>Digital Transformation:</strong> Enterprise digitalization driving demand for cloud services, IoT connectivity, and integrated ICT solutions</li>
+                <li><strong>ARPU Pressure:</strong> Consumer ARPU stabilizing after years of decline due to regulatory price cuts; B2B services commanding premium pricing</li>
+                <li><strong>Cloud Computing:</strong> Operators expanding into cloud infrastructure to compete with Alibaba Cloud, Huawei Cloud, and Tencent Cloud</li>
+            </ul>
+
+            <h3>Regulatory Environment</h3>
+            <div class="highlight-box">
+                <p><strong>Government Support:</strong> Strong policy support for digital infrastructure under 14th Five-Year Plan and Digital China initiatives</p>
+                <p style="margin-top: 10px;"><strong>Data Security:</strong> Increasing emphasis on data localization and cybersecurity compliance benefiting domestic operators</p>
+            </div>
+
+            <h3>Competitive Landscape</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Market Share</th>
+                        <th>Subscribers (M)</th>
+                        <th>Strengths</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>China Mobile (941 HK)</td>
+                        <td>~60%</td>
+                        <td>~1,000</td>
+                        <td>Scale, network quality</td>
+                    </tr>
+                    <tr>
+                        <td>China Telecom (728 HK)</td>
+                        <td>~22%</td>
+                        <td>~400</td>
+                        <td>Fixed-line, enterprise</td>
+                    </tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>China Unicom (762 HK)</strong></td>
+                        <td><strong>~18%</strong></td>
+                        <td><strong>~335</strong></td>
+                        <td><strong>Innovation, partnerships</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Company Analysis Section -->
+        <section id="company-analysis">
+            <h2>Company Analysis</h2>
+
+            <h3>Business Overview</h3>
+            <div class="highlight-box">
+                <p><strong>Founded:</strong> 1994</p>
+                <p><strong>Ownership:</strong> State-owned enterprise with strategic investors including Tencent, Alibaba, Baidu, JD.com</p>
+            </div>
+
+            <h4>Business Segments</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Segment</th>
+                        <th>Revenue %</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mobile Services</td>
+                        <td>45%</td>
+                        <td>Voice, SMS, and mobile data services</td>
+                    </tr>
+                    <tr>
+                        <td>Fixed-Line & Broadband</td>
+                        <td>25%</td>
+                        <td>Fixed-line voice, fiber broadband, IPTV</td>
+                    </tr>
+                    <tr>
+                        <td>Industry Digitalization & IoT</td>
+                        <td>20%</td>
+                        <td>Cloud computing, big data, IoT, smart city</td>
+                    </tr>
+                    <tr>
+                        <td>Other Services</td>
+                        <td>10%</td>
+                        <td>Equipment sales, value-added services</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Subscriber Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Mobile Subscribers</div>
+                    <div class="value">335M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">5G Subscribers</div>
+                    <div class="value">275M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">5G Penetration</div>
+                    <div class="value positive">82%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Broadband Subs</div>
+                    <div class="value">115M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">IoT Connections</div>
+                    <div class="value">520M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Mobile ARPU</div>
+                    <div class="value">RMB 43.5</div>
+                </div>
+            </div>
+
+            <h3>Network Infrastructure</h3>
+            <ul class="key-points">
+                <li>Network sharing agreement with China Telecom: Over 1.2 million shared 5G base stations</li>
+                <li>4G base stations: Over 1.5 million</li>
+                <li>Data centers: 900+ nationwide with edge computing capabilities</li>
+                <li>Cost-efficient 5G deployment through network sharing (30-40% capex savings)</li>
+            </ul>
+
+            <h3>Growth Initiatives</h3>
+            <div class="scenario-card base">
+                <h4>Unicom Cloud</h4>
+                <p><strong>Growth Rate:</strong> 28% YoY</p>
+                <p><strong>Strategy:</strong> Focus on hybrid cloud solutions for government and enterprise customers, leveraging network advantages and data center presence</p>
+                <p><strong>Market Position:</strong> 4th or 5th largest cloud provider in China</p>
+            </div>
+
+            <div class="scenario-card bullish">
+                <h4>Industrial Digitalization</h4>
+                <p><strong>Focus Areas:</strong> Smart manufacturing, transportation, healthcare, education, cities</p>
+                <p><strong>Revenue Growth:</strong> 20%+ annually</p>
+                <p><strong>Key Projects:</strong> Thousands of 5G enterprise applications deployed</p>
+            </div>
+
+            <h3>Competitive Position (SWOT)</h3>
+            <h4>Strengths</h4>
+            <ul class="key-points">
+                <li>Strategic tech partnerships with BAT (Baidu, Alibaba, Tencent) and JD.com</li>
+                <li>Cost-efficient 5G deployment through network sharing with China Telecom</li>
+                <li>Strong brand recognition in northern China markets</li>
+                <li>Innovation culture and agility compared to larger rivals</li>
+            </ul>
+
+            <h4>Weaknesses</h4>
+            <ul class="key-points">
+                <li>Smallest market share among the three major operators</li>
+                <li>Lower scale economies compared to China Mobile</li>
+                <li>Geographic concentration in northern regions</li>
+            </ul>
+        </section>
+
+        <!-- Financial Data Section -->
+        <section id="financial-data">
+            <h2>Financial Data</h2>
+
+            <h3>Income Statement Summary (RMB Billion)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>FY2022</th>
+                        <th>FY2023</th>
+                        <th>FY2024E</th>
+                        <th>FY2025E</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revenue</td>
+                        <td>365.4</td>
+                        <td>385.2</td>
+                        <td>405.0</td>
+                        <td>425.0</td>
+                    </tr>
+                    <tr>
+                        <td>Service Revenue</td>
+                        <td>320.5</td>
+                        <td>338.0</td>
+                        <td>356.5</td>
+                        <td>375.0</td>
+                    </tr>
+                    <tr>
+                        <td>EBITDA</td>
+                        <td>110.2</td>
+                        <td>118.5</td>
+                        <td>126.0</td>
+                        <td>134.0</td>
+                    </tr>
+                    <tr>
+                        <td>EBITDA Margin</td>
+                        <td>30.2%</td>
+                        <td>30.8%</td>
+                        <td>31.1%</td>
+                        <td>31.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Net Profit</td>
+                        <td>18.5</td>
+                        <td>21.2</td>
+                        <td>24.0</td>
+                        <td>27.0</td>
+                    </tr>
+                    <tr>
+                        <td>EPS (RMB)</td>
+                        <td>0.60</td>
+                        <td>0.69</td>
+                        <td>0.78</td>
+                        <td>0.88</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Balance Sheet Highlights (RMB Billion)</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Total Assets</div>
+                    <div class="value">680.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Equity</div>
+                    <div class="value">230.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Debt</div>
+                    <div class="value">85.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Net Debt</div>
+                    <div class="value">25.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Cash</div>
+                    <div class="value">60.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Net Debt/EBITDA</div>
+                    <div class="value positive">0.2x</div>
+                </div>
+            </div>
+
+            <h3>Cash Flow (RMB Billion - 2024E)</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Operating CF</div>
+                    <div class="value positive">145.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Capex</div>
+                    <div class="value">72.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Free Cash Flow</div>
+                    <div class="value positive">73.0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">FCF Yield</div>
+                    <div class="value positive">12%</div>
+                </div>
+            </div>
+
+            <h3>Key Ratios</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">ROE</div>
+                    <div class="value">10.5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">ROA</div>
+                    <div class="value">3.5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Debt/Equity</div>
+                    <div class="value positive">37%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Dividend Payout</div>
+                    <div class="value">45%</div>
+                </div>
+            </div>
+
+            <h3>Valuation Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">P/E (TTM)</div>
+                    <div class="value">9.8x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">P/E (Forward)</div>
+                    <div class="value">8.7x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">EV/EBITDA</div>
+                    <div class="value">2.5x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">P/B</div>
+                    <div class="value">0.85x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Market Cap (HKD B)</div>
+                    <div class="value">208.0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DCF Valuation Section -->
+        <section id="dcf-valuation">
+            <h2>DCF Valuation</h2>
+
+            <div class="highlight-box">
+                <p><strong>Methodology:</strong> Discounted Cash Flow analysis using Free Cash Flow to Firm (FCFF) with explicit forecast period of 10 years and terminal value calculation using perpetuity growth method</p>
+            </div>
+
+            <h3>Key Assumptions</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Base Year FCF</div>
+                    <div class="value">RMB 73B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Forecast Period</div>
+                    <div class="value">10 Years</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Terminal Growth</div>
+                    <div class="value">2.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Tax Rate</div>
+                    <div class="value">25%</div>
+                </div>
+            </div>
+
+            <h4>Revenue Growth Assumptions</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Growth Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Year 1-3</td><td>5.0%</td></tr>
+                    <tr><td>Year 4-6</td><td>4.0%</td></tr>
+                    <tr><td>Year 7-10</td><td>3.0%</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Projected FCF (RMB Billion)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FCF</td>
+                        <td>76.5</td>
+                        <td>80.3</td>
+                        <td>84.3</td>
+                        <td>87.7</td>
+                        <td>91.2</td>
+                        <td>94.8</td>
+                        <td>97.7</td>
+                        <td>100.6</td>
+                        <td>103.6</td>
+                        <td>106.7</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Sensitivity Analysis</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Discount Rate</th>
+                        <th>7%</th>
+                        <th>8%</th>
+                        <th>9%</th>
+                        <th>10%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Target Price (HKD)</td>
+                        <td>10.60</td>
+                        <td>8.80</td>
+                        <td>6.25</td>
+                        <td>5.30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Scenario Analysis Section -->
+        <section id="scenarios">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card very-bearish">
+                <div class="scenario-header">
+                    <h4>Very Bearish Case</h4>
+                    <span class="probability-badge">10% probability</span>
+                </div>
+                <p><strong>Description:</strong> Aggressive price competition, regulatory tightening, economic slowdown impacts enterprise spending, 5G monetization fails to materialize</p>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">10%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Terminal Growth</div>
+                        <div class="value">1.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value negative">HKD 5.30</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bearish">
+                <div class="scenario-header">
+                    <h4>Bearish Case</h4>
+                    <span class="probability-badge">20% probability</span>
+                </div>
+                <p><strong>Description:</strong> Moderate competition pressure, slower than expected digital transformation adoption, margin compression</p>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">9%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Terminal Growth</div>
+                        <div class="value">1.8%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">HKD 6.25</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card base">
+                <div class="scenario-header">
+                    <h4>Base Case</h4>
+                    <span class="probability-badge">40% probability</span>
+                </div>
+                <p><strong>Description:</strong> Steady execution on digital transformation strategy, successful 5G monetization, stable competitive environment, moderate cloud growth</p>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">8.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Terminal Growth</div>
+                        <div class="value">2.0%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value positive">HKD 7.40</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bullish">
+                <div class="scenario-header">
+                    <h4>Bullish Case</h4>
+                    <span class="probability-badge">20% probability</span>
+                </div>
+                <p><strong>Description:</strong> Strong enterprise digital transformation, cloud business acceleration, successful 5G industrial applications, market share gains</p>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">8%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Terminal Growth</div>
+                        <div class="value">2.2%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value positive">HKD 8.80</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card very-bullish">
+                <div class="scenario-header">
+                    <h4>Very Bullish Case</h4>
+                    <span class="probability-badge">10% probability</span>
+                </div>
+                <p><strong>Description:</strong> Breakthrough in cloud computing market share, major 5G enterprise contracts, regulatory support, significant ARPU improvement</p>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">7%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Terminal Growth</div>
+                        <div class="value">2.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value positive">HKD 10.60</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="consensus-box">
+                <h4>Probability-Weighted Target Price</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Probability</th>
+                            <th>Price (HKD)</th>
+                            <th>Contribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Very Bearish</td><td>10%</td><td>5.30</td><td>0.53</td></tr>
+                        <tr><td>Bearish</td><td>20%</td><td>6.25</td><td>1.25</td></tr>
+                        <tr><td>Base Case</td><td>40%</td><td>7.40</td><td>2.96</td></tr>
+                        <tr><td>Bullish</td><td>20%</td><td>8.80</td><td>1.76</td></tr>
+                        <tr><td>Very Bullish</td><td>10%</td><td>10.60</td><td>1.06</td></tr>
+                        <tr style="background: rgba(88, 166, 255, 0.1);"><td><strong>Total</strong></td><td><strong>100%</strong></td><td></td><td><strong>HKD 7.56</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Risk Assessment Section -->
+        <section id="risks">
+            <h2>Risk Assessment</h2>
+
+            <h3>Company-Specific Risks</h3>
+
+            <div class="risk-item">
+                <div class="risk-header">
+                    <h5>Competitive Intensity</h5>
+                    <span class="impact-badge">Severity: High</span>
+                </div>
+                <p>China Mobile's dominant market share and aggressive pricing could pressure Unicom's margins and market position</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Network sharing with China Telecom provides cost advantages; differentiation through enterprise services</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>5G Monetization Uncertainty</h5>
+                    <span class="impact-badge">Severity: Medium</span>
+                </div>
+                <p>Consumer willingness to pay premium for 5G services remains uncertain; enterprise 5G applications still nascent</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Focus on high-value B2B applications with clearer ROI; gradual 5G premium strategy</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Cloud Competition</h5>
+                    <span class="impact-badge">Severity: Medium</span>
+                </div>
+                <p>Established cloud providers (Alibaba, Huawei, Tencent) have significant leads in technology and market share</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Focus on hybrid cloud and edge computing where network assets provide advantages</p>
+            </div>
+
+            <h3>Industry Risks</h3>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Regulatory Changes</h5>
+                    <span class="impact-badge">Severity: Medium</span>
+                </div>
+                <p>Government policies on pricing, spectrum allocation, or market structure could impact operations</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> State ownership provides some regulatory visibility; engagement with policymakers</p>
+            </div>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>Technology Disruption</h5>
+                    <span class="impact-badge">Severity: Low-Medium</span>
+                </div>
+                <p>Emerging technologies like satellite internet (Starlink) or new wireless standards could disrupt business model</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Diversification into digital services; investment in next-generation technologies</p>
+            </div>
+
+            <h3>Macro Risks</h3>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>China Economic Slowdown</h5>
+                    <span class="impact-badge">Severity: Medium</span>
+                </div>
+                <p>Weakening Chinese economy could impact consumer spending and enterprise IT investment</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Telecom services relatively resilient; government digital infrastructure spending provides support</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>US-China Tensions</h5>
+                    <span class="impact-badge">Severity: Medium</span>
+                </div>
+                <p>Geopolitical tensions could impact international expansion and technology access</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Focus on domestic market; domestic supply chain development</p>
+            </div>
+        </section>
+
+        <!-- Recommendation Section -->
+        <section id="recommendation">
+            <h2>Recommendation</h2>
+
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Rating</div>
+                        <div class="value">BUY</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">HKD 7.56</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">HKD 6.80</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Upside</div>
+                        <div class="value positive">11.2%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Dividend Yield</div>
+                        <div class="value positive">5.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Total Return</div>
+                        <div class="value positive">16.7%</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <ul class="key-points">
+                <li>Attractive valuation with P/E below 10x and EV/EBITDA of 2.5x, significant discount to global telecom peers</li>
+                <li>Structural tailwinds from China's digital infrastructure investment and enterprise transformation</li>
+                <li>Network sharing agreement with China Telecom provides unique capital efficiency advantage</li>
+                <li>Diversification into cloud and digital services reduces dependence on declining traditional telecom</li>
+                <li>Strong and improving free cash flow supports sustainable dividend with 5.5% yield</li>
+                <li>Government digital transformation initiatives (Digital China, Smart Cities) benefit domestic operators</li>
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <ul class="key-points">
+                <li>Continued acceleration of cloud and enterprise digital services revenue</li>
+                <li>5G subscriber penetration improvements and potential ARPU stabilization</li>
+                <li>Major 5G enterprise application contract wins</li>
+                <li>Potential dividend increase as FCF continues to improve</li>
+                <li>Successful execution of digital transformation strategy</li>
+            </ul>
+
+            <h3>Comparable Companies</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>P/E Ratio</th>
+                        <th>EV/EBITDA</th>
+                        <th>Dividend Yield</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>China Mobile (941 HK)</td><td>10.5x</td><td>2.8x</td><td>6.5%</td></tr>
+                    <tr><td>China Telecom (728 HK)</td><td>9.2x</td><td>2.6x</td><td>5.8%</td></tr>
+                    <tr><td>Vodafone (VOD LN)</td><td>12.5x</td><td>5.5x</td><td>8.0%</td></tr>
+                    <tr><td>AT&T (T US)</td><td>8.5x</td><td>6.8x</td><td>6.2%</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Debate Log Section -->
+        <section id="debate-log">
+            <h2>Debate Log</h2>
+
+            <p style="color: #8b949e; margin-bottom: 20px;">Multi-perspective analysis featuring Bull, Bear, Critic, and Synthesizer viewpoints across 5 rounds of structured debate.</p>
+
+            <div class="debate-round">
+                <h4>Round 1: 5G Growth and Monetization Potential</h4>
+
+                <div class="debate-message bull">
+                    <div class="message-header">
+                        <span class="message-role bull">BULL</span>
+                    </div>
+                    <p><strong>Position:</strong> China Unicom is at an inflection point for 5G monetization</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>With 275 million 5G subscribers representing 82% penetration, Unicom has successfully converted its base to higher-value 5G plans</li>
+                        <li>Network-sharing agreement enables 1.2 million shared 5G base stations at 30-40% lower capex</li>
+                        <li>Industrial 5G applications moving from pilot to commercial deployment</li>
+                        <li>5G enables premium B2B pricing - enterprise ARPU is 3-5x higher than consumer</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message bear">
+                    <div class="message-header">
+                        <span class="message-role bear">BEAR</span>
+                    </div>
+                    <p><strong>Position:</strong> 5G monetization remains unproven and may disappoint</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Consumer willingness to pay premium for 5G is limited - most users see marginal benefit over 4G</li>
+                        <li>Enterprise 5G applications are still nascent with unclear ROI</li>
+                        <li>China Mobile with 60% market share has far greater scale to invest in 5G</li>
+                        <li>Mobile ARPU at RMB 43.5 remains under pressure</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message critic">
+                    <div class="message-header">
+                        <span class="message-role critic">CRITIC</span>
+                    </div>
+                    <p><strong>Position:</strong> 5G thesis requires more rigorous scrutiny</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>82% 5G penetration may overstate true adoption - many have 5G-capable plans but use 4G devices</li>
+                        <li>Network sharing means Unicom cannot differentiate on network quality from China Telecom</li>
+                        <li>Enterprise 5G revenue growth impressive but starting from small base</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> The 5G thesis has merit but is partially priced in. 5G network deployment efficiency through sharing is a genuine structural advantage. However, consumer 5G monetization has disappointed globally. Enterprise 5G represents the real opportunity but is still early stage. Net assessment: 5G is neutral-to-slightly-positive at current valuation.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 2: Cloud and Data Center Expansion Strategy</h4>
+
+                <div class="debate-message bull">
+                    <div class="message-header">
+                        <span class="message-role bull">BULL</span>
+                    </div>
+                    <p><strong>Position:</strong> Cloud business is transforming Unicom into a higher-growth company</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Unicom Cloud growing 28% YoY, far outpacing traditional telecom at 3-5%</li>
+                        <li>900+ data centers nationwide - infrastructure that pure-play cloud providers cannot replicate quickly</li>
+                        <li>Government and SOE customers prefer domestic telecom clouds for data sovereignty</li>
+                        <li>Cloud and digitalization now contribute 20% of revenue</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message bear">
+                    <div class="message-header">
+                        <span class="message-role bear">BEAR</span>
+                    </div>
+                    <p><strong>Position:</strong> Cloud strategy faces formidable competition</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Unicom Cloud ranks 4th or 5th in China - behind Alibaba, Huawei, Tencent</li>
+                        <li>Cloud market leaders have massive R&D advantages and developer ecosystems</li>
+                        <li>28% growth is actually below Chinese cloud market growth of 35-40%</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> Cloud is a genuine growth driver but market share gains will be difficult. Unicom's realistic opportunity is in hybrid/edge where network integration provides advantage, not public cloud. Government/SOE customers provide a protected niche. Net assessment: Cloud adds 1-2% to overall growth rate sustainably.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 3: Competitive Position and Market Share Dynamics</h4>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> Stable competitive position with neither major upside nor downside risk. The market structure is effectively stable - dramatic share shifts are unlikely given state ownership and regulation. Bull's partnership benefits and Bear's scale disadvantages are both real but largely offsetting. The key insight is that competitive risk is lower than it appears - rational oligopoly behavior protects all players.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 4: Capital Allocation and Dividends</h4>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> Dividend yield provides meaningful support but exceptional returns unlikely. The 5.5% dividend yield is a genuine margin of safety - provides return even if growth disappoints. Bear's SOE constraint concerns are valid - payout ratio unlikely to rise dramatically. The strong FCF generation is real and supportive of valuation. Net assessment: Dividend yield provides 5-6% annual return floor.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 5: Valuation and Investment Recommendation</h4>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Final Assessment:</strong> Moderate Buy - valuation is attractive but requires patience. Valuation provides meaningful margin of safety - downside appears limited at these multiples. However, catalysts for re-rating are uncertain and may take time. The investment case is primarily about dividend yield + moderate capital appreciation, not explosive upside. Risk-reward is favorable for patient investors seeking steady returns with defensibility.</p>
+                </div>
+            </div>
+
+            <h3>Key Consensus Points</h3>
+            <div class="consensus-box">
+                <ul class="key-points">
+                    <li>Network sharing with China Telecom is a genuine structural advantage (30-40% capex savings)</li>
+                    <li>Dividend yield provides meaningful downside protection (5.5% yield)</li>
+                    <li>Competitive dynamics are stable due to oligopolistic market structure</li>
+                    <li>Consumer ARPU growth potential is limited - growth must come from enterprise</li>
+                    <li>Valuation provides margin of safety at sub-10x P/E</li>
+                </ul>
+            </div>
+
+            <h3>Key Disagreements</h3>
+            <div class="disagreement-box">
+                <ul class="key-points">
+                    <li><strong>5G Monetization:</strong> Bull sees significant enterprise value creation; Bear sees limited consumer benefit</li>
+                    <li><strong>Cloud Trajectory:</strong> Bull sees transformation potential; Bear sees weak market position</li>
+                    <li><strong>SOE Governance:</strong> Bull sees improving returns; Bear sees state priorities over shareholders</li>
+                    <li><strong>Valuation Discount:</strong> Bull sees opportunity; Bear sees justified discount for risks</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Report generated on 2025-01-18 | Data sources: Company filings, industry reports, analyst estimates</p>
+            <p style="margin-top: 10px;">Disclaimer: This equity research report is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results. Investors should conduct their own due diligence.</p>
+        </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9926 HK - Detailed Research Report | Akeso Inc</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .nav-footer {
+            padding: 20px;
+            border-top: 1px solid #30363d;
+        }
+
+        .back-link {
+            display: block;
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 30px 40px;
+            max-width: 1200px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #58a6ff;
+            font-size: 2.5em;
+        }
+
+        header h2 {
+            color: #c9d1d9;
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+
+        header .sector {
+            color: #8b949e;
+            margin-top: 8px;
+        }
+
+        .recommendation-badge {
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .badge-buy { background: #238636; color: #fff; }
+        .badge-hold { background: #9e6a03; color: #fff; }
+        .badge-sell { background: #da3633; color: #fff; }
+        .badge-outperform { background: #1f6feb; color: #fff; }
+
+        section {
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        section h2 {
+            color: #58a6ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #30363d;
+        }
+
+        section h3 {
+            color: #c9d1d9;
+            font-size: 1.2em;
+            margin: 20px 0 15px;
+        }
+
+        section h4 {
+            color: #8b949e;
+            font-size: 1em;
+            margin: 15px 0 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1f3a5c 0%, #1a2733 100%);
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .key-points li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        th {
+            background: #21262d;
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #21262d;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-card .value {
+            color: #58a6ff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .metric-card .value.positive { color: #3fb950; }
+        .metric-card .value.negative { color: #f85149; }
+
+        .scenario-card {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card.super-bear { border-left: 4px solid #da3633; }
+        .scenario-card.bear { border-left: 4px solid #f85149; }
+        .scenario-card.base { border-left: 4px solid #58a6ff; }
+        .scenario-card.bull { border-left: 4px solid #3fb950; }
+        .scenario-card.super-bull { border-left: 4px solid #238636; }
+
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .scenario-header h4 {
+            margin: 0;
+            color: #c9d1d9;
+        }
+
+        .probability-badge {
+            background: #30363d;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .risk-item {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #f85149;
+        }
+
+        .risk-item.medium { border-left-color: #9e6a03; }
+        .risk-item.low { border-left-color: #3fb950; }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .risk-header h5 {
+            color: #c9d1d9;
+            margin: 0;
+        }
+
+        .impact-badge {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: #30363d;
+        }
+
+        .debate-round {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .debate-message {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #0d1117;
+        }
+
+        .debate-message.analyst { border-left: 3px solid #58a6ff; }
+        .debate-message.bull { border-left: 3px solid #3fb950; }
+        .debate-message.bear { border-left: 3px solid #f85149; }
+        .debate-message.critic { border-left: 3px solid #9e6a03; }
+        .debate-message.synthesizer { border-left: 3px solid #a371f7; }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+
+        .message-role {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .message-role.analyst { color: #58a6ff; }
+        .message-role.bull { color: #3fb950; }
+        .message-role.bear { color: #f85149; }
+        .message-role.critic { color: #9e6a03; }
+        .message-role.synthesizer { color: #a371f7; }
+
+        .message-ai { color: #8b949e; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.9em;
+            border-top: 1px solid #30363d;
+            margin-top: 30px;
+        }
+
+        .consensus-box {
+            background: linear-gradient(135deg, #1a3d2e 0%, #1a2733 100%);
+            border-left: 4px solid #3fb950;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .disagreement-box {
+            background: linear-gradient(135deg, #3d1a1a 0%, #1a2733 100%);
+            border-left: 4px solid #f85149;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>9926 HK</h3>
+            <p>Akeso Inc</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">Debate Log</a></li>
+        </ul>
+        <div class="nav-footer">
+            <a href="9926_HK_Akeso.html" class="back-link">&lt;- Back to Summary</a>
+            <a href="index.html" class="back-link">&lt;- Portfolio Index</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header>
+            <div class="header-info">
+                <h1>9926 HK</h1>
+                <h2>Akeso Inc</h2>
+                <p class="sector">Healthcare - Biotechnology | Hong Kong Stock Exchange</p>
+                <p class="sector" style="margin-top: 5px;">HQ: Guangzhou, China | Founded: 2012 | ~3,500 employees</p>
+            </div>
+            <div class="recommendation-badge badge-buy">BUY</div>
+        </header>
+
+        <!-- Executive Summary Section -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="highlight-box">
+                <p>Akeso Inc is a leading Chinese biopharmaceutical company specializing in innovative cancer immunotherapy drugs. The company has developed a robust pipeline of novel biologics, with particular strength in bispecific antibodies for oncology indications. The flagship products cadonilimab (AK104, PD-1/CTLA-4) and ivonescimab (AK112, PD-1/VEGF) have shown promising clinical data and commercial traction.</p>
+            </div>
+
+            <h3>Investment Thesis</h3>
+            <p>Akeso represents a compelling opportunity in the Chinese biotech space with its differentiated pipeline of bispecific antibodies. The landmark licensing deal with Summit Therapeutics for ivonescimab validates the platform's global potential. The company is approaching profitability inflection with strong revenue growth trajectory.</p>
+
+            <h3>Key Highlights</h3>
+            <ul class="key-points">
+                <li>First-in-class PD-1/CTLA-4 bispecific antibody (cadonilimab) approved in China for cervical cancer</li>
+                <li>Ivonescimab showed superior efficacy vs pembrolizumab in EGFR-mutant NSCLC (HARMONi-2 trial)</li>
+                <li>USD 5 billion+ licensing deal with Summit Therapeutics for ex-China rights to ivonescimab</li>
+                <li>Strong revenue growth trajectory with commercial products gaining market share</li>
+                <li>Deep pipeline with multiple bispecific antibody candidates in clinical development</li>
+            </ul>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Target (Low)</div>
+                    <div class="value">HKD 55.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Target (Base)</div>
+                    <div class="value">HKD 72.50</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Target (High)</div>
+                    <div class="value">HKD 95.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Current Price</div>
+                    <div class="value">HKD 52.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Upside to Base</div>
+                    <div class="value positive">39.4%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Analysis Section -->
+        <section id="industry-analysis">
+            <h2>Industry Analysis</h2>
+
+            <h3>China Oncology Market Overview</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Market Size (2024)</div>
+                    <div class="value">$45.0B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Projected (2030)</div>
+                    <div class="value">$95.0B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">CAGR 2024-2030</div>
+                    <div class="value positive">13.2%</div>
+                </div>
+            </div>
+
+            <h4>Key Growth Drivers</h4>
+            <ul class="key-points">
+                <li>Aging population with increasing cancer incidence</li>
+                <li>Rising healthcare expenditure and insurance coverage expansion</li>
+                <li>Government support for innovative drug development</li>
+                <li>National Reimbursement Drug List (NRDL) inclusion driving volume</li>
+                <li>Shift from generics to innovative therapies</li>
+            </ul>
+
+            <h3>Immunotherapy Market</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Global PD-1/PD-L1 (2024)</div>
+                    <div class="value">$55.0B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">China PD-1/PD-L1 (2024)</div>
+                    <div class="value">$6.5B</div>
+                </div>
+            </div>
+            <p style="margin-top: 10px;">Double-digit growth expected through 2030 driven by label expansions and combination therapies.</p>
+
+            <h3>Bispecific Antibody Trend</h3>
+            <div class="highlight-box">
+                <p>Bispecific antibodies represent the next frontier in immuno-oncology, offering potential for improved efficacy and differentiation from crowded mono-antibody space. Growing rapidly as companies seek differentiation beyond conventional PD-1 inhibitors.</p>
+            </div>
+
+            <h4>Akeso's Positioning</h4>
+            <p>Well-positioned as pioneer in bispecific development with first-mover advantage in several indications.</p>
+
+            <h3>Regulatory Environment</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>China NRDL</td>
+                        <td>Inclusion in National Reimbursement Drug List crucial for commercial success; price negotiations increasingly competitive</td>
+                    </tr>
+                    <tr>
+                        <td>NMPA Reforms</td>
+                        <td>Continued regulatory reforms accelerating innovative drug approvals</td>
+                    </tr>
+                    <tr>
+                        <td>US FDA</td>
+                        <td>Ivonescimab partnership with Summit targeting FDA approval, representing significant value driver</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Company Analysis Section -->
+        <section id="company-analysis">
+            <h2>Company Analysis</h2>
+
+            <h3>Commercial Products</h3>
+
+            <div class="scenario-card bull">
+                <h4>Cadonilimab (AK104) - Kairudian</h4>
+                <p><strong>Type:</strong> PD-1/CTLA-4 bispecific antibody</p>
+                <p><strong>Mechanism:</strong> Dual checkpoint blockade targeting PD-1 and CTLA-4 on single molecule</p>
+                <p><strong>Approved Indications:</strong></p>
+                <ul class="key-points">
+                    <li>Cervical cancer (China, June 2022) - first-line treatment</li>
+                    <li>Gastric cancer (China, 2023)</li>
+                </ul>
+                <p><strong>Differentiation:</strong> First-in-class bispecific, potentially improved safety vs combination therapy</p>
+            </div>
+
+            <div class="scenario-card base">
+                <h4>Penpulimab (AK105)</h4>
+                <p><strong>Type:</strong> PD-1 monoclonal antibody</p>
+                <p><strong>Approved Indication:</strong> Classical Hodgkin lymphoma (China)</p>
+            </div>
+
+            <h3>Late-Stage Pipeline</h3>
+
+            <div class="scenario-card super-bull">
+                <h4>Ivonescimab (AK112) - Star Asset</h4>
+                <p><strong>Type:</strong> PD-1/VEGF bispecific antibody</p>
+                <p><strong>Stage:</strong> Phase 3 / NDA</p>
+                <p><strong>Peak Sales Potential:</strong> $5-10 billion globally if successful in multiple NSCLC settings</p>
+
+                <h5 style="margin-top: 15px; color: #58a6ff;">Key Clinical Trials</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Trial</th>
+                            <th>Indication</th>
+                            <th>Result/Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(63, 185, 80, 0.1);">
+                            <td><strong>HARMONi-2</strong></td>
+                            <td>EGFR-mutant NSCLC (post-TKI failure)</td>
+                            <td><strong>Superior PFS vs pembrolizumab (11.14 vs 5.82 months, HR 0.51)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>HARMONi</td>
+                            <td>First-line non-squamous NSCLC</td>
+                            <td>Phase 3 ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>HARMONi-3</td>
+                            <td>First-line squamous NSCLC</td>
+                            <td>Phase 3 ongoing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Cadonilimab Additional Indications in Development</h4>
+            <ul class="key-points">
+                <li>Hepatocellular carcinoma - Phase 3</li>
+                <li>Non-small cell lung cancer - Phase 3</li>
+                <li>Esophageal cancer - Phase 3</li>
+                <li>Pancreatic cancer - Phase 2/3</li>
+            </ul>
+
+            <h3>Early-Stage Pipeline</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Target</th>
+                        <th>Stage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AK117</td>
+                        <td>CD47 antibody</td>
+                        <td>Phase 1/2</td>
+                    </tr>
+                    <tr>
+                        <td>AK127</td>
+                        <td>TIGIT antibody</td>
+                        <td>Phase 1/2</td>
+                    </tr>
+                    <tr>
+                        <td>AK119</td>
+                        <td>CD73 antibody</td>
+                        <td>Phase 1</td>
+                    </tr>
+                    <tr>
+                        <td>AK129</td>
+                        <td>4-1BB agonist</td>
+                        <td>Phase 1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Platform Technology - Tetrabody</h3>
+            <div class="highlight-box">
+                <p>Proprietary bispecific antibody engineering platform enabling development of novel bispecific molecules with optimized properties.</p>
+                <ul class="key-points">
+                    <li>Enables targeting of two antigens with single molecule</li>
+                    <li>Improved manufacturing vs traditional bispecific approaches</li>
+                    <li>Multiple product candidates validated in clinic</li>
+                </ul>
+            </div>
+
+            <h3>Summit Therapeutics Partnership</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Total Deal Value</div>
+                    <div class="value">$5.0B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Upfront Payment</div>
+                    <div class="value">$500M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Milestones</div>
+                    <div class="value">$4.5B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Royalties</div>
+                    <div class="value">Double-Digit</div>
+                </div>
+            </div>
+            <p><strong>Territory:</strong> Ex-China rights for ivonescimab</p>
+            <p><strong>Significance:</strong> Largest ex-China licensing deal for a China-originated biologic at announcement, validates global potential</p>
+
+            <h3>Competitive Advantages</h3>
+            <ul class="key-points">
+                <li>First-mover in PD-1/CTLA-4 bispecific space with approved product</li>
+                <li>Differentiated ivonescimab with superior clinical data in EGFR+ NSCLC</li>
+                <li>Validated global licensing deal demonstrating international recognition</li>
+                <li>Strong R&D capabilities and deep bispecific pipeline</li>
+                <li>Integrated manufacturing capabilities</li>
+                <li>Established commercial infrastructure in China</li>
+            </ul>
+        </section>
+
+        <!-- Financial Data Section -->
+        <section id="financial-data">
+            <h2>Financial Data</h2>
+
+            <h3>Income Statement Summary (CNY millions)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>FY2022</th>
+                        <th>FY2023</th>
+                        <th>FY2024E</th>
+                        <th>FY2025E</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revenue</td>
+                        <td>1,250</td>
+                        <td>2,800</td>
+                        <td>5,000</td>
+                        <td>7,500</td>
+                    </tr>
+                    <tr>
+                        <td>Revenue Growth YoY</td>
+                        <td>-</td>
+                        <td class="positive">124.0%</td>
+                        <td class="positive">78.6%</td>
+                        <td class="positive">50.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Profit</td>
+                        <td>1,000</td>
+                        <td>2,350</td>
+                        <td>4,200</td>
+                        <td>6,400</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Margin</td>
+                        <td>80.0%</td>
+                        <td>83.9%</td>
+                        <td>84.0%</td>
+                        <td>85.3%</td>
+                    </tr>
+                    <tr>
+                        <td>R&D Expense</td>
+                        <td>2,100</td>
+                        <td>2,400</td>
+                        <td>2,600</td>
+                        <td>2,800</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Income</td>
+                        <td class="negative">(2,200)</td>
+                        <td class="negative">(1,500)</td>
+                        <td class="negative">(500)</td>
+                        <td class="positive">800</td>
+                    </tr>
+                    <tr>
+                        <td>Net Income</td>
+                        <td class="negative">(2,150)</td>
+                        <td class="negative">(1,400)</td>
+                        <td class="negative">(400)</td>
+                        <td class="positive">700</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Balance Sheet Highlights</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Cash Position (2024E)</div>
+                    <div class="value">CNY 6.5B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Summit Upfront</div>
+                    <div class="value">$500M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Balance Sheet</div>
+                    <div class="value positive">Strong</div>
+                </div>
+            </div>
+            <p style="margin-top: 10px;">Sufficient cash runway to fund operations and pipeline development through profitability. Summit upfront and milestones provide additional cushion.</p>
+
+            <h3>Key Valuation Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Shares Outstanding</div>
+                    <div class="value">950M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Market Cap (Est.)</div>
+                    <div class="value">HKD 49.4B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Enterprise Value</div>
+                    <div class="value">$5.5B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">P/S (2024E)</div>
+                    <div class="value">8.5x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">P/S (2025E)</div>
+                    <div class="value">5.7x</div>
+                </div>
+            </div>
+
+            <h3>Revenue Breakdown (2024E)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>% of Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cadonilimab</td>
+                        <td>75%</td>
+                    </tr>
+                    <tr>
+                        <td>Penpulimab</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>Licensing/Milestones</td>
+                        <td>8%</td>
+                    </tr>
+                    <tr>
+                        <td>Other</td>
+                        <td>2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- DCF Valuation Section -->
+        <section id="dcf-valuation">
+            <h2>DCF Valuation</h2>
+
+            <h3>Methodology</h3>
+            <div class="highlight-box">
+                <p>Sum-of-the-parts DCF valuation combining rNPV of pipeline assets with commercial product forecasts. Uses risk-adjusted NPV (rNPV) framework commonly used for biotech companies, applying probability-of-success adjustments to pipeline assets based on clinical stage and competitive positioning.</p>
+            </div>
+
+            <h3>Key Assumptions</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Forecast Period</div>
+                    <div class="value">10 Years</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Terminal Growth</div>
+                    <div class="value">3.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Tax Rate</div>
+                    <div class="value">15.0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">CNY/HKD Rate</div>
+                    <div class="value">1.08</div>
+                </div>
+            </div>
+
+            <h3>Revenue Projections (CNY millions)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>2025</th>
+                        <th>2026</th>
+                        <th>2027</th>
+                        <th>2028</th>
+                        <th>2029</th>
+                        <th>2030</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revenue</td>
+                        <td>7,500</td>
+                        <td>11,000</td>
+                        <td>15,500</td>
+                        <td>21,000</td>
+                        <td>27,000</td>
+                        <td>33,000</td>
+                    </tr>
+                    <tr>
+                        <td>EBITDA Margin</td>
+                        <td>15.0%</td>
+                        <td>22.0%</td>
+                        <td>28.0%</td>
+                        <td>32.0%</td>
+                        <td>35.0%</td>
+                        <td>37.0%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Key Value Drivers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>Peak Sales (CNY)</th>
+                        <th>Probability</th>
+                        <th>Launch Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ivonescimab China</td>
+                        <td>15,000M</td>
+                        <td>85%</td>
+                        <td>2025</td>
+                    </tr>
+                    <tr>
+                        <td>Ivonescimab Ex-China (Royalties)</td>
+                        <td>8,000M peak royalty</td>
+                        <td>60%</td>
+                        <td>2032 peak</td>
+                    </tr>
+                    <tr>
+                        <td>Cadonilimab Label Expansions</td>
+                        <td>8,000M additional</td>
+                        <td>70%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Early Pipeline Option Value</td>
+                        <td>5,000M</td>
+                        <td>25%</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Scenario Analysis Section -->
+        <section id="scenarios">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card super-bull">
+                <div class="scenario-header">
+                    <h4>Bull Case</h4>
+                    <span class="probability-badge">20% Probability</span>
+                </div>
+                <p><strong>Description:</strong> Ivonescimab achieves blockbuster status in US (FDA approval 2026), cadonilimab gains multiple label expansions, pipeline delivers additional winners</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">10.0%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value positive">HKD 113.68</div>
+                    </div>
+                </div>
+                <h5 style="margin-top: 15px;">Key Assumptions:</h5>
+                <ul class="key-points">
+                    <li>Ivonescimab FDA approval in 2026 with best-in-class label</li>
+                    <li>Peak global ivonescimab sales >$8bn</li>
+                    <li>Cadonilimab approved in 5+ additional indications</li>
+                    <li>Two additional pipeline assets reach Phase 3</li>
+                    <li>Operating margin reaches 40%+ at maturity</li>
+                </ul>
+            </div>
+
+            <div class="scenario-card bull">
+                <div class="scenario-header">
+                    <h4>Base Case - Optimistic</h4>
+                    <span class="probability-badge">25% Probability</span>
+                </div>
+                <p><strong>Description:</strong> Ivonescimab succeeds in China and gains US approval, cadonilimab shows steady growth, modest pipeline success</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">11.0%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value positive">HKD 87.54</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card base">
+                <div class="scenario-header">
+                    <h4>Base Case</h4>
+                    <span class="probability-badge">30% Probability</span>
+                </div>
+                <p><strong>Description:</strong> Strong China performance for both key products, US approval with competitive label, moderate additional pipeline value</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">12.0%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">HKD 68.21</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bear">
+                <div class="scenario-header">
+                    <h4>Conservative Case</h4>
+                    <span class="probability-badge">15% Probability</span>
+                </div>
+                <p><strong>Description:</strong> China success but US pathway faces delays or competitive setbacks, pipeline attrition higher than expected</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">12.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value negative">HKD 48.88</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card super-bear">
+                <div class="scenario-header">
+                    <h4>Bear Case</h4>
+                    <span class="probability-badge">10% Probability</span>
+                </div>
+                <p><strong>Description:</strong> Clinical or regulatory setbacks for ivonescimab, intensified pricing pressure in China, pipeline failures</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Discount Rate</div>
+                        <div class="value">13.0%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value negative">HKD 34.11</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Probability-Weighted Valuation</h3>
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Probability-Weighted Price</div>
+                        <div class="value positive">HKD 72.50</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">HKD 52.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Implied Upside</div>
+                        <div class="value positive">39.4%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Assessment Section -->
+        <section id="risks">
+            <h2>Risk Assessment</h2>
+
+            <h3>Clinical & Regulatory Risks</h3>
+
+            <div class="risk-item">
+                <div class="risk-header">
+                    <h5>Ivonescimab FDA Approval Risk</h5>
+                    <span class="impact-badge">HIGH</span>
+                </div>
+                <p>US approval is a major value driver. Clinical or regulatory setbacks could significantly impact valuation.</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> Strong HARMONi-2 data provides foundation; Summit partnership shares development risk</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Clinical Trial Failures in Pipeline</h5>
+                    <span class="impact-badge">MEDIUM</span>
+                </div>
+                <p>Early-stage pipeline candidates face typical biotech attrition rates</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> Diversified pipeline across multiple mechanisms and indications</p>
+            </div>
+
+            <h3>Commercial Risks</h3>
+
+            <div class="risk-item">
+                <div class="risk-header">
+                    <h5>China Pricing Pressure</h5>
+                    <span class="impact-badge">HIGH</span>
+                </div>
+                <p>NRDL negotiations could compress margins; government volume-based procurement may impact pricing</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> Differentiated bispecific profile may support premium pricing; volume growth can offset price cuts</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Competition from Domestic and Global Players</h5>
+                    <span class="impact-badge">MEDIUM</span>
+                </div>
+                <p>Crowded PD-1 space with multiple competitors; emerging bispecific competition</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> First-mover advantage in bispecifics; differentiated clinical data</p>
+            </div>
+
+            <h3>Geopolitical Risks</h3>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>US-China Tensions Affecting Biotech Sector</h5>
+                    <span class="impact-badge">MEDIUM</span>
+                </div>
+                <p>Potential regulatory scrutiny of Chinese biotech companies; possible restrictions on technology transfer</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> Summit partnership structure addresses some concerns; China market provides base case value</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>BIOSECURE Act or Similar Legislation</h5>
+                    <span class="impact-badge">MEDIUM</span>
+                </div>
+                <p>Potential US legislation affecting Chinese biotech access to US market</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> Partnership structure with US company for development and commercialization</p>
+            </div>
+
+            <h3>Financial Risks</h3>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>Cash Burn in Pursuit of Global Expansion</h5>
+                    <span class="impact-badge">LOW</span>
+                </div>
+                <p>Heavy R&D investment could strain balance sheet</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigant:</strong> Strong commercial revenue growth; Summit upfront and milestones provide cushion</p>
+            </div>
+        </section>
+
+        <!-- Recommendation Section -->
+        <section id="recommendation">
+            <h2>Recommendation</h2>
+
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Rating</div>
+                        <div class="value positive">BUY</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">HKD 72.50</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">HKD 52.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Upside</div>
+                        <div class="value positive">39.4%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Investment Horizon</div>
+                        <div class="value">12-18 Months</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Conviction Level</div>
+                        <div class="value">High</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <ul class="key-points">
+                <li>Differentiated bispecific antibody pipeline with first-mover advantage</li>
+                <li>Ivonescimab represents significant value driver with best-in-class NSCLC data</li>
+                <li>Summit partnership validates global potential and de-risks US development</li>
+                <li>Commercial execution in China demonstrates organizational capability</li>
+                <li>Approaching profitability inflection point provides fundamental support</li>
+                <li>Probability-weighted valuation suggests significant upside from current levels</li>
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Catalyst</th>
+                        <th>Expected Timing</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ivonescimab China NDA Approval</td>
+                        <td>H1 2025</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Additional HARMONi Trial Readouts</td>
+                        <td>Throughout 2025</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>FDA IND Clearance for US Pivotal Trial</td>
+                        <td>2025</td>
+                        <td>Medium-High</td>
+                    </tr>
+                    <tr>
+                        <td>Cadonilimab Label Expansion Approvals</td>
+                        <td>2025-2026</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Profitability Milestone Achievement</td>
+                        <td>2025</td>
+                        <td>Medium</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Key Metrics to Monitor</h3>
+            <ul class="key-points">
+                <li>Quarterly revenue growth and gross margin trends</li>
+                <li>Ivonescimab clinical trial progress and regulatory submissions</li>
+                <li>NRDL negotiation outcomes for new indications</li>
+                <li>Summit partnership milestones and royalty projections</li>
+                <li>Pipeline clinical trial readouts</li>
+                <li>Cash position and operating expense management</li>
+            </ul>
+        </section>
+
+        <!-- Debate Log Section -->
+        <section id="debate-log">
+            <h2>Multi-AI Debate Log</h2>
+
+            <div class="debate-round">
+                <h4>Round 1: Ivonescimab Value and HARMONi-2 Data Interpretation</h4>
+
+                <div class="debate-message bull">
+                    <div class="message-header">
+                        <span class="message-role bull">BULL</span>
+                    </div>
+                    <p>The HARMONi-2 data is extraordinary - ivonescimab achieved 11.14 months PFS versus 5.82 months for pembrolizumab in EGFR-mutant NSCLC, a hazard ratio of 0.51. This is the first therapy ever to demonstrate superiority over anti-PD-1 in this setting. With peak global sales potential of $5-10 billion, ivonescimab could be the most valuable asset to emerge from Chinese biotech. The Summit deal at $5 billion total value validates this view.</p>
+                </div>
+
+                <div class="debate-message bear">
+                    <div class="message-header">
+                        <span class="message-role bear">BEAR</span>
+                    </div>
+                    <p>While the HARMONi-2 headline numbers look impressive, we need to consider several caveats. First, this was a China-only trial - US FDA will likely require confirmatory data in Western populations. Second, the comparator arm underperformed versus historical pembrolizumab data. Third, Summit is a small company with limited oncology experience. The 60% probability assigned to ex-China success may be optimistic.</p>
+                </div>
+
+                <div class="debate-message critic">
+                    <div class="message-header">
+                        <span class="message-role critic">CRITIC</span>
+                    </div>
+                    <p>Peak sales estimates embed aggressive assumptions that need stress testing. If we assume $3-4bn ex-China peak sales and tiered royalties averaging 15%, Akeso's ex-China take is $450-600mn annually. Adding China sales of CNY 12-15bn gives operating contribution of $1.4-1.8bn at peak. This is excellent but not transformative enough to justify some bull case valuations exceeding HKD 100.</p>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p>The debate reveals a clear consensus that ivonescimab has demonstrated genuinely differentiated clinical data - this is not contested. A balanced view assigns high probability (85%) to China success given strong local data, but more modest probability (50-60%) to US success given execution complexity. At current prices around HKD 52, the China-only value case provides reasonable downside support around HKD 48-50, while global success offers HKD 85-115 upside.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 2: Cadonilimab Commercial Trajectory and PD-1/CTLA-4 Market Position</h4>
+
+                <div class="debate-message bull">
+                    <div class="message-header">
+                        <span class="message-role bull">BULL</span>
+                    </div>
+                    <p>Cadonilimab represents validation of Akeso's R&D and commercial capabilities. As the first-in-class PD-1/CTLA-4 bispecific, it offers the convenience of a single molecule versus combination therapy, with potentially improved safety. Revenue has grown rapidly - from CNY 1.25bn in 2022 to an estimated CNY 3.75bn in 2024. The drug is approved in cervical cancer and gastric cancer, with Phase 3 trials ongoing in HCC, NSCLC, esophageal, and pancreatic cancers.</p>
+                </div>
+
+                <div class="debate-message bear">
+                    <div class="message-header">
+                        <span class="message-role bear">BEAR</span>
+                    </div>
+                    <p>Cadonilimab operates in the most competitive oncology segment globally - Chinese PD-1/PD-L1. There are now 10+ approved PD-1/PD-L1 agents in China. NRDL price cuts have been severe - some PD-1s have seen 70%+ price reductions. While cadonilimab's bispecific differentiation provides some pricing power, the 83-84% gross margins will compress as NRDL coverage expands and competition intensifies.</p>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p>The panel agrees cadonilimab is a solid commercial asset demonstrating Akeso's execution capabilities. Disagreement centers on ultimate peak sales (CNY 5-10bn range) and margin sustainability. The consensus view settles on CNY 6-7bn peak sales with gradual margin compression to 75-78% as NRDL coverage expands. Importantly, cadonilimab success is largely already reflected in the current stock price - it's the foundation, not the upside driver.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 5: Valuation, Risk/Reward, and Final Recommendation</h4>
+
+                <div class="debate-message bull">
+                    <div class="message-header">
+                        <span class="message-role bull">BULL</span>
+                    </div>
+                    <p>At HKD 52, Akeso trades at roughly 8.5x 2024E and 5.7x 2025E revenue - reasonable for a high-growth biotech approaching profitability. But this multiple ignores: (1) ivonescimab's blockbuster potential, (2) Summit partnership validation, (3) approaching profitability inflection, and (4) pipeline optionality. The probability-weighted target of HKD 76 implies 46% upside, and this may underweight bull scenarios. This is a BUY with high conviction.</p>
+                </div>
+
+                <div class="debate-message bear">
+                    <div class="message-header">
+                        <span class="message-role bear">BEAR</span>
+                    </div>
+                    <p>The Bull's thesis requires multiple events to align: ivonescimab China approval with favorable pricing, US regulatory success, cadonilimab label expansions, and margin improvement. If ivonescimab US fails or is significantly delayed, the stock could revisit HKD 35-40. Geopolitical risks create overhangs that are difficult to quantify. If I had to rate, it's a HOLD pending de-risking of ivonescimab US pathway.</p>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>FINAL RECOMMENDATION: BUY with target price HKD 72-76.</strong> Key points of consensus: (1) Ivonescimab has genuinely differentiated clinical data, (2) China business provides valuation floor, (3) Path to profitability is credible, (4) Multiple near-term catalysts exist. The key insight is that downside is limited to 25-30% while upside is 50-100%+ on US success. This asymmetry supports a BUY rating with appropriate position sizing for biotech risk.</p>
+                </div>
+            </div>
+
+            <h3>Key Areas of Consensus</h3>
+            <div class="consensus-box">
+                <ul class="key-points">
+                    <li>HARMONi-2 data demonstrates genuine clinical differentiation - first therapy to beat anti-PD-1 in EGFR+ NSCLC</li>
+                    <li>China commercial business provides fundamental floor value of approximately HKD 45-52 per share</li>
+                    <li>Cash runway of 4+ years removes existential financial risk</li>
+                    <li>Summit partnership validates global potential and de-risks US development</li>
+                    <li>Risk/reward asymmetry favors bulls - downside limited to 25-35% while upside could be 50-100%+</li>
+                </ul>
+            </div>
+
+            <h3>Key Areas of Disagreement</h3>
+            <div class="disagreement-box">
+                <ul class="key-points">
+                    <li><strong>Ivonescimab US regulatory probability:</strong> Bulls assign 60-70%, Bears assign 40-50%</li>
+                    <li><strong>Ivonescimab peak global sales:</strong> Bulls see $8-10B, Bears see $3-5B</li>
+                    <li><strong>Cadonilimab peak sales:</strong> Bulls project CNY 8-10B, Bears project CNY 5-6B</li>
+                    <li><strong>Profitability timeline:</strong> Bulls expect 2025, Bears see 2026-2027</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Report Generated: 2026-01-18 | Data Disclaimer: This report is based on publicly available information up to the knowledge cutoff date. Investors should verify current figures before making investment decisions.</p>
+            <p>Multi-AI Equity Debate Framework | Claude Opus 4.5</p>
+        </footer>
+    </main>
+</body>
+</html>

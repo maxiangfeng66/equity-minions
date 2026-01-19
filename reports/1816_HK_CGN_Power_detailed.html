@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1816 HK - Detailed Research Report | CGN Power</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 { color: #58a6ff; font-size: 1.3em; }
+        .nav-header p { color: #8b949e; font-size: 0.85em; }
+
+        .nav-links { list-style: none; padding: 15px 0; }
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .nav-links li a:hover, .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .nav-footer { padding: 20px; border-top: 1px solid #30363d; }
+        .back-link { display: block; color: #58a6ff; text-decoration: none; font-size: 0.85em; margin-bottom: 10px; }
+        .back-link:hover { text-decoration: underline; }
+
+        .content { margin-left: 250px; padding: 30px 40px; max-width: 1200px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            margin-bottom: 30px;
+        }
+        header h1 { color: #58a6ff; font-size: 2.5em; }
+        header h2 { color: #c9d1d9; font-size: 1.3em; font-weight: normal; }
+        header .sector { color: #8b949e; margin-top: 8px; }
+
+        .recommendation-badge {
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+        .badge-buy { background: #238636; color: #fff; }
+        .badge-hold { background: #9e6a03; color: #fff; }
+
+        section {
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        section h2 { color: #58a6ff; font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #30363d; }
+        section h3 { color: #c9d1d9; font-size: 1.2em; margin: 20px 0 15px; }
+        section h4 { color: #8b949e; font-size: 1em; margin: 15px 0 10px; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1f3a5c 0%, #1a2733 100%);
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .key-points { list-style: none; padding: 0; }
+        .key-points li { padding: 10px 0 10px 25px; position: relative; border-bottom: 1px solid #21262d; }
+        .key-points li:before { content: ">"; position: absolute; left: 0; color: #58a6ff; }
+
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #30363d; }
+        th { background: #21262d; color: #58a6ff; font-weight: 600; }
+        tr:hover { background: rgba(88, 166, 255, 0.05); }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 20px 0; }
+        .metric-card { background: #21262d; padding: 15px; border-radius: 8px; text-align: center; }
+        .metric-card .label { color: #8b949e; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric-card .value { color: #58a6ff; font-size: 1.5em; font-weight: bold; margin-top: 5px; }
+        .metric-card .value.positive { color: #3fb950; }
+        .metric-card .value.negative { color: #f85149; }
+
+        .scenario-card { background: #21262d; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .scenario-card.super-bear { border-left: 4px solid #da3633; }
+        .scenario-card.bear { border-left: 4px solid #f85149; }
+        .scenario-card.base { border-left: 4px solid #58a6ff; }
+        .scenario-card.bull { border-left: 4px solid #3fb950; }
+        .scenario-card.super-bull { border-left: 4px solid #238636; }
+
+        .scenario-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .scenario-header h4 { margin: 0; color: #c9d1d9; }
+        .probability-badge { background: #30363d; padding: 5px 12px; border-radius: 15px; font-size: 0.85em; }
+
+        .risk-item { background: #21262d; border-radius: 8px; padding: 15px; margin: 10px 0; border-left: 4px solid #f85149; }
+        .risk-item.medium { border-left-color: #9e6a03; }
+        .risk-item.low { border-left-color: #3fb950; }
+        .risk-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .risk-header h5 { color: #c9d1d9; margin: 0; }
+        .impact-badge { font-size: 0.75em; padding: 3px 8px; border-radius: 10px; background: #30363d; }
+
+        .debate-round { background: #21262d; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .debate-round h4 { color: #58a6ff; margin-bottom: 15px; }
+        .debate-message { padding: 15px; margin: 10px 0; border-radius: 8px; background: #0d1117; }
+        .debate-message.bull { border-left: 3px solid #3fb950; }
+        .debate-message.bear { border-left: 3px solid #f85149; }
+        .debate-message.critic { border-left: 3px solid #9e6a03; }
+        .debate-message.synthesizer { border-left: 3px solid #a371f7; }
+
+        .message-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85em; }
+        .message-role { font-weight: bold; text-transform: uppercase; }
+        .message-role.bull { color: #3fb950; }
+        .message-role.bear { color: #f85149; }
+        .message-role.critic { color: #9e6a03; }
+        .message-role.synthesizer { color: #a371f7; }
+
+        .consensus-box { background: linear-gradient(135deg, #1a3d2e 0%, #1a2733 100%); border-left: 4px solid #3fb950; padding: 20px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+        .disagreement-box { background: linear-gradient(135deg, #3d1a1a 0%, #1a2733 100%); border-left: 4px solid #f85149; padding: 20px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+
+        footer { text-align: center; padding: 30px; color: #8b949e; font-size: 0.9em; border-top: 1px solid #30363d; margin-top: 30px; }
+
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>1816 HK</h3>
+            <p>CGN Power Co., Ltd.</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">Debate Log</a></li>
+        </ul>
+        <div class="nav-footer">
+            <a href="1816_HK_CGN_Power.html" class="back-link">&lt;- Back to Summary</a>
+            <a href="index.html" class="back-link">&lt;- Portfolio Index</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header>
+            <div class="header-info">
+                <h1>1816 HK</h1>
+                <h2>CGN Power Co., Ltd.</h2>
+                <p class="sector">Utilities - Nuclear Power | Hong Kong Stock Exchange</p>
+                <p class="sector" style="margin-top: 5px;">China's largest independent nuclear power operator</p>
+            </div>
+            <div class="recommendation-badge badge-buy">BUY</div>
+        </header>
+
+        <!-- Executive Summary Section -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="highlight-box">
+                <p>CGN Power Co., Ltd. (1816 HK) is China's largest independent nuclear power operator by installed capacity, representing a pure-play opportunity in China's nuclear power expansion. The company operates primarily through its managed nuclear power plants across China, benefiting from the government's ambitious clean energy targets and the ongoing nuclear renaissance.</p>
+            </div>
+
+            <h3>Investment Thesis</h3>
+            <p>CGN Power offers the best pure-play exposure to China's structural nuclear expansion at a reasonable valuation with attractive income characteristics. China's nuclear capacity is set to expand from 57 GW to 100+ GW by 2030 under explicit government policy targets, with CGN capturing 40-45% of new capacity additions. The company's operational excellence, technology leadership with Hualong One, and 4-5% dividend yield provide compelling total return potential.</p>
+
+            <h3>Key Highlights</h3>
+            <ul class="key-points">
+                <li>Dominant position in China's nuclear power sector with ~27-30 GW attributable capacity</li>
+                <li>Strong government support for nuclear capacity expansion under 14th/15th Five-Year Plans</li>
+                <li>Stable cash flows from long-term power purchase agreements with provincial grid companies</li>
+                <li>Attractive dividend yield of 4-5% for income investors</li>
+                <li>Technology advancement with indigenous Hualong One (HPR1000) reactor design</li>
+                <li>Operational excellence with top-quartile WANO safety rankings</li>
+            </ul>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Target Price</div>
+                    <div class="value">HKD 3.93</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Current Price</div>
+                    <div class="value">HKD 2.50</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Upside Potential</div>
+                    <div class="value positive">57%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Dividend Yield</div>
+                    <div class="value positive">4-5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Return</div>
+                    <div class="value positive">52.5%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Analysis Section -->
+        <section id="industry-analysis">
+            <h2>Industry Analysis</h2>
+
+            <h3>China Nuclear Power Market</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Operating Reactors</div>
+                    <div class="value">55+</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Installed Capacity</div>
+                    <div class="value">57 GW</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">2030 Target</div>
+                    <div class="value positive">100 GW</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Share of Electricity</div>
+                    <div class="value">5%</div>
+                </div>
+            </div>
+
+            <p>China operates the world's fastest-growing nuclear power market with 55+ reactors operational and approximately 57 GW of installed capacity. The market is characterized by high barriers to entry (regulatory, capital, technology), an oligopolistic structure (CGN, CNNP, SPIC as main players), and strong government policy support.</p>
+
+            <h3>Government Policy Targets</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plan/Target</th>
+                        <th>Timeline</th>
+                        <th>Capacity Goal</th>
+                        <th>Annual Approvals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>14th Five-Year Plan</td><td>2021-2025</td><td>70 GW</td><td>6-8 new reactors</td></tr>
+                    <tr><td>15th Five-Year Plan</td><td>2026-2030</td><td>100 GW</td><td>Continued aggressive build-out</td></tr>
+                    <tr><td>Carbon Neutrality (2050)</td><td>By 2050</td><td>150-200 GW</td><td>N/A</td></tr>
+                    <tr><td>Carbon Peak</td><td>By 2030</td><td>Part of clean energy mix</td><td>N/A</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Policy Tailwinds</h3>
+            <ul class="key-points">
+                <li><strong>Energy Security:</strong> Reduce dependence on imported fossil fuels</li>
+                <li><strong>Climate Commitments:</strong> Nuclear as reliable zero-carbon baseload</li>
+                <li><strong>Technology Leadership:</strong> Develop indigenous reactor designs for export</li>
+                <li><strong>Export Ambitions:</strong> Hualong One as exportable technology to UK, Argentina, Pakistan</li>
+            </ul>
+
+            <h3>Nuclear vs Renewables</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Characteristic</th>
+                        <th>Nuclear</th>
+                        <th>Solar</th>
+                        <th>Wind</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Capacity Factor</td><td><strong>85-90%</strong></td><td>15-20%</td><td>25-35%</td></tr>
+                    <tr><td>Baseload Capable</td><td><strong>Yes</strong></td><td>No</td><td>No</td></tr>
+                    <tr><td>Intermittency</td><td><strong>None</strong></td><td>High</td><td>High</td></tr>
+                    <tr><td>Land Requirement</td><td><strong>Low</strong></td><td>High</td><td>High</td></tr>
+                    <tr><td>Capital Cost</td><td>Very High</td><td>Medium</td><td>Medium</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Competitive Landscape</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Parent</th>
+                        <th>Listing</th>
+                        <th>Capacity (GW)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>CGN Power (1816 HK)</strong></td>
+                        <td>CGN Group</td>
+                        <td>Hong Kong</td>
+                        <td><strong>27-30</strong></td>
+                    </tr>
+                    <tr>
+                        <td>China National Nuclear Power (601985 CH)</td>
+                        <td>CNNC</td>
+                        <td>Shanghai A-share</td>
+                        <td>25-28</td>
+                    </tr>
+                    <tr>
+                        <td>SPIC</td>
+                        <td>SPIC</td>
+                        <td>Not listed</td>
+                        <td>Various JV stakes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Company Analysis Section -->
+        <section id="company-analysis">
+            <h2>Company Analysis</h2>
+
+            <h3>Business Model</h3>
+            <div class="highlight-box">
+                <p><strong>Core Business:</strong> Nuclear power generation (95%+ of revenue)</p>
+                <p><strong>Revenue Model:</strong> Long-term Power Purchase Agreements (PPAs) with provincial grid companies</p>
+                <p><strong>Benchmark Tariff:</strong> RMB 0.43/kWh</p>
+            </div>
+
+            <h3>Operational Fleet</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plant</th>
+                        <th>Province</th>
+                        <th>Units</th>
+                        <th>Capacity (MW)</th>
+                        <th>Technology</th>
+                        <th>Equity %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Daya Bay</td><td>Guangdong</td><td>2</td><td>1,968</td><td>M310</td><td>75%</td></tr>
+                    <tr><td>Ling Ao</td><td>Guangdong</td><td>4</td><td>3,964</td><td>M310/CPR1000</td><td>100%</td></tr>
+                    <tr><td>Ling Dong</td><td>Guangdong</td><td>2</td><td>2,152</td><td>CPR1000</td><td>100%</td></tr>
+                    <tr><td>Yangjiang</td><td>Guangdong</td><td>6</td><td>6,516</td><td>CPR1000/ACPR1000</td><td>64%</td></tr>
+                    <tr><td>Taishan</td><td>Guangdong</td><td>2</td><td>3,500</td><td>EPR</td><td>51%</td></tr>
+                    <tr><td>Fangchenggang</td><td>Guangxi</td><td>4</td><td>4,600</td><td>CPR1000/HPR1000</td><td>61%</td></tr>
+                    <tr><td>Hongyanhe</td><td>Liaoning</td><td>6</td><td>6,564</td><td>CPR1000/ACPR1000</td><td>45%</td></tr>
+                    <tr><td>Ningde</td><td>Fujian</td><td>4</td><td>4,356</td><td>CPR1000</td><td>32.5%</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Technology Portfolio</h3>
+            <div class="scenario-card base">
+                <h4>Hualong One (HPR1000) - Gen III+</h4>
+                <p><strong>Description:</strong> Indigenous Chinese design (CGN + CNNP collaboration)</p>
+                <p><strong>Capacity:</strong> 1,161 MW per unit</p>
+                <p><strong>Design Life:</strong> 60 years</p>
+                <p><strong>Construction Period:</strong> 56-60 months</p>
+                <p><strong>Features:</strong> Enhanced passive safety systems, double containment structure, lower core damage frequency</p>
+                <p><strong>Export Markets:</strong> UK Bradwell B, Argentina, Pakistan</p>
+            </div>
+
+            <div class="scenario-card bull">
+                <h4>Taishan EPR - World's First Operational EPR</h4>
+                <p><strong>Capacity:</strong> 1,750 MW per unit (largest operating units globally)</p>
+                <p><strong>Technology:</strong> European Pressurized Reactor (JV with EDF)</p>
+                <p><strong>Significance:</strong> First EPR reactors to achieve commercial operation globally</p>
+            </div>
+
+            <h3>Operating Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Capacity Factor</div>
+                    <div class="value positive">85-90%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Utilization Hours</div>
+                    <div class="value">7,500-7,800</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">WANO Performance</div>
+                    <div class="value positive">Top Quartile</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Refueling Outage</div>
+                    <div class="value">30-40 days</div>
+                </div>
+            </div>
+
+            <h3>Competitive Advantages</h3>
+            <ul class="key-points">
+                <li>Larger operational fleet than domestic peers</li>
+                <li>Higher dividend payout (4-5% yield vs 2-3% for CNNP)</li>
+                <li>Taishan EPR operational experience</li>
+                <li>Strong presence in Guangdong (high electricity demand province)</li>
+                <li>Proven operational track record with top-quartile WANO rankings</li>
+            </ul>
+
+            <h3>Dividend Policy</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>DPS (HKD)</th>
+                        <th>Payout Ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2021</td><td>0.085</td><td>35%</td></tr>
+                    <tr><td>2022</td><td>0.095</td><td>37%</td></tr>
+                    <tr><td>2023</td><td>0.105</td><td>38%</td></tr>
+                    <tr><td>2024E</td><td>0.115</td><td>38%</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Financial Data Section -->
+        <section id="financial-data">
+            <h2>Financial Data</h2>
+
+            <h3>Income Statement Summary (RMB Billion)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>2023</th>
+                        <th>2024E</th>
+                        <th>2025E</th>
+                        <th>2026E</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Revenue</td><td>82</td><td>87</td><td>93</td><td>100</td></tr>
+                    <tr><td>EBITDA</td><td>47</td><td>50</td><td>53</td><td>57</td></tr>
+                    <tr><td>EBITDA Margin</td><td>57%</td><td>57%</td><td>57%</td><td>57%</td></tr>
+                    <tr><td>Net Income</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+                    <tr><td>EPS (RMB)</td><td>0.29</td><td>0.31</td><td>0.33</td><td>0.35</td></tr>
+                    <tr><td>P/E Ratio</td><td>8.5x</td><td>8.0x</td><td>7.5x</td><td>7.0x</td></tr>
+                    <tr><td>Dividend Yield</td><td>4.0%</td><td>4.5%</td><td>4.8%</td><td>5.0%</td></tr>
+                    <tr><td>ROE</td><td>10%</td><td>11%</td><td>11%</td><td>12%</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Balance Sheet Highlights (2024E)</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Net Debt</div>
+                    <div class="value">RMB 200B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Net Debt/Equity</div>
+                    <div class="value">165%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Net Debt/EBITDA</div>
+                    <div class="value">4.0x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Shares Outstanding</div>
+                    <div class="value">45.5B</div>
+                </div>
+            </div>
+
+            <h3>Key Assumptions</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Tax Rate</div>
+                    <div class="value">15%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Depreciation/Revenue</div>
+                    <div class="value">18-20%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Capex/Revenue</div>
+                    <div class="value">35-40%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">HKD/RMB Rate</div>
+                    <div class="value">0.91</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DCF Valuation Section -->
+        <section id="dcf-valuation">
+            <h2>DCF Valuation</h2>
+
+            <div class="highlight-box">
+                <p><strong>Methodology:</strong> 10-year DCF with terminal value using Gordon Growth Model</p>
+                <p><strong>Formula:</strong> TV = FCF_10 x (1 + g) / (WACC - g)</p>
+                <p><strong>Net Debt:</strong> RMB 200 billion</p>
+            </div>
+
+            <h3>WACC Discussion</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Assumption</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Risk-Free Rate</td><td>2.5-3.0%</td></tr>
+                    <tr><td>Equity Risk Premium</td><td>6-7%</td></tr>
+                    <tr><td>Beta</td><td>0.8-1.0</td></tr>
+                    <tr><td>Cost of Debt</td><td>4-5%</td></tr>
+                    <tr><td>Debt/Equity Ratio</td><td>60/40</td></tr>
+                    <tr><td>Recommended WACC</td><td><strong>9-10%</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h3>Valuation by Scenario and Discount Rate</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>WACC 6%</th>
+                        <th>WACC 7%</th>
+                        <th>WACC 8%</th>
+                        <th>WACC 9%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Super Bear (5%)</td><td>1.65</td><td>1.21</td><td>0.89</td><td>0.27</td></tr>
+                    <tr><td>Bear (20%)</td><td>4.95</td><td>4.05</td><td>3.38</td><td>1.96</td></tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);"><td><strong>Base (50%)</strong></td><td>8.79</td><td>7.26</td><td>6.11</td><td><strong>3.79</strong></td></tr>
+                    <tr><td>Bull (20%)</td><td>14.29</td><td>11.87</td><td>9.95</td><td>6.69</td></tr>
+                    <tr><td>Super Bull (5%)</td><td>26.37</td><td>21.97</td><td>18.31</td><td>12.60</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Probability-Weighted Value by Discount Rate</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>WACC</th>
+                        <th>6%</th>
+                        <th>7%</th>
+                        <th>8%</th>
+                        <th>9%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prob-Weighted Price (HKD)</td>
+                        <td>8.65</td>
+                        <td>7.21</td>
+                        <td>6.08</td>
+                        <td><strong>3.93</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Upside from HKD 2.50</td>
+                        <td>246%</td>
+                        <td>188%</td>
+                        <td>143%</td>
+                        <td><strong>57%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Scenario Analysis Section -->
+        <section id="scenarios">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card super-bear">
+                <div class="scenario-header">
+                    <h4>Super Bear Case</h4>
+                    <span class="probability-badge">5% probability</span>
+                </div>
+                <p><strong>Narrative:</strong> Major nuclear safety incident (domestic or global) triggers policy reversal. Moratorium on new nuclear construction, increased regulatory burden, public opposition.</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>Revenue growth Year 1-5: -2%</li>
+                    <li>EBITDA margin terminal: 38%</li>
+                    <li>Terminal growth: 0%</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Target @ 9% WACC</div>
+                        <div class="value negative">HKD 0.27</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bear">
+                <div class="scenario-header">
+                    <h4>Bear Case</h4>
+                    <span class="probability-badge">20% probability</span>
+                </div>
+                <p><strong>Narrative:</strong> Slower than expected capacity additions due to supply chain constraints, skilled labor shortages, or regulatory delays. Tariff pressure from grid companies.</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>Revenue growth Year 1-5: 4%</li>
+                    <li>EBITDA margin: 50-52%</li>
+                    <li>Terminal growth: 2%</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Target @ 9% WACC</div>
+                        <div class="value">HKD 1.96</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card base">
+                <div class="scenario-header">
+                    <h4>Base Case</h4>
+                    <span class="probability-badge">50% probability</span>
+                </div>
+                <p><strong>Narrative:</strong> Steady expansion in line with government's 14th and 15th Five-Year Plans. CGN maintains market share with disciplined execution. Tariffs remain stable.</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>Revenue growth Year 1-5: 7%</li>
+                    <li>EBITDA margin: 54-55%</li>
+                    <li>Terminal growth: 2.5%</li>
+                    <li>6-8 new reactor approvals annually; CGN captures 40-45%</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Target @ 9% WACC</div>
+                        <div class="value positive">HKD 3.79</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bull">
+                <div class="scenario-header">
+                    <h4>Bull Case</h4>
+                    <span class="probability-badge">20% probability</span>
+                </div>
+                <p><strong>Narrative:</strong> Accelerated nuclear build-out driven by faster-than-expected electricity demand (AI, EVs, data centers) and recognition of nuclear's role in energy security.</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>Revenue growth Year 1-5: 10%</li>
+                    <li>EBITDA margin: 56-57%</li>
+                    <li>Terminal growth: 3%</li>
+                    <li>10+ new reactor approvals annually; inland projects approved</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Target @ 9% WACC</div>
+                        <div class="value positive">HKD 6.69</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card super-bull">
+                <div class="scenario-header">
+                    <h4>Super Bull Case</h4>
+                    <span class="probability-badge">5% probability</span>
+                </div>
+                <p><strong>Narrative:</strong> Global nuclear renaissance following climate emergency declarations. Massive policy support, carbon pricing, China leads global nuclear expansion.</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>Revenue growth Year 1-5: 15%</li>
+                    <li>EBITDA margin: 58-60%</li>
+                    <li>Terminal growth: 3.5%</li>
+                    <li>Multiple international projects; premium tariffs for clean baseload</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Target @ 9% WACC</div>
+                        <div class="value positive">HKD 12.60</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="consensus-box">
+                <h4>Probability-Weighted Target Price Calculation</h4>
+                <p style="font-family: monospace; margin-top: 10px;">(5% x 0.27) + (20% x 1.96) + (50% x 3.79) + (20% x 6.69) + (5% x 12.60) = <strong>HKD 3.93</strong></p>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">HKD 3.93</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">HKD 2.50</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Upside</div>
+                        <div class="value positive">57%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Assessment Section -->
+        <section id="risks">
+            <h2>Risk Assessment</h2>
+
+            <h3>Primary Risks</h3>
+
+            <div class="risk-item">
+                <div class="risk-header">
+                    <h5>Nuclear Safety Incident</h5>
+                    <span class="impact-badge">Severity: High | Prob: Low (5-8%)</span>
+                </div>
+                <p>Major nuclear incident (domestic or global) could trigger policy reversal, public opposition, and regulatory tightening</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Strong safety culture, top-quartile WANO rankings, post-Fukushima upgrades completed</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Tariff Pressure</h5>
+                    <span class="impact-badge">Severity: Medium | Prob: Medium (30-40%)</span>
+                </div>
+                <p>NDRC could reduce on-grid tariffs or delay inflation adjustments under pressure from grid companies</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Gradual shift to market-based pricing, essential baseload status</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Construction Execution</h5>
+                    <span class="impact-badge">Severity: Medium | Prob: Medium (25-35%)</span>
+                </div>
+                <p>Delays, cost overruns, or quality issues on new reactor construction could impact growth trajectory</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Proven Hualong One technology, experienced construction teams</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Geopolitical Sanctions</h5>
+                    <span class="impact-badge">Severity: Medium | Prob: Low-Medium (15-25%)</span>
+                </div>
+                <p>US sanctions on parent CGN Group could be expanded, limiting technology access and international expansion</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Domestic technology self-sufficiency, focus on non-US markets for exports</p>
+            </div>
+
+            <h3>Secondary Risks</h3>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>Renewable Competition</h5>
+                    <span class="impact-badge">Severity: Low-Medium | Prob: Medium</span>
+                </div>
+                <p>Continued cost deflation in solar/wind + storage could reduce nuclear's cost competitiveness</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Nuclear provides baseload that renewables cannot; complementary technologies</p>
+            </div>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>State Ownership</h5>
+                    <span class="impact-badge">Severity: Low | Prob: Medium</span>
+                </div>
+                <p>Concentrated state ownership may lead to non-commercial decisions or minority shareholder value dilution</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> HKEX listing standards, independent board members, transparent disclosure</p>
+            </div>
+        </section>
+
+        <!-- Recommendation Section -->
+        <section id="recommendation">
+            <h2>Recommendation</h2>
+
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Rating</div>
+                        <div class="value">BUY</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">HKD 3.93</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">HKD 2.50</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Upside</div>
+                        <div class="value positive">57%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Dividend Yield</div>
+                        <div class="value positive">4.5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Conviction</div>
+                        <div class="value">Medium-High</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Thesis Summary</h3>
+            <ul class="key-points">
+                <li><strong>Structural Growth:</strong> China's nuclear capacity set to double by 2035, with CGN as dominant player</li>
+                <li><strong>Policy Tailwind:</strong> Government commitment to nuclear expansion is unwavering under carbon neutrality goals</li>
+                <li><strong>Operational Excellence:</strong> Top-quartile WANO safety and efficiency metrics de-risk operations</li>
+                <li><strong>Technology Moat:</strong> Hualong One positions CGN for domestic growth and export opportunities</li>
+                <li><strong>Income Generation:</strong> Attractive 4-5% dividend yield with consistent growth track record</li>
+                <li><strong>Valuation:</strong> H-share discount offers value versus A-share peer CNNP</li>
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Positive</div>
+                    <div class="value" style="font-size: 0.9em;">New reactor approvals, tariff increases, export contracts, dividend increases</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Negative</div>
+                    <div class="value negative" style="font-size: 0.9em;">Nuclear incidents, tariff cuts, construction delays, sanctions</div>
+                </div>
+            </div>
+
+            <h3>Suitable For</h3>
+            <ul class="key-points">
+                <li>Income-focused investors seeking stable dividends</li>
+                <li>Long-term investors with clean energy thematic view</li>
+                <li>Value investors looking for H-share discount opportunity</li>
+                <li>Portfolio managers seeking defensive utility exposure to China</li>
+            </ul>
+        </section>
+
+        <!-- Debate Log Section -->
+        <section id="debate-log">
+            <h2>Debate Log</h2>
+
+            <p style="color: #8b949e; margin-bottom: 20px;">Multi-perspective analysis featuring Bull, Bear, Critic, and Synthesizer viewpoints across 5 rounds of structured debate.</p>
+
+            <div class="debate-round">
+                <h4>Round 1: Core Investment Thesis and Growth Outlook</h4>
+
+                <div class="debate-message bull">
+                    <div class="message-header">
+                        <span class="message-role bull">BULL</span>
+                    </div>
+                    <p><strong>Position:</strong> CGN Power represents the best pure-play opportunity on China's nuclear renaissance</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>China's nuclear capacity set to nearly double from 57 GW to 100 GW by 2030</li>
+                        <li>CGN as dominant independent operator capturing 40-45% of new builds</li>
+                        <li>Government policy support is unwavering - nuclear essential for carbon neutrality</li>
+                        <li>Base case DCF at 9% WACC yields HKD 3.79, representing 52% upside</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message bear">
+                    <div class="message-header">
+                        <span class="message-role bear">BEAR</span>
+                    </div>
+                    <p><strong>Position:</strong> Growth assumptions ignore massive capital burden and execution risks</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Nuclear construction is extremely capital intensive - capex runs 35-40% of revenue</li>
+                        <li>Net debt of RMB 200 billion, net debt/EBITDA of 4.0x</li>
+                        <li>US sanctions on parent CGN Group create technology access risks</li>
+                        <li>Renewable energy cost curve continues to decline aggressively</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> BULL makes compelling case on policy certainty and capacity growth visibility. BEAR correctly identifies that growth requires continuous capital investment straining balance sheet. Key insight: debate should focus less on WHETHER growth occurs and more on the QUALITY and RETURNS of that growth given capital intensity.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 2: Regulatory Risks, Tariff Pressure, and Safety Concerns</h4>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> Safety risk is real but low probability - CGN's track record and China's political system reduce likelihood of dramatic policy reversal. Tariff pressure is the more probable risk, but likely manifests as gradual margin compression (EBITDA 55% to 50%) rather than dramatic cuts. ROE of 11% is adequate but not spectacular for the capital employed - this limits upside but provides floor through dividend yield.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 3: Valuation Methodology and Discount Rate Selection</h4>
+
+                <div class="debate-message critic">
+                    <div class="message-header">
+                        <span class="message-role critic">CRITIC</span>
+                    </div>
+                    <p><strong>Position:</strong> Standard CAPM/WACC framework struggles with nuclear investments because tail risk is not normally distributed</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>5% Super Bear probability may be too low - global nuclear incidents occur roughly once per 20-30 years</li>
+                        <li>Compromise: use 9% WACC but increase Super Bear probability to 10%</li>
+                        <li>EV/EBITDA of 5.5-6.5x is more defensible as valuation anchor</li>
+                    </ul>
+                </div>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>Assessment:</strong> 9% WACC is defensible but probability weights need adjustment. Increasing Super Bear from 5% to 8-10% better reflects nuclear tail risk. Net effect: reduce central target from HKD 3.93 to approximately HKD 3.50-3.60, still representing 40-45% upside.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 5: Final Investment Recommendation</h4>
+
+                <div class="debate-message synthesizer">
+                    <div class="message-header">
+                        <span class="message-role synthesizer">SYNTHESIZER</span>
+                    </div>
+                    <p><strong>FINAL RECOMMENDATION: BUY with HKD 3.70 target and Medium conviction</strong></p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Growth visibility is the key bull case strength - few global utilities offer such clear capacity expansion trajectory</li>
+                        <li>Capital intensity and nuclear tail risk are valid concerns but largely priced at current valuation</li>
+                        <li>Income component (4-5% yield) provides meaningful return floor</li>
+                        <li>Position sizing: 2-4% of diversified portfolio</li>
+                        <li>Investment horizon: 18-24 months</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Key Consensus Points</h3>
+            <div class="consensus-box">
+                <ul class="key-points">
+                    <li>China's commitment to nuclear expansion is among the most credible policy tailwinds globally</li>
+                    <li>CGN's operational excellence (top-quartile WANO) reduces company-specific risk</li>
+                    <li>Gradual margin compression (not dramatic tariff cuts) is the most probable regulatory risk</li>
+                    <li>4-5% dividend yield provides meaningful return floor</li>
+                    <li>CGN is primarily a sector play - competitive advantages don't justify significant premium</li>
+                </ul>
+            </div>
+
+            <h3>Key Disagreements</h3>
+            <div class="disagreement-box">
+                <ul class="key-points">
+                    <li><strong>Discount Rate:</strong> Bull favors 9% WACC for state-backed utility; Bear wants 10%+ for H-share and nuclear risk</li>
+                    <li><strong>Super Bear Probability:</strong> Bull says 5%; Bear argues 10%+ given historical incident frequency</li>
+                    <li><strong>Capital Intensity:</strong> Bull sees proportional earnings growth; Bear sees ROE stuck at 11%</li>
+                    <li><strong>Renewable Competition:</strong> Bull sees complementary technologies; Bear sees eroding economic advantage</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Report generated on 2026-01-18 | Data sources: Company filings, industry reports, analyst estimates</p>
+            <p style="margin-top: 10px;">Disclaimer: This equity research report is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
+        </footer>
+    </main>
+</body>
+</html>

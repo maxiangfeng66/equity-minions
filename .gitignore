@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp
+
+# API Keys - IMPORTANT: Never commit real keys!
+# config.py contains API keys - add to .gitignore if you don't want to share
+# Uncomment below line to exclude config.py:
+# config.py
+
+# Claude chat history (large file)
+claudechat.txt
+
+# Temp task outputs
+*.output

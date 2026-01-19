@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2696 HK - Detailed Research Report | Shanghai Henlius Biotech Inc</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px 50px;
+            max-width: 1200px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #161b22;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .section h3 {
+            color: #8b949e;
+            margin: 20px 0 10px;
+            font-size: 1.1em;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid #30363d;
+        }
+
+        .header-section h1 {
+            font-size: 2.2em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .header-section .ticker {
+            color: #58a6ff;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .rating-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .rating-hold { background: #e3a008; color: #000; }
+        .rating-buy { background: #238636; color: #fff; }
+        .rating-sell { background: #da3633; color: #fff; }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #30363d;
+        }
+
+        .metric-card .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .data-table th {
+            background: #0d1117;
+            color: #8b949e;
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .scenario-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card h4 {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .scenario-card .probability {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #30363d;
+            border-radius: 10px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .risk-item {
+            padding: 15px;
+            background: #0d1117;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #da3633;
+        }
+
+        .risk-item.medium {
+            border-left-color: #e3a008;
+        }
+
+        .risk-item.low {
+            border-left-color: #238636;
+        }
+
+        .risk-item h4 {
+            color: #c9d1d9;
+            margin-bottom: 5px;
+        }
+
+        .risk-item p {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .debate-round {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .debate-entry {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .debate-entry.bull {
+            background: rgba(35, 134, 54, 0.1);
+            border-left: 3px solid #238636;
+        }
+
+        .debate-entry.bear {
+            background: rgba(218, 54, 51, 0.1);
+            border-left: 3px solid #da3633;
+        }
+
+        .debate-entry.critic {
+            background: rgba(227, 160, 8, 0.1);
+            border-left: 3px solid #e3a008;
+        }
+
+        .debate-entry.synthesizer {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .debate-entry .speaker {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .debate-entry.bull .speaker { color: #238636; }
+        .debate-entry.bear .speaker { color: #da3633; }
+        .debate-entry.critic .speaker { color: #e3a008; }
+        .debate-entry.synthesizer .speaker { color: #58a6ff; }
+
+        .key-point {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #30363d;
+            border-radius: 5px;
+            font-size: 0.85em;
+            margin: 3px 5px 3px 0;
+        }
+
+        .catalyst-item {
+            padding: 12px 15px;
+            background: #0d1117;
+            border-radius: 8px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .catalyst-item .timing {
+            color: #58a6ff;
+            font-size: 0.85em;
+        }
+
+        .valuation-summary {
+            background: linear-gradient(135deg, #1a2744 0%, #0d1117 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .valuation-summary h3 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .price-range {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .price-bar {
+            flex: 1;
+            height: 8px;
+            background: linear-gradient(to right, #da3633, #e3a008, #238636);
+            border-radius: 4px;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .current-price-marker {
+            position: absolute;
+            top: -6px;
+            width: 20px;
+            height: 20px;
+            background: #58a6ff;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.85em;
+            border-top: 1px solid #30363d;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>2696.HK</h3>
+            <p>Shanghai Henlius Biotech</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">AI Debate Log</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="header-section">
+            <div class="ticker">2696.HK | Hong Kong Stock Exchange</div>
+            <h1>Shanghai Henlius Biotech Inc</h1>
+            <p style="color: #8b949e; margin-bottom: 20px;">Healthcare - Biotechnology (Biosimilars & Innovative Drugs)</p>
+            <span class="rating-badge rating-buy">BUY</span>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">HKD 14.00</div>
+                    <div class="label">Target Price</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">HKD 10.00</div>
+                    <div class="label">Current Price</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">40%</div>
+                    <div class="label">Upside Potential</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">Medium-High</div>
+                    <div class="label">Conviction Level</div>
+                </div>
+            </div>
+        </div>
+
+        <section id="executive-summary" class="section">
+            <h2>Executive Summary</h2>
+            <h3>Company Overview</h3>
+            <p>Shanghai Henlius Biotech is a leading Chinese biopharmaceutical company focused on developing and commercializing high-quality biosimilar drugs and innovative biologics. A subsidiary of Shanghai Fosun Pharmaceutical Group (majority shareholder ~60%), Henlius has established itself as a pioneer in China's biosimilar market with a growing presence in global markets.</p>
+
+            <h3>Investment Thesis</h3>
+            <p>Henlius represents an attractive opportunity in the China biosimilars and oncology space. The company has successfully commercialized multiple biosimilars including its flagship Hanlikang (rituximab biosimilar) and Hansizhuang (serplulimab, a novel PD-1 inhibitor). The Fosun Pharma backing provides strong financial support and commercial infrastructure, while international partnerships expand global market access.</p>
+
+            <h3>Key Highlights</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Leading position in China's biosimilar market with first rituximab biosimilar (Hanlikang) approved in China</li>
+                <li>Hansizhuang (serplulimab) - innovative PD-1 inhibitor with differentiated clinical profile in ES-SCLC</li>
+                <li>Strong parent company support from Fosun Pharma providing capital and commercial capabilities</li>
+                <li>Expanding global footprint with EU/US biosimilar approvals and partnerships</li>
+                <li>Diversified portfolio spanning oncology, autoimmune, and ophthalmology biosimilars</li>
+                <li>Manufacturing excellence with cGMP facilities meeting international standards</li>
+            </ul>
+        </section>
+
+        <section id="industry-analysis" class="section">
+            <h2>Industry Analysis</h2>
+            <h3>China Biosimilars Market</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>2024</th>
+                    <th>2030</th>
+                    <th>CAGR</th>
+                </tr>
+                <tr>
+                    <td>Market Size (USD bn)</td>
+                    <td>8.5</td>
+                    <td>25.0</td>
+                    <td>19.7%</td>
+                </tr>
+            </table>
+
+            <h3>Key Market Drivers</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Patent expiries of major biologics creating opportunities</li>
+                <li>Government push for affordable biologics to reduce healthcare costs</li>
+                <li>NRDL inclusion of biosimilars at competitive prices driving volume</li>
+                <li>Increasing biologics usage in cancer treatment</li>
+                <li>Rising healthcare expenditure and insurance coverage expansion</li>
+                <li>Volume-based procurement (VBP) policies favoring cost-effective alternatives</li>
+            </ul>
+
+            <h3>Global Biosimilars Market</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Market</th>
+                    <th>2024 (USD bn)</th>
+                    <th>2030 (USD bn)</th>
+                    <th>CAGR</th>
+                </tr>
+                <tr>
+                    <td>Global Biosimilars</td>
+                    <td>45.0</td>
+                    <td>100.0</td>
+                    <td>14.2%</td>
+                </tr>
+                <tr>
+                    <td>China PD-1/PD-L1</td>
+                    <td>6.0</td>
+                    <td>-</td>
+                    <td>Highly competitive</td>
+                </tr>
+            </table>
+
+            <h3>Competitive Landscape</h3>
+            <h4>Biosimilar Competitors</h4>
+            <table class="data-table">
+                <tr>
+                    <th>Company</th>
+                    <th>Position</th>
+                </tr>
+                <tr>
+                    <td>Qilu Pharmaceutical</td>
+                    <td>Strong domestic presence</td>
+                </tr>
+                <tr>
+                    <td>Bio-Thera Solutions</td>
+                    <td>Multiple biosimilars in development</td>
+                </tr>
+                <tr>
+                    <td>Celltrion</td>
+                    <td>Korean company with global reach</td>
+                </tr>
+                <tr>
+                    <td>Biocon/Viatris</td>
+                    <td>Established global biosimilar player</td>
+                </tr>
+                <tr>
+                    <td>Samsung Bioepis</td>
+                    <td>Premium biosimilar positioning</td>
+                </tr>
+            </table>
+
+            <h4>PD-1 Competitors</h4>
+            <table class="data-table">
+                <tr>
+                    <th>Company</th>
+                    <th>Product</th>
+                    <th>Position</th>
+                </tr>
+                <tr>
+                    <td>Junshi Biosciences</td>
+                    <td>Toripalimab</td>
+                    <td>First China-approved domestic PD-1</td>
+                </tr>
+                <tr>
+                    <td>Innovent Biologics</td>
+                    <td>Sintilimab</td>
+                    <td>Large market share, Lilly partnership</td>
+                </tr>
+                <tr>
+                    <td>BeiGene</td>
+                    <td>Tislelizumab</td>
+                    <td>Strong clinical program, global expansion</td>
+                </tr>
+                <tr>
+                    <td>Akeso</td>
+                    <td>Penpulimab/Cadonilimab</td>
+                    <td>Bispecific differentiation</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="company-analysis" class="section">
+            <h2>Company Analysis</h2>
+            <h3>Company Overview</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Founded</td>
+                    <td>2010</td>
+                </tr>
+                <tr>
+                    <td>Headquarters</td>
+                    <td>Shanghai, China</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>~3,000</td>
+                </tr>
+                <tr>
+                    <td>IPO Date</td>
+                    <td>September 25, 2019</td>
+                </tr>
+                <tr>
+                    <td>Parent Company</td>
+                    <td>Shanghai Fosun Pharmaceutical Group (~60% ownership)</td>
+                </tr>
+            </table>
+
+            <h3>Commercial Biosimilars Portfolio</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Product</th>
+                    <th>Reference Drug</th>
+                    <th>Indications</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Hanlikang (Rituximab)</td>
+                    <td>MabThera/Rituxan</td>
+                    <td>NHL, CLL, RA</td>
+                    <td>First rituximab biosimilar in China (2019); EU approved (2021)</td>
+                </tr>
+                <tr>
+                    <td>Hanquyou (Trastuzumab)</td>
+                    <td>Herceptin</td>
+                    <td>HER2+ breast/gastric cancer</td>
+                    <td>China (2020), EU approved (Zercepac)</td>
+                </tr>
+                <tr>
+                    <td>Hanbeini (Bevacizumab)</td>
+                    <td>Avastin</td>
+                    <td>NSCLC, CRC, solid tumors</td>
+                    <td>China approved (2021)</td>
+                </tr>
+                <tr>
+                    <td>Hanbeitai (Adalimumab)</td>
+                    <td>Humira</td>
+                    <td>RA, AS, Psoriasis</td>
+                    <td>China approved (2020)</td>
+                </tr>
+            </table>
+
+            <h3>Innovative Products - Hansizhuang (Serplulimab)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>PD-1 monoclonal antibody (Innovative drug)</td>
+                </tr>
+                <tr>
+                    <td>Key Differentiation</td>
+                    <td>First PD-1 to show significant OS benefit in ES-SCLC in China (ASTRUM-005)</td>
+                </tr>
+                <tr>
+                    <td>Approved Indications</td>
+                    <td>MSI-H solid tumors (2022), ES-SCLC (2023), Squamous NSCLC (2023), Esophageal cancer (2024)</td>
+                </tr>
+                <tr>
+                    <td>Pipeline Indications</td>
+                    <td>HCC, Gastric cancer, TNBC, other solid tumors (Phase 2/3)</td>
+                </tr>
+                <tr>
+                    <td>Revenue Contribution 2024E</td>
+                    <td>25% of total revenue</td>
+                </tr>
+            </table>
+
+            <h3>Pipeline Summary</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Candidate</th>
+                    <th>Type</th>
+                    <th>Stage</th>
+                    <th>Opportunity</th>
+                </tr>
+                <tr>
+                    <td>HLX14 (Denosumab)</td>
+                    <td>Biosimilar</td>
+                    <td>Phase 3/NDA ready</td>
+                    <td>Osteoporosis, bone metastases</td>
+                </tr>
+                <tr>
+                    <td>HLX15 (Aflibercept)</td>
+                    <td>Biosimilar</td>
+                    <td>Phase 3</td>
+                    <td>Wet AMD, DME</td>
+                </tr>
+                <tr>
+                    <td>HLX11 (Pertuzumab)</td>
+                    <td>Biosimilar</td>
+                    <td>Phase 3</td>
+                    <td>HER2+ breast cancer combination</td>
+                </tr>
+                <tr>
+                    <td>HLX26</td>
+                    <td>Anti-LAG-3 antibody</td>
+                    <td>Phase 1/2</td>
+                    <td>Combination with serplulimab</td>
+                </tr>
+                <tr>
+                    <td>HLX51</td>
+                    <td>Anti-TIGIT antibody</td>
+                    <td>Phase 1</td>
+                    <td>Checkpoint inhibitor combinations</td>
+                </tr>
+            </table>
+
+            <h3>Strategic Partnerships</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Partner</th>
+                    <th>Scope</th>
+                    <th>Products</th>
+                </tr>
+                <tr>
+                    <td>Fosun Pharma (Parent)</td>
+                    <td>Financial backing, commercial infrastructure in China</td>
+                    <td>Access to hospital and pharmacy networks</td>
+                </tr>
+                <tr>
+                    <td>Accord Healthcare</td>
+                    <td>Commercialization in Europe and other markets</td>
+                    <td>Rituximab, trastuzumab biosimilars</td>
+                </tr>
+                <tr>
+                    <td>Organon</td>
+                    <td>US commercialization partnership</td>
+                    <td>Select biosimilar products</td>
+                </tr>
+            </table>
+
+            <h3>Manufacturing Capabilities</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Shanghai facility: 24,000L bioreactor capacity, NMPA and EU GMP certified</li>
+                <li>Songjiang, Shanghai: Additional capacity under construction for global supply</li>
+                <li>Technology platforms: CHO cell line development, high-titer mammalian cell culture, advanced purification</li>
+            </ul>
+        </section>
+
+        <section id="financial-data" class="section">
+            <h2>Financial Data</h2>
+            <h3>Income Statement (CNY millions)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>2022</th>
+                    <th>2023</th>
+                    <th>2024E</th>
+                    <th>2025E</th>
+                </tr>
+                <tr>
+                    <td>Revenue</td>
+                    <td>3,200</td>
+                    <td>4,500</td>
+                    <td>6,200</td>
+                    <td>8,000</td>
+                </tr>
+                <tr>
+                    <td>YoY Growth</td>
+                    <td>-</td>
+                    <td>40.6%</td>
+                    <td>37.8%</td>
+                    <td>29.0%</td>
+                </tr>
+                <tr>
+                    <td>Gross Profit</td>
+                    <td>2,400</td>
+                    <td>3,500</td>
+                    <td>4,900</td>
+                    <td>6,400</td>
+                </tr>
+                <tr>
+                    <td>Gross Margin</td>
+                    <td>75.0%</td>
+                    <td>77.8%</td>
+                    <td>79.0%</td>
+                    <td>80.0%</td>
+                </tr>
+                <tr>
+                    <td>R&D Expense</td>
+                    <td>1,800</td>
+                    <td>1,900</td>
+                    <td>2,000</td>
+                    <td>2,100</td>
+                </tr>
+                <tr>
+                    <td>Operating Profit/(Loss)</td>
+                    <td>(800)</td>
+                    <td>(400)</td>
+                    <td>200</td>
+                    <td>800</td>
+                </tr>
+                <tr>
+                    <td>Net Profit/(Loss)</td>
+                    <td>(750)</td>
+                    <td>(350)</td>
+                    <td>150</td>
+                    <td>650</td>
+                </tr>
+            </table>
+
+            <h3>Revenue Breakdown 2024E</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">35%</div>
+                    <div class="label">Hanlikang (Rituximab)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">25%</div>
+                    <div class="label">Hansizhuang (PD-1)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">15%</div>
+                    <div class="label">Hanquyou (Trastuzumab)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">12%</div>
+                    <div class="label">Hanbeini (Bevacizumab)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">8%</div>
+                    <div class="label">Hanbeitai (Adalimumab)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">5%</div>
+                    <div class="label">International/Other</div>
+                </div>
+            </div>
+
+            <h3>Balance Sheet Highlights</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>2023</th>
+                    <th>2024E</th>
+                </tr>
+                <tr>
+                    <td>Cash Position (CNY M)</td>
+                    <td>3,800</td>
+                    <td>4,200</td>
+                </tr>
+                <tr>
+                    <td>Balance Sheet Assessment</td>
+                    <td colspan="2">Adequate - supported by Fosun Pharma parent</td>
+                </tr>
+            </table>
+
+            <h3>Valuation Metrics</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Shares Outstanding</td>
+                    <td>560 million</td>
+                </tr>
+                <tr>
+                    <td>Market Cap (HKD bn)</td>
+                    <td>5.6</td>
+                </tr>
+                <tr>
+                    <td>Market Cap (USD bn)</td>
+                    <td>0.72</td>
+                </tr>
+                <tr>
+                    <td>Enterprise Value (USD bn)</td>
+                    <td>0.55</td>
+                </tr>
+                <tr>
+                    <td>P/S 2024E</td>
+                    <td>7.8x</td>
+                </tr>
+                <tr>
+                    <td>P/S 2025E</td>
+                    <td>6.0x</td>
+                </tr>
+                <tr>
+                    <td>EV/Revenue 2024E</td>
+                    <td>6.0x</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="dcf-valuation" class="section">
+            <h2>DCF Valuation</h2>
+            <h3>Methodology</h3>
+            <p>Sum-of-the-parts DCF valuation combining commercial biosimilar forecasts, Hansizhuang projections, and pipeline risk-adjusted NPV.</p>
+
+            <h3>Key Assumptions</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Forecast Period</td>
+                    <td>10 years</td>
+                </tr>
+                <tr>
+                    <td>Terminal Growth Rate</td>
+                    <td>2.5%</td>
+                </tr>
+                <tr>
+                    <td>Tax Rate</td>
+                    <td>15.0%</td>
+                </tr>
+                <tr>
+                    <td>Exchange Rate (CNY/HKD)</td>
+                    <td>1.08</td>
+                </tr>
+            </table>
+
+            <h3>Revenue Projections (CNY M)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Year</th>
+                    <th>2025</th>
+                    <th>2026</th>
+                    <th>2027</th>
+                    <th>2028</th>
+                    <th>2029</th>
+                    <th>2030</th>
+                </tr>
+                <tr>
+                    <td>Revenue</td>
+                    <td>8,000</td>
+                    <td>10,000</td>
+                    <td>12,500</td>
+                    <td>15,000</td>
+                    <td>17,500</td>
+                    <td>19,500</td>
+                </tr>
+                <tr>
+                    <td>EBITDA Margin</td>
+                    <td>15.0%</td>
+                    <td>18.0%</td>
+                    <td>21.0%</td>
+                    <td>24.0%</td>
+                    <td>26.0%</td>
+                    <td>27.0%</td>
+                </tr>
+            </table>
+
+            <h3>Key Value Drivers</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Asset</th>
+                    <th>Peak Sales (CNY M)</th>
+                    <th>Probability</th>
+                </tr>
+                <tr>
+                    <td>Biosimilar Portfolio (Hanlikang, Hanquyou, Hanbeini, Hanbeitai)</td>
+                    <td>12,000</td>
+                    <td>90%</td>
+                </tr>
+                <tr>
+                    <td>Hansizhuang (Serplulimab)</td>
+                    <td>6,000</td>
+                    <td>80%</td>
+                </tr>
+                <tr>
+                    <td>Pipeline Biosimilars (Denosumab, Aflibercept, Pertuzumab)</td>
+                    <td>5,000</td>
+                    <td>65%</td>
+                </tr>
+                <tr>
+                    <td>Innovative Pipeline (HLX26, HLX51, other early-stage)</td>
+                    <td>2,000</td>
+                    <td>30%</td>
+                </tr>
+            </table>
+
+            <div class="valuation-summary">
+                <h3>Probability-Weighted Valuation</h3>
+                <table class="data-table">
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Price (HKD)</th>
+                        <th>Probability</th>
+                        <th>Weighted Value</th>
+                    </tr>
+                    <tr>
+                        <td>Bull Case</td>
+                        <td>22.13</td>
+                        <td>15%</td>
+                        <td>3.32</td>
+                    </tr>
+                    <tr>
+                        <td>Base Case - Optimistic</td>
+                        <td>16.43</td>
+                        <td>25%</td>
+                        <td>4.11</td>
+                    </tr>
+                    <tr>
+                        <td>Base Case</td>
+                        <td>12.86</td>
+                        <td>30%</td>
+                        <td>3.86</td>
+                    </tr>
+                    <tr>
+                        <td>Conservative Case</td>
+                        <td>9.28</td>
+                        <td>20%</td>
+                        <td>1.86</td>
+                    </tr>
+                    <tr>
+                        <td>Bear Case</td>
+                        <td>6.78</td>
+                        <td>10%</td>
+                        <td>0.68</td>
+                    </tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>Probability-Weighted Value</strong></td>
+                        <td colspan="2"><strong>HKD 13.83</strong></td>
+                        <td><strong>38.3% upside</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="scenarios" class="section">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card">
+                <h4>Bull Case <span class="probability">15% probability</span></h4>
+                <p>Hansizhuang achieves blockbuster status in China with multiple label expansions, biosimilar portfolio maintains leadership, pipeline delivers additional winners, successful international expansion. Hansizhuang peak sales >CNY 8bn. Operating margin reaches 30%+ at maturity.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 22.13</strong> | Discount Rate: 10%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Base Case - Optimistic <span class="probability">25% probability</span></h4>
+                <p>Strong execution on commercial portfolio, Hansizhuang gains additional indications (peak CNY 5-6bn), biosimilar competition manageable, moderate international success with revenue contribution growing to 15%.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 16.43</strong> | Discount Rate: 11%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Base Case <span class="probability">30% probability</span></h4>
+                <p>Steady biosimilar business with moderate growth, Hansizhuang achieves respectable market position (peak CNY 4bn), pricing pressure contained, limited international contribution. Biosimilar portfolio reaches CNY 10bn peak with margin compression.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 12.86</strong> | Discount Rate: 12%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Conservative Case <span class="probability">20% probability</span></h4>
+                <p>Intensified biosimilar competition compresses margins, Hansizhuang faces strong PD-1 competition (peak CNY 2.5bn), limited pipeline success. Gross margins decline to 70%. VBP pricing pressure more aggressive than expected.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 9.28</strong> | Discount Rate: 12.5%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Bear Case <span class="probability">10% probability</span></h4>
+                <p>Severe pricing pressure from VBP, loss of market share in biosimilars, Hansizhuang fails to compete effectively (peak <CNY 1.5bn), pipeline setbacks, international expansion stalls, operating losses persist longer.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 6.78</strong> | Discount Rate: 13%</p>
+            </div>
+        </section>
+
+        <section id="risks" class="section">
+            <h2>Risk Assessment</h2>
+
+            <h3>Pricing and Competition Risks</h3>
+            <div class="risk-item">
+                <h4>Volume-based procurement (VBP) pricing pressure</h4>
+                <p>Severity: High | Government-led procurement policies could significantly compress biosimilar margins. Mitigant: Diversified portfolio and cost-efficient manufacturing provide some buffer.</p>
+            </div>
+
+            <div class="risk-item">
+                <h4>Intensified biosimilar competition</h4>
+                <p>Severity: High | Multiple competitors entering same biosimilar categories eroding market share. Mitigant: First-mover advantage, brand recognition, and Fosun commercial network.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>PD-1 market overcrowding</h4>
+                <p>Severity: Medium-High | Hansizhuang faces competition from multiple domestic and global PD-1 inhibitors. Mitigant: Differentiated clinical data in SCLC; label expansion strategy.</p>
+            </div>
+
+            <h3>Clinical/Regulatory Risks</h3>
+            <div class="risk-item medium">
+                <h4>Pipeline clinical failures</h4>
+                <p>Severity: Medium | Innovative drug candidates and new biosimilars may fail to meet clinical endpoints. Mitigant: Diversified pipeline with multiple shots on goal; biosimilar programs have high success rates.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>Regulatory delays</h4>
+                <p>Severity: Medium | NDA approvals for new products could be delayed. Mitigant: Strong regulatory track record; experienced team.</p>
+            </div>
+
+            <h3>Operational Risks</h3>
+            <div class="risk-item medium">
+                <h4>Manufacturing quality issues</h4>
+                <p>Severity: Medium | Quality control problems could lead to recalls or regulatory action. Mitigant: cGMP facilities with international certifications; experienced manufacturing team.</p>
+            </div>
+
+            <div class="risk-item low">
+                <h4>Supply chain disruption</h4>
+                <p>Severity: Low-Medium | Raw material shortages or logistics issues could impact production. Mitigant: Multiple suppliers; Fosun group purchasing power.</p>
+            </div>
+
+            <h3>Financial and Parent Company Risks</h3>
+            <div class="risk-item medium">
+                <h4>Continued losses if profitability delayed</h4>
+                <p>Severity: Medium | Higher R&D spending or commercial challenges could delay profitability. Mitigant: Fosun Pharma parent provides financial backstop.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>Fosun Pharma strategic decisions</h4>
+                <p>Severity: Medium | Parent company priorities could influence Henlius strategy or capital allocation. Mitigant: Listed company with independent board; alignment of interests.</p>
+            </div>
+
+            <h3>Geopolitical Risks</h3>
+            <div class="risk-item medium">
+                <h4>US-China biotech tensions</h4>
+                <p>Severity: Medium | Potential restrictions on Chinese biotech access to US market or technology. Mitigant: Primary focus on China market; diversified international partnerships.</p>
+            </div>
+        </section>
+
+        <section id="recommendation" class="section">
+            <h2>Investment Recommendation</h2>
+
+            <div class="valuation-summary">
+                <h3>BUY</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="value">HKD 14.00</div>
+                        <div class="label">12-Month Target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">40%</div>
+                        <div class="label">Upside Potential</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">Medium-High</div>
+                        <div class="label">Conviction</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">12-18 months</div>
+                        <div class="label">Investment Horizon</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Leading position in China's growing biosimilar market with diversified portfolio</li>
+                <li>Hansizhuang provides innovative drug growth optionality with differentiated SCLC data</li>
+                <li>Strong Fosun Pharma backing provides financial stability and commercial infrastructure</li>
+                <li>Approaching profitability inflection point with improving operating leverage</li>
+                <li>International expansion through EU approvals and partnerships creates additional growth avenues</li>
+                <li>Probability-weighted valuation suggests meaningful upside from current levels</li>
+                <li>Attractive valuation relative to peers at current price-to-sales multiples</li>
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <div class="catalyst-item">
+                <span>Hansizhuang additional indication approvals (HCC, gastric cancer)</span>
+                <span class="timing">2025-2026</span>
+            </div>
+            <div class="catalyst-item">
+                <span>New biosimilar approvals (denosumab, aflibercept)</span>
+                <span class="timing">2025-2026</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Profitability achievement (first full-year profit)</span>
+                <span class="timing">2024-2025</span>
+            </div>
+            <div class="catalyst-item">
+                <span>NRDL inclusion for new products</span>
+                <span class="timing">Annual NRDL cycle</span>
+            </div>
+            <div class="catalyst-item">
+                <span>International partnership expansion</span>
+                <span class="timing">Ongoing</span>
+            </div>
+
+            <h3>Key Metrics to Monitor</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Quarterly revenue by product segment</li>
+                <li>Gross margin trends (pricing pressure indicator)</li>
+                <li>Hansizhuang prescription volume and market share</li>
+                <li>Pipeline clinical trial progress and regulatory submissions</li>
+                <li>NRDL negotiation outcomes</li>
+                <li>International revenue contribution</li>
+                <li>R&D expense as percentage of revenue</li>
+                <li>Cash position and operating cash flow</li>
+            </ul>
+        </section>
+
+        <section id="debate-log" class="section">
+            <h2>AI Debate Log</h2>
+            <p style="color: #8b949e; margin-bottom: 20px;">Multi-perspective analysis conducted on 2026-01-19 with BULL, BEAR, CRITIC, and SYNTHESIZER perspectives.</p>
+
+            <div class="debate-round">
+                <h4>Round 1: Biosimilar Market Growth and Henlius's Competitive Position</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>Henlius is a leading beneficiary of China's rapidly expanding biosimilar market. China's biosimilar market is projected to grow from $8.5bn (2024) to $25bn (2030), a 19.7% CAGR - one of the fastest growing pharmaceutical segments globally. Henlius has established first-mover advantage with the first rituximab biosimilar approved in China (Hanlikang, 2019), and has built a diversified portfolio. Revenue growth of 40.6% in 2023 and projected 37.8% in 2024 demonstrates strong commercial execution. With Fosun Pharma's commercial infrastructure providing access to extensive hospital and pharmacy networks, Henlius is exceptionally well-positioned.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">19.7% market CAGR</span>
+                        <span class="key-point">First-mover in rituximab</span>
+                        <span class="key-point">40.6% revenue growth 2023</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The market growth figures mask a critical reality: China's Volume-Based Procurement (VBP) policies are systematically compressing biosimilar margins. VBP negotiations have resulted in 40-70% price cuts for some biologics. Henlius's first-mover advantage is eroding rapidly - Qilu Pharmaceutical, Bio-Thera Solutions, and international players like Biocon/Viatris are all competing aggressively. The rituximab biosimilar market alone now has 5+ competitors. Henlius's 35% revenue contribution from Hanlikang is vulnerable to share erosion and price compression.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">VBP 40-70% price cuts</span>
+                        <span class="key-point">5+ rituximab competitors</span>
+                        <span class="key-point">35% Hanlikang concentration</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry critic">
+                    <div class="speaker">CRITIC</div>
+                    <p>Both arguments have merit but miss the key analytical question: can Henlius maintain or expand market share as the pie grows? The biosimilar market tripling from $8.5bn to $25bn by 2030 implies $16.5bn of new market value. If Henlius maintains a 10% share, that's $1.65bn in additional revenue. But if competition compresses share to 6%, that's only $1bn. I would model market share declining from approximately 12% to 8-10% over the forecast period, which still implies strong revenue growth but below Bull case expectations.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>The panel agrees that China's biosimilar market growth represents a genuine structural opportunity - this is not contested. Key consensus: (1) VBP pricing pressure is real and will compress unit economics over time, (2) Competition is intensifying but Henlius has defensible advantages, (3) First-mover advantage provides brand recognition but is not a permanent moat. For modeling purposes, assume biosimilar portfolio grows from CNY 4bn (2024) to CNY 10-12bn peak sales, with gross margins compressing from 79% to 70-75% at maturity.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 2: Hansizhuang (Serplulimab) Commercial Potential and PD-1 Competition</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>Hansizhuang is not just another PD-1 - it has achieved genuine clinical differentiation. The ASTRUM-005 trial showed significant overall survival benefit in extensive-stage small cell lung cancer (ES-SCLC), making it the first PD-1 to demonstrate this in China. With four approved indications already and multiple Phase 2/3 trials ongoing in HCC, gastric cancer, and TNBC, the label expansion opportunity is substantial. Hansizhuang contributes 25% of 2024E revenue and is growing faster than the biosimilar portfolio. Peak sales of CNY 5-6bn are achievable.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">ASTRUM-005 OS benefit in SCLC</span>
+                        <span class="key-point">4 approved indications</span>
+                        <span class="key-point">CNY 5-6bn peak sales potential</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>China's PD-1 market is arguably the most competitive oncology segment globally, with 10+ approved agents including Keytruda, Opdivo, and aggressive domestic players. NRDL price negotiations have been brutal - some PD-1s have seen 60-70% price cuts. Hansizhuang's SCLC differentiation, while real, addresses a relatively small indication (approximately 15% of lung cancer). The broader NSCLC and other solid tumor markets where volume exists are commoditized. I estimate Hansizhuang peak sales at CNY 2.5-3.5bn, not CNY 5-6bn.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">10+ PD-1 competitors</span>
+                        <span class="key-point">60-70% NRDL price cuts</span>
+                        <span class="key-point">SCLC only ~15% of lung cancer</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>The debate highlights fundamental uncertainty around Hansizhuang's ultimate commercial potential. Points of agreement: (1) SCLC differentiation is genuine but addresses smaller market, (2) Broader PD-1 competition in China is intense, (3) NRDL pricing pressure will compress margins. Consensus range: CNY 3.5-4.5bn peak sales (between Bull's CNY 5-6bn and Bear's CNY 2.5-3.5bn), with 65-70% gross margins at maturity. The upside scenario requires positive Phase 3 readouts in HCC and gastric cancer - these are the key catalysts to monitor.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 3: Path to Profitability and Financial Sustainability</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>Henlius's financial trajectory is compelling. Operating losses have narrowed dramatically: from CNY -800mn (2022) to CNY -400mn (2023) to projected CNY +200mn (2024E). This represents a CNY 1bn improvement in operating profit over two years while revenue grew 94%. The inflection to profitability in 2024E is transformative for valuation - the company transitions from cash-burning biotech to self-sustaining biopharma. Gross margins expanding from 75% to 79% demonstrate pricing power and manufacturing efficiency.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">CNY 1bn operating improvement</span>
+                        <span class="key-point">2024E profitability inflection</span>
+                        <span class="key-point">79% gross margin</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The Bull's profitability narrative relies on several assumptions that may not hold: (1) R&D spending of CNY 2bn is already elevated at 32% of revenue - maintaining this level limits margin expansion, while cutting it sacrifices pipeline value. (2) VBP pricing pressure could reverse gross margin gains. (3) Commercial investment required for Hansizhuang label expansion and new biosimilar launches will pressure SG&A. The projected CNY 200mn operating profit in 2024E is a thin margin (3.2%) vulnerable to execution shortfalls.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">32% R&D/revenue ratio</span>
+                        <span class="key-point">Only 3.2% operating margin</span>
+                        <span class="key-point">SG&A pressure from launches</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>The panel agrees Henlius is approaching profitability, but disagrees on timing and magnitude. Consensus: (1) Operating leverage is real - revenue growing faster than costs, (2) 2024E profitability (CNY 150-250mn net profit) is achievable but thin, (3) Sustainable scale profitability (CNY 500mn+) is a 2025-2026 event, (4) Fosun backing eliminates existential financial risk. For modeling: Base case net profit of CNY 400-500mn in 2025E, expanding to CNY 800mn-1bn by 2026-2027.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 4: Pipeline Value and International Expansion Opportunity</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>Beyond the commercial portfolio, Henlius has substantial pipeline value. Late-stage biosimilars include denosumab (Phase 3/NDA ready), aflibercept (Phase 3), and pertuzumab (Phase 3). The denosumab biosimilar alone addresses a CNY 10bn+ osteoporosis market in China. International expansion is equally compelling: EU approvals for rituximab (Ruxience) and trastuzumab (Zercepac) validate global manufacturing quality. International currently contributes 5% of revenue but could reach 15-20% by 2030.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The Bull overestimates pipeline value and international potential. Biosimilar development, while lower risk than innovative drugs, is not assured. The denosumab market is attractive, but Amgen's Prolia faces multiple biosimilar competitors globally - pricing will be aggressive from day one. For international expansion, Chinese biosimilar companies face skepticism from Western prescribers and payers. International reaching 15-20% of revenue by 2030 is optimistic; I would model 8-10%.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>The panel agrees pipeline assets and international expansion provide value, but disagrees on magnitude. Consensus: (1) Late-stage biosimilars (denosumab, aflibercept, pertuzumab) are legitimate value drivers with 70-75% probability of success, (2) International expansion is constrained by structural barriers but partnership model de-risks execution, (3) Early innovative pipeline should be assigned minimal value pending clinical proof-of-concept. Combined contribution: HKD 2-3 per share of upside optionality beyond base case.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 5: Valuation, Risk/Reward, and Final Recommendation</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL - Final Position</div>
+                    <p><strong>BUY</strong> with target HKD 14+. At HKD 10, Henlius trades at 7.8x 2024E and 6.0x 2025E price-to-sales - a discount to domestic biotech peers despite stronger commercial track record and diversified portfolio. The probability-weighted target price of HKD 13.83 implies 40% upside. Near-term catalysts are abundant: Hansizhuang label expansions, new biosimilar approvals, profitability milestone. Fosun Pharma backing provides downside protection.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR - Final Position</div>
+                    <p><strong>HOLD</strong> at HKD 10. The Bull's thesis requires multiple assumptions to align: sustained biosimilar market share despite VBP pressure, Hansizhuang competing effectively in crowded PD-1 market, pipeline approval and commercial success. The conservative case at HKD 9.28 is only 7% below current price, suggesting limited margin of safety. China biotech has faced sustained de-rating due to geopolitical concerns and competitive intensity.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER - Final Synthesis</div>
+                    <p>The debate crystallizes Henlius's investment case: a diversified China biopharma with biosimilar foundation, innovative drug optionality, and approaching profitability inflection. Key consensus: (1) Biosimilar market growth is a tailwind but competitive dynamics require monitoring, (2) Hansizhuang provides differentiated innovative drug exposure with CNY 3.5-4.5bn peak sales potential, (3) Profitability inflection in 2024-2025 is credible, (4) Fosun backing provides financial stability and downside protection. <strong>Final recommendation: BUY</strong> with target price HKD 12.50-14.00 (stress-tested probability-weighted midpoint). Conviction is MEDIUM-HIGH given execution dependencies.</p>
+                </div>
+            </div>
+
+            <h3>Key Disagreements Summary</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Topic</th>
+                    <th>Bull View</th>
+                    <th>Bear View</th>
+                    <th>Resolution</th>
+                </tr>
+                <tr>
+                    <td>Biosimilar market share</td>
+                    <td>Maintain 10%+ share</td>
+                    <td>Compress to 6-8%</td>
+                    <td>Model 8-10% at maturity</td>
+                </tr>
+                <tr>
+                    <td>Hansizhuang peak sales</td>
+                    <td>CNY 5-6bn</td>
+                    <td>CNY 2.5-3.5bn</td>
+                    <td>CNY 3.5-4.5bn base case</td>
+                </tr>
+                <tr>
+                    <td>2025 net profit</td>
+                    <td>CNY 650mn</td>
+                    <td>CNY 300-400mn</td>
+                    <td>CNY 400-500mn</td>
+                </tr>
+                <tr>
+                    <td>International revenue 2030</td>
+                    <td>15-20% of total</td>
+                    <td>8-10% of total</td>
+                    <td>10-12% base case</td>
+                </tr>
+            </table>
+
+            <h3>Key Consensus Points</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>China biosimilar market structural growth - tripling from $8.5bn to $25bn by 2030</li>
+                <li>VBP pricing pressure is real - gross margin erosion of 5-10pp over forecast period likely</li>
+                <li>Hansizhuang SCLC differentiation is genuine (ASTRUM-005 OS benefit)</li>
+                <li>Fosun Pharma backing provides stability and eliminates existential funding risk</li>
+                <li>Profitability inflection is approaching - timing debated but direction is clear</li>
+                <li>Downside is bounded by asset value - commercial portfolio and Fosun backing provide floor value around HKD 8-9</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            <p>Report generated on 2026-01-19 | Data as of May 2025</p>
+            <p>This report is for informational purposes only and does not constitute investment advice. Investors should conduct their own due diligence.</p>
+        </div>
+    </main>
+</body>
+</html>

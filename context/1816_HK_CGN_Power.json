@@ -1,0 +1,599 @@
+{
+  "ticker": "1816 HK",
+  "company": "CGN Power Co., Ltd.",
+  "sector": "Utilities - Nuclear Power",
+  "executive_summary": {
+    "overview": "CGN Power Co., Ltd. (1816 HK) is China's largest independent nuclear power operator by installed capacity, representing a pure-play opportunity in China's nuclear power expansion. The company operates primarily through its managed nuclear power plants across China, benefiting from the government's ambitious clean energy targets and the ongoing nuclear renaissance.",
+    "investment_highlights": [
+      "Dominant position in China's nuclear power sector with ~27-30 GW attributable capacity",
+      "Strong government support for nuclear capacity expansion under 14th/15th Five-Year Plans",
+      "Stable cash flows from long-term power purchase agreements with provincial grid companies",
+      "Attractive dividend yield of 4-5% for income investors",
+      "Technology advancement with indigenous Hualong One (HPR1000) reactor design",
+      "Operational excellence with top-quartile WANO safety rankings"
+    ],
+    "key_risks": [
+      "Nuclear safety incidents could impact policy and public sentiment",
+      "Regulatory tariff pressure from NDRC",
+      "High capital intensity requiring continuous investment",
+      "Execution risk on new projects and construction delays",
+      "Geopolitical considerations including US sanctions on parent CGN Group"
+    ],
+    "rating": "BUY",
+    "target_price": {
+      "value": 3.93,
+      "currency": "HKD",
+      "methodology": "Probability-weighted DCF at 9% WACC"
+    }
+  },
+  "industry_analysis": {
+    "market_overview": {
+      "operating_reactors": "55+ nuclear reactors operational in China",
+      "installed_capacity_gw": 57,
+      "share_of_electricity_generation": "5%",
+      "market_position": "World's fastest-growing nuclear power market"
+    },
+    "industry_characteristics": [
+      "High barriers to entry (regulatory, capital, technology)",
+      "Oligopolistic structure (CGN, CNNP, SPIC as main players)",
+      "Long asset life (40-60 years per reactor)",
+      "Baseload power with 7,000+ utilization hours annually",
+      "Strong government policy support"
+    ],
+    "government_policy": {
+      "14th_five_year_plan_2021_2025": {
+        "target_capacity_gw": 70,
+        "annual_approvals": "6-8 new reactors",
+        "focus": "Coastal sites initially, inland expansion potential"
+      },
+      "15th_five_year_plan_2026_2030": {
+        "target_capacity_gw": 100,
+        "strategy": "Continued aggressive build-out for carbon neutrality",
+        "technology_focus": "Hualong One expansion and export"
+      },
+      "carbon_neutrality_goals": {
+        "carbon_peak": 2030,
+        "carbon_neutral": 2060,
+        "projected_nuclear_capacity_2050_gw": "150-200"
+      }
+    },
+    "policy_tailwinds": [
+      "Energy Security: Reduce dependence on imported fossil fuels",
+      "Climate Commitments: Nuclear as reliable zero-carbon baseload",
+      "Technology Leadership: Develop indigenous reactor designs",
+      "Export Ambitions: Hualong One as exportable technology to UK, Argentina, Pakistan"
+    ],
+    "demand_drivers": [
+      "GDP growth of 4-5% annually",
+      "Electrification of transportation (EVs)",
+      "Industrial upgrade and high-tech manufacturing",
+      "Data centers and AI infrastructure growth",
+      "Continued urbanization"
+    ],
+    "nuclear_vs_renewables": {
+      "nuclear": {
+        "capacity_factor_pct": "85-90%",
+        "baseload_capable": true,
+        "land_requirement": "Low",
+        "capital_cost": "Very High",
+        "operating_cost": "Low",
+        "intermittency": "None",
+        "dispatchability": true
+      },
+      "solar": {
+        "capacity_factor_pct": "15-20%",
+        "baseload_capable": false,
+        "intermittency": "High"
+      },
+      "wind": {
+        "capacity_factor_pct": "25-35%",
+        "baseload_capable": false,
+        "intermittency": "High"
+      }
+    },
+    "competitive_landscape": {
+      "main_players": [
+        {
+          "company": "CGN Power (1816 HK)",
+          "parent": "CGN Group",
+          "listing": "Hong Kong",
+          "capacity_gw": "27-30",
+          "focus": "South China dominant"
+        },
+        {
+          "company": "China National Nuclear Power (601985 CH)",
+          "parent": "CNNC",
+          "listing": "Shanghai A-share",
+          "capacity_gw": "25-28",
+          "focus": "More diversified geographically"
+        },
+        {
+          "company": "State Power Investment Corporation (SPIC)",
+          "parent": "SPIC",
+          "listing": "Not listed",
+          "capacity_gw": "Various JV stakes"
+        }
+      ]
+    }
+  },
+  "company_analysis": {
+    "business_model": {
+      "core_business": "Nuclear power generation (95%+ of revenue)",
+      "secondary_business": "Maintenance, consulting, technology services",
+      "revenue_model": "Long-term Power Purchase Agreements (PPAs) with provincial grid companies",
+      "benchmark_tariff_rmb_per_kwh": 0.43,
+      "pricing_trend": "Gradual shift toward market-based pricing"
+    },
+    "operational_fleet": {
+      "total_attributable_capacity_gw": "27-30",
+      "plants": [
+        {
+          "name": "Daya Bay",
+          "province": "Guangdong",
+          "units": 2,
+          "capacity_mw": 1968,
+          "technology": "M310",
+          "equity_stake_pct": 75
+        },
+        {
+          "name": "Ling Ao",
+          "province": "Guangdong",
+          "units": 4,
+          "capacity_mw": 3964,
+          "technology": "M310/CPR1000",
+          "equity_stake_pct": 100
+        },
+        {
+          "name": "Ling Dong",
+          "province": "Guangdong",
+          "units": 2,
+          "capacity_mw": 2152,
+          "technology": "CPR1000",
+          "equity_stake_pct": 100
+        },
+        {
+          "name": "Yangjiang",
+          "province": "Guangdong",
+          "units": 6,
+          "capacity_mw": 6516,
+          "technology": "CPR1000/ACPR1000",
+          "equity_stake_pct": 64
+        },
+        {
+          "name": "Taishan",
+          "province": "Guangdong",
+          "units": 2,
+          "capacity_mw": 3500,
+          "technology": "EPR",
+          "equity_stake_pct": 51,
+          "note": "World's first EPR reactors in operation, largest operating units at 1,750 MW each"
+        },
+        {
+          "name": "Fangchenggang",
+          "province": "Guangxi",
+          "units": 4,
+          "capacity_mw": 4600,
+          "technology": "CPR1000/HPR1000",
+          "equity_stake_pct": 61
+        },
+        {
+          "name": "Hongyanhe",
+          "province": "Liaoning",
+          "units": 6,
+          "capacity_mw": 6564,
+          "technology": "CPR1000/ACPR1000",
+          "equity_stake_pct": 45,
+          "note": "Joint venture with SPIC"
+        },
+        {
+          "name": "Ningde",
+          "province": "Fujian",
+          "units": 4,
+          "capacity_mw": 4356,
+          "technology": "CPR1000",
+          "equity_stake_pct": 32.5
+        }
+      ]
+    },
+    "units_under_construction": {
+      "estimated_capacity_gw": "8-10",
+      "technology": "Primarily Hualong One (HPR1000)",
+      "target_2030_capacity_gw": "40+"
+    },
+    "technology_portfolio": {
+      "generation_1_plus": {
+        "type": "M310",
+        "description": "French design at Daya Bay",
+        "status": "Mature, proven safety record"
+      },
+      "generation_2_plus": {
+        "cpr1000": {
+          "description": "Improved M310 design",
+          "capacity_mw": 1080,
+          "design_life_years": 60,
+          "refueling_cycle_months": 18
+        },
+        "acpr1000": {
+          "description": "Advanced CPR1000 with enhanced safety"
+        }
+      },
+      "generation_3": {
+        "hualong_one_hpr1000": {
+          "description": "Indigenous Chinese design (CGN + CNNP collaboration)",
+          "capacity_mw": 1161,
+          "design_life_years": 60,
+          "features": [
+            "Enhanced passive safety systems",
+            "Double containment structure",
+            "Lower core damage frequency"
+          ],
+          "construction_period_months": "56-60",
+          "export_markets": ["UK Bradwell B", "Argentina", "Pakistan"]
+        },
+        "epr": {
+          "description": "European Pressurized Reactor at Taishan",
+          "capacity_mw": 1750,
+          "note": "JV with EDF, world's first operational EPR"
+        }
+      }
+    },
+    "competitive_advantages": [
+      "Larger operational fleet than domestic peers",
+      "Higher dividend payout (4-5% yield vs 2-3% for CNNP)",
+      "Taishan EPR operational experience",
+      "Strong presence in Guangdong (high electricity demand province)",
+      "Proven operational track record with top-quartile WANO rankings"
+    ],
+    "competitive_disadvantages": [
+      "H-share discount vs A-share peers",
+      "US sanctions on parent CGN Group (since 2019)",
+      "Less geographically diversified than CNNP"
+    ],
+    "operating_metrics": {
+      "capacity_factor_pct": "85-90%",
+      "utilization_hours": "7,500-7,800",
+      "unplanned_outages": "Minimal",
+      "wano_performance": "Top Quartile",
+      "refueling_outage_days": "30-40"
+    },
+    "ownership_structure": {
+      "cgn_group_pct": 64,
+      "public_float_pct": 36,
+      "ultimate_controller": "Chinese government via SASAC",
+      "edf_stake": "~30% of Daya Bay JV"
+    },
+    "dividend_policy": {
+      "payout_ratio_pct": "35-40%",
+      "frequency": "Semi-annual",
+      "current_yield_pct": "4-5%",
+      "dividend_history": [
+        {"year": 2021, "dps_hkd": 0.085, "payout_ratio_pct": 35},
+        {"year": 2022, "dps_hkd": 0.095, "payout_ratio_pct": 37},
+        {"year": 2023, "dps_hkd": 0.105, "payout_ratio_pct": 38},
+        {"year": "2024E", "dps_hkd": 0.115, "payout_ratio_pct": 38}
+      ]
+    },
+    "safety_record": {
+      "significant_incidents": 0,
+      "wano_ranking": "Consistently top quartile",
+      "safety_culture": "Strong, embedded in operations",
+      "post_fukushima_upgrades": "Completed",
+      "regulatory_oversight": ["NNSA", "WANO peer reviews", "IAEA"]
+    }
+  },
+  "financial_data": {
+    "currency": "RMB",
+    "base_year": 2024,
+    "estimated_financials": {
+      "revenue_billion": 87,
+      "ebitda_billion": 50,
+      "ebitda_margin_pct": 57,
+      "net_income_billion": 14,
+      "net_margin_pct": 16,
+      "roe_pct": 11,
+      "net_debt_billion": 200,
+      "net_debt_to_equity_pct": 165,
+      "net_debt_to_ebitda_x": 4.0
+    },
+    "shares_outstanding_billion": 45.5,
+    "exchange_rate_hkd_to_rmb": 0.91,
+    "historical_and_forecast": [
+      {"year": 2023, "revenue_rmb_b": 82, "ebitda_rmb_b": 47, "net_income_rmb_b": 13, "eps_rmb": 0.29, "dps_hkd": 0.10, "pe_x": 8.5, "ev_ebitda_x": 6.5, "div_yield_pct": 4.0, "roe_pct": 10},
+      {"year": "2024E", "revenue_rmb_b": 87, "ebitda_rmb_b": 50, "net_income_rmb_b": 14, "eps_rmb": 0.31, "dps_hkd": 0.11, "pe_x": 8.0, "ev_ebitda_x": 6.2, "div_yield_pct": 4.5, "roe_pct": 11},
+      {"year": "2025E", "revenue_rmb_b": 93, "ebitda_rmb_b": 53, "net_income_rmb_b": 15, "eps_rmb": 0.33, "dps_hkd": 0.12, "pe_x": 7.5, "ev_ebitda_x": 5.8, "div_yield_pct": 4.8, "roe_pct": 11},
+      {"year": "2026E", "revenue_rmb_b": 100, "ebitda_rmb_b": 57, "net_income_rmb_b": 16, "eps_rmb": 0.35, "dps_hkd": 0.13, "pe_x": 7.0, "ev_ebitda_x": 5.5, "div_yield_pct": 5.0, "roe_pct": 12}
+    ],
+    "key_assumptions": {
+      "tax_rate_pct": 15,
+      "depreciation_as_pct_of_revenue": "18-20%",
+      "capex_as_pct_of_revenue_growth_phase": "35-40%",
+      "working_capital_change": "Minimal (stable utility)"
+    }
+  },
+  "dcf_valuation": {
+    "methodology": {
+      "forecast_period_years": 10,
+      "terminal_value_method": "Gordon Growth Model",
+      "formula": "TV = FCF_10 x (1 + g) / (WACC - g)",
+      "enterprise_to_equity": "EV - Net Debt",
+      "net_debt_rmb_billion": 200,
+      "shares_outstanding_billion": 45.5
+    },
+    "wacc_discussion": {
+      "risk_free_rate_pct": "2.5-3.0%",
+      "equity_risk_premium_pct": "6-7%",
+      "beta": "0.8-1.0",
+      "cost_of_debt_pct": "4-5%",
+      "debt_equity_ratio": "60/40",
+      "recommended_wacc_pct": "9-10%",
+      "rationale": "Utility characteristics suggest lower beta; state ownership reduces financing risk; nuclear regulatory risk adds premium; H-share listing adds liquidity/governance risk"
+    },
+    "discount_rates_used": [6, 7, 8, 9]
+  },
+  "scenarios": [
+    {
+      "name": "Super Bear",
+      "probability_pct": 5,
+      "narrative": "Major nuclear safety incident (domestic or global) triggers policy reversal. Moratorium on new nuclear construction, increased regulatory burden, public opposition.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": -2,
+        "revenue_growth_yr6_10_pct": 0,
+        "ebitda_margin_yr1_5_pct": 45,
+        "ebitda_margin_yr6_10_pct": 40,
+        "ebitda_margin_terminal_pct": 38,
+        "capex_to_revenue_yr1_5_pct": 15,
+        "terminal_growth_pct": 0
+      },
+      "drivers": [
+        "No new reactor approvals",
+        "Increased safety compliance costs",
+        "Public and policy backlash",
+        "Potential early retirement of older units",
+        "Tariff cuts as punishment"
+      ],
+      "valuation_hkd_per_share": {
+        "wacc_6_pct": 1.65,
+        "wacc_7_pct": 1.21,
+        "wacc_8_pct": 0.89,
+        "wacc_9_pct": 0.27
+      }
+    },
+    {
+      "name": "Bear",
+      "probability_pct": 20,
+      "narrative": "Slower than expected capacity additions due to supply chain constraints, skilled labor shortages, or regulatory delays. Tariff pressure from grid companies and competition from cheaper renewables.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 4,
+        "revenue_growth_yr6_10_pct": 3,
+        "ebitda_margin_yr1_5_pct": 52,
+        "ebitda_margin_yr6_10_pct": 50,
+        "ebitda_margin_terminal_pct": 48,
+        "capex_to_revenue_yr1_5_pct": 30,
+        "terminal_growth_pct": 2
+      },
+      "drivers": [
+        "Construction delays on new units",
+        "Tariff negotiations favor grid companies",
+        "Slower electricity demand growth",
+        "Competition from solar/wind + storage",
+        "Higher financing costs"
+      ],
+      "valuation_hkd_per_share": {
+        "wacc_6_pct": 4.95,
+        "wacc_7_pct": 4.05,
+        "wacc_8_pct": 3.38,
+        "wacc_9_pct": 1.96
+      }
+    },
+    {
+      "name": "Base",
+      "probability_pct": 50,
+      "narrative": "Steady expansion in line with government's 14th and 15th Five-Year Plans. CGN maintains market share with disciplined execution. Tariffs remain stable with modest inflation adjustments.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 7,
+        "revenue_growth_yr6_10_pct": 5,
+        "ebitda_margin_yr1_5_pct": 55,
+        "ebitda_margin_yr6_10_pct": 54,
+        "ebitda_margin_terminal_pct": 52,
+        "capex_to_revenue_yr1_5_pct": 35,
+        "terminal_growth_pct": 2.5
+      },
+      "drivers": [
+        "6-8 new reactor approvals annually nationwide",
+        "CGN captures 40-45% of new builds",
+        "Tariff stability with CPI adjustments",
+        "Operational excellence continues",
+        "Hualong One gains export traction"
+      ],
+      "valuation_hkd_per_share": {
+        "wacc_6_pct": 8.79,
+        "wacc_7_pct": 7.26,
+        "wacc_8_pct": 6.11,
+        "wacc_9_pct": 3.79
+      }
+    },
+    {
+      "name": "Bull",
+      "probability_pct": 20,
+      "narrative": "Accelerated nuclear build-out driven by faster-than-expected electricity demand (AI, EVs, data centers) and recognition of nuclear's role in energy security. Tariff increases to incentivize investment.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 10,
+        "revenue_growth_yr6_10_pct": 7,
+        "ebitda_margin_yr1_5_pct": 57,
+        "ebitda_margin_yr6_10_pct": 56,
+        "ebitda_margin_terminal_pct": 54,
+        "capex_to_revenue_yr1_5_pct": 38,
+        "terminal_growth_pct": 3
+      },
+      "drivers": [
+        "10+ new reactor approvals annually",
+        "Inland nuclear projects approved",
+        "Tariff increases to attract capital",
+        "CGN gains market share",
+        "International projects contribute",
+        "AI/data center power demand surge"
+      ],
+      "valuation_hkd_per_share": {
+        "wacc_6_pct": 14.29,
+        "wacc_7_pct": 11.87,
+        "wacc_8_pct": 9.95,
+        "wacc_9_pct": 6.69
+      }
+    },
+    {
+      "name": "Super Bull",
+      "probability_pct": 5,
+      "narrative": "Global nuclear renaissance following climate emergency declarations. Massive policy support, carbon pricing, and recognition of nuclear as essential for net-zero. China leads global nuclear expansion.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 15,
+        "revenue_growth_yr6_10_pct": 10,
+        "ebitda_margin_yr1_5_pct": 60,
+        "ebitda_margin_yr6_10_pct": 58,
+        "ebitda_margin_terminal_pct": 55,
+        "capex_to_revenue_yr1_5_pct": 40,
+        "terminal_growth_pct": 3.5
+      },
+      "drivers": [
+        "15+ new reactor approvals annually",
+        "Massive grid investment supports nuclear",
+        "Carbon pricing benefits nuclear economics",
+        "Multiple international projects",
+        "Technology premium for Hualong One exports",
+        "Premium tariffs for clean baseload"
+      ],
+      "valuation_hkd_per_share": {
+        "wacc_6_pct": 26.37,
+        "wacc_7_pct": 21.97,
+        "wacc_8_pct": 18.31,
+        "wacc_9_pct": 12.60
+      }
+    }
+  ],
+  "probability_weighted_price": {
+    "calculation_method": "Sum of (Scenario Probability x Scenario Value) for each discount rate",
+    "by_discount_rate": {
+      "wacc_6_pct": {
+        "value_hkd": 8.65,
+        "calculation": "(5% x 1.65) + (20% x 4.95) + (50% x 8.79) + (20% x 14.29) + (5% x 26.37)"
+      },
+      "wacc_7_pct": {
+        "value_hkd": 7.21,
+        "calculation": "(5% x 1.21) + (20% x 4.05) + (50% x 7.26) + (20% x 11.87) + (5% x 21.97)"
+      },
+      "wacc_8_pct": {
+        "value_hkd": 6.08,
+        "calculation": "(5% x 0.89) + (20% x 3.38) + (50% x 6.11) + (20% x 9.95) + (5% x 18.31)"
+      },
+      "wacc_9_pct": {
+        "value_hkd": 3.93,
+        "calculation": "(5% x 0.27) + (20% x 1.96) + (50% x 3.79) + (20% x 6.69) + (5% x 12.60)"
+      }
+    },
+    "central_case": {
+      "discount_rate_pct": 9,
+      "target_price_hkd": 3.93,
+      "rationale": "9% WACC appropriate for nuclear utility with state ownership benefit offset by H-share and regulatory risk premium"
+    },
+    "sensitivity_analysis": {
+      "wacc_6_pct": {"target_hkd": 8.65, "upside_pct": 246, "assumption": "Current price ~HKD 2.50"},
+      "wacc_7_pct": {"target_hkd": 7.21, "upside_pct": 188},
+      "wacc_8_pct": {"target_hkd": 6.08, "upside_pct": 143},
+      "wacc_9_pct": {"target_hkd": 3.93, "upside_pct": 57}
+    }
+  },
+  "risks": {
+    "nuclear_safety": {
+      "severity": "High",
+      "probability": "Low",
+      "description": "Major nuclear incident (domestic or global) could trigger policy reversal, public opposition, and regulatory tightening",
+      "mitigation": "Strong safety culture, top-quartile WANO rankings, post-Fukushima upgrades completed"
+    },
+    "tariff_pressure": {
+      "severity": "Medium",
+      "probability": "Medium",
+      "description": "NDRC could reduce on-grid tariffs or delay inflation adjustments under pressure from grid companies",
+      "mitigation": "Gradual shift to market-based pricing, essential baseload status"
+    },
+    "construction_execution": {
+      "severity": "Medium",
+      "probability": "Medium",
+      "description": "Delays, cost overruns, or quality issues on new reactor construction could impact growth trajectory",
+      "mitigation": "Proven Hualong One technology, experienced construction teams"
+    },
+    "geopolitical_sanctions": {
+      "severity": "Medium",
+      "probability": "Low-Medium",
+      "description": "US sanctions on parent CGN Group could be expanded, limiting technology access and international expansion",
+      "mitigation": "Domestic technology self-sufficiency, focus on non-US markets for exports"
+    },
+    "renewable_competition": {
+      "severity": "Low-Medium",
+      "probability": "Medium",
+      "description": "Continued cost deflation in solar/wind + storage could reduce nuclear's cost competitiveness",
+      "mitigation": "Nuclear provides baseload power that renewables cannot; complementary rather than substitutive"
+    },
+    "state_ownership": {
+      "severity": "Low",
+      "probability": "Medium",
+      "description": "Concentrated state ownership may lead to non-commercial decisions, related party transactions, or minority shareholder value dilution",
+      "mitigation": "HKEX listing standards, independent board members, transparent disclosure"
+    },
+    "electricity_demand": {
+      "severity": "Low-Medium",
+      "probability": "Low",
+      "description": "Slower than expected electricity demand growth in China could reduce need for new capacity",
+      "mitigation": "Multiple structural demand drivers (EVs, AI, data centers); nuclear essential for baseload"
+    }
+  },
+  "recommendation": {
+    "rating": "BUY",
+    "target_price_hkd": 3.93,
+    "target_price_range_hkd": "3.50 - 4.50",
+    "assumed_current_price_hkd": 2.50,
+    "upside_potential_pct": 57,
+    "investment_horizon": "12-18 months",
+    "conviction_level": "Medium-High",
+    "thesis": {
+      "summary": "CGN Power offers compelling value as a pure-play on China's nuclear expansion with defensive utility characteristics and attractive dividend yield",
+      "key_points": [
+        "Structural Growth: China's nuclear capacity set to double by 2035, with CGN as dominant player",
+        "Policy Tailwind: Government commitment to nuclear expansion is unwavering under carbon neutrality goals",
+        "Operational Excellence: Top-quartile WANO safety and efficiency metrics de-risk operations",
+        "Technology Moat: Hualong One positions CGN for domestic growth and export opportunities",
+        "Income Generation: Attractive 4-5% dividend yield with consistent growth track record",
+        "Valuation: H-share discount offers value versus A-share peer CNNP"
+      ]
+    },
+    "catalysts": {
+      "positive": [
+        "New reactor approvals announcement",
+        "Tariff increases from NDRC",
+        "International project contract wins (UK, Argentina, Pakistan)",
+        "Capacity additions ahead of schedule",
+        "Dividend increases above expectations",
+        "Stock Connect inclusion or index additions"
+      ],
+      "negative": [
+        "Nuclear incidents globally",
+        "Regulatory tightening or safety concerns",
+        "Electricity demand growth slowdown",
+        "Tariff cuts or pressure",
+        "US sanctions escalation",
+        "Construction delays or cost overruns"
+      ]
+    },
+    "suitable_for": [
+      "Income-focused investors seeking stable dividends",
+      "Long-term investors with clean energy thematic view",
+      "Value investors looking for H-share discount opportunity",
+      "Portfolio managers seeking defensive utility exposure to China"
+    ],
+    "not_suitable_for": [
+      "Investors with ESG concerns about nuclear power",
+      "Short-term traders seeking volatility",
+      "Risk-averse investors uncomfortable with China exposure"
+    ]
+  },
+  "last_updated": "2026-01-18",
+  "disclaimer": "This report is for informational purposes only and does not constitute investment advice. The analysis is based on publicly available information and analyst estimates. Actual results may differ materially from projections. Investors should conduct their own due diligence before making investment decisions."
+}

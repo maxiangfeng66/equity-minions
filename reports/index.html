@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Research Portfolio | Multi-AI Debate Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #eee; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); border-radius: 12px; padding: 40px; margin-bottom: 40px; border: 1px solid #0f3460; text-align: center; }
+        header h1 { font-size: 2.8em; color: #e94560; margin-bottom: 10px; }
+        header p { color: #aaa; font-size: 1.2em; max-width: 800px; margin: 0 auto; }
+        .stats-bar { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2em; font-weight: bold; color: #00cec9; }
+        .stat-label { color: #888; font-size: 0.9em; }
+        .filters { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 20px; border: 1px solid #0f3460; background: #16213e; color: #eee; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: #e94560; border-color: #e94560; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .card { background: #16213e; border-radius: 12px; padding: 25px; border: 1px solid #0f3460; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; display: block; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2); border-color: #e94560; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .card-ticker { font-size: 1.5em; font-weight: bold; color: #e94560; }
+        .card-company { color: #aaa; font-size: 0.95em; margin-top: 5px; }
+        .card-sector { color: #666; font-size: 0.85em; margin-top: 3px; }
+        .badge { padding: 6px 14px; border-radius: 4px; font-size: 0.85em; font-weight: bold; text-transform: uppercase; }
+        .badge-buy { background: #00b894; color: #fff; }
+        .badge-hold { background: #fdcb6e; color: #333; }
+        .card-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #0f3460; }
+        .metric { text-align: center; }
+        .metric-value { font-size: 1.2em; font-weight: bold; color: #00cec9; }
+        .metric-value.current { color: #e94560; }
+        .metric-value.upside { color: #00b894; }
+        .metric-value.downside { color: #d63031; }
+        .metric-label { font-size: 0.75em; color: #888; margin-top: 2px; }
+        .conviction-bar { height: 6px; background: #1a1a2e; border-radius: 3px; margin-top: 15px; overflow: hidden; }
+        .conviction-fill { height: 100%; background: linear-gradient(90deg, #d63031, #fdcb6e, #00b894); border-radius: 3px; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 0.85em; color: #666; }
+        .card-links { display: flex; gap: 15px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #0f3460; }
+        .card-links a { font-size: 0.8em; padding: 5px 12px; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+        .card-links .summary-link { background: #0f3460; color: #4ea8de; }
+        .card-links .detailed-link { background: #00b894; color: #fff; }
+        .card-links a:hover { transform: scale(1.05); }
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Equity Research Portfolio</h1>
+            <p>Multi-AI Adversarial Debate Analysis - Bull, Bear, Critic, and Synthesizer perspectives on each equity</p>
+            <p style="color: #e94560; margin-top: 10px;">Verified Prices as of January 2026</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">14</div>
+                    <div class="stat-label">Total Reports</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color: #00b894;">8</div>
+                    <div class="stat-label">BUY Ratings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color: #fdcb6e;">6</div>
+                    <div class="stat-label">HOLD Ratings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Sectors Covered</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterCards('all')">All</button>
+            <button class="filter-btn" onclick="filterCards('buy')">BUY</button>
+            <button class="filter-btn" onclick="filterCards('hold')">HOLD</button>
+            <button class="filter-btn" onclick="filterCards('tech')">Technology</button>
+            <button class="filter-btn" onclick="filterCards('healthcare')">Healthcare</button>
+            <button class="filter-btn" onclick="filterCards('energy')">Energy</button>
+            <button class="filter-btn" onclick="filterCards('realestate')">Real Estate</button>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Legend Biotech - EXCEPTIONAL VALUE -->
+            <div class="card" data-rating="buy" data-sector="healthcare">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">LEGN</div>
+                        <div class="card-company">Legend Biotech Corporation</div>
+                        <div class="card-sector">Healthcare - CAR-T Therapy</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">USD 22.12</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">USD 65.00</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+193.8%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 75%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 7.5/10</span>
+                    <span>EXCEPTIONAL VALUE</span>
+                </div>
+                <div class="card-links">
+                    <a href="LEGN_US_Legend_Biotech.html" class="summary-link">Summary</a>
+                    <a href="LEGN_US_Legend_Biotech_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- A-Living - Deep Value -->
+            <div class="card" data-rating="buy" data-sector="realestate">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">3319.HK</div>
+                        <div class="card-company">A-Living Smart City Services</div>
+                        <div class="card-sector">Real Estate - Property Management</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 2.90</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 5.80</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+100.0%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 60%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 6/10</span>
+                    <span>Deep Value / Parent Risk</span>
+                </div>
+                <div class="card-links">
+                    <a href="3319_HK_A_Living.html" class="summary-link">Summary</a>
+                    <a href="3319_HK_A_Living_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Fourth Paradigm -->
+            <div class="card" data-rating="buy" data-sector="tech">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">6682.HK</div>
+                        <div class="card-company">Beijing Fourth Paradigm Technology</div>
+                        <div class="card-sector">Technology - AI / Enterprise Software</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 59.55</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 65.08</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+9.3%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 60%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 6/10</span>
+                    <span>Enterprise AI Leader</span>
+                </div>
+                <div class="card-links">
+                    <a href="6682_HK_Fourth_Paradigm.html" class="summary-link">Summary</a>
+                    <a href="6682_HK_Fourth_Paradigm_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Akeso -->
+            <div class="card" data-rating="buy" data-sector="healthcare">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">9926.HK</div>
+                        <div class="card-company">Akeso Inc.</div>
+                        <div class="card-sector">Healthcare - Bispecific Antibodies</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 121.00</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 140.00</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+15.7%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 70%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 7/10</span>
+                    <span>Cadonilimab Leader</span>
+                </div>
+                <div class="card-links">
+                    <a href="9926_HK_Akeso.html" class="summary-link">Summary</a>
+                    <a href="9926_HK_Akeso_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Horizon Robotics -->
+            <div class="card" data-rating="buy" data-sector="tech">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">9660.HK</div>
+                        <div class="card-company">Horizon Robotics Inc.</div>
+                        <div class="card-sector">Technology - Autonomous Driving / ADAS</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 9.55</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 12.00</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+25.7%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 65%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 6.5/10</span>
+                    <span>AD Chip Localization</span>
+                </div>
+                <div class="card-links">
+                    <a href="9660_HK_Horizon_Robotics.html" class="summary-link">Summary</a>
+                    <a href="9660_HK_Horizon_Robotics_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Kingsoft -->
+            <div class="card" data-rating="buy" data-sector="tech">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">3888.HK</div>
+                        <div class="card-company">Kingsoft Corporation</div>
+                        <div class="card-sector">Technology - Software / Cloud</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 30.80</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 38.00</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+23.4%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 60%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 6/10</span>
+                    <span>WPS + Cloud + AI</span>
+                </div>
+                <div class="card-links">
+                    <a href="3888_HK_Kingsoft.html" class="summary-link">Summary</a>
+                    <a href="3888_HK_Kingsoft_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- CGN Power -->
+            <div class="card" data-rating="buy" data-sector="energy">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">1816.HK</div>
+                        <div class="card-company">CGN Power Co., Ltd.</div>
+                        <div class="card-sector">Utilities - Nuclear Power</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 3.08</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 3.70</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+20.1%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 65%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 6.5/10</span>
+                    <span>Nuclear Expansion</span>
+                </div>
+                <div class="card-links">
+                    <a href="1816_HK_CGN_Power.html" class="summary-link">Summary</a>
+                    <a href="1816_HK_CGN_Power_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Greentown Service -->
+            <div class="card" data-rating="buy" data-sector="realestate">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">2869.HK</div>
+                        <div class="card-company">Greentown Service Group</div>
+                        <div class="card-sector">Real Estate - Property Management</div>
+                    </div>
+                    <span class="badge badge-buy">BUY</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 5.52</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 6.20</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+12.3%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 65%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 6.5/10</span>
+                    <span>Premium PM Brand</span>
+                </div>
+                <div class="card-links">
+                    <a href="2869_HK_Greentown_Service.html" class="summary-link">Summary</a>
+                    <a href="2869_HK_Greentown_Service_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- China Unicom - HOLD -->
+            <div class="card" data-rating="hold" data-sector="tech">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">762.HK</div>
+                        <div class="card-company">China Unicom (Hong Kong)</div>
+                        <div class="card-sector">Telecommunications</div>
+                    </div>
+                    <span class="badge badge-hold">HOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 7.95</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 8.50</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+6.9%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 55%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 5.5/10</span>
+                    <span>5G + Dividend</span>
+                </div>
+                <div class="card-links">
+                    <a href="762_HK_China_Unicom.html" class="summary-link">Summary</a>
+                    <a href="762_HK_China_Unicom_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- GCL Technology - HOLD -->
+            <div class="card" data-rating="hold" data-sector="energy">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">3800.HK</div>
+                        <div class="card-company">GCL Technology Holdings</div>
+                        <div class="card-sector">Energy - Polysilicon / FBR</div>
+                    </div>
+                    <span class="badge badge-hold">HOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 1.09</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 1.45</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+33.0%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 50%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 5/10</span>
+                    <span>FBR Tech / Oversupply</span>
+                </div>
+                <div class="card-links">
+                    <a href="3800_HK_GCL_Technology.html" class="summary-link">Summary</a>
+                    <a href="3800_HK_GCL_Technology_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Xinte Energy - HOLD -->
+            <div class="card" data-rating="hold" data-sector="energy">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">1799.HK</div>
+                        <div class="card-company">Xinte Energy Co., Ltd.</div>
+                        <div class="card-sector">Energy - Solar / Polysilicon</div>
+                    </div>
+                    <span class="badge badge-hold">HOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 7.27</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 9.00</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value upside">+23.8%</div>
+                        <div class="metric-label">Upside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 50%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 5/10</span>
+                    <span>Polysilicon Oversupply</span>
+                </div>
+                <div class="card-links">
+                    <a href="1799_HK_Xinte_Energy.html" class="summary-link">Summary</a>
+                    <a href="1799_HK_Xinte_Energy_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- APT Satellite - HOLD -->
+            <div class="card" data-rating="hold" data-sector="tech">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">1045.HK</div>
+                        <div class="card-company">APT Satellite Holdings</div>
+                        <div class="card-sector">Telecommunications - Satellite</div>
+                    </div>
+                    <span class="badge badge-hold">HOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 3.74</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 2.50</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value downside">-33.2%</div>
+                        <div class="metric-label">Downside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 40%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 4/10</span>
+                    <span>LEO Competition Risk</span>
+                </div>
+                <div class="card-links">
+                    <a href="1045_HK_APT_Satellite.html" class="summary-link">Summary</a>
+                    <a href="1045_HK_APT_Satellite_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- InnoCare Pharma - HOLD -->
+            <div class="card" data-rating="hold" data-sector="healthcare">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">9969.HK</div>
+                        <div class="card-company">InnoCare Pharma Limited</div>
+                        <div class="card-sector">Healthcare - BTK Inhibitors</div>
+                    </div>
+                    <span class="badge badge-hold">HOLD</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 13.48</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 9.50</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value downside">-29.5%</div>
+                        <div class="metric-label">Downside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 45%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>Conviction: 4.5/10</span>
+                    <span>Above Target Price</span>
+                </div>
+                <div class="card-links">
+                    <a href="9969_HK_InnoCare_Pharma.html" class="summary-link">Summary</a>
+                    <a href="9969_HK_InnoCare_Pharma_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+
+            <!-- Henlius Biotech - CAUTION -->
+            <div class="card" data-rating="hold" data-sector="healthcare">
+                <div class="card-header">
+                    <div>
+                        <div class="card-ticker">2696.HK</div>
+                        <div class="card-company">Shanghai Henlius Biotech</div>
+                        <div class="card-sector">Healthcare - Biosimilars</div>
+                    </div>
+                    <span class="badge badge-hold">CAUTION</span>
+                </div>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <div class="metric-value current">HKD 83.90</div>
+                        <div class="metric-label">Current</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">HKD 12.80</div>
+                        <div class="metric-label">Target</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value downside">-84.7%</div>
+                        <div class="metric-label">Downside</div>
+                    </div>
+                </div>
+                <div class="conviction-bar">
+                    <div class="conviction-fill" style="width: 30%;"></div>
+                </div>
+                <div class="card-footer">
+                    <span>VERIFY PRICE</span>
+                    <span>Price Alert - Check Data</span>
+                </div>
+                <div class="card-links">
+                    <a href="2696_HK_Henlius_Biotech.html" class="summary-link">Summary</a>
+                    <a href="2696_HK_Henlius_Biotech_detailed.html" class="detailed-link">📊 Full Report</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Generated January 2026 | Multi-AI Adversarial Debate Framework</p>
+            <p>All prices verified as of January 2026. This portfolio overview is for informational purposes only.</p>
+            <p>Each report represents structured debate between Bull, Bear, Critic, and Synthesizer perspectives.</p>
+        </footer>
+    </div>
+
+    <script>
+        function filterCards(filter) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                const rating = card.getAttribute('data-rating');
+                const sector = card.getAttribute('data-sector');
+
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else if (filter === 'buy' || filter === 'hold') {
+                    card.style.display = rating === filter ? 'block' : 'none';
+                } else {
+                    card.style.display = sector === filter ? 'block' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

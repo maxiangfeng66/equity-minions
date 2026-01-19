@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGN US - Detailed Research Report | Legend Biotech Corporation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .nav-footer {
+            padding: 20px;
+            border-top: 1px solid #30363d;
+        }
+
+        .back-link {
+            display: block;
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 30px 40px;
+            max-width: 1200px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #58a6ff;
+            font-size: 2.5em;
+        }
+
+        header h2 {
+            color: #c9d1d9;
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+
+        header .sector {
+            color: #8b949e;
+            margin-top: 8px;
+        }
+
+        .recommendation-badge {
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .badge-buy { background: #238636; color: #fff; }
+        .badge-hold { background: #9e6a03; color: #fff; }
+        .badge-sell { background: #da3633; color: #fff; }
+        .badge-outperform { background: #1f6feb; color: #fff; }
+
+        section {
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        section h2 {
+            color: #58a6ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #30363d;
+        }
+
+        section h3 {
+            color: #c9d1d9;
+            font-size: 1.2em;
+            margin: 20px 0 15px;
+        }
+
+        section h4 {
+            color: #8b949e;
+            font-size: 1em;
+            margin: 15px 0 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1f3a5c 0%, #1a2733 100%);
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .key-points li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        th {
+            background: #21262d;
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #21262d;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-card .value {
+            color: #58a6ff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .metric-card .value.positive { color: #3fb950; }
+        .metric-card .value.negative { color: #f85149; }
+
+        .scenario-card {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card.super-bear { border-left: 4px solid #da3633; }
+        .scenario-card.bear { border-left: 4px solid #f85149; }
+        .scenario-card.base { border-left: 4px solid #58a6ff; }
+        .scenario-card.bull { border-left: 4px solid #3fb950; }
+        .scenario-card.super-bull { border-left: 4px solid #238636; }
+
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .scenario-header h4 {
+            margin: 0;
+            color: #c9d1d9;
+        }
+
+        .probability-badge {
+            background: #30363d;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .risk-item {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #f85149;
+        }
+
+        .risk-item.medium { border-left-color: #9e6a03; }
+        .risk-item.low { border-left-color: #3fb950; }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .risk-header h5 {
+            color: #c9d1d9;
+            margin: 0;
+        }
+
+        .impact-badge {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: #30363d;
+        }
+
+        .debate-round {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .debate-message {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #0d1117;
+        }
+
+        .debate-message.analyst { border-left: 3px solid #58a6ff; }
+        .debate-message.bull { border-left: 3px solid #3fb950; }
+        .debate-message.bear { border-left: 3px solid #f85149; }
+        .debate-message.critic { border-left: 3px solid #9e6a03; }
+        .debate-message.synthesizer { border-left: 3px solid #a371f7; }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+
+        .message-role {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .message-role.analyst { color: #58a6ff; }
+        .message-role.bull { color: #3fb950; }
+        .message-role.bear { color: #f85149; }
+        .message-role.critic { color: #9e6a03; }
+        .message-role.synthesizer { color: #a371f7; }
+
+        .message-ai { color: #8b949e; }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.9em;
+            border-top: 1px solid #30363d;
+            margin-top: 30px;
+        }
+
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible:after {
+            content: " +";
+            font-size: 0.8em;
+        }
+
+        .collapsible.active:after {
+            content: " -";
+        }
+
+        .collapsible-content {
+            display: none;
+            overflow: hidden;
+        }
+
+        .collapsible-content.show {
+            display: block;
+        }
+
+        .consensus-box {
+            background: linear-gradient(135deg, #1a3d2e 0%, #1a2733 100%);
+            border-left: 4px solid #3fb950;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .disagreement-box {
+            background: linear-gradient(135deg, #3d1a1a 0%, #1a2733 100%);
+            border-left: 4px solid #f85149;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>LEGN US</h3>
+            <p>Legend Biotech Corporation</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">Debate Log</a></li>
+        </ul>
+        <div class="nav-footer">
+            <a href="LEGN_US_Legend_Biotech.html" class="back-link">&lt;- Back to Summary</a>
+            <a href="index.html" class="back-link">&lt;- Portfolio Index</a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header>
+            <div class="header-info">
+                <h1>LEGN US</h1>
+                <h2>Legend Biotech Corporation</h2>
+                <p class="sector">Healthcare - Biotechnology | NASDAQ</p>
+                <p class="sector" style="margin-top: 5px;">HQ: Somerset, NJ, USA | Founded: 2014 | ~3,500 employees</p>
+            </div>
+            <div class="recommendation-badge badge-outperform">OUTPERFORM</div>
+        </header>
+
+        <!-- Executive Summary Section -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="highlight-box">
+                <p>Legend Biotech is a global biotechnology company focused on discovering and developing novel cell therapies for oncology and other indications. The company's lead product, CARVYKTI (ciltacabtagene autoleucel), is a BCMA-directed CAR-T cell therapy approved for relapsed/refractory multiple myeloma. CARVYKTI is commercialized through a global partnership with Johnson & Johnson (Janssen), representing one of the most significant CAR-T collaborations in the industry.</p>
+            </div>
+
+            <h3>Investment Thesis</h3>
+            <p>Legend Biotech represents a high-risk, high-reward opportunity in the rapidly growing CAR-T cell therapy market. The company benefits from a validated commercial product (CARVYKTI), a strong partnership with J&J, and a diversified pipeline. However, execution risk, manufacturing complexity, and competitive pressures remain key concerns. The stock offers significant upside if CARVYKTI achieves broader label expansion and the pipeline delivers additional approved therapies.</p>
+
+            <h3>Key Highlights</h3>
+            <ul class="key-points">
+                <li>CARVYKTI achieved blockbuster trajectory with 2024 sales exceeding $1.5 billion (company share ~50%)</li>
+                <li>FDA approval in April 2024 for earlier-line multiple myeloma (1-3 prior therapies) significantly expanded addressable market</li>
+                <li>Strong partnership with J&J provides commercial infrastructure and risk sharing</li>
+                <li>Robust pipeline including next-gen CAR-T candidates and solid tumor programs</li>
+                <li>Significant manufacturing scale-up investments to address capacity constraints</li>
+                <li>Cash position supports operations through profitability horizon</li>
+            </ul>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Target (Low)</div>
+                    <div class="value">$42.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Target (Base)</div>
+                    <div class="value">$58.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Target (High)</div>
+                    <div class="value">$85.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Current Price</div>
+                    <div class="value">$45.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Upside to Base</div>
+                    <div class="value positive">28.9%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Analysis Section -->
+        <section id="industry-analysis">
+            <h2>Industry Analysis</h2>
+
+            <h3>CAR-T Market Overview</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Market Size (2024)</div>
+                    <div class="value">$4.8B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Projected (2030)</div>
+                    <div class="value">$25-30B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">CAGR 2024-2030</div>
+                    <div class="value positive">32-35%</div>
+                </div>
+            </div>
+
+            <h4>Key Growth Drivers</h4>
+            <ul class="key-points">
+                <li>Expanding approved indications beyond hematological malignancies</li>
+                <li>Earlier-line treatment approvals increasing patient pool</li>
+                <li>Manufacturing improvements reducing turnaround time and costs</li>
+                <li>Geographic expansion into emerging markets</li>
+                <li>Potential breakthrough in solid tumors</li>
+            </ul>
+
+            <h3>Competitive Landscape</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Product</th>
+                        <th>Target</th>
+                        <th>Indication</th>
+                        <th>2024 Sales Est.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bristol-Myers Squibb</td>
+                        <td>Abecma (idecabtagene vicleucel)</td>
+                        <td>BCMA</td>
+                        <td>Multiple Myeloma</td>
+                        <td>$600-700M</td>
+                    </tr>
+                    <tr>
+                        <td>Novartis</td>
+                        <td>Kymriah (tisagenlecleucel)</td>
+                        <td>CD19</td>
+                        <td>B-cell ALL, DLBCL</td>
+                        <td>$500-600M</td>
+                    </tr>
+                    <tr>
+                        <td>Gilead/Kite</td>
+                        <td>Yescarta (axicabtagene ciloleucel)</td>
+                        <td>CD19</td>
+                        <td>Large B-cell lymphoma</td>
+                        <td>$1.4-1.5B</td>
+                    </tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>Legend/J&J</strong></td>
+                        <td><strong>CARVYKTI (cilta-cel)</strong></td>
+                        <td><strong>BCMA</strong></td>
+                        <td><strong>Multiple Myeloma</strong></td>
+                        <td><strong>$1.5-1.7B</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Emerging Threats</h4>
+            <ul class="key-points">
+                <li>Allogeneic (off-the-shelf) CAR-T therapies from Allogene, Caribou, CRISPR Therapeutics</li>
+                <li>Bispecific antibodies (Tecvayli, Talvey, Elrexfio) offering easier administration</li>
+                <li>CAR-NK and other cell therapy modalities</li>
+                <li>Chinese CAR-T companies with lower manufacturing costs</li>
+            </ul>
+
+            <h3>Multiple Myeloma Market</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">US Annual Incidence</div>
+                    <div class="value">35,000</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Global Annual Incidence</div>
+                    <div class="value">175,000</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Addressable Market (Peak)</div>
+                    <div class="value">$8-12B</div>
+                </div>
+            </div>
+
+            <h4>Key Market Trends</h4>
+            <ul class="key-points">
+                <li>Treatment moving to earlier lines (1-3 prior therapies vs 4+)</li>
+                <li>Combination strategies under investigation</li>
+                <li>MRD-negativity becoming key endpoint</li>
+                <li>Improving patient selection and manufacturing</li>
+            </ul>
+
+            <h3>Regulatory Environment</h3>
+            <div class="highlight-box">
+                <p><strong>FDA Stance:</strong> Generally supportive with accelerated pathways available</p>
+                <p style="margin-top: 10px;"><strong>Recent Safety Concerns:</strong> FDA investigating secondary T-cell malignancies in CAR-T patients; class-wide boxed warning added but does not fundamentally change risk-benefit profile</p>
+            </div>
+        </section>
+
+        <!-- Company Analysis Section -->
+        <section id="company-analysis">
+            <h2>Company Analysis</h2>
+
+            <h3>CARVYKTI Overview</h3>
+            <div class="highlight-box">
+                <p><strong>Generic Name:</strong> ciltacabtagene autoleucel (cilta-cel)</p>
+                <p><strong>Mechanism:</strong> BCMA-directed CAR-T cell therapy with two BCMA-binding domains (VHH nanobody)</p>
+            </div>
+
+            <h4>Approved Indications</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indication</th>
+                        <th>Approval Date</th>
+                        <th>Geography</th>
+                        <th>Key Trial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Relapsed/refractory MM (4+ prior lines)</td>
+                        <td>February 2022</td>
+                        <td>US, EU, Japan, China</td>
+                        <td>CARTITUDE-1</td>
+                    </tr>
+                    <tr>
+                        <td>Earlier-line MM (1-3 prior therapies)</td>
+                        <td>April 2024</td>
+                        <td>US</td>
+                        <td>CARTITUDE-4</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Clinical Efficacy Data</h4>
+            <div class="scenario-card base">
+                <h4>CARTITUDE-1 (Heavily Pretreated - Median 6 Prior Lines)</h4>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">ORR</div>
+                        <div class="value positive">98%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">sCR</div>
+                        <div class="value positive">83%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Median PFS</div>
+                        <div class="value">34.9 mo</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Median OS</div>
+                        <div class="value positive">Not Reached</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bull">
+                <h4>CARTITUDE-4 (1-3 Prior Lines, Lenalidomide-Refractory)</h4>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">ORR</div>
+                        <div class="value positive">85%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">sCR</div>
+                        <div class="value positive">73%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">PFS Hazard Ratio</div>
+                        <div class="value positive">0.26</div>
+                    </div>
+                </div>
+                <p style="color: #8b949e; margin-top: 10px;">74% reduction in risk of progression or death vs. standard of care</p>
+            </div>
+
+            <h4>Safety Profile</h4>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">CRS (Any Grade)</div>
+                    <div class="value">95%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">CRS (Grade 3+)</div>
+                    <div class="value positive">4%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">ICANS (Any Grade)</div>
+                    <div class="value">23%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">ICANS (Grade 3+)</div>
+                    <div class="value">10%</div>
+                </div>
+            </div>
+            <p style="color: #9e6a03; margin-top: 10px;"><strong>Note:</strong> Delayed neurotoxicities (movement/cognitive disorders) observed in ~5% of patients; requires monitoring</p>
+
+            <h4>Commercial Performance</h4>
+            <table>
+                <thead>
+                    <tr><th>Period</th><th>Sales</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2022 (Partial Year)</td><td>$134M</td></tr>
+                    <tr><td>2023</td><td>$500M</td></tr>
+                    <tr><td>2024 Estimate</td><td>$1.5-1.7B</td></tr>
+                    <tr><td>2025 Estimate</td><td>$2.5-3.0B</td></tr>
+                    <tr><td>Peak Sales Potential</td><td>$5-7B globally</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Pipeline</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Target</th>
+                        <th>Indication</th>
+                        <th>Stage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LB1901</td>
+                        <td>CD4</td>
+                        <td>T-cell lymphomas (PTCL, CTCL)</td>
+                        <td>Phase 1</td>
+                        <td>Dose escalation ongoing</td>
+                    </tr>
+                    <tr>
+                        <td>LB2102</td>
+                        <td>Claudin 18.2</td>
+                        <td>Gastric/pancreatic cancer</td>
+                        <td>Phase 1</td>
+                        <td>Early clinical development</td>
+                    </tr>
+                    <tr>
+                        <td>CARVYKTI Combinations</td>
+                        <td>BCMA</td>
+                        <td>MM frontline and combinations</td>
+                        <td>Phase 2/3</td>
+                        <td>CARTITUDE-5, CARTITUDE-6 ongoing</td>
+                    </tr>
+                    <tr>
+                        <td>Next-gen BCMA CAR-T</td>
+                        <td>BCMA</td>
+                        <td>Multiple myeloma</td>
+                        <td>Preclinical</td>
+                        <td>Improved manufacturing and efficacy</td>
+                    </tr>
+                    <tr>
+                        <td>DLL3 CAR-T</td>
+                        <td>DLL3</td>
+                        <td>Small cell lung cancer</td>
+                        <td>Preclinical</td>
+                        <td>Early research</td>
+                    </tr>
+                    <tr>
+                        <td>GPC3 CAR-T</td>
+                        <td>GPC3</td>
+                        <td>Hepatocellular carcinoma</td>
+                        <td>Preclinical</td>
+                        <td>Early research</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>J&J Partnership</h3>
+            <div class="highlight-box">
+                <p><strong>Partner:</strong> Johnson & Johnson (via Janssen Biotech)</p>
+                <p><strong>Established:</strong> December 2017</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Upfront Payment</div>
+                    <div class="value">$350M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Milestones Achieved</div>
+                    <div class="value">$200M+</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Remaining Milestones</div>
+                    <div class="value">$1B+</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Profit Sharing</div>
+                    <div class="value">50/50</div>
+                </div>
+            </div>
+
+            <h4>Strategic Value</h4>
+            <ul class="key-points">
+                <li>Access to J&J's global commercial infrastructure</li>
+                <li>Shared financial burden of late-stage development</li>
+                <li>Manufacturing support and technology transfer</li>
+                <li>Regulatory expertise and relationships</li>
+                <li>Risk mitigation through partnership structure</li>
+            </ul>
+
+            <h3>Manufacturing</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Current Capacity</div>
+                    <div class="value">10,000+</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Turnaround Time</div>
+                    <div class="value">&lt;2 weeks</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Investment (2022-24)</div>
+                    <div class="value">~$500M</div>
+                </div>
+            </div>
+            <h4>Facilities</h4>
+            <ul class="key-points">
+                <li>Somerset, NJ (US commercial)</li>
+                <li>Ghent, Belgium (European commercial - under expansion)</li>
+                <li>Nanjing, China (R&D and China commercial)</li>
+            </ul>
+
+            <h3>Competitive Advantages</h3>
+            <ul class="key-points">
+                <li>Best-in-class efficacy data for BCMA CAR-T (highest sCR rates, durable responses)</li>
+                <li>Differentiated dual-epitope binding CAR construct</li>
+                <li>Strong manufacturing track record and improving capacity</li>
+                <li>Deep partnership with J&J provides resources and global reach</li>
+                <li>First BCMA CAR-T approved in earlier-line setting</li>
+                <li>Experienced management team with cell therapy expertise</li>
+            </ul>
+        </section>
+
+        <!-- Financial Data Section -->
+        <section id="financial-data">
+            <h2>Financial Data</h2>
+
+            <h3>Income Statement Summary</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>FY2022</th>
+                        <th>FY2023</th>
+                        <th>FY2024E</th>
+                        <th>FY2025E</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Revenue</td>
+                        <td>$134M</td>
+                        <td>$508M</td>
+                        <td>$950M</td>
+                        <td>$1,450M</td>
+                    </tr>
+                    <tr>
+                        <td>CARVYKTI Revenue</td>
+                        <td>$67M</td>
+                        <td>$430M</td>
+                        <td>$850M</td>
+                        <td>$1,350M</td>
+                    </tr>
+                    <tr>
+                        <td>Cost of Revenue</td>
+                        <td>$85M</td>
+                        <td>$195M</td>
+                        <td>$350M</td>
+                        <td>$480M</td>
+                    </tr>
+                    <tr>
+                        <td>R&D Expenses</td>
+                        <td>$485M</td>
+                        <td>$520M</td>
+                        <td>$580M</td>
+                        <td>$620M</td>
+                    </tr>
+                    <tr>
+                        <td>SG&A Expenses</td>
+                        <td>$165M</td>
+                        <td>$210M</td>
+                        <td>$250M</td>
+                        <td>$280M</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Income</td>
+                        <td class="negative">($601M)</td>
+                        <td class="negative">($417M)</td>
+                        <td class="negative">($230M)</td>
+                        <td class="positive">$70M</td>
+                    </tr>
+                    <tr>
+                        <td>Net Income</td>
+                        <td class="negative">($595M)</td>
+                        <td class="negative">($410M)</td>
+                        <td class="negative">($220M)</td>
+                        <td class="positive">$60M</td>
+                    </tr>
+                    <tr>
+                        <td>EPS (Basic)</td>
+                        <td class="negative">($1.69)</td>
+                        <td class="negative">($1.15)</td>
+                        <td class="negative">($0.60)</td>
+                        <td class="positive">$0.16</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Balance Sheet Highlights (Q3 2024 Est.)</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Cash & Equivalents</div>
+                    <div class="value">$850M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Short-term Investments</div>
+                    <div class="value">$450M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Cash Position</div>
+                    <div class="value">$1,300M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Assets</div>
+                    <div class="value">$2,800M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Debt</div>
+                    <div class="value positive">$0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Shareholders Equity</div>
+                    <div class="value">$2,200M</div>
+                </div>
+            </div>
+
+            <h3>Cash Flow</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">FY2023 Operating CF</div>
+                    <div class="value negative">($380M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">FY2024E Operating CF</div>
+                    <div class="value negative">($150M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">FY2025E Operating CF</div>
+                    <div class="value positive">$150M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Cash Runway</div>
+                    <div class="value positive">4+ years</div>
+                </div>
+            </div>
+
+            <h3>Key Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Gross Margin (2024)</div>
+                    <div class="value">63%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">R&D % of Revenue</div>
+                    <div class="value">61%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Current Ratio</div>
+                    <div class="value positive">4.5x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Debt/Equity</div>
+                    <div class="value positive">0x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Revenue Growth YoY</div>
+                    <div class="value positive">87%</div>
+                </div>
+            </div>
+
+            <h3>Market Data</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Stock Price Est.</div>
+                    <div class="value">$45.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Market Cap</div>
+                    <div class="value">$16.4B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Enterprise Value</div>
+                    <div class="value">$15.1B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">52W High</div>
+                    <div class="value">$75.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">52W Low</div>
+                    <div class="value">$32.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Shares Outstanding</div>
+                    <div class="value">365M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Short Interest</div>
+                    <div class="value">8%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Institutional Own.</div>
+                    <div class="value">72%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DCF Valuation Section -->
+        <section id="dcf-valuation">
+            <h2>DCF Valuation</h2>
+
+            <div class="highlight-box">
+                <p><strong>Methodology:</strong> Probability-weighted DCF with 5 scenarios reflecting different clinical and commercial outcomes</p>
+                <p><strong>Projection Period:</strong> 10 years (2025-2034)</p>
+                <p><strong>Terminal Value Method:</strong> Gordon Growth Model with 2% perpetual growth</p>
+            </div>
+
+            <h3>Key Assumptions</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Tax Rate</div>
+                    <div class="value">21%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Terminal Growth</div>
+                    <div class="value">2%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Dilution Factor</div>
+                    <div class="value">5%</div>
+                </div>
+            </div>
+
+            <h4>WACC Range</h4>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Low (Optimistic)</div>
+                    <div class="value positive">10%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Base</div>
+                    <div class="value">11%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">High (Conservative)</div>
+                    <div class="value">12%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Stress</div>
+                    <div class="value negative">13%</div>
+                </div>
+            </div>
+
+            <h3>Revenue Drivers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Driver</th>
+                        <th>Peak Sales (Legend Share)</th>
+                        <th>Peak Year</th>
+                        <th>Post-Peak Erosion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CARVYKTI MM Relapsed</td>
+                        <td>$3.0B</td>
+                        <td>2029</td>
+                        <td>3% annually</td>
+                    </tr>
+                    <tr>
+                        <td>CARVYKTI MM Earlier-Line</td>
+                        <td>$2.5B</td>
+                        <td>2031</td>
+                        <td>3% annually</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Pipeline Optionality</h4>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">LB1901 Prob-Adj NPV</div>
+                    <div class="value">$250M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">LB2102 Prob-Adj NPV</div>
+                    <div class="value">$150M</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Other Pipeline</div>
+                    <div class="value">$200M</div>
+                </div>
+            </div>
+
+            <h3>Probability-Weighted Valuation by Discount Rate</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>WACC</th>
+                        <th>Super Bear (5%)</th>
+                        <th>Bear (20%)</th>
+                        <th>Base (50%)</th>
+                        <th>Bull (20%)</th>
+                        <th>Super Bull (5%)</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10%</td>
+                        <td>$0.93</td>
+                        <td>$7.60</td>
+                        <td>$32.50</td>
+                        <td>$19.00</td>
+                        <td>$7.25</td>
+                        <td><strong>$67.28</strong></td>
+                    </tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>11% (Base)</strong></td>
+                        <td>$0.84</td>
+                        <td>$7.00</td>
+                        <td>$29.25</td>
+                        <td>$17.00</td>
+                        <td>$6.40</td>
+                        <td><strong>$60.49</strong></td>
+                    </tr>
+                    <tr>
+                        <td>12%</td>
+                        <td>$0.76</td>
+                        <td>$6.44</td>
+                        <td>$26.50</td>
+                        <td>$15.30</td>
+                        <td>$5.70</td>
+                        <td><strong>$54.70</strong></td>
+                    </tr>
+                    <tr>
+                        <td>13%</td>
+                        <td>$0.69</td>
+                        <td>$5.96</td>
+                        <td>$24.10</td>
+                        <td>$13.80</td>
+                        <td>$5.10</td>
+                        <td><strong>$49.65</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="consensus-box">
+                <h4>Valuation Summary</h4>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Recommended Fair Value</div>
+                        <div class="value">$58.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">$45.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Implied Upside</div>
+                        <div class="value positive">28.9%</div>
+                    </div>
+                </div>
+                <p style="color: #8b949e; margin-top: 15px;">Using 11% WACC as base case (appropriate for commercial-stage biotech with partnership de-risking)</p>
+            </div>
+
+            <h3>WACC Sensitivity Analysis</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>WACC</th>
+                        <th>9%</th>
+                        <th>10%</th>
+                        <th>11%</th>
+                        <th>12%</th>
+                        <th>13%</th>
+                        <th>14%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fair Value</td>
+                        <td>$74.50</td>
+                        <td>$67.28</td>
+                        <td>$60.49</td>
+                        <td>$54.70</td>
+                        <td>$49.65</td>
+                        <td>$45.20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Scenario Analysis Section -->
+        <section id="scenarios">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card super-bear">
+                <div class="scenario-header">
+                    <h4>Super Bear Case</h4>
+                    <span class="probability-badge">5% probability</span>
+                </div>
+                <p><strong>Description:</strong> Pipeline failures and significant CARVYKTI setbacks</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>CARVYKTI sales plateau at $1.8B total (Legend share ~$0.9B) due to safety signals or competitive displacement</li>
+                    <li>Earlier-line adoption significantly below expectations</li>
+                    <li>Major manufacturing issues or recalls</li>
+                    <li>Pipeline candidates fail in clinical trials</li>
+                    <li>Bispecific antibodies capture majority of market</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Peak CARVYKTI Rev (Legend)</div>
+                        <div class="value negative">$900M</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Pipeline Value</div>
+                        <div class="value negative">$0</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Base Case Value</div>
+                        <div class="value negative">$16.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bear">
+                <div class="scenario-header">
+                    <h4>Bear Case</h4>
+                    <span class="probability-badge">20% probability</span>
+                </div>
+                <p><strong>Description:</strong> Slower than expected adoption and competitive pressure</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>CARVYKTI peak sales of $4.5B total (Legend share ~$2.25B)</li>
+                    <li>Earlier-line expansion achieves 60% of base case expectations</li>
+                    <li>Manufacturing capacity adequate but costs remain elevated</li>
+                    <li>One pipeline candidate advances to Phase 2</li>
+                    <li>Bispecifics take ~30% of addressable market</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Peak CARVYKTI Rev (Legend)</div>
+                        <div class="value">$2.25B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Pipeline Value</div>
+                        <div class="value">$300M</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Base Case Value</div>
+                        <div class="value">$33.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card base">
+                <div class="scenario-header">
+                    <h4>Base Case</h4>
+                    <span class="probability-badge">50% probability</span>
+                </div>
+                <p><strong>Description:</strong> Current trajectory continues with moderate execution</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>CARVYKTI achieves $6B peak sales (Legend share ~$3B)</li>
+                    <li>Earlier-line indication becomes largest revenue driver by 2028</li>
+                    <li>Manufacturing successfully scaled to meet demand</li>
+                    <li>LB1901 advances to pivotal trials; one approval by 2029</li>
+                    <li>Solid tumor program shows promising early data</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Peak CARVYKTI Rev (Legend)</div>
+                        <div class="value positive">$3.0B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Pipeline Value</div>
+                        <div class="value positive">$600M</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Base Case Value</div>
+                        <div class="value positive">$56.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card bull">
+                <div class="scenario-header">
+                    <h4>Bull Case</h4>
+                    <span class="probability-badge">20% probability</span>
+                </div>
+                <p><strong>Description:</strong> Expanded indications and strong commercial execution</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>CARVYKTI peak sales reach $8B (Legend share ~$4B)</li>
+                    <li>Frontline MM combination approval adds new patient pool</li>
+                    <li>CARTITUDE studies show superiority enabling market share gains</li>
+                    <li>LB1901 approved and reaches $500M peak sales</li>
+                    <li>Solid tumor program enters pivotal trials</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Peak CARVYKTI Rev (Legend)</div>
+                        <div class="value positive">$4.0B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Pipeline Value</div>
+                        <div class="value positive">$1.2B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Base Case Value</div>
+                        <div class="value positive">$81.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card super-bull">
+                <div class="scenario-header">
+                    <h4>Super Bull Case</h4>
+                    <span class="probability-badge">5% probability</span>
+                </div>
+                <p><strong>Description:</strong> Blockbuster success across multiple indications</p>
+                <h4>Key Assumptions</h4>
+                <ul class="key-points">
+                    <li>CARVYKTI becomes standard of care in MM achieving $12B+ peak (Legend share ~$6B)</li>
+                    <li>Multiple myeloma effectively becomes curable with CAR-T for significant patient subset</li>
+                    <li>Solid tumor breakthrough with Claudin 18.2 program reaching $2B+ peak</li>
+                    <li>Additional indications (AL amyloidosis, other B-cell malignancies) add $1B+</li>
+                    <li>Potential acquisition premium from larger pharma</li>
+                </ul>
+                <div class="metrics-grid" style="margin-top: 15px;">
+                    <div class="metric-card">
+                        <div class="label">Peak CARVYKTI Rev (Legend)</div>
+                        <div class="value positive">$6.0B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Pipeline Value</div>
+                        <div class="value positive">$3.0B</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Base Case Value</div>
+                        <div class="value positive">$122.00</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Assessment Section -->
+        <section id="risks">
+            <h2>Risk Assessment</h2>
+
+            <h3>Clinical and Regulatory Risks</h3>
+
+            <div class="risk-item">
+                <div class="risk-header">
+                    <h5>Secondary Malignancy Signals</h5>
+                    <span class="impact-badge">Impact: High | Prob: Low-Medium</span>
+                </div>
+                <p>FDA investigating T-cell malignancies post CAR-T; could lead to additional warnings or restrictions</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Long-term follow-up data generally supportive; risk-benefit remains favorable</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Delayed Neurotoxicity</h5>
+                    <span class="impact-badge">Impact: Medium | Prob: Medium</span>
+                </div>
+                <p>Movement and cognitive disorders observed in subset of patients; unique to CARVYKTI</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Enhanced monitoring protocols; appears manageable with early intervention</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Clinical Trial Failures</h5>
+                    <span class="impact-badge">Impact: Medium | Prob: Medium-High</span>
+                </div>
+                <p>Pipeline programs may not demonstrate efficacy or safety</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Diversified pipeline; CARVYKTI provides commercial foundation</p>
+            </div>
+
+            <h3>Commercial and Competitive Risks</h3>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Bispecific Antibody Competition</h5>
+                    <span class="impact-badge">Impact: Medium | Prob: High</span>
+                </div>
+                <p>Teclistamab, elranatamab offer off-the-shelf convenience; may capture CAR-T ineligible patients and potentially encroach on CAR-T share</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> CAR-T shows deeper, more durable responses; likely to remain preferred for fit patients</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Competitive CAR-T Entries</h5>
+                    <span class="impact-badge">Impact: Medium | Prob: Medium</span>
+                </div>
+                <p>Next-gen BCMA CAR-Ts, allogeneic therapies could disrupt market</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> First-mover advantage in earlier-line; continuous innovation</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>Pricing Pressure</h5>
+                    <span class="impact-badge">Impact: Medium | Prob: Medium</span>
+                </div>
+                <p>Payer pushback on ~$465K list price; potential IRA implications</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Outcomes-based contracts; value proposition supported by data</p>
+            </div>
+
+            <h3>Operational Risks</h3>
+
+            <div class="risk-item">
+                <div class="risk-header">
+                    <h5>Manufacturing Execution</h5>
+                    <span class="impact-badge">Impact: High | Prob: Low-Medium</span>
+                </div>
+                <p>Failure to scale capacity could limit sales; quality issues could damage reputation</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Significant investment in facilities; improving track record</p>
+            </div>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>J&J Partnership Dependency</h5>
+                    <span class="impact-badge">Impact: Medium | Prob: Low</span>
+                </div>
+                <p>Reliance on partner for commercial execution; potential priority conflicts</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Strong alignment of incentives; Legend building independent capabilities</p>
+            </div>
+
+            <div class="risk-item medium">
+                <div class="risk-header">
+                    <h5>China Operations Complexity</h5>
+                    <span class="impact-badge">Impact: Low-Medium | Prob: Medium</span>
+                </div>
+                <p>Regulatory and geopolitical risks in China market</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Core value driven by ex-China markets; China is optionality</p>
+            </div>
+
+            <h3>Financial Risks</h3>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>Path to Profitability Delayed</h5>
+                    <span class="impact-badge">Impact: Low | Prob: Low-Medium</span>
+                </div>
+                <p>Higher than expected costs or slower revenue could extend losses</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Strong cash position; access to capital markets if needed</p>
+            </div>
+
+            <div class="risk-item low">
+                <div class="risk-header">
+                    <h5>Dilution Risk</h5>
+                    <span class="impact-badge">Impact: Low | Prob: Low</span>
+                </div>
+                <p>Future capital raises could dilute shareholders</p>
+                <p style="color: #3fb950; margin-top: 8px;"><strong>Mitigation:</strong> Profitability trajectory should reduce need for external capital</p>
+            </div>
+        </section>
+
+        <!-- Recommendation Section -->
+        <section id="recommendation">
+            <h2>Recommendation</h2>
+
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Rating</div>
+                        <div class="value">OUTPERFORM</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">$58.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">$45.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Upside</div>
+                        <div class="value positive">28.9%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Conviction</div>
+                        <div class="value">Medium-High</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Horizon</div>
+                        <div class="value">12-18 months</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <ul class="key-points">
+                <li>CARVYKTI represents a best-in-class BCMA CAR-T therapy with demonstrated superiority in efficacy metrics</li>
+                <li>Earlier-line approval (CARTITUDE-4) significantly expands addressable market and represents key catalyst achieved</li>
+                <li>Partnership with J&J de-risks commercial execution while providing substantial resources</li>
+                <li>Probability-weighted valuation suggests meaningful upside from current levels</li>
+                <li>Path to profitability provides visibility to sustainable business model</li>
+                <li>Pipeline optionality provides additional upside not fully reflected in current valuation</li>
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Catalyst</th>
+                        <th>Timing</th>
+                        <th>Impact</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CARTITUDE-5 (frontline MM) data readout</td>
+                        <td>H2 2025</td>
+                        <td>HIGH</td>
+                        <td>Could add $1B+ to peak sales if positive</td>
+                    </tr>
+                    <tr>
+                        <td>LB1901 Phase 1 data (T-cell lymphoma)</td>
+                        <td>H1 2025</td>
+                        <td>MEDIUM</td>
+                        <td>Validates pipeline beyond CARVYKTI</td>
+                    </tr>
+                    <tr>
+                        <td>Quarterly CARVYKTI sales updates</td>
+                        <td>Ongoing</td>
+                        <td>MEDIUM</td>
+                        <td>Key metric for sentiment and valuation</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturing capacity milestones</td>
+                        <td>2025</td>
+                        <td>MEDIUM</td>
+                        <td>Addresses key investor concern</td>
+                    </tr>
+                    <tr>
+                        <td>Profitability milestone</td>
+                        <td>2025-2026</td>
+                        <td>MEDIUM-HIGH</td>
+                        <td>Demonstrates sustainable model</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Position Sizing Guidance</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Aggressive</div>
+                    <div class="value">3-5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Moderate</div>
+                    <div class="value">1.5-3%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Conservative</div>
+                    <div class="value">0.5-1.5%</div>
+                </div>
+            </div>
+
+            <h3>Comparable Trading Multiples</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">EV/Revenue 2025E</div>
+                    <div class="value">10.4x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">EV/Revenue 2026E</div>
+                    <div class="value">6.2x</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Peer Average EV/Rev</div>
+                    <div class="value">8-12x</div>
+                </div>
+            </div>
+            <p style="color: #8b949e; margin-top: 10px;">Valuation appears reasonable relative to growth trajectory and peer group</p>
+        </section>
+
+        <!-- Debate Log Section -->
+        <section id="debate-log">
+            <h2>Multi-AI Debate Log</h2>
+            <p style="color: #8b949e; margin-bottom: 20px;">
+                A structured 5-round debate between BULL, BEAR, CRITIC, and SYNTHESIZER perspectives to stress-test the investment thesis.
+            </p>
+
+            <!-- Round 1 -->
+            <div class="debate-round">
+                <h4 class="collapsible">Round 1: Pipeline Value and Market Opportunity</h4>
+                <div class="collapsible-content show">
+                    <div class="debate-message bull">
+                        <div class="message-header">
+                            <span class="message-role bull">BULL</span>
+                        </div>
+                        <p><strong>Position:</strong> Legend Biotech represents a compelling asymmetric opportunity with CARVYKTI positioned as the dominant BCMA CAR-T therapy.</p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>CARVYKTI has achieved a blockbuster trajectory with 2024 sales exceeding $1.5B globally - exceptional execution in a complex manufacturing environment</li>
+                            <li>The April 2024 FDA approval for earlier-line MM via CARTITUDE-4 dramatically expands the addressable market from ~5,000 heavily pretreated patients to potentially 15,000-20,000 patients annually in the US alone</li>
+                            <li>Clinical data is unequivocally best-in-class: 98% ORR, 83% sCR rates, and median PFS of 34.9 months. No competitor comes close</li>
+                            <li>Peak sales potential of $5-7B globally with Legend capturing ~50%</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Valuation:</strong> At current prices of ~$45, the market is pricing in only moderate success. Fair value should exceed $80-85 if CARVYKTI achieves $6B peak sales.</p>
+                    </div>
+
+                    <div class="debate-message bear">
+                        <div class="message-header">
+                            <span class="message-role bear">BEAR</span>
+                        </div>
+                        <p><strong>Position:</strong> While CARVYKTI is a strong product, Legend faces significant execution challenges and competitive threats that the market is underestimating.</p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>The CAR-T market is facing disruption from bispecific antibodies (Tecvayli, Talvey, Elrexfio) which offer off-the-shelf convenience without the 2-4 week manufacturing delay</li>
+                            <li>Manufacturing complexity remains a critical bottleneck. Autologous CAR-T inherently faces scalability constraints</li>
+                            <li>CARVYKTI has a concerning delayed neurotoxicity profile (~5% of patients) that is unique among CAR-T therapies</li>
+                            <li>The FDA's ongoing investigation into secondary T-cell malignancies creates headline risk</li>
+                            <li>Legend's 50/50 profit split with J&J means shareholders only capture half the commercial upside</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Valuation:</strong> Current $45 price already reflects substantial optimism. Bear scenario fair value is closer to $33-38.</p>
+                    </div>
+
+                    <div class="debate-message critic">
+                        <div class="message-header">
+                            <span class="message-role critic">CRITIC</span>
+                        </div>
+                        <p><strong>Challenges to BULL:</strong></p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>Your peak sales assumptions rely on CARVYKTI maintaining market dominance through 2030+. What evidence supports this durability?</li>
+                            <li>The 'best-in-class' efficacy narrative is based on cross-trial comparisons with different patient populations</li>
+                            <li>You assign significant pipeline optionality value, yet CAR-T in solid tumors has historically failed</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Challenges to BEAR:</strong></p>
+                        <ul class="key-points">
+                            <li>Bispecific competition is real, but you haven't addressed the clear clinical difference: CAR-T shows deeper and more durable responses</li>
+                            <li>Manufacturing constraints - Legend has reduced turnaround from 4 weeks to under 2 weeks. Isn't this a solved problem?</li>
+                            <li>The 50/50 J&J split also means 50% cost sharing. Isn't this risk-sharing valuable?</li>
+                        </ul>
+                    </div>
+
+                    <div class="debate-message synthesizer">
+                        <div class="message-header">
+                            <span class="message-role synthesizer">SYNTHESIZER</span>
+                        </div>
+                        <p><strong>Round Summary:</strong> The core tension is established - BULL sees transformational potential from market expansion and best-in-class efficacy, while BEAR emphasizes execution risks and competitive threats. Both are presenting polar scenarios.</p>
+                        <div class="consensus-box" style="margin-top: 15px;">
+                            <h4>Emerging Consensus</h4>
+                            <ul class="key-points">
+                                <li>CARVYKTI has demonstrably superior efficacy data among BCMA-targeting therapies</li>
+                                <li>The CAR-T vs. bispecific debate will likely result in market segmentation rather than winner-take-all</li>
+                                <li>Manufacturing scalability has improved but remains a legitimate execution concern</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 2 -->
+            <div class="debate-round">
+                <h4 class="collapsible">Round 2: Market Opportunity Deep Dive</h4>
+                <div class="collapsible-content">
+                    <div class="debate-message bull">
+                        <div class="message-header">
+                            <span class="message-role bull">BULL</span>
+                        </div>
+                        <p><strong>Position:</strong> The market opportunity is being materially underestimated due to conservative assumptions about CAR-T penetration.</p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>Global MM incidence is 175,000 annually with 35,000 in the US. CARTITUDE-4 approval means 60-70% of relapsed patients are now addressable</li>
+                            <li>At peak, I model 25,000+ patients globally receiving CARVYKTI annually by 2029-2030</li>
+                            <li>CARTITUDE-4 HR of 0.26 vs. standard of care is transformational - 74% reduction in progression/death risk</li>
+                            <li>Frontline combination data from CARTITUDE-5 (H2 2025) could open additional $2-3B opportunity</li>
+                        </ul>
+                    </div>
+
+                    <div class="debate-message bear">
+                        <div class="message-header">
+                            <span class="message-role bear">BEAR</span>
+                        </div>
+                        <p><strong>Position:</strong> The bull case relies on penetration rates that ignore real-world treatment dynamics.</p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>CAR-T utilization is constrained by certified treatment center capacity and patient fitness criteria</li>
+                            <li>Real-world CAR-T utilization in lymphoma suggests peak penetration of 20-25%, not 40-50%</li>
+                            <li>Bispecific antibodies at ~$150-200K offer a 60%+ cost advantage with 60-70% response rates</li>
+                            <li>The 'earlier-line' market is not purely additive - some patients who would have received 4th-line CAR-T will now receive it earlier</li>
+                        </ul>
+                    </div>
+
+                    <div class="debate-message synthesizer">
+                        <div class="message-header">
+                            <span class="message-role synthesizer">SYNTHESIZER</span>
+                        </div>
+                        <p><strong>Quantitative Reconciliation:</strong></p>
+                        <div class="metrics-grid" style="margin-top: 10px;">
+                            <div class="metric-card">
+                                <div class="label">Bull Peak Sales</div>
+                                <div class="value positive">$8-10B</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Bear Peak Sales</div>
+                                <div class="value negative">$4-4.5B</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Probable Range</div>
+                                <div class="value">$5.5-7B</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px;"><em>Key Sensitivity: Each 5% change in penetration rate = ~$500M in peak sales</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 3 -->
+            <div class="debate-round">
+                <h4 class="collapsible">Round 3: Clinical Data Cross-Examination</h4>
+                <div class="collapsible-content">
+                    <div class="debate-message bull">
+                        <div class="message-header">
+                            <span class="message-role bull">BULL</span>
+                        </div>
+                        <p><strong>Key Clinical Arguments:</strong></p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>CARTITUDE-1 vs. Abecma comparison: CARVYKTI 98% ORR, 83% sCR, 34.9 mo PFS vs. Abecma 73% ORR, 33% sCR, 8.8 mo PFS - not close</li>
+                            <li>MRD-negativity rates exceeding 90% in responders - this is a surrogate for cure in multiple myeloma</li>
+                            <li>4-year follow-up shows maintained responses; median OS still not reached</li>
+                        </ul>
+                    </div>
+
+                    <div class="debate-message bear">
+                        <div class="message-header">
+                            <span class="message-role bear">BEAR</span>
+                        </div>
+                        <p><strong>Safety Concerns:</strong></p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>CARVYKTI has unique delayed neurotoxicity signal - movement disorders, cognitive impairment in ~5% of patients</li>
+                            <li>CRS occurs in 95% of patients (vs. 84% for Abecma) - hospitalization burden is significant</li>
+                            <li>Cross-trial comparisons are methodologically problematic - patient selection and study design differences matter</li>
+                        </ul>
+                    </div>
+
+                    <div class="debate-message synthesizer">
+                        <div class="message-header">
+                            <span class="message-role synthesizer">SYNTHESIZER</span>
+                        </div>
+                        <div class="consensus-box" style="margin-top: 10px;">
+                            <h4>Clinical Assessment</h4>
+                            <p><strong>Efficacy Verdict:</strong> CARVYKTI appears best-in-class among BCMA CAR-T therapies based on available data</p>
+                            <p><strong>Safety Verdict:</strong> Safety profile is manageable but delayed neurotoxicity signal is a meaningful concern requiring monitoring</p>
+                            <p><strong>Competitive Positioning:</strong> Clinical data supports premium positioning for CAR-T eligible patients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 4 -->
+            <div class="debate-round">
+                <h4 class="collapsible">Round 4: Competition Threats Assessment</h4>
+                <div class="collapsible-content">
+                    <div class="debate-message bull">
+                        <div class="message-header">
+                            <span class="message-role bull">BULL</span>
+                        </div>
+                        <p><strong>Competitive Moats:</strong></p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>First-mover advantage in earlier-line BCMA CAR-T is significant - established physician relationships and protocols</li>
+                            <li>$500M+ manufacturing investment represents barrier to entry</li>
+                            <li>Bispecifics serve CAR-T ineligible patients - different market segment</li>
+                            <li>Allogeneic CAR-T has consistently failed to demonstrate durability</li>
+                        </ul>
+                    </div>
+
+                    <div class="debate-message bear">
+                        <div class="message-header">
+                            <span class="message-role bear">BEAR</span>
+                        </div>
+                        <p><strong>Competitive Threats Timeline:</strong></p>
+                        <table style="margin-top: 10px;">
+                            <tr><td>2025</td><td>Bispecific market expansion; Chinese CAR-T approvals in Asia</td></tr>
+                            <tr><td>2026-27</td><td>Next-gen BCMA CAR-T competitors reach pivotal trials</td></tr>
+                            <tr><td>2028-30</td><td>Allogeneic CAR-T may mature; potential new modalities</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="debate-message critic">
+                        <div class="message-header">
+                            <span class="message-role critic">CRITIC</span>
+                        </div>
+                        <p><strong>Key Observation:</strong> The competitive debate reveals a timeframe mismatch. BULL focuses on near-term moats (2-3 years), while BEAR focuses on medium-term erosion (5+ years). For a 12-18 month investment horizon, the near-term view may be more relevant to valuation.</p>
+                    </div>
+
+                    <div class="debate-message synthesizer">
+                        <div class="message-header">
+                            <span class="message-role synthesizer">SYNTHESIZER</span>
+                        </div>
+                        <p><strong>Competitive Assessment:</strong></p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li><strong>Near-term (2025-26):</strong> CARVYKTI well-positioned to maintain/grow share; bispecific coexistence likely</li>
+                            <li><strong>Medium-term (2027-29):</strong> Competition intensifies; next-gen CAR-Ts may reach market; pricing pressure increases</li>
+                            <li><strong>Long-term (2030+):</strong> Market maturation; potential commoditization; innovation cycle continues</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><em>For 12-18 month horizon, near-term competitive position is strong. Longer-duration holders should note erosion concerns.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Round 5 -->
+            <div class="debate-round">
+                <h4 class="collapsible">Round 5: Final Synthesis</h4>
+                <div class="collapsible-content show">
+                    <div class="debate-message bull">
+                        <div class="message-header">
+                            <span class="message-role bull">BULL - Final Position</span>
+                        </div>
+                        <p><strong>Price Target:</strong> $82</p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>CARVYKTI's trajectory to $6B+ peak sales is highly probable given earlier-line approval and strong execution</li>
+                            <li>Current price (~$45) is at the 10th percentile of valuation range - pricing in bear case assumptions</li>
+                            <li>2025 catalysts not reflected: CARTITUDE-5 data, LB1901 readout, profitability milestone</li>
+                            <li>At 10x 2025E EV/Revenue, Legend trades at a discount to comparable CAR-T companies</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Scenario Probabilities:</strong> Super Bear 3% | Bear 15% | Base 45% | Bull 30% | Super Bull 7%</p>
+                    </div>
+
+                    <div class="debate-message bear">
+                        <div class="message-header">
+                            <span class="message-role bear">BEAR - Final Position</span>
+                        </div>
+                        <p><strong>Price Target:</strong> $38</p>
+                        <ul class="key-points" style="margin-top: 10px;">
+                            <li>Current price reflects appropriate probability-weighting of competitive threats and execution risks</li>
+                            <li>Market is efficiently pricing earlier-line opportunity; further upside requires unrealistic assumptions</li>
+                            <li>50/50 profit share with J&J limits upside capture vs. fully-owned biotech opportunities</li>
+                            <li>At $45, investors pay premium multiple for company still generating losses</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Scenario Probabilities:</strong> Super Bear 8% | Bear 30% | Base 45% | Bull 15% | Super Bull 2%</p>
+                    </div>
+
+                    <div class="debate-message critic">
+                        <div class="message-header">
+                            <span class="message-role critic">CRITIC - Final Assessment</span>
+                        </div>
+                        <p><strong>On Bull Case:</strong> $82 target requires favorable assumptions across multiple dimensions. Probability-weighting skews too optimistic given unresolved safety questions.</p>
+                        <p style="margin-top: 10px;"><strong>On Bear Case:</strong> $38 target overly discounts visible catalysts and ignores 2024 commercial momentum. Near-term execution appears solid.</p>
+                        <p style="margin-top: 10px;"><strong>Valuation Framework:</strong> Given uncertainty, wide valuation range is appropriate. Debate suggests fair value between $50-70, with current price near low end of range.</p>
+                    </div>
+
+                    <div class="debate-message synthesizer">
+                        <div class="message-header">
+                            <span class="message-role synthesizer">SYNTHESIZER - Final Recommendation</span>
+                        </div>
+                        <div class="consensus-box" style="margin-top: 10px;">
+                            <h4>Final Synthesis</h4>
+                            <p><strong>Investment Thesis:</strong> Legend Biotech represents a high-conviction opportunity in CAR-T therapy with best-in-class data, significant market expansion from earlier-line approval, and a strong partnership structure. Current valuation does not fully reflect the commercial trajectory and upcoming catalysts.</p>
+                        </div>
+                        <div class="metrics-grid" style="margin-top: 20px;">
+                            <div class="metric-card">
+                                <div class="label">Rating</div>
+                                <div class="value">OUTPERFORM</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Target Price</div>
+                                <div class="value">$58.00</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Upside</div>
+                                <div class="value positive">28.9%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Conviction</div>
+                                <div class="value">Medium-High</div>
+                            </div>
+                        </div>
+                        <h4 style="margin-top: 20px;">Final Scenario Probabilities</h4>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="label">Super Bear</div>
+                                <div class="value negative">5%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Bear</div>
+                                <div class="value">20%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Base</div>
+                                <div class="value positive">50%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Bull</div>
+                                <div class="value">20%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Super Bull</div>
+                                <div class="value positive">5%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Disagreements Summary -->
+            <h3>Key Disagreements</h3>
+            <div class="disagreement-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>Bull View</th>
+                            <th>Bear View</th>
+                            <th>Resolution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Peak Sales Potential</td>
+                            <td>$8-10B global</td>
+                            <td>$4-4.5B global</td>
+                            <td>Base case: $6B global; reflects genuine uncertainty</td>
+                        </tr>
+                        <tr>
+                            <td>Bispecific Competition</td>
+                            <td>Complementary, not competitive</td>
+                            <td>Will capture 30%+ of market</td>
+                            <td>Market segmentation likely</td>
+                        </tr>
+                        <tr>
+                            <td>Safety Profile</td>
+                            <td>Manageable with protocols</td>
+                            <td>Creates commercial headwinds</td>
+                            <td>Monitoring required; too early to determine impact</td>
+                        </tr>
+                        <tr>
+                            <td>Manufacturing</td>
+                            <td>Solved problem; now competitive advantage</td>
+                            <td>Inherently limits scale</td>
+                            <td>Significant progress; residual risk acknowledged</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Key Consensus Summary -->
+            <h3>Key Consensus Points</h3>
+            <div class="consensus-box">
+                <ul class="key-points">
+                    <li>CARVYKTI has best-in-class efficacy data among BCMA-targeting therapies</li>
+                    <li>The earlier-line approval materially expands the addressable market opportunity</li>
+                    <li>J&J partnership provides meaningful commercial and operational de-risking</li>
+                    <li>Manufacturing has improved significantly but execution remains a monitoring point</li>
+                    <li>The CAR-T vs. bispecific competition will result in market segmentation rather than winner-take-all</li>
+                    <li>Near-term competitive position (2025-2026) is strong; medium-term faces more uncertainty</li>
+                    <li>Pipeline programs (LB1901, LB2102) provide optionality but should not drive the investment thesis</li>
+                    <li>Path to profitability in 2025-2026 is achievable and would be a significant milestone</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Detailed Research Report | Generated 2025-01-19</p>
+            <p>Last Updated: 2025-01-18 | Analyst: AI Equity Research</p>
+            <p style="margin-top: 15px; font-size: 0.85em;">This report is for informational purposes only and does not constitute investment advice. All projections and estimates are based on publicly available information and analyst assumptions. Actual results may differ materially. Investors should conduct their own due diligence before making investment decisions.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight current section in nav
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Collapsible sections
+        document.querySelectorAll('.collapsible').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.classList.contains('show')) {
+                    content.classList.remove('show');
+                } else {
+                    content.classList.add('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

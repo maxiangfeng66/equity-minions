@@ -1,0 +1,102 @@
+{
+  "agents": [
+    {
+      "id": "orchestrator",
+      "name": "Orchestrator",
+      "type": "orchestrator",
+      "status": "active",
+      "task": "Coordinating 14 equity research tasks",
+      "progress": 0,
+      "tier": 0,
+      "position": {"x": 0, "z": -2},
+      "connections": [
+        {"to": "researcher-1", "type": "command"},
+        {"to": "researcher-2", "type": "command"},
+        {"to": "researcher-3", "type": "command"}
+      ]
+    },
+    {
+      "id": "researcher-1",
+      "name": "Researcher Alpha",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 1,
+      "position": {"x": -4, "z": 2},
+      "connections": []
+    },
+    {
+      "id": "researcher-2",
+      "name": "Researcher Beta",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 1,
+      "position": {"x": 0, "z": 2},
+      "connections": []
+    },
+    {
+      "id": "researcher-3",
+      "name": "Researcher Gamma",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 1,
+      "position": {"x": 4, "z": 2},
+      "connections": []
+    },
+    {
+      "id": "analyst-1",
+      "name": "Analyst Delta",
+      "type": "analyst",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {"x": -4, "z": 5},
+      "connections": []
+    },
+    {
+      "id": "critic-1",
+      "name": "Critic Epsilon",
+      "type": "critic",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {"x": 0, "z": 5},
+      "connections": []
+    },
+    {
+      "id": "synthesizer-1",
+      "name": "Synthesizer Zeta",
+      "type": "debater",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {"x": 4, "z": 5},
+      "connections": []
+    }
+  ],
+  "tasks": [
+    {"ticker": "1045 HK", "company": "APT Satellite", "status": "pending"},
+    {"ticker": "1799 HK", "company": "Xinte Energy", "status": "pending"},
+    {"ticker": "1816 HK", "company": "CGN Power", "status": "pending"},
+    {"ticker": "2696 HK", "company": "Henlius Biotech", "status": "pending"},
+    {"ticker": "2869 HK", "company": "Greentown Service", "status": "pending"},
+    {"ticker": "3319 HK", "company": "A-Living", "status": "pending"},
+    {"ticker": "3800 HK", "company": "GCL Technology", "status": "pending"},
+    {"ticker": "3888 HK", "company": "Kingsoft", "status": "pending"},
+    {"ticker": "6682 HK", "company": "Fourth Paradigm", "status": "pending"},
+    {"ticker": "762 HK", "company": "China Unicom", "status": "pending"},
+    {"ticker": "9660 HK", "company": "Horizon Robotics", "status": "pending"},
+    {"ticker": "9926 HK", "company": "Akeso", "status": "pending"},
+    {"ticker": "9969 HK", "company": "InnoCare Pharma", "status": "pending"},
+    {"ticker": "LEGN US", "company": "Legend Biotech", "status": "pending"}
+  ],
+  "last_updated": "2026-01-19T00:00:00Z"
+}

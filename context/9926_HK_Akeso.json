@@ -1,0 +1,589 @@
+{
+  "ticker": "9926.HK",
+  "company": "Akeso Inc",
+  "sector": "Healthcare - Biotechnology",
+  "exchange": "Hong Kong Stock Exchange",
+  "currency": "HKD",
+  "last_updated": "2026-01-18",
+  "data_disclaimer": "This report is based on publicly available information up to the knowledge cutoff date. Real-time web data was unavailable. Investors should verify current figures before making investment decisions.",
+
+  "executive_summary": {
+    "overview": "Akeso Inc is a leading Chinese biopharmaceutical company specializing in innovative cancer immunotherapy drugs. Founded in 2012 and headquartered in Guangzhou, the company has developed a robust pipeline of novel biologics, with particular strength in bispecific antibodies for oncology indications.",
+    "investment_thesis": "Akeso represents a compelling opportunity in the Chinese biotech space with its differentiated pipeline of bispecific antibodies. The company's flagship products cadonilimab (AK104, PD-1/CTLA-4) and ivonescimab (AK112, PD-1/VEGF) have shown promising clinical data and commercial traction. The landmark licensing deal with Summit Therapeutics for ivonescimab validates the platform's global potential.",
+    "key_highlights": [
+      "First-in-class PD-1/CTLA-4 bispecific antibody (cadonilimab) approved in China for cervical cancer",
+      "Ivonescimab showed superior efficacy vs pembrolizumab in EGFR-mutant NSCLC (HARMONi-2 trial)",
+      "USD 5 billion+ licensing deal with Summit Therapeutics for ex-China rights to ivonescimab",
+      "Strong revenue growth trajectory with commercial products gaining market share",
+      "Deep pipeline with multiple bispecific antibody candidates in clinical development"
+    ],
+    "recommendation": "BUY",
+    "target_price_hkd": 72.50,
+    "current_price_estimate_hkd": 52.00,
+    "upside_potential": "39.4%"
+  },
+
+  "industry_analysis": {
+    "china_oncology_market": {
+      "market_size_2024_usd_bn": 45.0,
+      "projected_size_2030_usd_bn": 95.0,
+      "cagr_2024_2030": "13.2%",
+      "key_drivers": [
+        "Aging population with increasing cancer incidence",
+        "Rising healthcare expenditure and insurance coverage expansion",
+        "Government support for innovative drug development",
+        "National Reimbursement Drug List (NRDL) inclusion driving volume",
+        "Shift from generics to innovative therapies"
+      ]
+    },
+    "immunotherapy_market": {
+      "global_pd1_pdl1_market_2024_usd_bn": 55.0,
+      "china_pd1_pdl1_market_2024_usd_bn": 6.5,
+      "growth_outlook": "Double-digit growth expected through 2030 driven by label expansions and combination therapies",
+      "competitive_dynamics": "Intensely competitive with multiple domestic players, but differentiation through bispecifics and novel combinations creating new opportunities"
+    },
+    "bispecific_antibody_trend": {
+      "description": "Bispecific antibodies represent the next frontier in immuno-oncology, offering potential for improved efficacy and differentiation from crowded mono-antibody space",
+      "market_opportunity": "Growing rapidly as companies seek differentiation beyond conventional PD-1 inhibitors",
+      "akeso_positioning": "Well-positioned as pioneer in bispecific development with first-mover advantage in several indications"
+    },
+    "regulatory_environment": {
+      "china_nrdl": "Inclusion in National Reimbursement Drug List crucial for commercial success; price negotiations increasingly competitive",
+      "nmpa_reforms": "Continued regulatory reforms accelerating innovative drug approvals",
+      "us_fda": "Ivonescimab partnership with Summit targeting FDA approval, representing significant value driver"
+    }
+  },
+
+  "company_analysis": {
+    "company_overview": {
+      "founded": 2012,
+      "headquarters": "Guangzhou, China",
+      "employees_estimate": 3500,
+      "ipo_date": "2020-04-24",
+      "business_model": "Integrated biopharmaceutical company focused on R&D, manufacturing, and commercialization of innovative cancer therapies"
+    },
+    "pipeline": {
+      "commercial_products": [
+        {
+          "name": "Cadonilimab (AK104)",
+          "type": "PD-1/CTLA-4 bispecific antibody",
+          "brand_name": "Kairudian",
+          "approved_indications": [
+            "Cervical cancer (China, June 2022) - first-line treatment",
+            "Gastric cancer (China, 2023)"
+          ],
+          "mechanism": "Dual checkpoint blockade targeting PD-1 and CTLA-4 on single molecule",
+          "differentiation": "First-in-class bispecific, potentially improved safety vs combination therapy",
+          "commercial_status": "Launched in China, ramping sales"
+        },
+        {
+          "name": "Penpulimab (AK105)",
+          "type": "PD-1 monoclonal antibody",
+          "approved_indications": ["Classical Hodgkin lymphoma (China)"],
+          "commercial_status": "Launched in China"
+        }
+      ],
+      "late_stage_pipeline": [
+        {
+          "name": "Ivonescimab (AK112)",
+          "type": "PD-1/VEGF bispecific antibody",
+          "stage": "Phase 3 / NDA",
+          "key_trials": [
+            {
+              "trial_name": "HARMONi-2",
+              "indication": "EGFR-mutant NSCLC (post-TKI failure)",
+              "result": "Superior PFS vs pembrolizumab (11.14 vs 5.82 months, HR 0.51)",
+              "significance": "First therapy to show superiority over anti-PD-1 in EGFR+ NSCLC"
+            },
+            {
+              "trial_name": "HARMONi",
+              "indication": "First-line non-squamous NSCLC",
+              "status": "Phase 3 ongoing"
+            },
+            {
+              "trial_name": "HARMONi-3",
+              "indication": "First-line squamous NSCLC",
+              "status": "Phase 3 ongoing"
+            }
+          ],
+          "regulatory_status": "NDA submitted in China; FDA filing planned via Summit partnership",
+          "peak_sales_potential_usd_bn": "5-10 billion globally if successful in multiple NSCLC settings"
+        },
+        {
+          "name": "Cadonilimab (AK104)",
+          "additional_indications_in_development": [
+            "Hepatocellular carcinoma - Phase 3",
+            "Non-small cell lung cancer - Phase 3",
+            "Esophageal cancer - Phase 3",
+            "Pancreatic cancer - Phase 2/3"
+          ]
+        }
+      ],
+      "early_stage_pipeline": [
+        {
+          "name": "AK117",
+          "type": "CD47 antibody",
+          "stage": "Phase 1/2",
+          "indication": "Hematological malignancies, solid tumors"
+        },
+        {
+          "name": "AK127",
+          "type": "TIGIT antibody",
+          "stage": "Phase 1/2"
+        },
+        {
+          "name": "AK119",
+          "type": "CD73 antibody",
+          "stage": "Phase 1"
+        },
+        {
+          "name": "AK129",
+          "type": "4-1BB agonist",
+          "stage": "Phase 1"
+        }
+      ],
+      "platform_technology": {
+        "name": "Tetrabody platform",
+        "description": "Proprietary bispecific antibody engineering platform enabling development of novel bispecific molecules with optimized properties",
+        "advantages": [
+          "Enables targeting of two antigens with single molecule",
+          "Improved manufacturing vs traditional bispecific approaches",
+          "Multiple product candidates validated in clinic"
+        ]
+      }
+    },
+    "competitive_advantages": [
+      "First-mover in PD-1/CTLA-4 bispecific space with approved product",
+      "Differentiated ivonescimab with superior clinical data in EGFR+ NSCLC",
+      "Validated global licensing deal demonstrating international recognition",
+      "Strong R&D capabilities and deep bispecific pipeline",
+      "Integrated manufacturing capabilities",
+      "Established commercial infrastructure in China"
+    ],
+    "partnerships": {
+      "summit_therapeutics": {
+        "partner": "Summit Therapeutics",
+        "drug": "Ivonescimab (AK112)",
+        "territory": "Ex-China rights",
+        "deal_value_total_usd_bn": 5.0,
+        "upfront_usd_mn": 500,
+        "milestones_usd_bn": 4.5,
+        "royalties": "Tiered double-digit royalties on net sales",
+        "announced": "2022",
+        "significance": "Largest ex-China licensing deal for a China-originated biologic at announcement, validates global potential"
+      },
+      "other_partnerships": [
+        "Various research collaborations with academic institutions",
+        "Manufacturing partnerships for global supply"
+      ]
+    }
+  },
+
+  "financial_data": {
+    "note": "Figures are estimates based on publicly available information. Actual results may vary.",
+    "currency": "CNY",
+    "annual_results": {
+      "2022": {
+        "revenue_mn": 1250,
+        "gross_profit_mn": 1000,
+        "gross_margin": "80.0%",
+        "rd_expense_mn": 2100,
+        "operating_loss_mn": -2200,
+        "net_loss_mn": -2150,
+        "cash_position_mn": 4500
+      },
+      "2023": {
+        "revenue_mn": 2800,
+        "gross_profit_mn": 2350,
+        "gross_margin": "83.9%",
+        "rd_expense_mn": 2400,
+        "operating_loss_mn": -1500,
+        "net_loss_mn": -1400,
+        "cash_position_mn": 5200,
+        "revenue_growth_yoy": "124.0%"
+      },
+      "2024E": {
+        "revenue_mn": 5000,
+        "gross_profit_mn": 4200,
+        "gross_margin": "84.0%",
+        "rd_expense_mn": 2600,
+        "operating_loss_mn": -500,
+        "net_loss_mn": -400,
+        "cash_position_mn": 6500,
+        "revenue_growth_yoy": "78.6%",
+        "note": "Estimated based on H1 2024 trends and cadonilimab ramp"
+      },
+      "2025E": {
+        "revenue_mn": 7500,
+        "gross_profit_mn": 6400,
+        "gross_margin": "85.3%",
+        "rd_expense_mn": 2800,
+        "operating_profit_mn": 800,
+        "net_profit_mn": 700,
+        "revenue_growth_yoy": "50.0%",
+        "note": "Expected profitability milestone with ivonescimab launch contribution"
+      }
+    },
+    "key_financial_metrics": {
+      "shares_outstanding_mn": 950,
+      "market_cap_hkd_bn_estimate": 49.4,
+      "market_cap_usd_bn_estimate": 6.3,
+      "enterprise_value_usd_bn_estimate": 5.5,
+      "price_to_sales_2024e": 8.5,
+      "price_to_sales_2025e": 5.7
+    },
+    "revenue_breakdown_2024e": {
+      "cadonilimab_pct": 75,
+      "penpulimab_pct": 15,
+      "licensing_milestones_pct": 8,
+      "other_pct": 2
+    },
+    "balance_sheet_strength": {
+      "assessment": "Strong",
+      "details": "Sufficient cash runway to fund operations and pipeline development through profitability. Summit upfront and milestones provide additional cushion."
+    }
+  },
+
+  "dcf_valuation": {
+    "methodology": "Sum-of-the-parts DCF valuation combining rNPV of pipeline assets with commercial product forecasts",
+    "assumptions": {
+      "forecast_period_years": 10,
+      "terminal_growth_rate": "3.0%",
+      "tax_rate": "15.0%",
+      "exchange_rate_cny_hkd": 1.08,
+      "shares_outstanding_mn": 950
+    },
+    "revenue_projections_cny_mn": {
+      "2025": 7500,
+      "2026": 11000,
+      "2027": 15500,
+      "2028": 21000,
+      "2029": 27000,
+      "2030": 33000,
+      "2031": 38000,
+      "2032": 42000,
+      "2033": 45000,
+      "2034": 47000
+    },
+    "ebitda_margin_projections": {
+      "2025": "15.0%",
+      "2026": "22.0%",
+      "2027": "28.0%",
+      "2028": "32.0%",
+      "2029": "35.0%",
+      "2030": "37.0%",
+      "2031": "38.0%",
+      "2032": "38.5%",
+      "2033": "39.0%",
+      "2034": "39.0%"
+    },
+    "key_value_drivers": {
+      "ivonescimab_china": {
+        "peak_sales_cny_mn": 15000,
+        "probability_of_success": "85%",
+        "launch_year": 2025
+      },
+      "ivonescimab_ex_china": {
+        "royalty_economics_note": "Tiered double-digit royalties on Summit sales",
+        "peak_royalty_income_cny_mn": 8000,
+        "probability_of_success": "60%",
+        "peak_year": 2032
+      },
+      "cadonilimab_label_expansions": {
+        "additional_peak_sales_cny_mn": 8000,
+        "probability_weighted": "70%"
+      },
+      "early_pipeline": {
+        "option_value_cny_mn": 5000,
+        "probability_weighted": "25%"
+      }
+    }
+  },
+
+  "scenarios": [
+    {
+      "scenario": "Bull Case",
+      "probability": "20%",
+      "discount_rate": "10.0%",
+      "description": "Ivonescimab achieves blockbuster status in US (FDA approval 2026), cadonilimab gains multiple label expansions, pipeline delivers additional winners",
+      "key_assumptions": [
+        "Ivonescimab FDA approval in 2026 with best-in-class label",
+        "Peak global ivonescimab sales >$8bn",
+        "Cadonilimab approved in 5+ additional indications",
+        "Two additional pipeline assets reach Phase 3",
+        "Operating margin reaches 40%+ at maturity"
+      ],
+      "terminal_value_cny_mn": 180000,
+      "enterprise_value_cny_mn": 95000,
+      "equity_value_cny_mn": 100000,
+      "equity_value_hkd_mn": 108000,
+      "target_price_hkd": 113.68
+    },
+    {
+      "scenario": "Base Case - Optimistic",
+      "probability": "25%",
+      "discount_rate": "11.0%",
+      "description": "Ivonescimab succeeds in China and gains US approval, cadonilimab shows steady growth, modest pipeline success",
+      "key_assumptions": [
+        "Ivonescimab US approval in 2027",
+        "Peak global ivonescimab sales $5-6bn",
+        "Cadonilimab approved in 3 additional indications",
+        "One additional pipeline asset advances"
+      ],
+      "terminal_value_cny_mn": 140000,
+      "enterprise_value_cny_mn": 72000,
+      "equity_value_cny_mn": 77000,
+      "equity_value_hkd_mn": 83160,
+      "target_price_hkd": 87.54
+    },
+    {
+      "scenario": "Base Case",
+      "probability": "30%",
+      "discount_rate": "12.0%",
+      "description": "Strong China performance for both key products, US approval with competitive label, moderate additional pipeline value",
+      "key_assumptions": [
+        "Ivonescimab China peak sales CNY 12bn",
+        "US approval with narrower initial label",
+        "Peak royalty income CNY 5bn",
+        "Cadonilimab reaches CNY 6bn peak sales"
+      ],
+      "terminal_value_cny_mn": 110000,
+      "enterprise_value_cny_mn": 55000,
+      "equity_value_cny_mn": 60000,
+      "equity_value_hkd_mn": 64800,
+      "target_price_hkd": 68.21
+    },
+    {
+      "scenario": "Conservative Case",
+      "probability": "15%",
+      "discount_rate": "12.5%",
+      "description": "China success but US pathway faces delays or competitive setbacks, pipeline attrition higher than expected",
+      "key_assumptions": [
+        "Ivonescimab China-only focus or delayed US entry",
+        "Peak China sales CNY 8bn",
+        "Limited royalty income",
+        "Cadonilimab growth slows due to competition"
+      ],
+      "terminal_value_cny_mn": 75000,
+      "enterprise_value_cny_mn": 38000,
+      "equity_value_cny_mn": 43000,
+      "equity_value_hkd_mn": 46440,
+      "target_price_hkd": 48.88
+    },
+    {
+      "scenario": "Bear Case",
+      "probability": "10%",
+      "discount_rate": "13.0%",
+      "description": "Clinical or regulatory setbacks for ivonescimab, intensified pricing pressure in China, pipeline failures",
+      "key_assumptions": [
+        "Ivonescimab US program discontinued or significantly delayed",
+        "China pricing pressure compresses margins",
+        "Peak revenue CNY 15bn",
+        "Multiple pipeline setbacks"
+      ],
+      "terminal_value_cny_mn": 50000,
+      "enterprise_value_cny_mn": 25000,
+      "equity_value_cny_mn": 30000,
+      "equity_value_hkd_mn": 32400,
+      "target_price_hkd": 34.11
+    }
+  ],
+
+  "probability_weighted_valuation": {
+    "calculation": {
+      "bull_case": {
+        "price_hkd": 113.68,
+        "probability": 0.20,
+        "weighted_contribution": 22.74
+      },
+      "base_optimistic": {
+        "price_hkd": 87.54,
+        "probability": 0.25,
+        "weighted_contribution": 21.89
+      },
+      "base_case": {
+        "price_hkd": 68.21,
+        "probability": 0.30,
+        "weighted_contribution": 20.46
+      },
+      "conservative": {
+        "price_hkd": 48.88,
+        "probability": 0.15,
+        "weighted_contribution": 7.33
+      },
+      "bear_case": {
+        "price_hkd": 34.11,
+        "probability": 0.10,
+        "weighted_contribution": 3.41
+      }
+    },
+    "probability_weighted_target_price_hkd": 75.83,
+    "rounded_target_price_hkd": 76.00,
+    "current_price_estimate_hkd": 52.00,
+    "implied_upside": "46.2%"
+  },
+
+  "probability_weighted_price": {
+    "value_hkd": 75.83,
+    "methodology": "Sum of scenario target prices multiplied by their respective probabilities",
+    "confidence_range": {
+      "low_hkd": 55.00,
+      "mid_hkd": 76.00,
+      "high_hkd": 95.00
+    }
+  },
+
+  "risks": {
+    "clinical_regulatory_risks": [
+      {
+        "risk": "Ivonescimab FDA approval risk",
+        "severity": "High",
+        "description": "US approval is a major value driver. Clinical or regulatory setbacks could significantly impact valuation.",
+        "mitigant": "Strong HARMONi-2 data provides foundation; Summit partnership shares development risk"
+      },
+      {
+        "risk": "Clinical trial failures in pipeline",
+        "severity": "Medium",
+        "description": "Early-stage pipeline candidates face typical biotech attrition rates",
+        "mitigant": "Diversified pipeline across multiple mechanisms and indications"
+      }
+    ],
+    "commercial_risks": [
+      {
+        "risk": "China pricing pressure",
+        "severity": "High",
+        "description": "NRDL negotiations could compress margins; government volume-based procurement may impact pricing",
+        "mitigant": "Differentiated bispecific profile may support premium pricing; volume growth can offset price cuts"
+      },
+      {
+        "risk": "Competition from domestic and global players",
+        "severity": "Medium",
+        "description": "Crowded PD-1 space with multiple competitors; emerging bispecific competition",
+        "mitigant": "First-mover advantage in bispecifics; differentiated clinical data"
+      }
+    ],
+    "geopolitical_risks": [
+      {
+        "risk": "US-China tensions affecting biotech sector",
+        "severity": "Medium",
+        "description": "Potential regulatory scrutiny of Chinese biotech companies; possible restrictions on technology transfer",
+        "mitigant": "Summit partnership structure addresses some concerns; China market provides base case value"
+      },
+      {
+        "risk": "BIOSECURE Act or similar legislation",
+        "severity": "Medium",
+        "description": "Potential US legislation affecting Chinese biotech access to US market",
+        "mitigant": "Partnership structure with US company for development and commercialization"
+      }
+    ],
+    "financial_risks": [
+      {
+        "risk": "Cash burn in pursuit of global expansion",
+        "severity": "Low",
+        "description": "Heavy R&D investment could strain balance sheet",
+        "mitigant": "Strong commercial revenue growth; Summit upfront and milestones provide cushion"
+      },
+      {
+        "risk": "Currency fluctuation",
+        "severity": "Low",
+        "description": "CNY/HKD/USD movements could impact reported results",
+        "mitigant": "Natural hedge from domestic revenue and global royalty streams"
+      }
+    ],
+    "execution_risks": [
+      {
+        "risk": "Manufacturing scale-up challenges",
+        "severity": "Low-Medium",
+        "description": "Meeting global demand for ivonescimab requires significant manufacturing expansion",
+        "mitigant": "Established manufacturing capabilities; partnership allows for shared supply chain"
+      },
+      {
+        "risk": "Key personnel retention",
+        "severity": "Low",
+        "description": "Competitive talent market in China biotech",
+        "mitigant": "Strong R&D track record attracts talent; established company culture"
+      }
+    ]
+  },
+
+  "recommendation": {
+    "rating": "BUY",
+    "target_price_hkd": 76.00,
+    "current_price_estimate_hkd": 52.00,
+    "upside_potential": "46.2%",
+    "investment_horizon": "12-18 months",
+    "conviction_level": "High",
+    "rationale": [
+      "Differentiated bispecific antibody pipeline with first-mover advantage",
+      "Ivonescimab represents significant value driver with best-in-class NSCLC data",
+      "Summit partnership validates global potential and de-risks US development",
+      "Commercial execution in China demonstrates organizational capability",
+      "Approaching profitability inflection point provides fundamental support",
+      "Probability-weighted valuation suggests significant upside from current levels"
+    ],
+    "catalysts": [
+      {
+        "catalyst": "Ivonescimab China NDA approval",
+        "expected_timing": "H1 2025",
+        "impact": "High"
+      },
+      {
+        "catalyst": "Additional HARMONi trial readouts",
+        "expected_timing": "Throughout 2025",
+        "impact": "High"
+      },
+      {
+        "catalyst": "FDA IND clearance for US pivotal trial",
+        "expected_timing": "2025",
+        "impact": "Medium-High"
+      },
+      {
+        "catalyst": "Cadonilimab label expansion approvals",
+        "expected_timing": "2025-2026",
+        "impact": "Medium"
+      },
+      {
+        "catalyst": "Profitability milestone achievement",
+        "expected_timing": "2025",
+        "impact": "Medium"
+      }
+    ],
+    "key_metrics_to_monitor": [
+      "Quarterly revenue growth and gross margin trends",
+      "Ivonescimab clinical trial progress and regulatory submissions",
+      "NRDL negotiation outcomes for new indications",
+      "Summit partnership milestones and royalty projections",
+      "Pipeline clinical trial readouts",
+      "Cash position and operating expense management"
+    ]
+  },
+
+  "comparable_companies": [
+    {
+      "company": "BeiGene",
+      "ticker": "6160.HK / BGNE",
+      "comparison": "Larger Chinese biotech with global ambitions; more diversified but less differentiated pipeline"
+    },
+    {
+      "company": "Innovent Biologics",
+      "ticker": "1801.HK",
+      "comparison": "Direct competitor in PD-1 space; Eli Lilly partnership provides global reach"
+    },
+    {
+      "company": "Zai Lab",
+      "ticker": "9688.HK / ZLAB",
+      "comparison": "License-in model vs Akeso's proprietary innovation"
+    },
+    {
+      "company": "Hutchmed",
+      "ticker": "13.HK / HCM",
+      "comparison": "Earlier stage pipeline; oncology focus"
+    }
+  ],
+
+  "analyst_notes": {
+    "methodology_note": "This valuation employs a risk-adjusted NPV (rNPV) framework commonly used for biotech companies, applying probability-of-success adjustments to pipeline assets based on clinical stage and competitive positioning.",
+    "data_limitations": "Due to web access restrictions, some financial figures are estimates based on historical trends and publicly reported information available at knowledge cutoff. Investors should verify current financial data and stock prices before making investment decisions.",
+    "update_frequency": "This report should be updated quarterly following earnings releases and upon material clinical or regulatory news."
+  }
+}

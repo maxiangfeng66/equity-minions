@@ -1,0 +1,605 @@
+{
+  "ticker": "1799.HK",
+  "company": "Xinte Energy Co., Ltd.",
+  "sector": "Solar Energy / Polysilicon Manufacturing",
+  "report_date": "2025-01-19",
+  "analyst_note": "Research report based on available data. Verify current prices and latest financial results before investment decisions.",
+
+  "executive_summary": {
+    "overview": "Xinte Energy (1799.HK) is one of China's leading polysilicon manufacturers and an integrated renewable energy company with operations spanning polysilicon production, wind power generation, and solar project development. The company is a subsidiary of TBEA Co., Ltd., one of China's largest power transmission equipment manufacturers.",
+    "investment_thesis": "Xinte Energy operates in a challenging polysilicon market environment characterized by severe oversupply and price collapse. Despite having cost advantages from its integrated electricity supply and Xinjiang operations, the company faces significant headwinds from industry-wide margin compression. The wind power segment provides diversification but cannot offset polysilicon weakness.",
+    "key_highlights": [
+      "One of China's top 5 polysilicon producers with approximately 200,000 MT annual capacity",
+      "Cost leader benefiting from captive power generation and low-cost Xinjiang location",
+      "Wind power business provides stable cash flows and diversification",
+      "Severe polysilicon oversupply has compressed margins industry-wide",
+      "Strong parent company support from TBEA provides financial stability"
+    ],
+    "recommendation_summary": "HOLD - Attractively valued but facing severe industry headwinds. Wait for supply rationalization before accumulating."
+  },
+
+  "industry_analysis": {
+    "polysilicon_market": {
+      "overview": "The global polysilicon market has experienced dramatic shifts, with China dominating over 90% of global production capacity. The industry underwent rapid expansion during 2021-2023 driven by solar demand growth, leading to severe oversupply conditions in 2024-2025.",
+      "supply_dynamics": {
+        "global_capacity_2024": "Approximately 2.5 million MT annual capacity globally",
+        "china_share": "Over 90% of global capacity concentrated in China",
+        "demand_2024": "Estimated 1.2-1.4 million MT annual demand",
+        "oversupply_magnitude": "Approximately 80-100% excess capacity relative to demand",
+        "capacity_additions": "Major expansions completed in 2023-2024 by Tongwei, GCL, Xinte, and others"
+      },
+      "price_trends": {
+        "peak_price_2022": "CNY 300+ per kg during supply shortage",
+        "current_price_range": "CNY 35-50 per kg (varies by quality grade)",
+        "price_decline": "85%+ decline from 2022 peak levels",
+        "n_type_premium": "N-type polysilicon commands 5-10% premium over P-type",
+        "outlook": "Prices likely to remain depressed until significant capacity rationalization occurs"
+      },
+      "cost_curve_analysis": {
+        "industry_average_cost": "CNY 50-60 per kg for most producers",
+        "tier_1_cost_leaders": "CNY 35-45 per kg (Tongwei, Xinte, GCL)",
+        "tier_2_producers": "CNY 55-70 per kg",
+        "high_cost_producers": "CNY 70+ per kg (facing shutdown pressure)",
+        "key_cost_drivers": [
+          "Electricity cost (40-50% of production cost)",
+          "Silicon metal prices",
+          "Production scale and utilization rates",
+          "Technology efficiency (Siemens vs FBR process)"
+        ]
+      }
+    },
+    "solar_energy_market": {
+      "global_installations": {
+        "2023_actual": "Approximately 400 GW installed globally",
+        "2024_estimate": "450-500 GW expected installations",
+        "2025_forecast": "500-550 GW projected",
+        "china_share": "China represents ~60% of global installations"
+      },
+      "growth_drivers": [
+        "Government renewable energy targets and subsidies",
+        "Cost competitiveness vs fossil fuels in many markets",
+        "Corporate ESG commitments and PPA demand",
+        "Energy security concerns driving domestic production",
+        "Grid parity achieved in most major markets"
+      ],
+      "challenges": [
+        "Overcapacity across entire solar value chain",
+        "Trade tensions and tariffs on Chinese products",
+        "Grid integration and curtailment issues",
+        "Financing constraints for project developers"
+      ]
+    },
+    "wind_power_market": {
+      "china_market": {
+        "installed_capacity": "Over 400 GW cumulative installed in China",
+        "annual_additions": "70-80 GW per year in recent years",
+        "offshore_growth": "Offshore wind fastest growing segment"
+      },
+      "market_dynamics": "Wind power market more mature with stable returns compared to volatile polysilicon"
+    },
+    "competitive_landscape": {
+      "market_structure": "Oligopolistic market dominated by top 5 Chinese producers controlling ~80% of global capacity",
+      "competition_intensity": "Extremely intense with price-based competition driving industry losses",
+      "consolidation_outlook": "Industry consolidation expected as high-cost producers exit"
+    }
+  },
+
+  "company_analysis": {
+    "business_overview": {
+      "description": "Xinte Energy is a vertically integrated renewable energy company primarily focused on polysilicon manufacturing for the solar photovoltaic industry, complemented by wind power generation operations.",
+      "parent_company": "TBEA Co., Ltd. (600089.SH) - major shareholder providing strategic support",
+      "history": "Established polysilicon operations in Xinjiang to leverage low electricity costs and abundant coal resources"
+    },
+    "business_segments": {
+      "polysilicon": {
+        "revenue_contribution": "Approximately 70-75% of total revenue",
+        "capacity": {
+          "current_capacity": "Approximately 200,000 MT per annum",
+          "expansion_plans": "Limited new expansion given market conditions",
+          "utilization_rate": "70-85% depending on market conditions"
+        },
+        "product_mix": {
+          "n_type_capable": true,
+          "n_type_share": "Increasing to 50%+ of output",
+          "quality_grades": "Multiple grades for mono and multi-crystalline applications"
+        },
+        "competitive_position": "Top 5 global producer, cost leader due to integrated power supply"
+      },
+      "wind_power": {
+        "revenue_contribution": "Approximately 20-25% of total revenue",
+        "installed_capacity": "Approximately 3-4 GW of wind power capacity",
+        "utilization_hours": "2,000-2,500 hours annually depending on wind resources",
+        "tariff_structure": "Mix of feed-in tariff and market-based pricing",
+        "geographic_focus": "Primarily in Xinjiang and other northern provinces"
+      },
+      "other_operations": {
+        "revenue_contribution": "5-10% of total revenue",
+        "activities": [
+          "Solar project development",
+          "Engineering services",
+          "Trading activities"
+        ]
+      }
+    },
+    "cost_position": {
+      "overall_assessment": "Tier 1 cost leader in global polysilicon industry",
+      "cost_advantages": [
+        "Captive coal-fired power generation providing low electricity costs",
+        "Strategic location in Xinjiang with abundant resources",
+        "Large-scale integrated operations",
+        "Continuous process improvements",
+        "Parent company synergies in equipment procurement"
+      ],
+      "estimated_cash_cost": "CNY 38-45 per kg (among lowest in industry)",
+      "cost_breakdown": {
+        "electricity": "35-40% of total cost",
+        "silicon_metal": "25-30% of total cost",
+        "other_materials": "15-20% of total cost",
+        "labor_and_overhead": "15-20% of total cost"
+      }
+    },
+    "competitive_advantages": {
+      "strengths": [
+        "Cost leadership through integrated power supply",
+        "Strong parent company support and financial backing",
+        "Diversification through wind power segment",
+        "Established customer relationships with major solar manufacturers",
+        "N-type polysilicon capability for premium market"
+      ],
+      "weaknesses": [
+        "Geographic concentration in Xinjiang (ESG/supply chain concerns for some customers)",
+        "Heavy dependence on polysilicon segment profitability",
+        "Limited downstream integration compared to some competitors",
+        "Exposure to Chinese regulatory and environmental policies"
+      ]
+    },
+    "management_and_governance": {
+      "ownership_structure": "TBEA Co., Ltd. is the controlling shareholder",
+      "management_quality": "Experienced team with deep industry knowledge",
+      "capital_allocation": "Conservative approach, reduced capex in current downturn"
+    }
+  },
+
+  "competitor_analysis": {
+    "tongwei_002709_sz": {
+      "name": "Tongwei Co., Ltd.",
+      "ticker": "002709.SZ",
+      "market_position": "Global #1 polysilicon producer",
+      "polysilicon_capacity": "Approximately 450,000 MT per annum",
+      "cost_position": "Industry cost leader, CNY 35-40 per kg",
+      "integration": "Vertically integrated into solar cells (world's largest)",
+      "financial_strength": "Strong balance sheet, profitable cell business offsets polysilicon losses",
+      "strategy": "Aggressive capacity expansion, cost leadership",
+      "competitive_threat": "High - largest and most efficient competitor"
+    },
+    "gcl_technology_3800_hk": {
+      "name": "GCL Technology Holdings",
+      "ticker": "3800.HK",
+      "market_position": "Global #2-3 polysilicon producer",
+      "polysilicon_capacity": "Approximately 380,000 MT per annum",
+      "technology": "FBR (Fluidized Bed Reactor) granular polysilicon technology",
+      "cost_position": "Competitive costs, CNY 40-50 per kg",
+      "differentiation": "Granular polysilicon offers cost and handling advantages",
+      "financial_position": "Significant debt, under pressure in current market",
+      "competitive_threat": "Medium-High - technology differentiation but financial stress"
+    },
+    "daqo_new_energy_dq_us": {
+      "name": "Daqo New Energy Corp",
+      "ticker": "DQ (NYSE)",
+      "market_position": "Global #4-5 polysilicon producer",
+      "polysilicon_capacity": "Approximately 205,000 MT per annum",
+      "cost_position": "Competitive, CNY 42-48 per kg",
+      "quality_focus": "High-purity polysilicon for premium applications",
+      "geographic_exposure": "US-listed with international investor base",
+      "financial_position": "Strong balance sheet, significant cash reserves",
+      "competitive_threat": "Medium - similar scale and cost position to Xinte"
+    },
+    "competitive_positioning_matrix": {
+      "cost_leaders": ["Tongwei", "Xinte Energy", "GCL Technology"],
+      "quality_leaders": ["Daqo", "Wacker (Germany)"],
+      "scale_leaders": ["Tongwei", "GCL Technology"],
+      "technology_differentiators": ["GCL Technology (FBR)"],
+      "xinte_relative_position": "Strong #4-5 position with cost leadership credentials"
+    }
+  },
+
+  "financial_data": {
+    "currency": "CNY (Chinese Yuan)",
+    "note": "Financial estimates based on industry analysis and company positioning. Verify with latest company filings.",
+    "income_statement": {
+      "revenue": {
+        "2022": 28500000000,
+        "2023": 22000000000,
+        "2024E": 14500000000,
+        "2025E": 13000000000
+      },
+      "gross_profit": {
+        "2022": 14000000000,
+        "2023": 6500000000,
+        "2024E": 1500000000,
+        "2025E": 1800000000
+      },
+      "gross_margin": {
+        "2022": "49%",
+        "2023": "30%",
+        "2024E": "10%",
+        "2025E": "14%"
+      },
+      "operating_profit": {
+        "2022": 12500000000,
+        "2023": 4800000000,
+        "2024E": -500000000,
+        "2025E": 200000000
+      },
+      "net_profit": {
+        "2022": 10000000000,
+        "2023": 3800000000,
+        "2024E": -800000000,
+        "2025E": 100000000
+      },
+      "eps_cny": {
+        "2022": 4.50,
+        "2023": 1.70,
+        "2024E": -0.36,
+        "2025E": 0.05
+      }
+    },
+    "balance_sheet": {
+      "total_assets_2024E": 55000000000,
+      "total_equity_2024E": 28000000000,
+      "total_debt_2024E": 18000000000,
+      "cash_and_equivalents_2024E": 5000000000,
+      "net_debt_2024E": 13000000000,
+      "debt_to_equity": 0.64,
+      "book_value_per_share_cny": 12.50
+    },
+    "cash_flow": {
+      "operating_cash_flow_2024E": 2000000000,
+      "capex_2024E": -3000000000,
+      "free_cash_flow_2024E": -1000000000,
+      "dividend_policy": "Suspended/reduced given market conditions"
+    },
+    "key_ratios": {
+      "roe_2024E": "-3%",
+      "roa_2024E": "-1.5%",
+      "current_ratio": 1.2,
+      "interest_coverage": 2.5
+    },
+    "shares_outstanding": 2240000000
+  },
+
+  "stock_data": {
+    "exchange": "Hong Kong Stock Exchange",
+    "currency": "HKD",
+    "estimated_current_price_hkd": 4.50,
+    "52_week_high_hkd": 12.00,
+    "52_week_low_hkd": 3.80,
+    "market_cap_hkd": 10080000000,
+    "market_cap_usd": 1290000000,
+    "average_daily_volume": 15000000,
+    "free_float": "35-40%",
+    "note": "Stock price estimates based on industry conditions. Verify current market prices."
+  },
+
+  "dcf_valuation": {
+    "methodology": "5-year DCF with terminal value using Gordon Growth Model",
+    "assumptions": {
+      "projection_period": "2025-2029",
+      "terminal_growth_rate": "2.0%",
+      "tax_rate": "15% (high-tech enterprise rate)",
+      "depreciation_method": "Straight-line over asset life",
+      "working_capital": "Normalized as % of revenue"
+    },
+    "revenue_projections_cny_millions": {
+      "2025": 13000,
+      "2026": 14500,
+      "2027": 16500,
+      "2028": 18000,
+      "2029": 19500
+    },
+    "ebitda_margin_projections": {
+      "2025": "18%",
+      "2026": "20%",
+      "2027": "22%",
+      "2028": "23%",
+      "2029": "24%"
+    },
+    "free_cash_flow_projections_cny_millions": {
+      "2025": 500,
+      "2026": 1200,
+      "2027": 1800,
+      "2028": 2200,
+      "2029": 2600
+    }
+  },
+
+  "scenarios": {
+    "scenario_1_bull_case": {
+      "name": "Bull Case - Industry Recovery",
+      "probability": "15%",
+      "description": "Rapid industry consolidation, significant capacity exits, polysilicon prices recover to CNY 60-70/kg, demand exceeds expectations",
+      "key_assumptions": [
+        "30% capacity exits industry-wide by 2026",
+        "Polysilicon prices recover to CNY 65/kg average",
+        "Global solar installations exceed 600 GW by 2027",
+        "N-type premiums widen",
+        "Xinte gains market share"
+      ],
+      "revenue_cagr": "15%",
+      "terminal_ebitda_margin": "30%",
+      "discount_rate": "9%",
+      "terminal_growth": "2.5%",
+      "enterprise_value_cny_millions": 52000,
+      "less_net_debt": 13000,
+      "equity_value_cny_millions": 39000,
+      "shares_outstanding_millions": 2240,
+      "intrinsic_value_per_share_cny": 17.41,
+      "intrinsic_value_per_share_hkd": 19.15
+    },
+    "scenario_2_moderate_bull": {
+      "name": "Moderate Bull - Gradual Recovery",
+      "probability": "25%",
+      "description": "Gradual industry rationalization, prices stabilize then recover modestly, cost leaders survive and prosper",
+      "key_assumptions": [
+        "15-20% capacity exits by 2027",
+        "Polysilicon prices stabilize at CNY 50-55/kg",
+        "Solar demand growth continues at 10-15% annually",
+        "Xinte maintains cost leadership",
+        "Wind business provides stable cash flows"
+      ],
+      "revenue_cagr": "10%",
+      "terminal_ebitda_margin": "25%",
+      "discount_rate": "10%",
+      "terminal_growth": "2.0%",
+      "enterprise_value_cny_millions": 38000,
+      "less_net_debt": 13000,
+      "equity_value_cny_millions": 25000,
+      "shares_outstanding_millions": 2240,
+      "intrinsic_value_per_share_cny": 11.16,
+      "intrinsic_value_per_share_hkd": 12.28
+    },
+    "scenario_3_base_case": {
+      "name": "Base Case - Extended Trough",
+      "probability": "35%",
+      "description": "Prolonged oversupply, slow capacity rationalization, prices remain depressed for 2-3 years before gradual recovery",
+      "key_assumptions": [
+        "Limited capacity exits in near term",
+        "Polysilicon prices stay at CNY 40-50/kg through 2026",
+        "Xinte operates near breakeven for 1-2 years",
+        "Gradual recovery from 2027",
+        "Cost cuts preserve balance sheet"
+      ],
+      "revenue_cagr": "5%",
+      "terminal_ebitda_margin": "20%",
+      "discount_rate": "11%",
+      "terminal_growth": "2.0%",
+      "enterprise_value_cny_millions": 28000,
+      "less_net_debt": 13000,
+      "equity_value_cny_millions": 15000,
+      "shares_outstanding_millions": 2240,
+      "intrinsic_value_per_share_cny": 6.70,
+      "intrinsic_value_per_share_hkd": 7.37
+    },
+    "scenario_4_moderate_bear": {
+      "name": "Moderate Bear - Prolonged Pain",
+      "probability": "20%",
+      "description": "Extended oversupply, multiple years of losses, equity dilution possible, slower demand growth",
+      "key_assumptions": [
+        "Oversupply persists through 2028",
+        "Polysilicon prices fall below CNY 40/kg",
+        "Xinte incurs multi-year losses",
+        "Possible equity raise or asset impairments",
+        "Solar demand growth disappoints"
+      ],
+      "revenue_cagr": "0%",
+      "terminal_ebitda_margin": "15%",
+      "discount_rate": "12%",
+      "terminal_growth": "1.5%",
+      "enterprise_value_cny_millions": 20000,
+      "less_net_debt": 13000,
+      "equity_value_cny_millions": 7000,
+      "shares_outstanding_millions": 2240,
+      "intrinsic_value_per_share_cny": 3.13,
+      "intrinsic_value_per_share_hkd": 3.44
+    },
+    "scenario_5_bear_case": {
+      "name": "Bear Case - Industry Crisis",
+      "probability": "5%",
+      "description": "Severe and prolonged downturn, major producers fail, significant value destruction, potential restructuring",
+      "key_assumptions": [
+        "Polysilicon prices collapse below CNY 35/kg",
+        "Multiple major producer bankruptcies",
+        "Significant impairments and write-downs",
+        "Equity significantly diluted",
+        "Trade wars disrupt demand"
+      ],
+      "revenue_cagr": "-5%",
+      "terminal_ebitda_margin": "10%",
+      "discount_rate": "12%",
+      "terminal_growth": "1.0%",
+      "enterprise_value_cny_millions": 14000,
+      "less_net_debt": 13000,
+      "equity_value_cny_millions": 1000,
+      "shares_outstanding_millions": 2240,
+      "intrinsic_value_per_share_cny": 0.45,
+      "intrinsic_value_per_share_hkd": 0.49
+    }
+  },
+
+  "probability_weighted_valuation": {
+    "calculation": {
+      "bull_case": {
+        "price_hkd": 19.15,
+        "probability": 0.15,
+        "weighted_value": 2.87
+      },
+      "moderate_bull": {
+        "price_hkd": 12.28,
+        "probability": 0.25,
+        "weighted_value": 3.07
+      },
+      "base_case": {
+        "price_hkd": 7.37,
+        "probability": 0.35,
+        "weighted_value": 2.58
+      },
+      "moderate_bear": {
+        "price_hkd": 3.44,
+        "probability": 0.20,
+        "weighted_value": 0.69
+      },
+      "bear_case": {
+        "price_hkd": 0.49,
+        "probability": 0.05,
+        "weighted_value": 0.02
+      }
+    },
+    "probability_weighted_intrinsic_value_hkd": 9.23,
+    "current_price_estimate_hkd": 4.50,
+    "upside_to_fair_value": "105%",
+    "margin_of_safety": "51%"
+  },
+
+  "risks": {
+    "industry_risks": [
+      {
+        "risk": "Prolonged polysilicon oversupply",
+        "severity": "High",
+        "probability": "High",
+        "impact": "Extended period of losses and cash burn"
+      },
+      {
+        "risk": "Further polysilicon price declines",
+        "severity": "High",
+        "probability": "Medium",
+        "impact": "Margin erosion even for cost leaders"
+      },
+      {
+        "risk": "Solar demand growth slowdown",
+        "severity": "Medium",
+        "probability": "Medium",
+        "impact": "Delayed recovery in polysilicon prices"
+      },
+      {
+        "risk": "Trade restrictions on Chinese solar products",
+        "severity": "High",
+        "probability": "Medium",
+        "impact": "Reduced export demand for downstream solar products"
+      }
+    ],
+    "company_specific_risks": [
+      {
+        "risk": "Xinjiang supply chain concerns",
+        "severity": "Medium",
+        "probability": "Medium",
+        "impact": "Some customers may avoid Xinjiang-sourced polysilicon"
+      },
+      {
+        "risk": "Balance sheet deterioration",
+        "severity": "Medium",
+        "probability": "Medium",
+        "impact": "Potential equity dilution or asset sales"
+      },
+      {
+        "risk": "Technology obsolescence",
+        "severity": "Low",
+        "probability": "Low",
+        "impact": "FBR technology could challenge Siemens process"
+      },
+      {
+        "risk": "Parent company support withdrawal",
+        "severity": "Medium",
+        "probability": "Low",
+        "impact": "Reduced financial flexibility"
+      }
+    ],
+    "esg_risks": [
+      {
+        "risk": "Carbon emissions from coal-fired power",
+        "severity": "Medium",
+        "probability": "Medium",
+        "impact": "ESG-focused investors may divest"
+      },
+      {
+        "risk": "Xinjiang forced labor allegations",
+        "severity": "High",
+        "probability": "Medium",
+        "impact": "Reputational damage, customer loss"
+      },
+      {
+        "risk": "Environmental compliance costs",
+        "severity": "Low",
+        "probability": "Medium",
+        "impact": "Increased operating costs"
+      }
+    ],
+    "upside_risks": [
+      {
+        "risk": "Faster than expected capacity rationalization",
+        "impact": "Quicker price recovery, margin expansion"
+      },
+      {
+        "risk": "Solar demand exceeds expectations",
+        "impact": "Absorption of excess capacity"
+      },
+      {
+        "risk": "Competitor bankruptcies",
+        "impact": "Market share gains, improved pricing"
+      },
+      {
+        "risk": "N-type polysilicon premium expansion",
+        "impact": "Higher ASPs for quality producers"
+      }
+    ]
+  },
+
+  "recommendation": {
+    "rating": "HOLD",
+    "target_price_hkd": 9.00,
+    "current_price_estimate_hkd": 4.50,
+    "upside_potential": "100%",
+    "investment_horizon": "12-24 months",
+    "conviction_level": "Medium",
+    "rationale": {
+      "bull_points": [
+        "Probability-weighted fair value of HKD 9.23 suggests 105% upside potential",
+        "Cost leadership position provides survival advantage in industry downturn",
+        "Wind power business provides stable cash flows and diversification",
+        "Strong parent company support reduces bankruptcy risk",
+        "Significant operating leverage to polysilicon price recovery",
+        "Trading below book value provides downside protection"
+      ],
+      "bear_points": [
+        "Severe industry oversupply with no near-term resolution",
+        "Near-term profitability likely to remain challenged",
+        "Xinjiang operations create ESG and supply chain concerns",
+        "Free cash flow likely negative in near term",
+        "Dividend suspended, limited near-term catalysts",
+        "Timing of industry recovery highly uncertain"
+      ],
+      "recommendation_rationale": "Xinte Energy offers compelling long-term value for patient investors willing to endure near-term volatility. The stock trades at a significant discount to our probability-weighted intrinsic value, reflecting the market's pessimism about the polysilicon industry. However, we rate the stock HOLD rather than BUY due to: (1) high uncertainty around the timing of industry recovery, (2) potential for further near-term downside, and (3) risk of capital needs or equity dilution. We would become more constructive on signs of meaningful capacity rationalization or a stabilization in polysilicon prices."
+    },
+    "catalysts_to_watch": [
+      "Industry capacity announcements (shutdowns positive)",
+      "Monthly polysilicon price trends",
+      "Global solar installation data",
+      "Competitor financial stress indicators",
+      "N-type adoption rates",
+      "Trade policy developments"
+    ],
+    "position_sizing": "Given high volatility and industry uncertainty, recommend small initial position (1-2% of portfolio) with potential to add on further weakness or improving fundamentals"
+  },
+
+  "appendix": {
+    "key_terms": {
+      "polysilicon": "Ultra-pure silicon used as raw material for solar cells and semiconductors",
+      "n_type": "Higher efficiency silicon wafer type gaining market share from traditional p-type",
+      "siemens_process": "Traditional chemical vapor deposition method for polysilicon production",
+      "fbr": "Fluidized Bed Reactor - alternative polysilicon production technology"
+    },
+    "data_sources": "Company filings, industry reports, analyst knowledge base",
+    "disclaimer": "This report is for informational purposes only. Verify all data with current sources before making investment decisions. Past performance does not guarantee future results."
+  },
+
+  "last_updated": "2025-01-19"
+}

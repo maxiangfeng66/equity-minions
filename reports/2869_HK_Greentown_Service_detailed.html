@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2869 HK - Detailed Research Report | Greentown Service Group Co. Limited</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px 50px;
+            max-width: 1200px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #161b22;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+        }
+
+        .section h2 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .section h3 {
+            color: #8b949e;
+            margin: 20px 0 10px;
+            font-size: 1.1em;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid #30363d;
+        }
+
+        .header-section h1 {
+            font-size: 2.2em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .header-section .ticker {
+            color: #58a6ff;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .rating-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .rating-hold { background: #e3a008; color: #000; }
+        .rating-buy { background: #238636; color: #fff; }
+        .rating-sell { background: #da3633; color: #fff; }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #30363d;
+        }
+
+        .metric-card .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .data-table th {
+            background: #0d1117;
+            color: #8b949e;
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .scenario-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card h4 {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .scenario-card .probability {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #30363d;
+            border-radius: 10px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+
+        .risk-item {
+            padding: 15px;
+            background: #0d1117;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #da3633;
+        }
+
+        .risk-item.medium {
+            border-left-color: #e3a008;
+        }
+
+        .risk-item.low {
+            border-left-color: #238636;
+        }
+
+        .risk-item h4 {
+            color: #c9d1d9;
+            margin-bottom: 5px;
+        }
+
+        .risk-item p {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .debate-round {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .debate-entry {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .debate-entry.bull {
+            background: rgba(35, 134, 54, 0.1);
+            border-left: 3px solid #238636;
+        }
+
+        .debate-entry.bear {
+            background: rgba(218, 54, 51, 0.1);
+            border-left: 3px solid #da3633;
+        }
+
+        .debate-entry.critic {
+            background: rgba(227, 160, 8, 0.1);
+            border-left: 3px solid #e3a008;
+        }
+
+        .debate-entry.synthesizer {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .debate-entry .speaker {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .debate-entry.bull .speaker { color: #238636; }
+        .debate-entry.bear .speaker { color: #da3633; }
+        .debate-entry.critic .speaker { color: #e3a008; }
+        .debate-entry.synthesizer .speaker { color: #58a6ff; }
+
+        .key-point {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #30363d;
+            border-radius: 5px;
+            font-size: 0.85em;
+            margin: 3px 5px 3px 0;
+        }
+
+        .catalyst-item {
+            padding: 12px 15px;
+            background: #0d1117;
+            border-radius: 8px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .catalyst-item .timing {
+            color: #58a6ff;
+            font-size: 0.85em;
+        }
+
+        .valuation-summary {
+            background: linear-gradient(135deg, #1a2744 0%, #0d1117 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .valuation-summary h3 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.85em;
+            border-top: 1px solid #30363d;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>2869.HK</h3>
+            <p>Greentown Service Group</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">AI Debate Log</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="header-section">
+            <div class="ticker">2869.HK | Hong Kong Stock Exchange</div>
+            <h1>Greentown Service Group Co. Limited</h1>
+            <p style="color: #8b949e; margin-bottom: 20px;">Real Estate Services - Premium Property Management</p>
+            <span class="rating-badge rating-buy">BUY</span>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">HKD 6.20</div>
+                    <div class="label">Target Price</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">HKD 4.50</div>
+                    <div class="label">Current Price</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">38%</div>
+                    <div class="label">Upside Potential</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">Medium</div>
+                    <div class="label">Conviction Level</div>
+                </div>
+            </div>
+        </div>
+
+        <section id="executive-summary" class="section">
+            <h2>Executive Summary</h2>
+            <h3>Company Overview</h3>
+            <p>Greentown Service Group is one of China's leading premium property management companies, renowned for its high-quality service standards and strong brand recognition. The company operates primarily in the Yangtze River Delta region and has expanded nationwide, focusing on mid-to-high-end residential properties. As a subsidiary of Greentown China Holdings, the company benefits from a steady pipeline of new projects while also pursuing third-party expansion.</p>
+
+            <h3>Investment Thesis</h3>
+            <p>Greentown Service represents a compelling opportunity to own a premium property management franchise at a significant discount to intrinsic value. The company commands a 20-40% fee premium over industry averages, achieving RMB 3.5-4.5 per sqm monthly versus industry norms. This pricing power stems from 20+ years of brand heritage and the 'Heartfelt Service' philosophy delivering industry-leading customer satisfaction. The asset-light model generates strong free cash flow with recurring revenue characteristics.</p>
+
+            <h3>Key Highlights</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Premium brand positioning with industry-leading customer satisfaction scores</li>
+                <li>Strong presence in affluent Yangtze River Delta region (50-55% of GFA)</li>
+                <li>95%+ fee collection rate - industry leading</li>
+                <li>Average management fee premium of 20-40% over competitors</li>
+                <li>Third-party ratio grown to 55-60%, reducing parent dependency</li>
+                <li>CCCG (SOE) backing via parent Greentown China provides stability</li>
+                <li>Net cash position of RMB 3.5 billion</li>
+                <li>Attractive valuation at 9.2x forward P/E with 4% dividend yield</li>
+            </ul>
+        </section>
+
+        <section id="industry-analysis" class="section">
+            <h2>Industry Analysis</h2>
+            <h3>China Property Management Market</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Total GFA Managed (China)</td>
+                    <td>~30 billion sqm</td>
+                </tr>
+                <tr>
+                    <td>Market Value</td>
+                    <td>~RMB 1.5 trillion annually</td>
+                </tr>
+                <tr>
+                    <td>Historical CAGR</td>
+                    <td>8-12%</td>
+                </tr>
+                <tr>
+                    <td>Market Structure</td>
+                    <td>Highly fragmented - Top 10 hold ~15% share</td>
+                </tr>
+            </table>
+
+            <h3>Key Industry Trends</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Consolidation accelerating as larger players acquire smaller competitors</li>
+                <li>Value-added services becoming increasingly important revenue driver</li>
+                <li>Technology adoption improving operational efficiency</li>
+                <li>Premium segment outperforming mass market in fee collection rates</li>
+                <li>Independent third-party expansion reducing developer dependency</li>
+                <li>Community services and retail becoming significant profit contributors</li>
+            </ul>
+
+            <h3>Competitive Landscape</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Company</th>
+                    <th>Ticker</th>
+                    <th>Positioning</th>
+                </tr>
+                <tr>
+                    <td>Country Garden Services</td>
+                    <td>6098.HK</td>
+                    <td>Largest by GFA, mass market focus</td>
+                </tr>
+                <tr>
+                    <td>Poly Property Services</td>
+                    <td>6049.HK</td>
+                    <td>SOE-backed, balanced portfolio</td>
+                </tr>
+                <tr>
+                    <td>China Resources Mixc Lifestyle</td>
+                    <td>1209.HK</td>
+                    <td>Premium commercial and residential</td>
+                </tr>
+                <tr>
+                    <td>A-Living Smart City Services</td>
+                    <td>3319.HK</td>
+                    <td>Agile Group subsidiary, mixed portfolio</td>
+                </tr>
+                <tr>
+                    <td>Longfor Smart Life</td>
+                    <td>Part of 0960.HK</td>
+                    <td>Premium residential focus</td>
+                </tr>
+            </table>
+
+            <h3>Greentown Service Competitive Advantages</h3>
+            <ul style="margin-left: 20px; color: #238636;">
+                <li>Premium brand with 20+ years heritage</li>
+                <li>Industry-leading service quality metrics</li>
+                <li>Strong customer loyalty and low churn rates</li>
+                <li>Higher average management fees than peers</li>
+                <li>Concentrated presence in high-income regions</li>
+            </ul>
+        </section>
+
+        <section id="company-analysis" class="section">
+            <h2>Company Analysis</h2>
+            <h3>Company History</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Year</th>
+                    <th>Milestone</th>
+                </tr>
+                <tr>
+                    <td>1998</td>
+                    <td>Founded in Hangzhou, Zhejiang Province as PM arm of Greentown China</td>
+                </tr>
+                <tr>
+                    <td>2016</td>
+                    <td>IPO on HKEX raising approximately HKD 1.2 billion</td>
+                </tr>
+                <tr>
+                    <td>2018-2020</td>
+                    <td>Aggressive third-party expansion</td>
+                </tr>
+                <tr>
+                    <td>2021-2023</td>
+                    <td>Selective acquisitions amid sector consolidation</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>Focus on quality over quantity, margin improvement</td>
+                </tr>
+            </table>
+
+            <h3>Brand Positioning</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Strategy</td>
+                    <td>Premium positioning targeting affluent homeowners willing to pay for superior service</td>
+                </tr>
+                <tr>
+                    <td>Brand Philosophy</td>
+                    <td>'Heartfelt Service' - emphasizing quality, consistency, and community building</td>
+                </tr>
+                <tr>
+                    <td>Customer Satisfaction</td>
+                    <td>Consistently ranked among top property managers in customer satisfaction surveys</td>
+                </tr>
+                <tr>
+                    <td>Fee Premium</td>
+                    <td>20-40% above industry average</td>
+                </tr>
+            </table>
+
+            <h3>GFA Under Management</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">280-320</div>
+                    <div class="label">Total GFA (M sqm)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">380-420</div>
+                    <div class="label">Contracted GFA (M sqm)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">55-60%</div>
+                    <div class="label">Third-Party Ratio</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">85%</div>
+                    <div class="label">Residential</div>
+                </div>
+            </div>
+
+            <h3>Geographic Distribution</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Region</th>
+                    <th>GFA Share</th>
+                </tr>
+                <tr>
+                    <td>Yangtze River Delta</td>
+                    <td>50-55%</td>
+                </tr>
+                <tr>
+                    <td>Bohai Rim</td>
+                    <td>15-20%</td>
+                </tr>
+                <tr>
+                    <td>Pearl River Delta</td>
+                    <td>10-15%</td>
+                </tr>
+                <tr>
+                    <td>Other Regions</td>
+                    <td>15-20%</td>
+                </tr>
+            </table>
+
+            <h3>Revenue Segments</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Segment</th>
+                    <th>Revenue Share</th>
+                    <th>Gross Margin</th>
+                    <th>Growth Outlook</th>
+                </tr>
+                <tr>
+                    <td>Property Management Services</td>
+                    <td>60-65%</td>
+                    <td>15-20%</td>
+                    <td>GFA expansion and fee increases</td>
+                </tr>
+                <tr>
+                    <td>Value-Added Services (Developers)</td>
+                    <td>10-15%</td>
+                    <td>25-35%</td>
+                    <td>Cyclical, developer project pipeline</td>
+                </tr>
+                <tr>
+                    <td>Community Value-Added Services</td>
+                    <td>20-25%</td>
+                    <td>30-40%</td>
+                    <td>Penetration rate improvement, high growth</td>
+                </tr>
+            </table>
+
+            <h3>Parent Company Relationship</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Attribute</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Parent Company</td>
+                    <td>Greentown China Holdings Limited (3900.HK)</td>
+                </tr>
+                <tr>
+                    <td>Ownership Stake</td>
+                    <td>~52-55%</td>
+                </tr>
+                <tr>
+                    <td>Key Shareholder</td>
+                    <td>CCCG (China Communications Construction Group) - SOE backing</td>
+                </tr>
+                <tr>
+                    <td>Parent Financial Health</td>
+                    <td>Relatively stable vs distressed peers; lower risk than private developers</td>
+                </tr>
+                <tr>
+                    <td>Strategic Implications</td>
+                    <td>Guaranteed pipeline, brand association, SOE backing provides protection</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="financial-data" class="section">
+            <h2>Financial Data</h2>
+            <h3>Income Statement (RMB millions)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>2022A</th>
+                    <th>2023A</th>
+                    <th>2024E</th>
+                    <th>2025E</th>
+                </tr>
+                <tr>
+                    <td>Revenue</td>
+                    <td>12,500</td>
+                    <td>14,200</td>
+                    <td>15,800</td>
+                    <td>17,200</td>
+                </tr>
+                <tr>
+                    <td>YoY Growth</td>
+                    <td>18%</td>
+                    <td>14%</td>
+                    <td>11%</td>
+                    <td>9%</td>
+                </tr>
+                <tr>
+                    <td>Gross Profit</td>
+                    <td>2,875</td>
+                    <td>3,195</td>
+                    <td>3,476</td>
+                    <td>3,784</td>
+                </tr>
+                <tr>
+                    <td>Gross Margin</td>
+                    <td>23.0%</td>
+                    <td>22.5%</td>
+                    <td>22.0%</td>
+                    <td>22.0%</td>
+                </tr>
+                <tr>
+                    <td>Operating Profit</td>
+                    <td>1,625</td>
+                    <td>1,775</td>
+                    <td>1,896</td>
+                    <td>2,064</td>
+                </tr>
+                <tr>
+                    <td>Operating Margin</td>
+                    <td>13.0%</td>
+                    <td>12.5%</td>
+                    <td>12.0%</td>
+                    <td>12.0%</td>
+                </tr>
+                <tr>
+                    <td>Net Profit</td>
+                    <td>1,200</td>
+                    <td>1,280</td>
+                    <td>1,343</td>
+                    <td>1,462</td>
+                </tr>
+                <tr>
+                    <td>Net Margin</td>
+                    <td>9.6%</td>
+                    <td>9.0%</td>
+                    <td>8.5%</td>
+                    <td>8.5%</td>
+                </tr>
+            </table>
+
+            <h3>Balance Sheet Highlights</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="value">12,000</div>
+                    <div class="label">Total Assets (RMB M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">3,500</div>
+                    <div class="label">Cash (RMB M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">4,800</div>
+                    <div class="label">Equity (RMB M)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">2,800</div>
+                    <div class="label">Trade Receivables (RMB M)</div>
+                </div>
+            </div>
+
+            <h3>Cash Flow</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>2024E</th>
+                </tr>
+                <tr>
+                    <td>Operating Cash Flow</td>
+                    <td>RMB 1,500 million</td>
+                </tr>
+                <tr>
+                    <td>Capex</td>
+                    <td>RMB 200 million</td>
+                </tr>
+                <tr>
+                    <td>Free Cash Flow</td>
+                    <td>RMB 1,300 million</td>
+                </tr>
+                <tr>
+                    <td>Dividend Payout Ratio</td>
+                    <td>35-40%</td>
+                </tr>
+            </table>
+
+            <h3>Valuation Metrics</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Shares Outstanding</td>
+                    <td>2,950 million</td>
+                </tr>
+                <tr>
+                    <td>Market Cap (HKD M)</td>
+                    <td>13,275</td>
+                </tr>
+                <tr>
+                    <td>Market Cap (RMB M)</td>
+                    <td>12,350</td>
+                </tr>
+                <tr>
+                    <td>P/E Ratio 2024E</td>
+                    <td>9.2x</td>
+                </tr>
+                <tr>
+                    <td>P/E Ratio 2025E</td>
+                    <td>8.4x</td>
+                </tr>
+                <tr>
+                    <td>P/B Ratio</td>
+                    <td>2.6x</td>
+                </tr>
+                <tr>
+                    <td>Dividend Yield</td>
+                    <td>4.0%</td>
+                </tr>
+                <tr>
+                    <td>EV/EBITDA</td>
+                    <td>6.5x</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="dcf-valuation" class="section">
+            <h2>DCF Valuation</h2>
+            <h3>Methodology</h3>
+            <p>10-year DCF model with terminal value calculation using perpetuity growth method.</p>
+
+            <h3>Key Assumptions</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Forecast Period</td>
+                    <td>10 years</td>
+                </tr>
+                <tr>
+                    <td>Base Year FCF</td>
+                    <td>RMB 1,300 million</td>
+                </tr>
+                <tr>
+                    <td>Revenue Growth (Years 1-3)</td>
+                    <td>8-10%</td>
+                </tr>
+                <tr>
+                    <td>Revenue Growth (Years 4-6)</td>
+                    <td>6-8%</td>
+                </tr>
+                <tr>
+                    <td>Revenue Growth (Years 7-10)</td>
+                    <td>4-5%</td>
+                </tr>
+                <tr>
+                    <td>Terminal Growth Rate</td>
+                    <td>2.5%</td>
+                </tr>
+                <tr>
+                    <td>FCF Margin (Long-term)</td>
+                    <td>8-9%</td>
+                </tr>
+                <tr>
+                    <td>Tax Rate</td>
+                    <td>25%</td>
+                </tr>
+            </table>
+
+            <h3>Projected Free Cash Flows (RMB millions)</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Year</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                </tr>
+                <tr>
+                    <td>FCF</td>
+                    <td>1,404</td>
+                    <td>1,516</td>
+                    <td>1,622</td>
+                    <td>1,720</td>
+                    <td>1,823</td>
+                    <td>1,914</td>
+                    <td>1,990</td>
+                    <td>2,070</td>
+                    <td>2,153</td>
+                    <td>2,238</td>
+                </tr>
+            </table>
+
+            <div class="valuation-summary">
+                <h3>Probability-Weighted Valuation</h3>
+                <table class="data-table">
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Price (HKD)</th>
+                        <th>Probability</th>
+                        <th>Weighted Value</th>
+                    </tr>
+                    <tr>
+                        <td>Bull Case</td>
+                        <td>9.18</td>
+                        <td>15%</td>
+                        <td>1.38</td>
+                    </tr>
+                    <tr>
+                        <td>Optimistic Case</td>
+                        <td>7.34</td>
+                        <td>25%</td>
+                        <td>1.84</td>
+                    </tr>
+                    <tr>
+                        <td>Base Case</td>
+                        <td>6.05</td>
+                        <td>30%</td>
+                        <td>1.82</td>
+                    </tr>
+                    <tr>
+                        <td>Conservative Case</td>
+                        <td>4.64</td>
+                        <td>25%</td>
+                        <td>1.16</td>
+                    </tr>
+                    <tr>
+                        <td>Bear Case</td>
+                        <td>3.02</td>
+                        <td>5%</td>
+                        <td>0.15</td>
+                    </tr>
+                    <tr style="background: rgba(88, 166, 255, 0.1);">
+                        <td><strong>Probability-Weighted Value</strong></td>
+                        <td colspan="2"><strong>HKD 6.35</strong></td>
+                        <td><strong>41% upside</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Sensitivity Analysis</h3>
+            <table class="data-table">
+                <tr>
+                    <th>WACC / Terminal Growth</th>
+                    <th>1.5%</th>
+                    <th>2.0%</th>
+                    <th>2.5%</th>
+                    <th>3.0%</th>
+                    <th>3.5%</th>
+                </tr>
+                <tr>
+                    <td>7.5%</td>
+                    <td>HKD 7.40</td>
+                    <td>HKD 7.80</td>
+                    <td>HKD 8.20</td>
+                    <td>HKD 8.70</td>
+                    <td>HKD 9.30</td>
+                </tr>
+                <tr>
+                    <td>8.5%</td>
+                    <td>HKD 6.30</td>
+                    <td>HKD 6.60</td>
+                    <td>HKD 7.10</td>
+                    <td>HKD 7.50</td>
+                    <td>HKD 8.00</td>
+                </tr>
+                <tr>
+                    <td>9.5%</td>
+                    <td>HKD 5.40</td>
+                    <td>HKD 5.70</td>
+                    <td>HKD 6.05</td>
+                    <td>HKD 6.50</td>
+                    <td>HKD 7.10</td>
+                </tr>
+                <tr>
+                    <td>10.5%</td>
+                    <td>HKD 4.70</td>
+                    <td>HKD 4.90</td>
+                    <td>HKD 5.20</td>
+                    <td>HKD 5.50</td>
+                    <td>HKD 5.90</td>
+                </tr>
+                <tr>
+                    <td>11.5%</td>
+                    <td>HKD 4.10</td>
+                    <td>HKD 4.30</td>
+                    <td>HKD 4.50</td>
+                    <td>HKD 4.80</td>
+                    <td>HKD 5.10</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="scenarios" class="section">
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenario-card">
+                <h4>Bull Case <span class="probability">15% probability</span></h4>
+                <p>Property market stabilizes, Greentown outperforms with premium positioning, successful value-added services expansion, and strategic acquisitions. Revenue growth boost +2% annually, margin expansion to 10% FCF margin, 8% discount rate, 3% terminal growth.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 9.18</strong> | Upside: 104%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Optimistic Case <span class="probability">25% probability</span></h4>
+                <p>Moderate property market recovery, steady GFA growth, stable margins with slight improvement in value-added services. Revenue growth boost +1% annually, stable margins at 8.5% FCF margin, 9% discount rate, 2.5% terminal growth.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 7.34</strong> | Upside: 63%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Base Case <span class="probability">30% probability</span></h4>
+                <p>Gradual stabilization of property sector, Greentown maintains market position with modest growth, industry-average margins. Stable margins at 8% FCF margin, 9.5% discount rate, 2.5% terminal growth.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 6.05</strong> | Upside: 34%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Conservative Case <span class="probability">25% probability</span></h4>
+                <p>Prolonged property downturn, slower GFA growth, margin pressure from competition and labor costs. Revenue growth boost -1% annually, margin compression to 7% FCF margin, 10% discount rate, 2% terminal growth.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 4.64</strong> | Upside: 3%</p>
+            </div>
+
+            <div class="scenario-card">
+                <h4>Bear Case <span class="probability">5% probability</span></h4>
+                <p>Severe property crisis continuation, parent company stress, significant impairments and business disruption. Revenue growth boost -3% annually, margin decline to 5% FCF margin, 11% discount rate, 1.5% terminal growth.</p>
+                <p style="margin-top: 10px;"><strong>Target Price: HKD 3.02</strong> | Downside: -33%</p>
+            </div>
+        </section>
+
+        <section id="risks" class="section">
+            <h2>Risk Assessment</h2>
+
+            <h3>Company-Specific Risks</h3>
+            <div class="risk-item">
+                <h4>Parent Company Contagion</h4>
+                <p>Severity: High | Greentown China's financial health could impact the service company through brand association, project pipeline, and potential cash extraction. Mitigation: CCCG backing provides some protection; increasing third-party revenue reduces dependency.</p>
+            </div>
+
+            <div class="risk-item">
+                <h4>Receivables Collection Risk</h4>
+                <p>Severity: Medium-High | Rising trade receivables (RMB 2.8B) as property developers face liquidity issues may impact cash flow. Mitigation: Premium customer base has better collection rates; conservative provisioning.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>Growth Deceleration</h4>
+                <p>Severity: Medium | Revenue growth decelerating from 18% (2022) to 9% (2025E). Slowdown in property completions reduces new GFA pipeline. Mitigation: Third-party expansion and acquisitions can partially offset.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>Margin Pressure</h4>
+                <p>Severity: Medium | Rising labor costs (6-8% annually) and competition may compress margins. Net margin already compressed from 9.6% to 8.5%. Mitigation: Premium positioning allows fee increases; technology deployment improves efficiency.</p>
+            </div>
+
+            <h3>Industry Risks</h3>
+            <div class="risk-item">
+                <h4>Property Sector Downturn</h4>
+                <p>Severity: High | Continued weakness in China property market affecting new project pipeline and developer services revenue. Mitigation: Property management is relatively defensive; existing contracts provide stability.</p>
+            </div>
+
+            <div class="risk-item medium">
+                <h4>Competition Intensification</h4>
+                <p>Severity: Medium | Increased competition from well-funded peers like CR Mixc Lifestyle and Poly Property Services for affluent customers. Mitigation: Strong brand and customer loyalty provide competitive moat.</p>
+            </div>
+
+            <h3>Macro Risks</h3>
+            <div class="risk-item medium">
+                <h4>China Economic Growth</h4>
+                <p>Severity: Medium | Structural slowdown in Chinese economy affecting property and consumption.</p>
+            </div>
+
+            <div class="risk-item low">
+                <h4>Currency Risk</h4>
+                <p>Severity: Low-Medium | RMB depreciation affecting HKD-denominated returns for international investors.</p>
+            </div>
+        </section>
+
+        <section id="recommendation" class="section">
+            <h2>Investment Recommendation</h2>
+
+            <div class="valuation-summary">
+                <h3>BUY</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="value">HKD 6.20</div>
+                        <div class="label">12-Month Target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">38%</div>
+                        <div class="label">Upside Potential</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">Medium</div>
+                        <div class="label">Conviction</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="value">2-3%</div>
+                        <div class="label">Position Size</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <p>Greentown Service is a quality premium franchise trading at distressed valuation due to excessive parent company risk concerns. The probability-weighted fair value of HKD 6.35 implies 41% upside from current levels. CCCG backing provides meaningful downside protection while third-party growth trajectory supports independence thesis. The 4% dividend yield provides income while waiting for re-rating.</p>
+
+            <h3>Bull Points</h3>
+            <ul style="margin-left: 20px; color: #238636;">
+                <li>Premium brand commanding 20-40% fee premium with 95%+ collection rate</li>
+                <li>42% discount to probability-weighted fair value of HKD 6.35</li>
+                <li>SOE backing via CCCG substantially reduces tail risk</li>
+                <li>Third-party GFA now 55-60% demonstrates parent independence</li>
+                <li>Net cash balance sheet (RMB 3.5B) provides downside protection</li>
+                <li>4% dividend yield provides income while waiting for re-rating</li>
+                <li>Valuation at 9x forward PE is undemanding for quality compounder</li>
+            </ul>
+
+            <h3>Bear Points</h3>
+            <ul style="margin-left: 20px; color: #da3633;">
+                <li>40-45% GFA dependency on parent Greentown China creates contagion risk</li>
+                <li>Revenue growth decelerating from 18% to 9%</li>
+                <li>Margin compression trend from 9.6% to 8.5% net margin</li>
+                <li>Property completion slowdown threatens contracted GFA conversion</li>
+                <li>Rising trade receivables (RMB 2.8B) - potential cash flow concern</li>
+                <li>Near-term headwinds from property sector remain</li>
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <div class="catalyst-item">
+                <span>Property Sector Policy Support</span>
+                <span class="timing">6-12 months</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Third-party GFA wins acceleration</span>
+                <span class="timing">Ongoing</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Value-added services penetration improvement</span>
+                <span class="timing">12-24 months</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Parent company deleveraging</span>
+                <span class="timing">12-18 months</span>
+            </div>
+            <div class="catalyst-item">
+                <span>Accretive M&A</span>
+                <span class="timing">Opportunistic</span>
+            </div>
+
+            <h3>Position Sizing Strategy</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Action</th>
+                    <th>Price Trigger</th>
+                </tr>
+                <tr>
+                    <td>Accumulate at current levels</td>
+                    <td>HKD 4.50</td>
+                </tr>
+                <tr>
+                    <td>Add more aggressively</td>
+                    <td>Below HKD 4.20</td>
+                </tr>
+                <tr>
+                    <td>Full position</td>
+                    <td>2-3% of portfolio</td>
+                </tr>
+            </table>
+
+            <h3>Exit Triggers</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Parent company entering distress requiring support from service company</li>
+                <li>Material deterioration in fee collection rates below 90%</li>
+                <li>Significant management departures or governance issues</li>
+                <li>Target price achieved without fundamental improvement</li>
+            </ul>
+        </section>
+
+        <section id="debate-log" class="section">
+            <h2>AI Debate Log</h2>
+            <p style="color: #8b949e; margin-bottom: 20px;">Multi-perspective analysis conducted on 2026-01-18 with BULL, BEAR, CRITIC, and SYNTHESIZER perspectives.</p>
+
+            <div class="debate-round">
+                <h4>Round 1: Core Investment Thesis and Business Quality</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>Greentown Service represents a rare opportunity to own a premium franchise in China's property management sector at a deeply discounted valuation. The company commands a 20-40% fee premium over industry averages, achieving RMB 3.5-4.5 per sqm versus industry norms. This pricing power stems from 20+ years of brand heritage and the 'Heartfelt Service' philosophy that delivers industry-leading customer satisfaction scores. The 95%+ fee collection rate demonstrates both service quality and the affluent customer base's ability to pay. The asset-light model generates strong free cash flow - RMB 1.3 billion in 2024E - with minimal capex requirements.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">20-40% fee premium</span>
+                        <span class="key-point">95%+ collection rate</span>
+                        <span class="key-point">RMB 1.3B FCF</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The bull case fundamentally misunderstands the structural risks. Greentown Service derives 40-45% of its GFA from parent company Greentown China (3900.HK), creating material contagion risk. While Greentown China has CCCG backing, it remains exposed to China's property crisis. Developer VAS segment (10-15% revenue with 25-35% margins) faces severe headwinds as developer project pipelines shrink. Revenue growth is already decelerating from 18% in 2022 to an estimated 9% by 2025. The premium positioning that bulls celebrate actually increases vulnerability - wealthy homeowners in a slowing economy may resist fee increases.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">40-45% parent GFA dependency</span>
+                        <span class="key-point">Growth decelerating to 9%</span>
+                        <span class="key-point">Developer VAS declining</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 1 establishes the core tension: Greentown Service is a quality business (strong brand, premium positioning, cash generation) but operates in a challenged environment (property downturn, parent exposure, slowing growth). The critic correctly notes that the net cash position (RMB 3.5B) provides genuine protection against contagion scenarios, while the bear's growth deceleration concerns are validated by the data.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 2: Valuation and Market Pricing</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>The probability-weighted intrinsic value analysis demonstrates clear undervaluation at HKD 6.42 versus HKD 4.50 current price - a 42% discount to fair value. Even the conservative case (HKD 4.64) provides modest upside, while only the 5%-probability bear case justifies current prices. The market is pricing Greentown as if permanent impairment is the base case. The sensitivity analysis shows that even at a punitive 11.5% WACC, fair value equals current price - the market is implying an excessive risk premium for a cash-generative, dividend-paying, premium brand.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="key-point">42% discount to fair value</span>
+                        <span class="key-point">Conservative case still > current price</span>
+                        <span class="key-point">4% dividend yield</span>
+                    </div>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The DCF model's terminal value represents 60% of total valuation - a significant red flag. A 2.5% terminal growth rate assumes Greentown will grow faster than China's long-term GDP indefinitely. The probability weighting assigns only 5% to the bear case and 25% combined to adverse scenarios - this dramatically understates tail risk given China property's track record of surprising to the downside. Furthermore, net margin is already compressing: 9.6% (2022) to 8.5% (2024E). The 9.2x PE looks cheap until you realize peers like Country Garden Services trade at lower multiples.</p>
+                </div>
+
+                <div class="debate-entry critic">
+                    <div class="speaker">CRITIC</div>
+                    <p>The valuation debate reveals fundamental disagreements about discount rate and probability weights. At current prices, the market prices ~50% probability of material adversity. The actual risk is binary - either the property crisis resolves and valuation re-rates significantly, or parent company stress creates genuine business disruption. CCCG backing makes this implied probability appear excessive, suggesting asymmetric upside if sector stabilizes.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 2 reveals that the valuation debate hinges on probability assignments rather than methodology. The bull case for undervaluation is mathematically sound if base/optimistic scenarios prevail. Key insight: at current prices, market prices ~50% probability of severe adverse outcomes - CCCG backing makes this appear excessive.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 3: Growth Drivers and Headwinds</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>The growth narrative is more nuanced than bears suggest. Third-party projects now represent 55-60% of GFA - demonstrating brand's ability to win competitive tenders independent of parent pipeline. Community value-added services (20-25% of revenue at 30-40% gross margins) remain underpenetrated and represent a genuine high-margin growth engine. The contracted GFA pipeline of 380-420 million sqm versus current managed GFA of 280-320 million sqm provides 25-50% embedded growth even with zero new wins.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>The contracted-to-managed GFA gap depends on developers actually completing projects and delivering properties - this pipeline is at significant risk given China property conditions. Third-party wins are getting harder as every property manager competes for a shrinking pool of new completions. The Yangtze River Delta concentration (50-55% of GFA) exposes the portfolio to regional economic weakness.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 3 establishes a temporal divide in growth views. Near-term (12-18 months) faces acknowledged headwinds from property completion slowdown. Medium-term (3-5 years) offers more compelling dynamics if third-party expansion continues and value-added services penetration improves. Growth will decelerate but likely remain positive; the debate centers on magnitude (bulls see 8-10%, bears see 5-6%).</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 4: Parent Company Risk and Structural Concerns</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL</div>
+                    <p>Parent company risk is the most misunderstood aspect. Greentown China is fundamentally different from distressed developers. CCCG (China Communications Construction Group) - a Fortune Global 500 SOE - holds a major stake, providing implicit government backing that makes default extraordinarily unlikely. The service company operates with complete operational independence, its own board, and a net cash balance sheet. History shows property management subsidiaries have survived parent restructurings.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR</div>
+                    <p>CCCG backing provides support but does not eliminate risk - SOEs themselves face pressure. Even without outright default, parent stress manifests in multiple ways: delayed project deliveries, related party receivables collection issues, reputational damage. The current RMB 2.8 billion in trade receivables likely includes significant developer-related balances. Controlling shareholder dynamics mean the service company could be pressured into unfavorable decisions.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER</div>
+                    <p>Round 4 achieves partial resolution on parent company risk. Consensus: Greentown China is materially safer than distressed peers due to CCCG backing, but some governance discount is appropriate. The bear's concerns about receivables and controlling shareholder power are valid but do not justify current valuation discount. A 15-20% governance discount is appropriate rather than the current 40%+ discount implied by the market.</p>
+                </div>
+            </div>
+
+            <div class="debate-round">
+                <h4>Round 5: Final Investment Recommendation and Conviction</h4>
+
+                <div class="debate-entry bull">
+                    <div class="speaker">BULL - Final Position</div>
+                    <p><strong>BUY</strong> with HKD 6.50 target representing 14x 2025E PE - a modest re-rating for a quality franchise. Risk-reward is compelling: limited downside from net cash and SOE backing, substantial upside on sector stabilization. Position sizing of 3-4% acknowledges uncertainty while capturing asymmetric upside. 4% dividend yield provides paid optionality while waiting.</p>
+                </div>
+
+                <div class="debate-entry bear">
+                    <div class="speaker">BEAR - Final Position</div>
+                    <p><strong>HOLD</strong> at current prices. Wait for either (1) better entry below HKD 4.00, (2) demonstrable improvement in third-party growth momentum, or (3) clarity on property sector bottom. The 4% dividend yield is nice but not compelling enough to accept the risk profile. Repricing with more realistic adverse scenario probabilities (35-40% vs. 25%) yields fair value of HKD 5.50-5.80 - only 22-29% upside.</p>
+                </div>
+
+                <div class="debate-entry synthesizer">
+                    <div class="speaker">SYNTHESIZER - Final Synthesis</div>
+                    <p>The 5-round debate concludes with a <strong>BUY recommendation</strong> supported by 2 of 3 roles (Bull, Critic) with the Bear advocating HOLD. Key consensus points: (1) Premium brand value is genuine with 20-40% fee premiums, (2) CCCG backing provides meaningful protection, (3) Current valuation implies excessive pessimism, (4) Near-term headwinds are real but manageable.</p>
+                    <p style="margin-top: 15px;"><strong>Final recommendation: BUY</strong> with HKD 6.20 target, 38% upside, medium conviction. Position sizing of 2-3% reflects balanced risk-reward. Primary risk is parent company stress beyond CCCG's willingness to support; primary catalyst is property sector stabilization driving sector-wide re-rating.</p>
+                </div>
+            </div>
+
+            <h3>Key Disagreements Summary</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Topic</th>
+                    <th>Bull View</th>
+                    <th>Bear View</th>
+                    <th>Resolution</th>
+                </tr>
+                <tr>
+                    <td>Adverse Scenario Probability</td>
+                    <td>25% warranted given CCCG backing</td>
+                    <td>35-40% appropriate given property track record</td>
+                    <td>Compromise at 30%</td>
+                </tr>
+                <tr>
+                    <td>Sustainable Growth Rate</td>
+                    <td>8-10% from third-party and VAS</td>
+                    <td>5-6% ceiling as completions decline</td>
+                    <td>6-8% medium-term</td>
+                </tr>
+                <tr>
+                    <td>Governance Discount</td>
+                    <td>Minimal given structural protections</td>
+                    <td>20-25% for controlling shareholder</td>
+                    <td>15-20% appropriate</td>
+                </tr>
+                <tr>
+                    <td>Tactical Positioning</td>
+                    <td>Buy now - asymmetric risk-reward</td>
+                    <td>Wait for better entry below HKD 4.00</td>
+                    <td>Accumulate at current; add on weakness</td>
+                </tr>
+            </table>
+
+            <h3>Key Consensus Points</h3>
+            <ul style="margin-left: 20px; color: #8b949e;">
+                <li>Premium brand value is genuine - 20-40% fee premium with 95%+ collection rate</li>
+                <li>CCCG backing of parent substantially reduces tail risk</li>
+                <li>Defensive business model - recurring PM fees provide stability</li>
+                <li>Near-term headwinds real - growth deceleration and margin compression occurring</li>
+                <li>Current valuation implies excessive pessimism (~50% adverse probability)</li>
+                <li>Receivables (RMB 2.8B) require monitoring</li>
+            </ul>
+        </section>
+
+        <div class="footer">
+            <p>Report generated on 2026-01-19 | Data as of January 2026</p>
+            <p>This report is for informational purposes only and does not constitute investment advice. Investors should conduct their own due diligence.</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "_comment": "Copy this file to your project folder as 'minions.json' to track agents",
+
+  "agents": [
+    {
+      "id": "orchestrator",
+      "name": "Orchestrator",
+      "type": "orchestrator",
+      "status": "active",
+      "task": "Coordinating work",
+      "progress": 0,
+      "tier": 0,
+      "position": {"x": 0, "z": -2}
+    },
+    {
+      "id": "worker-1",
+      "name": "Worker Alpha",
+      "type": "researcher",
+      "status": "active",
+      "task": "Working on task 1",
+      "progress": 50,
+      "tier": 1,
+      "position": {"x": -4, "z": 2}
+    }
+  ],
+
+  "tasks": [
+    {
+      "id": "task-1",
+      "name": "Task One",
+      "status": "active"
+    },
+    {
+      "id": "task-2",
+      "name": "Task Two",
+      "status": "pending"
+    }
+  ]
+}
