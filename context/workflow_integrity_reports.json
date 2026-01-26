@@ -1,0 +1,105 @@
+{
+  "equity_research_v1": {
+    "workflow_name": "equity_research_v1",
+    "total_nodes": 10,
+    "total_edges": 15,
+    "start_nodes": [
+      "START"
+    ],
+    "end_nodes": [
+      "Synthesizer"
+    ],
+    "unreachable_nodes": [],
+    "orphan_edges": [],
+    "missing_trigger_edges": [],
+    "dead_end_nodes": [],
+    "condition_issues": [],
+    "provider_issues": [],
+    "structural_issues": [],
+    "recommendations": [
+      "No critical issues found - workflow structure looks good"
+    ]
+  },
+  "equity_research_v2": {
+    "workflow_name": "equity_research_v2",
+    "total_nodes": 17,
+    "total_edges": 26,
+    "start_nodes": [
+      "START"
+    ],
+    "end_nodes": [
+      "Synthesizer"
+    ],
+    "unreachable_nodes": [],
+    "orphan_edges": [],
+    "missing_trigger_edges": [],
+    "dead_end_nodes": [],
+    "condition_issues": [],
+    "provider_issues": [],
+    "structural_issues": [],
+    "recommendations": [
+      "No critical issues found - workflow structure looks good"
+    ]
+  },
+  "equity_research_v3": {
+    "workflow_name": "equity_research_v3",
+    "total_nodes": 21,
+    "total_edges": 36,
+    "start_nodes": [
+      "START"
+    ],
+    "end_nodes": [
+      "Synthesizer"
+    ],
+    "unreachable_nodes": [],
+    "orphan_edges": [],
+    "missing_trigger_edges": [],
+    "dead_end_nodes": [],
+    "condition_issues": [],
+    "provider_issues": [],
+    "structural_issues": [],
+    "recommendations": [
+      "No critical issues found - workflow structure looks good"
+    ]
+  },
+  "equity_research_v4": {
+    "workflow_name": "equity_research_v4",
+    "total_nodes": 28,
+    "total_edges": 46,
+    "start_nodes": [
+      "START"
+    ],
+    "end_nodes": [],
+    "unreachable_nodes": [],
+    "orphan_edges": [],
+    "missing_trigger_edges": [],
+    "dead_end_nodes": [],
+    "condition_issues": [],
+    "provider_issues": [],
+    "structural_issues": [],
+    "recommendations": [
+      "No critical issues found - workflow structure looks good"
+    ]
+  },
+  "portfolio_workflow": {
+    "workflow_name": "portfolio_workflow",
+    "total_nodes": 7,
+    "total_edges": 9,
+    "start_nodes": [
+      "START"
+    ],
+    "end_nodes": [
+      "Portfolio Report Generator"
+    ],
+    "unreachable_nodes": [],
+    "orphan_edges": [],
+    "missing_trigger_edges": [],
+    "dead_end_nodes": [],
+    "condition_issues": [],
+    "provider_issues": [],
+    "structural_issues": [],
+    "recommendations": [
+      "No critical issues found - workflow structure looks good"
+    ]
+  }
+}

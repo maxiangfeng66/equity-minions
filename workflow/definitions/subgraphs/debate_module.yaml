@@ -1,0 +1,282 @@
+# Debate Module Sub-Graph
+# Multi-round bull/bear debate with critic moderation
+
+graph:
+  id: debate_module_subgraph
+  description: Structured multi-AI debate for equity analysis
+  log_level: INFO
+
+  nodes:
+    - id: START
+      type: passthrough
+      config:
+        only_last_message: true
+
+    - id: Debate Moderator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          You are the Debate Moderator for an equity research debate.
+
+          Task: Set up the debate parameters and guide the discussion.
+
+          Instructions:
+          1. Review the equity research context
+          2. Identify 3-5 key debate topics
+          3. Assign initial positions to Bull and Bear advocates
+          4. Set ground rules for constructive debate
+
+          Output Format:
+          DEBATE SETUP
+          Topic 1: [description]
+          Topic 2: [description]
+          ...
+
+          INITIAL QUESTIONS FOR ADVOCATES:
+          Bull: [question to address]
+          Bear: [question to address]
+        api_key: ${OPENAI_API_KEY}
+
+    - id: Bull Round 1
+      type: agent
+      config:
+        name: grok-2
+        provider: xai
+        role: |
+          You are the Bull Case Advocate in Round 1.
+
+          Task: Present your strongest opening arguments for the bull case.
+
+          Rules:
+          - Be specific with numbers and evidence
+          - Address the moderator's question
+          - Acknowledge but counter potential bear arguments
+          - Use comparable company analysis where relevant
+
+          Output format:
+          BULL CASE - ROUND 1
+          Main Argument: [thesis]
+          Supporting Points:
+          1. [point with evidence]
+          2. [point with evidence]
+          3. [point with evidence]
+          Anticipated Bear Counter: [what bears might say]
+          My Response: [why bull case holds]
+        api_key: ${XAI_API_KEY}
+
+    - id: Bear Round 1
+      type: agent
+      config:
+        name: qwen-plus
+        provider: dashscope
+        role: |
+          You are the Bear Case Advocate in Round 1.
+
+          Task: Present your strongest opening arguments for the bear case.
+
+          Rules:
+          - Be specific with numbers and evidence
+          - Address the moderator's question
+          - Counter the bull arguments presented
+          - Highlight underappreciated risks
+
+          Output format:
+          BEAR CASE - ROUND 1
+          Main Argument: [thesis]
+          Counter to Bull: [why bull is wrong]
+          Supporting Points:
+          1. [risk with evidence]
+          2. [risk with evidence]
+          3. [risk with evidence]
+          Key Risk Factor: [most important risk]
+        api_key: ${DASHSCOPE_API_KEY}
+
+    - id: Critic Analysis
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          You are the Critical Analyst reviewing the debate.
+
+          Task: Evaluate both arguments and identify the truth.
+
+          Instructions:
+          1. Score each argument (1-10) on:
+             - Logic and reasoning
+             - Evidence quality
+             - Relevance to valuation
+
+          2. Identify:
+             - Strongest bull point
+             - Strongest bear point
+             - Weakest arguments on each side
+             - Areas needing more research
+
+          3. Preliminary verdict:
+             - Which side has the stronger case so far?
+             - What would change your mind?
+
+          Output Format:
+          CRITIC ANALYSIS
+          Bull Score: X/10
+          Bear Score: X/10
+
+          Strongest Bull Argument: [description]
+          Strongest Bear Argument: [description]
+
+          Gaps in Analysis:
+          1. [gap]
+          2. [gap]
+
+          Preliminary Verdict: [Bull/Bear/Neutral]
+          Confidence: [Low/Medium/High]
+        api_key: ${OPENAI_API_KEY}
+
+    - id: Bull Round 2
+      type: agent
+      config:
+        name: grok-2
+        provider: xai
+        role: |
+          You are the Bull Case Advocate in Round 2.
+
+          Task: Respond to bear arguments and critic feedback.
+
+          Instructions:
+          1. Address the bear's strongest points
+          2. Incorporate critic's feedback
+          3. Strengthen your weakest arguments
+          4. Add new supporting evidence
+
+          Be more specific and quantitative than Round 1.
+        api_key: ${XAI_API_KEY}
+
+    - id: Bear Round 2
+      type: agent
+      config:
+        name: qwen-plus
+        provider: dashscope
+        role: |
+          You are the Bear Case Advocate in Round 2.
+
+          Task: Respond to bull arguments and critic feedback.
+
+          Instructions:
+          1. Counter the bull's rebuttals
+          2. Incorporate critic's feedback
+          3. Strengthen your weakest arguments
+          4. Quantify the downside risks
+
+          Be more specific about probability-weighted scenarios.
+        api_key: ${DASHSCOPE_API_KEY}
+
+    - id: Debate Synthesizer
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          You are the Debate Synthesizer.
+
+          Task: Synthesize the debate into actionable insights.
+
+          Output Format:
+          DEBATE SYNTHESIS
+
+          ## Consensus Points
+          - [points both sides agree on]
+
+          ## Key Disagreements
+          - [unresolved disputes and why]
+
+          ## Evidence Quality Assessment
+          Bull evidence: [Strong/Moderate/Weak]
+          Bear evidence: [Strong/Moderate/Weak]
+
+          ## Probability Adjustment Recommendation
+          Based on debate, suggest adjustments to scenario probabilities:
+          - Super Bear: [% change]
+          - Bear: [% change]
+          - Base: [% change]
+          - Bull: [% change]
+          - Super Bull: [% change]
+
+          ## Final Verdict
+          [Bull/Bear/Balanced] with [confidence level]
+
+          ## Key Monitoring Points
+          1. [what to watch]
+          2. [what to watch]
+          3. [what to watch]
+        api_key: ${OPENAI_API_KEY}
+
+  edges:
+    - from: START
+      to: Debate Moderator
+      trigger: true
+      carry_data: true
+
+    - from: Debate Moderator
+      to: Bull Round 1
+      trigger: true
+      carry_data: true
+      keep_message: true
+
+    - from: Debate Moderator
+      to: Bear Round 1
+      trigger: true
+      carry_data: true
+      keep_message: true
+
+    - from: Bull Round 1
+      to: Critic Analysis
+      trigger: false
+      carry_data: true
+
+    - from: Bear Round 1
+      to: Critic Analysis
+      trigger: true
+      carry_data: true
+
+    - from: Critic Analysis
+      to: Bull Round 2
+      trigger: true
+      carry_data: true
+      keep_message: true
+
+    - from: Critic Analysis
+      to: Bear Round 2
+      trigger: true
+      carry_data: true
+      keep_message: true
+
+    - from: Bull Round 2
+      to: Debate Synthesizer
+      trigger: false
+      carry_data: true
+
+    - from: Bear Round 2
+      to: Debate Synthesizer
+      trigger: true
+      carry_data: true
+
+    # Context preservation
+    - from: Bull Round 1
+      to: Debate Synthesizer
+      trigger: false
+      carry_data: true
+      keep_message: true
+
+    - from: Bear Round 1
+      to: Debate Synthesizer
+      trigger: false
+      carry_data: true
+      keep_message: true
+
+  start:
+    - START
+  end:
+    - Debate Synthesizer

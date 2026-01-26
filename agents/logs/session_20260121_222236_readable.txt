@@ -1,0 +1,364 @@
+================================================================================
+EQUITY MINIONS - AGENT SESSION LOG
+================================================================================
+
+Session: Demo Research Session
+ID: 20260121_222236
+Start: 2026-01-21T22:22:36.120091
+End: 2026-01-21T22:22:36.120164
+Duration: 0.0 seconds
+
+================================================================================
+SYSTEM ARCHITECTURE - 4-TIER HIERARCHICAL AGENT SYSTEM
+================================================================================
+
+TIER 0: ARCHITECT - Strategic Planning Layer
+------------------------------------------------------------
+Responsibilities:
+  - System-wide strategy coordination
+  - Research pool creation
+  - Quality threshold management
+  - Resource allocation
+Agent Types:
+  - ChiefArchitectAgent
+  - PriorityManager
+  - ResourceAllocator
+Source Files:
+  - agents/architects/chief_architect.py
+  - agents/architects/priority_manager.py
+
+TIER 1: SUPERVISOR - Orchestration Layer
+------------------------------------------------------------
+Responsibilities:
+  - Research lifecycle management
+  - Worker agent spawning
+  - Debate orchestration
+  - Quality coordination
+Agent Types:
+  - ResearchSupervisor
+  - DebateModerator
+Source Files:
+  - agents/supervisors/research_supervisor.py
+  - agents/supervisors/debate_moderator.py
+
+TIER 2: WORKER - Execution Layer
+------------------------------------------------------------
+Responsibilities:
+  - Research analysis execution
+  - Bull/Bear debate arguments
+  - Critical analysis
+  - Synthesis of findings
+  - Domain specialization
+Agent Types:
+  - AnalystAgent
+  - BullAgent
+  - BearAgent
+  - CriticAgent
+  - SynthesizerAgent
+  - EnhancedAnalystAgent
+  - EnhancedBullAgent
+  - EnhancedBearAgent
+  - EnhancedCriticAgent
+  - EnhancedSynthesizerAgent
+  - SpecialistAgent
+  - DevilsAdvocateAgent
+Source Files:
+  - agents/analyst_agent.py
+  - agents/workers/enhanced_workers.py
+  - agents/workers/specialist.py
+  - agents/workers/devils_advocate.py
+
+TIER 3: GOALKEEPER - Quality Gate Layer
+------------------------------------------------------------
+Responsibilities:
+  - Final publication approval
+  - Logical consistency validation
+  - Fact-checking
+  - Consensus verification
+  - Due diligence for high-conviction calls
+Agent Types:
+  - PublishGatekeeperAgent
+  - LogicAuditorAgent
+  - FactCheckerAgent
+  - ConsensusValidatorAgent
+  - DueDiligenceAgent
+Source Files:
+  - agents/goalkeepers/publish_gatekeeper.py
+  - agents/goalkeepers/logic_auditor.py
+  - agents/goalkeepers/fact_checker_gate.py
+
+================================================================================
+AGENT STATISTICS
+================================================================================
+
+Total Agents Spawned: 7
+Total Agents Terminated: 0
+Currently Active: 7
+
+AGENTS BY TIER:
+----------------------------------------
+  Architect (Strategy): 1
+  Supervisor (Oversight): 1
+  Worker (Execution): 4
+  Goalkeeper (Quality): 1
+
+AGENTS BY ROLE:
+----------------------------------------
+  ChiefArchitectAgent: 1
+  ResearchSupervisor: 1
+  AnalystAgent: 1
+  BullAgent: 1
+  BearAgent: 1
+  CriticAgent: 1
+  PublishGatekeeperAgent: 1
+
+================================================================================
+AI PROVIDER DETAILS - HOW EACH PROVIDER IS CALLED
+================================================================================
+
+============================================================
+OPENAI (GPT)
+============================================================
+Model: gpt-4o
+Endpoint: https://api.openai.com/v1/chat/completions
+Rate Limit: 28,000 TPM (Tokens Per Minute)
+Environment Variable: OPENAI_API_KEY
+Source File: agents/ai_providers.py:180-229
+
+API Call Method:
+  HTTP Method: POST
+  Authentication: Authorization: Bearer {API_KEY}
+  Payload Format: OpenAI Chat Completions format
+  Example Payload:
+    {
+        "model": "gpt-4o",
+        "messages": [
+            {
+                "role": "system",
+                "content": "..."
+            },
+            {
+                "role": "user",
+                "content": "..."
+            }
+        ],
+        "temperature": 0.7,
+        "max_tokens": 4096
+    }
+
+============================================================
+GOOGLE (GEMINI)
+============================================================
+Model: gemini-2.0-flash
+Endpoint: https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent
+Rate Limit: 15 RPM (Requests Per Minute) - Free Tier
+Environment Variable: GOOGLE_API_KEY
+Source File: agents/ai_providers.py:232-273
+
+API Call Method:
+  HTTP Method: POST
+  Authentication: Query parameter: ?key={API_KEY}
+  Payload Format: Gemini GenerateContent format
+  Example Payload:
+    {
+        "contents": [
+            {
+                "parts": [
+                    {
+                        "text": "..."
+                    }
+                ]
+            }
+        ],
+        "generationConfig": {
+            "temperature": 0.7,
+            "maxOutputTokens": 4096
+        }
+    }
+
+============================================================
+XAI (GROK)
+============================================================
+Model: grok-3
+Endpoint: https://api.x.ai/v1/chat/completions
+Rate Limit: 100,000 TPM (Tokens Per Minute)
+Environment Variable: XAI_API_KEY
+Source File: agents/ai_providers.py:276-321
+
+API Call Method:
+  HTTP Method: POST
+  Authentication: Authorization: Bearer {API_KEY}
+  Payload Format: OpenAI-compatible Chat Completions format
+  Example Payload:
+    {
+        "model": "grok-3",
+        "messages": [
+            {
+                "role": "system",
+                "content": "..."
+            },
+            {
+                "role": "user",
+                "content": "..."
+            }
+        ],
+        "temperature": 0.7,
+        "max_tokens": 4096
+    }
+
+============================================================
+DEEPSEEK
+============================================================
+Model: deepseek-chat
+Endpoint: https://api.deepseek.com/v1/chat/completions
+Rate Limit: Standard (varies by plan)
+Environment Variable: DEEPSEEK_API_KEY
+Source File: agents/ai_providers.py:324-361
+
+API Call Method:
+  HTTP Method: POST
+  Authentication: Authorization: Bearer {API_KEY}
+  Payload Format: OpenAI-compatible Chat Completions format
+  Example Payload:
+    {
+        "model": "deepseek-chat",
+        "messages": [
+            {
+                "role": "system",
+                "content": "..."
+            },
+            {
+                "role": "user",
+                "content": "..."
+            }
+        ],
+        "temperature": 0.7,
+        "max_tokens": 4096
+    }
+
+============================================================
+ALIBABA (QWEN)
+============================================================
+Model: qwen-turbo
+Endpoint: https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions
+Rate Limit: Standard (international endpoint)
+Environment Variable: DASHSCOPE_API_KEY
+Source File: agents/ai_providers.py:364-406
+
+API Call Method:
+  HTTP Method: POST
+  Authentication: Authorization: Bearer {API_KEY}
+  Payload Format: OpenAI-compatible Chat Completions format
+  Example Payload:
+    {
+        "model": "qwen-turbo",
+        "messages": [
+            {
+                "role": "system",
+                "content": "..."
+            },
+            {
+                "role": "user",
+                "content": "..."
+            }
+        ],
+        "temperature": 0.7,
+        "max_tokens": 4096
+    }
+
+============================================================
+ANTHROPIC (CLAUDE)
+============================================================
+Model: claude-3-opus / claude-3-sonnet
+Endpoint: https://api.anthropic.com/v1/messages
+Rate Limit: Varies by tier
+Environment Variable: ANTHROPIC_API_KEY
+Source File: N/A - Reserved for future integration
+
+API Call Method:
+  HTTP Method: POST
+  Authentication: x-api-key: {API_KEY}, anthropic-version: 2023-06-01
+  Payload Format: Anthropic Messages API format
+  Example Payload:
+    {
+        "model": "claude-3-opus-20240229",
+        "max_tokens": 4096,
+        "messages": [
+            {
+                "role": "user",
+                "content": "..."
+            }
+        ]
+    }
+
+================================================================================
+AI PROVIDER USAGE - THIS SESSION
+================================================================================
+
+DeepSeek:
+  API Calls Made: 1
+  Input Tokens: 1,000
+  Output Tokens: 1,500
+  Total Tokens: 2,500
+  Errors: 0
+
+xAI (Grok):
+  API Calls Made: 1
+  Input Tokens: 1,200
+  Output Tokens: 1,800
+  Total Tokens: 3,000
+  Errors: 0
+
+Google (Gemini):
+  API Calls Made: 1
+  Input Tokens: 800
+  Output Tokens: 500
+  Total Tokens: 1,300
+  Errors: 0
+
+Alibaba (Qwen):
+  API Calls Made: 1
+  Input Tokens: 1,300
+  Output Tokens: 1,700
+  Total Tokens: 3,000
+  Errors: 0
+
+OpenAI (GPT):
+  API Calls Made: 1
+  Input Tokens: 1,500
+  Output Tokens: 2,000
+  Total Tokens: 3,500
+  Errors: 0
+
+TOTAL API CALLS: 5
+TOTAL TOKENS USED: 13,300
+  - Input: 5,800
+  - Output: 7,500
+
+================================================================================
+AGENT HIERARCHY TREE
+================================================================================
+
+ChiefArchitectAgent [Architect (Strategy)] - OpenAI (GPT-4)
+  ├── ResearchSupervisor [Supervisor (Oversight)] - Google (Gemini)
+    ├── AnalystAgent [Worker (Execution)] - OpenAI (GPT-4)
+    ├── BullAgent [Worker (Execution)] - xAI (Grok)
+    ├── BearAgent [Worker (Execution)] - Alibaba (Qwen)
+    ├── CriticAgent [Worker (Execution)] - DeepSeek
+    ├── PublishGatekeeperAgent [Goalkeeper (Quality)] - Google (Gemini)
+
+================================================================================
+EVENT TIMELINE
+================================================================================
+
+2026-01-21T22:22:36.120116 | SPAWN        | ChiefArchitectAgent (Tier 0) [Provider: OpenAI (GPT-4)]
+2026-01-21T22:22:36.120126 | SPAWN        | ResearchSupervisor (Tier 1) [Provider: Google (Gemini)] <- parent:arch_001
+2026-01-21T22:22:36.120133 | SPAWN        | AnalystAgent (Tier 2) [Provider: OpenAI (GPT-4)] <- parent:sup_001
+2026-01-21T22:22:36.120137 | SPAWN        | BullAgent (Tier 2) [Provider: xAI (Grok)] <- parent:sup_001
+2026-01-21T22:22:36.120140 | SPAWN        | BearAgent (Tier 2) [Provider: Alibaba (Qwen)] <- parent:sup_001
+2026-01-21T22:22:36.120143 | SPAWN        | CriticAgent (Tier 2) [Provider: DeepSeek] <- parent:sup_001
+2026-01-21T22:22:36.120147 | SPAWN        | PublishGatekeeperAgent (Tier 3) [Provider: Google (Gemini)] <- parent:sup_001
+
+================================================================================
+END OF LOG
+================================================================================

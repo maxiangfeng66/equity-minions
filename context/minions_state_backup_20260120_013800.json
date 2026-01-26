@@ -1,0 +1,774 @@
+{
+  "agents": [
+    {
+      "id": "orchestrator",
+      "name": "Orchestrator",
+      "type": "orchestrator",
+      "status": "active",
+      "task": "Coordinating 7 active research tasks",
+      "progress": 5,
+      "tier": 0,
+      "position": {
+        "x": 0,
+        "z": -2
+      },
+      "connections": [
+        {
+          "to": "researcher-1",
+          "type": "command"
+        },
+        {
+          "to": "researcher-2",
+          "type": "command"
+        },
+        {
+          "to": "researcher-3",
+          "type": "command"
+        }
+      ]
+    },
+    {
+      "id": "researcher-1",
+      "name": "Researcher Alpha",
+      "type": "researcher",
+      "status": "idle",
+      "task": "VST US: Multi-AI debate",
+      "progress": 85,
+      "tier": 1,
+      "position": {
+        "x": -4,
+        "z": 2
+      },
+      "connections": [],
+      "ticker": "3968 HK"
+    },
+    {
+      "id": "researcher-2",
+      "name": "Researcher Beta",
+      "type": "researcher",
+      "status": "active",
+      "task": "762 HK: Multi-AI debate",
+      "progress": 85,
+      "tier": 1,
+      "position": {
+        "x": 0,
+        "z": 2
+      },
+      "connections": [],
+      "ticker": "762 HK"
+    },
+    {
+      "id": "researcher-3",
+      "name": "Researcher Gamma",
+      "type": "researcher",
+      "status": "active",
+      "task": "3800 HK: Multi-AI debate",
+      "progress": 85,
+      "tier": 1,
+      "position": {
+        "x": 4,
+        "z": 2
+      },
+      "connections": [],
+      "ticker": "3800 HK"
+    },
+    {
+      "id": "researcher-4",
+      "name": "Researcher Delta",
+      "type": "researcher",
+      "status": "active",
+      "task": "Phase 1: Initial research for 3968 HK",
+      "progress": 5,
+      "tier": 1,
+      "position": {
+        "x": -5,
+        "z": 4
+      },
+      "connections": [],
+      "ticker": "3968 HK"
+    },
+    {
+      "id": "researcher-5",
+      "name": "Researcher Epsilon",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Error: OpenAI API error: {\n    \"error...",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": -2,
+        "z": 4
+      },
+      "connections": [],
+      "ticker": "6682 HK"
+    },
+    {
+      "id": "researcher-6",
+      "name": "Researcher Zeta",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Error: OpenAI API error: {\n    \"error...",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": 1,
+        "z": 4
+      },
+      "connections": [],
+      "ticker": "LEGN US"
+    },
+    {
+      "id": "bull-1",
+      "name": "Bull Agent",
+      "type": "analyst",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 4,
+        "z": 1
+      },
+      "connections": []
+    },
+    {
+      "id": "bear-1",
+      "name": "Bear Agent",
+      "type": "critic",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 6,
+        "z": 1
+      },
+      "connections": []
+    },
+    {
+      "id": "bull-2",
+      "name": "Bull Agent 2",
+      "type": "analyst",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 4,
+        "z": 3
+      },
+      "connections": []
+    },
+    {
+      "id": "bear-2",
+      "name": "Bear Agent 2",
+      "type": "critic",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 6,
+        "z": 3
+      },
+      "connections": []
+    },
+    {
+      "id": "bull-3",
+      "name": "Bull Agent 3",
+      "type": "analyst",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 4,
+        "z": 5
+      },
+      "connections": []
+    },
+    {
+      "id": "bear-3",
+      "name": "Bear Agent 3",
+      "type": "critic",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 6,
+        "z": 5
+      },
+      "connections": []
+    },
+    {
+      "id": "synthesizer-1",
+      "name": "Synthesizer Zeta",
+      "type": "debater",
+      "status": "idle",
+      "task": "All reports synthesized",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": 4,
+        "z": 5
+      },
+      "connections": []
+    },
+    {
+      "id": "analyst-1",
+      "name": "Analyst Delta",
+      "type": "analyst",
+      "status": "idle",
+      "task": "All DCF valuations complete",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": -4,
+        "z": 5
+      },
+      "connections": []
+    },
+    {
+      "id": "critic-1",
+      "name": "Critic Epsilon",
+      "type": "critic",
+      "status": "idle",
+      "task": "All debates concluded",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": 0,
+        "z": 5
+      },
+      "connections": []
+    },
+    {
+      "id": "resource_allocator_1_772feb",
+      "name": "Resource Allocator",
+      "type": "resource_allocator",
+      "status": "spawning",
+      "task": "Managing AI provider allocation",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -3.0,
+        "y": 0,
+        "z": 0
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:18.363479",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:18.363479"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "priority_manager_2_3177df",
+      "name": "Priority Manager",
+      "type": "priority_manager",
+      "status": "terminated",
+      "task": "Managing research priorities",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -1.0,
+        "y": 0,
+        "z": 0
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "terminated",
+        "spawn_time": "2026-01-20T00:58:18.364189",
+        "termination_time": "2026-01-20T00:58:18.365501",
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:18.364189"
+          },
+          {
+            "state": "dying",
+            "time": "2026-01-20T00:58:18.365501",
+            "reason": "registry_sync"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect_3_fc35da",
+      "name": "Chief Architect",
+      "type": "chief_architect",
+      "status": "spawning",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 1.0,
+        "y": 0,
+        "z": 0
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:18.364866",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:18.364866"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "resource_allocator_1_2ec7b2",
+      "name": "Resource Allocator",
+      "type": "resource_allocator",
+      "status": "spawning",
+      "task": "Managing AI provider allocation",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 3.0,
+        "y": 0,
+        "z": 0
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:31.624513",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:31.624513"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "priority_manager_2_db1f45",
+      "name": "Priority Manager",
+      "type": "priority_manager",
+      "status": "spawning",
+      "task": "Managing research priorities",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 5.0,
+        "y": 0,
+        "z": 0
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:31.625153",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:31.625153"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect_3_84da8f",
+      "name": "Chief Architect",
+      "type": "chief_architect",
+      "status": "spawning",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -5.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:31.625818",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:31.625818"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "resource_allocator_1_7fde8f",
+      "name": "Resource Allocator",
+      "type": "resource_allocator",
+      "status": "spawning",
+      "task": "Managing AI provider allocation",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -3.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:57.854589",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:57.854589"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "priority_manager_2_22ba2a",
+      "name": "Priority Manager",
+      "type": "priority_manager",
+      "status": "spawning",
+      "task": "Managing research priorities",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -1.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:57.855367",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:57.855367"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect_3_871bc3",
+      "name": "Chief Architect",
+      "type": "chief_architect",
+      "status": "spawning",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 1.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:58:57.856143",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:58:57.856143"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "resource_allocator_1_ae5bb1",
+      "name": "Resource Allocator",
+      "type": "resource_allocator",
+      "status": "spawning",
+      "task": "Managing AI provider allocation",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 3.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:59:42.182184",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:59:42.182184"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "priority_manager_2_d43586",
+      "name": "Priority Manager",
+      "type": "priority_manager",
+      "status": "spawning",
+      "task": "Managing research priorities",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 5.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:59:42.183096",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:59:42.183096"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect_3_755bf2",
+      "name": "Chief Architect",
+      "type": "chief_architect",
+      "status": "spawning",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -5.0,
+        "y": 0,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "spawning",
+        "spawn_time": "2026-01-20T00:59:42.183939",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-20T00:59:42.183939"
+          }
+        ]
+      },
+      "config": {}
+    }
+  ],
+  "tasks": [
+    {
+      "ticker": "6682 HK",
+      "company": "Beijing Fourth Paradigm Technology",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.733982",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 852. Please try again in 1.704s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "LEGN US",
+      "company": "Legend Biotech",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.736418",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 989. Please try again in 1.978s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "9660 HK",
+      "company": "Horizon Robotics",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.738150",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 848. Please try again in 1.696s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "9926 HK",
+      "company": "Akeso Inc",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.739828",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 988. Please try again in 1.976s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "762 HK",
+      "company": "China Unicom Hong Kong",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.741498",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 989. Please try again in 1.978s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "1799 HK",
+      "company": "Xinte Energy",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.743156",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 846. Please try again in 1.692s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "3888 HK",
+      "company": "Kingsoft Corp",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.744924",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 987. Please try again in 1.974s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "3800 HK",
+      "company": "GCL Technology Holdings",
+      "status": "active",
+      "started_at": "2026-01-20T01:28:14.746647"
+    },
+    {
+      "ticker": "1045 HK",
+      "company": "APT Satellite Holdings",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.748392",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 990. Please try again in 1.98s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "2696 HK",
+      "company": "Shanghai Henlius Biotech",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.750309",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 994. Please try again in 1.988s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "9969 HK",
+      "company": "InnoCare Pharma",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.752438",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 991. Please try again in 1.981s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "3319 HK",
+      "company": "A-Living Smart City Services",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.754204",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 994. Please try again in 1.988s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "2869 HK",
+      "company": "Greentown Service Group",
+      "status": "active",
+      "started_at": "2026-01-20T01:28:14.755906"
+    },
+    {
+      "ticker": "1816 HK",
+      "company": "CGN Power Co",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.757611",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 845. Please try again in 1.69s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "600900 CH",
+      "company": "China Yangtze Power",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.759263",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 990. Please try again in 1.98s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "VST US",
+      "company": "Vistra Corp",
+      "status": "active",
+      "started_at": "2026-01-20T01:28:14.760975"
+    },
+    {
+      "ticker": "CEG US",
+      "company": "Constellation Energy",
+      "status": "active",
+      "started_at": "2026-01-20T01:28:14.762715"
+    },
+    {
+      "ticker": "388 HK",
+      "company": "Hong Kong Exchanges & Clearing",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.764470",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 993. Please try again in 1.985s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "JPM US",
+      "company": "JPMorgan Chase & Co",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.766510",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 988. Please try again in 1.976s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    },
+    {
+      "ticker": "3968 HK",
+      "company": "China Merchants Bank",
+      "status": "error",
+      "started_at": "2026-01-20T01:28:14.768208",
+      "error": "OpenAI API error: {\n    \"error\": {\n        \"message\": \"Rate limit reached for gpt-4o in organization org-p0NmWJbHqY0YvbKVqExjfVTc on tokens per min (TPM): Limit 30000, Used 30000, Requested 989. Please try again in 1.978s. Visit https://platform.openai.com/account/rate-limits to learn more.\",\n        \"type\": \"tokens\",\n        \"param\": null,\n        \"code\": \"rate_limit_exceeded\"\n    }\n}\n"
+    }
+  ],
+  "hierarchy": {
+    "orchestrator": [
+      "researcher-1",
+      "researcher-2",
+      "researcher-3",
+      "researcher-4",
+      "researcher-5",
+      "researcher-6"
+    ]
+  },
+  "recent_events": [],
+  "last_updated": "2026-01-20T01:37:53.494634"
+}

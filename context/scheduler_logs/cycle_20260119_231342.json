@@ -1,0 +1,335 @@
+{
+  "mode": "full",
+  "start_time": "2026-01-19T23:13:42.100965",
+  "validation": {
+    "6682 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "LEGN US": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "9660 HK": {
+      "score": 6,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "9926 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "762 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "1799 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "3888 HK": {
+      "score": 0,
+      "needs_revision": true,
+      "issues": 10
+    },
+    "3800 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "1045 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "2696 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "9969 HK": {
+      "score": 6,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "3319 HK": {
+      "score": 6,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "2869 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "1816 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    }
+  },
+  "monitoring": {
+    "events_count": 0,
+    "tickers_requiring_update": [],
+    "new_companies": [],
+    "summary": "MONITORING SUMMARY - 2026-01-19\n========================================\nTotal events detected: 0\nTickers requiring update: 0\nNew companies detected: 0"
+  },
+  "updates": {
+    "tasks_processed": 14,
+    "successful": 22,
+    "failed": 7,
+    "details": [
+      {
+        "ticker": "6682 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "LEGN US",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "9660 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "9926 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "762 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "1799 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "3888 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "3800 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "1045 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "2696 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "9969 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "3319 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "2869 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "1816 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "6682 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\6682.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: Unknown format code 'f' for object of type 'str'"
+        ]
+      },
+      {
+        "ticker": "LEGN US",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\LEGN_US.html",
+          "Detailed report updated: reports\\LEGN_US_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "9660 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\9660.HK.html",
+          "Detailed report updated: reports\\9660.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "9926 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\9926.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "762 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\762_HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "1799 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\1799.HK.html",
+          "Detailed report updated: reports\\1799.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "3888 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\3888.HK.html",
+          "Detailed report updated: reports\\3888.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "3800 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\3800.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "1045 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\1045.HK.html",
+          "Detailed report updated: reports\\1045.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "2696 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\2696.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "9969 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\9969.HK.html",
+          "Detailed report updated: reports\\9969.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "3319 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\3319.HK.html",
+          "Detailed report updated: reports\\3319.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "2869 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\2869.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "1816 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\1816_HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "INDEX",
+        "success": true,
+        "changes": [
+          "Updated generation timestamp"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "summary": {
+    "timestamp": "2026-01-19T23:13:42.155260",
+    "equities_processed": 14,
+    "validation": {
+      "total_validated": 14,
+      "needs_revision": 14,
+      "avg_score": 16.285714285714285
+    },
+    "monitoring": {
+      "events_detected": 0,
+      "updates_triggered": 0,
+      "new_companies": 0
+    },
+    "updates": {
+      "tasks_processed": 14,
+      "successful": 22,
+      "failed": 7
+    }
+  },
+  "end_time": "2026-01-19T23:13:42.155254",
+  "duration_seconds": 0.054289
+}

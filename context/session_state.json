@@ -1,22 +1,12 @@
 {
-  "session_id": "2026-01-18_research_session",
-  "started_at": "2026-01-18T22:50:00Z",
-  "equities": [
-    {"ticker": "6682 HK", "company": "Haidilao International", "status": "pending"},
-    {"ticker": "LEGN US", "company": "Legend Biotech", "status": "pending"},
-    {"ticker": "9660 HK", "company": "Trip.com Group", "status": "pending"},
-    {"ticker": "9926 HK", "company": "Akeso Inc", "status": "pending"},
-    {"ticker": "762 HK", "company": "China Unicom", "status": "pending"},
-    {"ticker": "1799 HK", "company": "Xinyi Solar Holdings", "status": "pending"},
-    {"ticker": "3888 HK", "company": "Kingsoft Corporation", "status": "pending"},
-    {"ticker": "3800 HK", "company": "GCL Technology Holdings", "status": "pending"},
-    {"ticker": "1045 HK", "company": "APT Satellite Holdings", "status": "pending"},
-    {"ticker": "2696 HK", "company": "Shenyang Xingqi Pharma", "status": "pending"},
-    {"ticker": "9969 HK", "company": "IMAX China Holding", "status": "pending"},
-    {"ticker": "3319 HK", "company": "A-Living Smart City", "status": "pending"},
-    {"ticker": "2869 HK", "company": "Greentown Service", "status": "pending"},
-    {"ticker": "1816 HK", "company": "CGN Power Co", "status": "pending"}
+  "created_at": null,
+  "last_updated": "2026-01-26T00:08:47.631470",
+  "equities_completed": [],
+  "equities_in_progress": [
+    "1816 HK"
   ],
-  "completed": [],
-  "current_equity": null
+  "equities_pending": [],
+  "current_phase": null,
+  "errors": [],
+  "summary": ""
 }

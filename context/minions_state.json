@@ -2,29 +2,48 @@
   "agents": [
     {
       "id": "orchestrator",
-      "name": "Orchestrator",
-      "type": "orchestrator",
+      "name": "Chief Architect",
+      "type": "chief_architect",
       "status": "active",
-      "task": "Coordinating 14 equity research tasks",
-      "progress": 0,
+      "task": "Completed 14/14 equities",
+      "progress": 100,
       "tier": 0,
-      "position": {"x": 0, "z": -2},
+      "position": {
+        "x": 0,
+        "z": -2
+      },
       "connections": [
-        {"to": "researcher-1", "type": "command"},
-        {"to": "researcher-2", "type": "command"},
-        {"to": "researcher-3", "type": "command"}
+        {
+          "to": "supervisor-1",
+          "type": "spawned"
+        }
       ]
     },
     {
       "id": "researcher-1",
       "name": "Researcher Alpha",
       "type": "researcher",
-      "status": "idle",
-      "task": "Standing by",
+      "status": "active",
+      "task": "Researching 6682 HK",
       "progress": 0,
       "tier": 1,
-      "position": {"x": -4, "z": 2},
-      "connections": []
+      "position": {
+        "x": -5,
+        "y": -2,
+        "z": 1
+      },
+      "connections": [],
+      "parent_id": "orchestrator",
+      "supervisor_id": "orchestrator",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:39:21.434635",
+        "termination_time": null,
+        "status_changes": []
+      },
+      "ticker": "6682 HK"
     },
     {
       "id": "researcher-2",
@@ -34,8 +53,23 @@
       "task": "Standing by",
       "progress": 0,
       "tier": 1,
-      "position": {"x": 0, "z": 2},
-      "connections": []
+      "position": {
+        "x": -2,
+        "y": -2,
+        "z": 1
+      },
+      "connections": [],
+      "parent_id": "orchestrator",
+      "supervisor_id": "orchestrator",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-22T00:13:38.135627",
+        "termination_time": null,
+        "status_changes": []
+      },
+      "ticker": null
     },
     {
       "id": "researcher-3",
@@ -45,58 +79,838 @@
       "task": "Standing by",
       "progress": 0,
       "tier": 1,
-      "position": {"x": 4, "z": 2},
-      "connections": []
+      "position": {
+        "x": 1,
+        "y": -2,
+        "z": 1
+      },
+      "connections": [],
+      "parent_id": "orchestrator",
+      "supervisor_id": "orchestrator",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-22T00:13:38.135630",
+        "termination_time": null,
+        "status_changes": []
+      },
+      "ticker": null
     },
     {
-      "id": "analyst-1",
-      "name": "Analyst Delta",
-      "type": "analyst",
+      "id": "researcher-4",
+      "name": "Researcher Delta",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": -5,
+        "y": -2,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "orchestrator",
+      "supervisor_id": "orchestrator",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-22T00:13:38.135632",
+        "termination_time": null,
+        "status_changes": []
+      },
+      "ticker": null
+    },
+    {
+      "id": "researcher-5",
+      "name": "Researcher Epsilon",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": -2,
+        "y": -2,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "orchestrator",
+      "supervisor_id": "orchestrator",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-22T00:13:38.135635",
+        "termination_time": null,
+        "status_changes": []
+      }
+    },
+    {
+      "id": "researcher-6",
+      "name": "Researcher Zeta",
+      "type": "researcher",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": 1,
+        "y": -2,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "orchestrator",
+      "supervisor_id": "orchestrator",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-22T00:37:26.989817",
+        "termination_time": null,
+        "status_changes": []
+      }
+    },
+    {
+      "id": "bull-1",
+      "name": "Bull Agent",
+      "type": "bull",
+      "status": "active",
+      "task": "6682 HK: Bull round 2/5",
+      "progress": 40,
+      "tier": 2,
+      "position": {
+        "x": 4,
+        "y": -4,
+        "z": 1
+      },
+      "connections": [
+        {
+          "to": "synthesizer-1",
+          "type": "interaction"
+        }
+      ],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:18:58.110909",
+        "termination_time": null,
+        "status_changes": []
+      },
+      "ticker": "6682 HK"
+    },
+    {
+      "id": "bear-1",
+      "name": "Bear Agent",
+      "type": "bear",
+      "status": "active",
+      "task": "6682 HK: Bear round 2/5",
+      "progress": 40,
+      "tier": 2,
+      "position": {
+        "x": 6,
+        "y": -4,
+        "z": 1
+      },
+      "connections": [
+        {
+          "to": "synthesizer-1",
+          "type": "interaction"
+        }
+      ],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:18:58.110910",
+        "termination_time": null,
+        "status_changes": []
+      },
+      "ticker": "6682 HK"
+    },
+    {
+      "id": "bull-2",
+      "name": "Bull Agent 2",
+      "type": "bull",
       "status": "idle",
       "task": "Standing by",
       "progress": 0,
       "tier": 2,
-      "position": {"x": -4, "z": 5},
-      "connections": []
+      "position": {
+        "x": 4,
+        "y": -4,
+        "z": 3
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:18:58.110911",
+        "termination_time": null,
+        "status_changes": []
+      }
     },
     {
-      "id": "critic-1",
-      "name": "Critic Epsilon",
-      "type": "critic",
+      "id": "bear-2",
+      "name": "Bear Agent 2",
+      "type": "bear",
       "status": "idle",
       "task": "Standing by",
       "progress": 0,
       "tier": 2,
-      "position": {"x": 0, "z": 5},
-      "connections": []
+      "position": {
+        "x": 6,
+        "y": -4,
+        "z": 3
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-22T00:37:26.989829",
+        "termination_time": null,
+        "status_changes": []
+      }
+    },
+    {
+      "id": "bull-3",
+      "name": "Bull Agent 3",
+      "type": "bull",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 4,
+        "y": -4,
+        "z": 5
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:39:21.434656",
+        "termination_time": null,
+        "status_changes": []
+      }
+    },
+    {
+      "id": "bear-3",
+      "name": "Bear Agent 3",
+      "type": "bear",
+      "status": "idle",
+      "task": "Standing by",
+      "progress": 0,
+      "tier": 2,
+      "position": {
+        "x": 6,
+        "y": -4,
+        "z": 5
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:18:58.110916",
+        "termination_time": null,
+        "status_changes": []
+      }
     },
     {
       "id": "synthesizer-1",
-      "name": "Synthesizer Zeta",
-      "type": "debater",
-      "status": "idle",
-      "task": "Standing by",
+      "name": "Synthesizer",
+      "type": "synthesizer",
+      "status": "waiting",
+      "task": "Waiting for 1 debates",
       "progress": 0,
       "tier": 2,
-      "position": {"x": 4, "z": 5},
-      "connections": []
+      "position": {
+        "x": 5,
+        "y": -4,
+        "z": 7
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 2,
+      "lifecycle": {
+        "state": "idle",
+        "spawn_time": "2026-01-21T21:18:58.110917",
+        "termination_time": null,
+        "status_changes": []
+      }
+    },
+    {
+      "id": "supervisor-1",
+      "name": "Research Supervisor",
+      "type": "research_supervisor",
+      "status": "idle",
+      "task": "Completed",
+      "progress": 100,
+      "tier": 1,
+      "position": {
+        "x": 2,
+        "z": 2
+      },
+      "connections": [
+        {
+          "to": "bull-test",
+          "type": "spawned"
+        },
+        {
+          "to": "bear-test",
+          "type": "spawned"
+        },
+        {
+          "to": "critic-test",
+          "type": "spawned"
+        },
+        {
+          "to": "synth-test",
+          "type": "spawned"
+        },
+        {
+          "to": "gate-test",
+          "type": "spawned"
+        }
+      ],
+      "parent_id": "orchestrator"
+    },
+    {
+      "id": "bull-test",
+      "name": "Bull Agent",
+      "type": "bull",
+      "status": "dying",
+      "task": "Completed",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": -3,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "supervisor-1"
+    },
+    {
+      "id": "bear-test",
+      "name": "Bear Agent",
+      "type": "bear",
+      "status": "idle",
+      "task": "Completed",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": -4,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "supervisor-1"
+    },
+    {
+      "id": "critic-test",
+      "name": "Critic Agent",
+      "type": "critic",
+      "status": "idle",
+      "task": "Completed",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": -3,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "supervisor-1"
+    },
+    {
+      "id": "synth-test",
+      "name": "Synthesizer",
+      "type": "synthesizer",
+      "status": "idle",
+      "task": "Completed",
+      "progress": 100,
+      "tier": 2,
+      "position": {
+        "x": 1,
+        "z": 4
+      },
+      "connections": [],
+      "parent_id": "supervisor-1"
+    },
+    {
+      "id": "gate-test",
+      "name": "Publish Gatekeeper",
+      "type": "publish_gatekeeper",
+      "status": "dying",
+      "task": "Completed",
+      "progress": 100,
+      "tier": 3,
+      "position": {
+        "x": -2,
+        "z": 6
+      },
+      "connections": [],
+      "parent_id": "supervisor-1"
+    },
+    {
+      "id": "priority_manager-82091a21",
+      "name": "Priority Manager 8209",
+      "type": "priority_manager",
+      "status": "active",
+      "task": "Managing research priorities",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": 5.0,
+        "y": 0,
+        "z": 0
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-21T21:34:01.786462",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-21T21:34:01.786462"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-21T21:34:01.787946"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect-051afec9",
+      "name": "Chief Architect 051a",
+      "type": "chief_architect",
+      "status": "active",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -5.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-21T21:34:01.788738",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-21T21:34:01.788738"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-21T21:34:01.790262"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "resource_allocator-cb62bdb9",
+      "name": "Resource Allocator cb62",
+      "type": "resource_allocator",
+      "status": "active",
+      "task": "Managing AI provider allocation",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -5.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-21T21:51:31.194924",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-21T21:51:31.194924"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-21T21:51:31.196994"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect-17b11e50",
+      "name": "Chief Architect 17b1",
+      "type": "chief_architect",
+      "status": "active",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -1.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [
+        {
+          "to": "supervisor_main_pool-082bb41d",
+          "type": "spawned"
+        }
+      ],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [
+        "supervisor_main_pool-082bb41d"
+      ],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-21T21:51:31.200805",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-21T21:51:31.200805"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-21T21:51:31.202628"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "supervisor_main_pool-082bb41d",
+      "name": "Supervisor Main Pool 082b",
+      "type": "researcher",
+      "status": "active",
+      "task": "Starting research for 14 tickers",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": -1.0,
+        "y": -2,
+        "z": 4.5
+      },
+      "connections": [],
+      "parent_id": "chief_architect-17b11e50",
+      "supervisor_id": "chief_architect-17b11e50",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-21T21:51:31.216466",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-21T21:51:31.216466"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-21T21:51:31.218785"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "resource_allocator-24ad78d4",
+      "name": "Resource Allocator 24ad",
+      "type": "resource_allocator",
+      "status": "active",
+      "task": "Managing AI provider allocation",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -5.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-22T00:34:31.524107",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-22T00:34:31.524107"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-22T00:34:31.526297"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "priority_manager-6a902c7e",
+      "name": "Priority Manager 6a90",
+      "type": "priority_manager",
+      "status": "active",
+      "task": "Managing research priorities",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -3.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-22T00:34:31.527167",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-22T00:34:31.527167"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-22T00:34:31.528871"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "chief_architect-c69238be",
+      "name": "Chief Architect c692",
+      "type": "chief_architect",
+      "status": "active",
+      "task": "Coordinating research system",
+      "progress": 0,
+      "tier": 0,
+      "position": {
+        "x": -1.0,
+        "y": 0,
+        "z": 2
+      },
+      "connections": [
+        {
+          "to": "supervisor_main_pool-c40a2be4",
+          "type": "spawned"
+        }
+      ],
+      "parent_id": null,
+      "supervisor_id": null,
+      "children": [
+        "supervisor_main_pool-c40a2be4"
+      ],
+      "generation": 0,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-22T00:34:31.529714",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-22T00:34:31.529714"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-22T00:34:31.531437"
+          }
+        ]
+      },
+      "config": {}
+    },
+    {
+      "id": "supervisor_main_pool-c40a2be4",
+      "name": "Supervisor Main Pool c40a",
+      "type": "researcher",
+      "status": "active",
+      "task": "Starting research for 14 tickers",
+      "progress": 0,
+      "tier": 1,
+      "position": {
+        "x": -1.0,
+        "y": -2,
+        "z": 4.5
+      },
+      "connections": [],
+      "parent_id": "chief_architect-c69238be",
+      "supervisor_id": "chief_architect-c69238be",
+      "children": [],
+      "generation": 1,
+      "lifecycle": {
+        "state": "active",
+        "spawn_time": "2026-01-22T00:34:31.537183",
+        "termination_time": null,
+        "status_changes": [
+          {
+            "state": "spawning",
+            "time": "2026-01-22T00:34:31.537183"
+          },
+          {
+            "state": "active",
+            "time": "2026-01-22T00:34:31.539155"
+          }
+        ]
+      },
+      "config": {}
     }
   ],
   "tasks": [
-    {"ticker": "1045 HK", "company": "APT Satellite", "status": "pending"},
-    {"ticker": "1799 HK", "company": "Xinte Energy", "status": "pending"},
-    {"ticker": "1816 HK", "company": "CGN Power", "status": "pending"},
-    {"ticker": "2696 HK", "company": "Henlius Biotech", "status": "pending"},
-    {"ticker": "2869 HK", "company": "Greentown Service", "status": "pending"},
-    {"ticker": "3319 HK", "company": "A-Living", "status": "pending"},
-    {"ticker": "3800 HK", "company": "GCL Technology", "status": "pending"},
-    {"ticker": "3888 HK", "company": "Kingsoft", "status": "pending"},
-    {"ticker": "6682 HK", "company": "Fourth Paradigm", "status": "pending"},
-    {"ticker": "762 HK", "company": "China Unicom", "status": "pending"},
-    {"ticker": "9660 HK", "company": "Horizon Robotics", "status": "pending"},
-    {"ticker": "9926 HK", "company": "Akeso", "status": "pending"},
-    {"ticker": "9969 HK", "company": "InnoCare Pharma", "status": "pending"},
-    {"ticker": "LEGN US", "company": "Legend Biotech", "status": "pending"}
+    {
+      "ticker": "6682 HK",
+      "company": "Beijing Fourth Paradigm Technology",
+      "status": "completed",
+      "started_at": "2026-01-22T00:37:26.992071",
+      "completed_at": "2026-01-22T00:46:37.791052"
+    },
+    {
+      "ticker": "LEGN US",
+      "company": "Legend Biotech",
+      "status": "completed",
+      "started_at": "2026-01-22T00:37:26.997055",
+      "completed_at": "2026-01-22T00:46:46.118311"
+    },
+    {
+      "ticker": "9660 HK",
+      "company": "Horizon Robotics",
+      "status": "completed",
+      "started_at": "2026-01-22T00:37:27.001914",
+      "completed_at": "2026-01-22T00:46:34.472104"
+    },
+    {
+      "ticker": "9926 HK",
+      "company": "Akeso Inc",
+      "status": "completed",
+      "started_at": "2026-01-22T00:46:34.473398",
+      "completed_at": "2026-01-22T00:55:35.292233"
+    },
+    {
+      "ticker": "762 HK",
+      "company": "China Unicom Hong Kong",
+      "status": "completed",
+      "started_at": "2026-01-22T00:46:37.792388",
+      "completed_at": "2026-01-22T00:56:11.757804"
+    },
+    {
+      "ticker": "1799 HK",
+      "company": "Xinte Energy",
+      "status": "completed",
+      "started_at": "2026-01-22T00:46:46.119877",
+      "completed_at": "2026-01-22T00:55:53.685069"
+    },
+    {
+      "ticker": "3888 HK",
+      "company": "Kingsoft Corp",
+      "status": "completed",
+      "started_at": "2026-01-22T00:55:35.293896",
+      "completed_at": "2026-01-22T01:04:34.974698"
+    },
+    {
+      "ticker": "3800 HK",
+      "company": "GCL Technology Holdings",
+      "status": "completed",
+      "started_at": "2026-01-22T00:55:53.686464",
+      "completed_at": "2026-01-22T01:05:45.433410"
+    },
+    {
+      "ticker": "1045 HK",
+      "company": "APT Satellite Holdings",
+      "status": "completed",
+      "started_at": "2026-01-22T00:56:11.759320",
+      "completed_at": "2026-01-22T01:05:03.004187"
+    },
+    {
+      "ticker": "2696 HK",
+      "company": "Shanghai Henlius Biotech",
+      "status": "completed",
+      "started_at": "2026-01-22T01:04:34.976095",
+      "completed_at": "2026-01-22T01:14:58.739060"
+    },
+    {
+      "ticker": "9969 HK",
+      "company": "InnoCare Pharma",
+      "status": "completed",
+      "started_at": "2026-01-22T01:23:36.998329",
+      "completed_at": "2026-01-22T01:32:25.667390"
+    },
+    {
+      "ticker": "3319 HK",
+      "company": "A-Living Smart City Services",
+      "status": "completed",
+      "started_at": "2026-01-22T01:05:45.435012",
+      "completed_at": "2026-01-22T01:15:23.981901"
+    },
+    {
+      "ticker": "2869 HK",
+      "company": "Greentown Service Group",
+      "status": "completed",
+      "started_at": "2026-01-22T01:11:33.389120",
+      "completed_at": "2026-01-22T01:20:09.058398"
+    },
+    {
+      "ticker": "1816 HK",
+      "company": "CGN Power Co",
+      "status": "completed",
+      "started_at": "2026-01-22T01:14:58.740618",
+      "completed_at": "2026-01-22T01:23:29.973976"
+    }
   ],
-  "last_updated": "2026-01-19T00:00:00Z"
+  "hierarchy": {
+    "orchestrator": [
+      "researcher-1",
+      "researcher-2",
+      "researcher-3",
+      "researcher-4",
+      "researcher-5",
+      "researcher-6"
+    ]
+  },
+  "recent_events": [],
+  "last_updated": "2026-01-22T01:32:25.667412"
 }

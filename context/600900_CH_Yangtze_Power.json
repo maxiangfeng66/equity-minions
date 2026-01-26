@@ -1,0 +1,887 @@
+{
+  "ticker": "600900.CH",
+  "company_name": "China Yangtze Power Co., Ltd.",
+  "chinese_name": "中国长江电力股份有限公司",
+  "sector": "Utilities",
+  "industry": "Hydropower - Renewable Energy",
+  "exchange": "Shanghai Stock Exchange (A-Share)",
+  "currency": "CNY",
+  "report_date": "2026-01-20",
+
+  "executive_summary": {
+    "overview": "China Yangtze Power (CYPC) is the world's largest listed hydropower company and the largest A-share power generator by installed capacity. The company operates the iconic Three Gorges Dam along with five other cascade hydropower stations on the Yangtze River, commanding approximately 120 GW of total managed capacity including recent acquisitions. As a subsidiary of China Three Gorges Corporation (CTG), CYPC benefits from strong state backing while delivering stable cash flows and industry-leading dividend yields.",
+    "investment_highlights": [
+      "World's largest hydropower operator with ~120 GW total managed capacity",
+      "Operates Three Gorges Dam (22.5 GW) - world's largest power station",
+      "Six cascade stations on Yangtze River: Three Gorges, Gezhouba, Xiluodu, Xiangjiaba, Wudongde, Baihetan",
+      "Annual power generation ~300 TWh, approximately 15% of China's hydropower output",
+      "Attractive dividend yield of 4-5% with 70%+ payout ratio policy",
+      "Stable regulated tariffs with long-term power purchase agreements",
+      "Zero fuel cost advantage and 40+ year asset life",
+      "Strategic importance to national energy security and grid stability"
+    ],
+    "key_risks": [
+      "Hydrological variability - drought conditions can significantly impact generation",
+      "Tariff regulation by NDRC could compress margins",
+      "State ownership may prioritize policy objectives over shareholder returns",
+      "Limited growth potential as major Yangtze sites fully developed",
+      "Environmental and social concerns around large hydropower",
+      "Climate change impact on precipitation patterns"
+    ],
+    "rating": "HOLD",
+    "target_price": {
+      "value": 31.50,
+      "currency": "CNY",
+      "methodology": "Probability-weighted DCF at 9% WACC"
+    }
+  },
+
+  "industry_analysis": {
+    "market_overview": {
+      "global_hydropower_market_size_usd_billion_2024": 280,
+      "global_hydropower_market_size_usd_billion_2030": 400,
+      "china_installed_hydropower_capacity_gw_2024": 425,
+      "china_share_of_global_hydropower": "31%",
+      "hydropower_share_of_china_electricity_generation": "15%",
+      "hydropower_share_of_china_installed_capacity": "14%"
+    },
+    "china_hydropower_market": {
+      "total_installed_capacity_gw_2024": 425,
+      "annual_generation_twh_2024": 1400,
+      "remaining_developable_capacity_gw": 200,
+      "major_river_basins": [
+        {"name": "Yangtze River", "installed_gw": 120, "share": "28%"},
+        {"name": "Yellow River", "installed_gw": 35, "share": "8%"},
+        {"name": "Pearl River", "installed_gw": 25, "share": "6%"},
+        {"name": "Southwest Rivers (Lancang, Nu, Jinsha)", "installed_gw": 80, "share": "19%"},
+        {"name": "Others", "installed_gw": 165, "share": "39%"}
+      ]
+    },
+    "growth_drivers": [
+      "Carbon neutrality target by 2060 drives renewable capacity expansion",
+      "Pumped hydro storage essential for grid balancing with intermittent renewables",
+      "Energy security - reduce reliance on imported fossil fuels",
+      "Baseload power essential for grid stability",
+      "Rural electrification and poverty alleviation programs"
+    ],
+    "growth_constraints": [
+      "Most economically viable sites already developed",
+      "Environmental restrictions on new dam construction",
+      "Social displacement concerns limit new projects",
+      "Competition from solar/wind which are faster to deploy",
+      "Water resource allocation conflicts"
+    ],
+    "industry_growth_rate": {
+      "historical_cagr_2015_2024": "2.5%",
+      "projected_cagr_2024_2030": "2.0%",
+      "note": "Mature industry with limited greenfield opportunities"
+    },
+    "competitive_landscape": {
+      "major_players": [
+        {
+          "company": "China Yangtze Power (600900.CH)",
+          "parent": "China Three Gorges Corporation",
+          "installed_capacity_gw": 120,
+          "market_share": "28%",
+          "key_assets": "Three Gorges, Gezhouba, Xiluodu, Xiangjiaba, Wudongde, Baihetan"
+        },
+        {
+          "company": "Huaneng Power International",
+          "parent": "Huaneng Group",
+          "hydropower_capacity_gw": 15,
+          "market_share": "4%",
+          "note": "Primarily thermal power"
+        },
+        {
+          "company": "Huadian Power International",
+          "parent": "Huadian Group",
+          "hydropower_capacity_gw": 25,
+          "market_share": "6%"
+        },
+        {
+          "company": "China Power Investment Corp",
+          "parent": "SPIC",
+          "hydropower_capacity_gw": 30,
+          "market_share": "7%"
+        },
+        {
+          "company": "Guodian Power",
+          "parent": "CHN Energy",
+          "hydropower_capacity_gw": 20,
+          "market_share": "5%"
+        }
+      ]
+    },
+    "porters_five_forces": {
+      "threat_of_new_entrants": {
+        "level": "Very Low",
+        "score": 1,
+        "rationale": "Massive capital requirements (billions per project), limited remaining sites, multi-year construction periods, regulatory approvals required, state-dominated industry"
+      },
+      "bargaining_power_of_suppliers": {
+        "level": "Low",
+        "score": 2,
+        "rationale": "No fuel input costs, equipment suppliers are commoditized, labor readily available"
+      },
+      "bargaining_power_of_buyers": {
+        "level": "Medium",
+        "score": 5,
+        "rationale": "State Grid and Southern Grid are monopsony buyers, but tariffs regulated by NDRC, essential baseload power has value"
+      },
+      "threat_of_substitutes": {
+        "level": "Medium",
+        "score": 5,
+        "rationale": "Solar and wind are cheaper per kWh but cannot provide baseload; pumped hydro uniquely positioned for storage; nuclear competes for baseload"
+      },
+      "competitive_rivalry": {
+        "level": "Low",
+        "score": 2,
+        "rationale": "Oligopolistic structure, geographic monopolies around specific rivers, rational competitors, regulated pricing"
+      }
+    },
+    "regulatory_environment": {
+      "tariff_mechanism": "Benchmark on-grid tariffs set by NDRC, adjusted periodically",
+      "current_average_tariff_cny_kwh": 0.27,
+      "tariff_trend": "Stable with modest inflation adjustments",
+      "market_reform": "Gradual shift toward market-based pricing in some provinces",
+      "policy_support": "Strong government support for hydropower as clean energy",
+      "environmental_regulations": "Strict environmental impact assessments required for new projects"
+    }
+  },
+
+  "company_analysis": {
+    "business_model": {
+      "core_business": "Hydroelectric power generation and sales",
+      "revenue_model": "Long-term power purchase agreements with State Grid and provincial grids",
+      "competitive_advantages": [
+        "Irreplaceable cascade hydropower stations on Yangtze River",
+        "Zero fuel costs - water is free",
+        "40-60 year asset life with minimal maintenance capex",
+        "Baseload power essential for grid stability",
+        "Strong state backing and regulatory support",
+        "Economies of scale in operations"
+      ]
+    },
+    "asset_base": {
+      "total_installed_capacity_gw": 120.28,
+      "wholly_owned_and_controlled_gw": 71.79,
+      "equity_invested_gw": 48.49,
+      "power_stations": [
+        {
+          "name": "Three Gorges Dam (三峡大坝)",
+          "province": "Hubei",
+          "installed_capacity_mw": 22500,
+          "units": 32,
+          "unit_capacity_mw": 700,
+          "completion_year": 2006,
+          "annual_generation_twh": 100,
+          "reservoir_capacity_billion_m3": 39.3,
+          "status": "Operational",
+          "notes": "World's largest hydropower station by installed capacity"
+        },
+        {
+          "name": "Baihetan (白鹤滩)",
+          "province": "Sichuan/Yunnan",
+          "installed_capacity_mw": 16000,
+          "units": 16,
+          "unit_capacity_mw": 1000,
+          "completion_year": 2022,
+          "annual_generation_twh": 62,
+          "status": "Operational",
+          "notes": "World's largest single-unit capacity (1 GW turbines), second largest station globally"
+        },
+        {
+          "name": "Xiluodu (溪洛渡)",
+          "province": "Sichuan/Yunnan",
+          "installed_capacity_mw": 13860,
+          "units": 18,
+          "unit_capacity_mw": 770,
+          "completion_year": 2014,
+          "annual_generation_twh": 57,
+          "status": "Operational"
+        },
+        {
+          "name": "Wudongde (乌东德)",
+          "province": "Sichuan/Yunnan",
+          "installed_capacity_mw": 10200,
+          "units": 12,
+          "unit_capacity_mw": 850,
+          "completion_year": 2021,
+          "annual_generation_twh": 39,
+          "status": "Operational"
+        },
+        {
+          "name": "Xiangjiaba (向家坝)",
+          "province": "Sichuan/Yunnan",
+          "installed_capacity_mw": 6400,
+          "units": 8,
+          "unit_capacity_mw": 800,
+          "completion_year": 2014,
+          "annual_generation_twh": 31,
+          "status": "Operational"
+        },
+        {
+          "name": "Gezhouba (葛洲坝)",
+          "province": "Hubei",
+          "installed_capacity_mw": 2715,
+          "units": 21,
+          "completion_year": 1988,
+          "annual_generation_twh": 16,
+          "status": "Operational",
+          "notes": "First major dam on Yangtze, serves as counterregulating dam for Three Gorges"
+        }
+      ],
+      "cascade_system_total_gw": 71.67,
+      "cascade_annual_generation_twh": 305,
+      "overseas_investments": [
+        {"country": "Peru", "project": "Luz Del Sur utility", "stake": "83.6%", "type": "Electricity distribution"},
+        {"country": "Brazil", "project": "Various hydro assets", "capacity_gw": 2.8, "stake": "Various"},
+        {"country": "Pakistan", "project": "Karot Hydropower", "capacity_mw": 720, "stake": "30%"}
+      ]
+    },
+    "operational_metrics": {
+      "annual_generation_twh_2024": 298,
+      "annual_generation_twh_2023": 285,
+      "annual_generation_twh_2022": 264,
+      "annual_generation_twh_2021": 255,
+      "capacity_factor_pct": "45%",
+      "utilization_hours_2024": 3800,
+      "utilization_hours_2023": 3650,
+      "water_inflow_variability": "High - can vary 20-30% year over year based on precipitation",
+      "average_on_grid_tariff_cny_kwh": 0.27,
+      "operating_cost_per_kwh_cny": 0.03,
+      "gross_margin_pct": 89
+    },
+    "financial_summary": {
+      "currency": "CNY",
+      "fiscal_year": "December",
+      "2024E": {
+        "revenue_billion": 80.5,
+        "gross_profit_billion": 58.0,
+        "ebitda_billion": 62.0,
+        "net_income_billion": 32.0,
+        "eps_cny": 1.40,
+        "dps_cny": 1.00,
+        "dividend_payout_ratio": "71%",
+        "dividend_yield": "3.5%",
+        "roe_pct": 15.2,
+        "roa_pct": 5.8,
+        "debt_to_equity": 1.45,
+        "net_debt_billion": 180,
+        "market_cap_billion": 650,
+        "ev_billion": 830,
+        "pe_ratio": 20.3,
+        "pb_ratio": 3.1,
+        "ev_ebitda": 13.4
+      },
+      "2023": {
+        "revenue_billion": 72.3,
+        "gross_profit_billion": 52.0,
+        "ebitda_billion": 56.5,
+        "net_income_billion": 29.3,
+        "eps_cny": 1.28,
+        "dps_cny": 0.92,
+        "dividend_yield": "3.8%",
+        "roe_pct": 14.8
+      },
+      "2022": {
+        "revenue_billion": 58.4,
+        "gross_profit_billion": 42.0,
+        "ebitda_billion": 45.8,
+        "net_income_billion": 24.3,
+        "eps_cny": 1.06
+      },
+      "shares_outstanding_billion": 22.89
+    },
+    "dividend_policy": {
+      "stated_policy": "Pay out no less than 70% of distributable profits as cash dividends",
+      "historical_payout_ratio": "70-75%",
+      "dividend_track_record": "Consistent dividend growth since listing",
+      "dividend_history": [
+        {"year": 2023, "dps_cny": 0.92, "payout_ratio": "72%", "yield": "3.8%"},
+        {"year": 2022, "dps_cny": 0.81, "payout_ratio": "71%", "yield": "4.2%"},
+        {"year": 2021, "dps_cny": 0.73, "payout_ratio": "70%", "yield": "4.0%"},
+        {"year": 2020, "dps_cny": 0.68, "payout_ratio": "70%", "yield": "3.8%"}
+      ],
+      "dividend_growth_cagr_5yr": "7.8%"
+    },
+    "growth_strategy": {
+      "domestic_expansion": "Limited - most economically viable Yangtze sites fully developed",
+      "international_expansion": "Continue selective overseas acquisitions in Latin America and Belt and Road countries",
+      "pumped_hydro_storage": "Develop pumped hydro projects to serve grid storage needs",
+      "hydrogen_production": "Explore green hydrogen production using excess hydropower",
+      "downstream_integration": "Invested in distribution assets (Luz Del Sur)",
+      "capital_allocation_priority": ["Dividends", "Debt reduction", "Selective M&A"]
+    }
+  },
+
+  "corporate_governance": {
+    "ownership_structure": {
+      "controlling_shareholder": "China Three Gorges Corporation",
+      "ctg_stake_pct": 57.53,
+      "state_ownership": "Ultimately owned by Chinese central government via SASAC",
+      "a_share_float_pct": 42.47,
+      "major_institutional_holders": [
+        {"name": "National Social Security Fund", "stake": "2.8%"},
+        {"name": "Central Huijin", "stake": "1.5%"},
+        {"name": "Various domestic mutual funds", "stake": "5%"}
+      ],
+      "free_float_market_cap_cny_billion": 276
+    },
+    "board_composition": {
+      "total_directors": 9,
+      "executive_directors": 3,
+      "non_executive_directors": 3,
+      "independent_directors": 3,
+      "independent_ratio": "33%",
+      "female_directors": 1,
+      "average_tenure_years": 5.2
+    },
+    "key_management": [
+      {
+        "name": "Lei Mingshan",
+        "position": "Chairman",
+        "background": "Former President of CTG, career hydropower engineer",
+        "tenure_years": 4
+      },
+      {
+        "name": "Zhang Dingming",
+        "position": "President/CEO",
+        "background": "30+ years in hydropower industry",
+        "tenure_years": 3
+      },
+      {
+        "name": "Chen Guoqing",
+        "position": "CFO",
+        "background": "Former finance executive at CTG",
+        "tenure_years": 5
+      }
+    ],
+    "compensation": {
+      "ceo_total_compensation_cny": 1200000,
+      "ceo_pay_ratio_to_median_employee": 8,
+      "stock_based_compensation": "Limited - follows SOE guidelines",
+      "performance_metrics": ["Generation volume", "Safety record", "Profitability"]
+    },
+    "related_party_transactions": {
+      "with_ctg": "Significant - procurement, construction services, land use rights",
+      "disclosure_quality": "Adequate but could be more detailed",
+      "concern_level": "Medium - common for Chinese SOEs but requires monitoring"
+    },
+    "audit": {
+      "auditor": "PricewaterhouseCoopers Zhong Tian",
+      "audit_opinion": "Unqualified",
+      "audit_fees_cny_million": 25,
+      "internal_controls": "Adequate"
+    },
+    "esg_considerations": {
+      "environmental": {
+        "strengths": [
+          "Zero carbon emissions from operations",
+          "Renewable energy provider",
+          "Fish passage facilities at major dams"
+        ],
+        "concerns": [
+          "Historical environmental impact of dam construction",
+          "Ecosystem disruption downstream",
+          "Sediment flow alteration"
+        ]
+      },
+      "social": {
+        "strengths": [
+          "Major employer in rural areas",
+          "Flood control benefits",
+          "Navigation improvements"
+        ],
+        "concerns": [
+          "Historical population displacement (1.3 million for Three Gorges)",
+          "Community relations in reservoir areas"
+        ]
+      },
+      "governance": {
+        "strengths": [
+          "Clear dividend policy",
+          "Experienced management",
+          "Regular disclosure"
+        ],
+        "concerns": [
+          "State control may not align with minority interests",
+          "Board independence questionable",
+          "Related party transaction risks"
+        ]
+      }
+    },
+    "governance_score": {
+      "score": 6,
+      "max_score": 10,
+      "justification": "CYPC has adequate governance for a Chinese SOE with clear policies and experienced management. However, the dominant state ownership creates potential conflicts with minority shareholders, board independence is limited, and related party transactions require ongoing scrutiny. The strong dividend commitment and operational track record partially offset governance concerns."
+    }
+  },
+
+  "dcf_valuation": {
+    "methodology": {
+      "approach": "10-year DCF with terminal value",
+      "forecast_period_years": 10,
+      "terminal_value_method": "Gordon Growth Model",
+      "currency": "CNY",
+      "base_year": 2024,
+      "shares_outstanding_billion": 22.89
+    },
+    "key_assumptions": {
+      "base_year_revenue_cny_billion": 80.5,
+      "base_year_ebitda_margin_pct": 77,
+      "base_year_fcf_cny_billion": 28,
+      "depreciation_as_pct_of_revenue": 22,
+      "capex_maintenance_pct_of_revenue": 8,
+      "working_capital_change": "Minimal - stable utility",
+      "tax_rate_pct": 15,
+      "terminal_growth_rate_base_pct": 2.0
+    },
+    "wacc_calculation": {
+      "risk_free_rate_pct": 2.8,
+      "equity_risk_premium_pct": 6.5,
+      "beta": 0.75,
+      "cost_of_equity_pct": 7.7,
+      "cost_of_debt_pre_tax_pct": 4.5,
+      "tax_rate_pct": 15,
+      "cost_of_debt_post_tax_pct": 3.8,
+      "debt_weight_pct": 45,
+      "equity_weight_pct": 55,
+      "wacc_calculated_pct": 5.9,
+      "wacc_used_for_analysis": [8, 9, 10, 11],
+      "wacc_premium_justification": "Add premium for regulatory risk, liquidity, and minority shareholder protection concerns"
+    }
+  },
+
+  "scenarios": {
+    "super_bear": {
+      "probability_pct": 5,
+      "name": "Super Bear - Drought Crisis",
+      "narrative": "Severe multi-year drought significantly reduces Yangtze River water flow, cutting generation by 30%+. Climate change accelerates, precipitation patterns shift permanently. Government imposes tariff cuts to support grid companies. Environmental backlash against hydropower intensifies. Major dam safety incident (though unlikely) triggers regulatory crackdown.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": -3,
+        "revenue_growth_yr6_10_pct": 0,
+        "ebitda_margin_yr1_5_pct": 65,
+        "ebitda_margin_yr6_10_pct": 60,
+        "ebitda_margin_terminal_pct": 58,
+        "terminal_growth_pct": 0,
+        "capex_to_revenue_pct": 10
+      },
+      "key_drivers": [
+        "Severe drought reduces generation 30%",
+        "Tariff cuts by 10%",
+        "Climate change permanently reduces water flow",
+        "Environmental restrictions tightened",
+        "Dividend cut to 50% payout"
+      ],
+      "fcf_projections_cny_billion": [20, 18, 17, 16, 15, 15, 15, 15, 15, 15],
+      "terminal_value_by_wacc": {
+        "8_pct": 187.5,
+        "9_pct": 166.7,
+        "10_pct": 150.0,
+        "11_pct": 136.4
+      },
+      "intrinsic_value_per_share_cny": {
+        "8_pct": 18.50,
+        "9_pct": 16.80,
+        "10_pct": 15.40,
+        "11_pct": 14.20
+      }
+    },
+    "bear": {
+      "probability_pct": 20,
+      "name": "Bear - Below Expectations",
+      "narrative": "Below-average water inflows lead to generation 15% below normal. Tariff pressure from grid companies results in modest rate cuts. Operating costs rise due to aging infrastructure maintenance. Overseas investments underperform. Limited growth opportunities as domestic expansion complete.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 1,
+        "revenue_growth_yr6_10_pct": 1,
+        "ebitda_margin_yr1_5_pct": 72,
+        "ebitda_margin_yr6_10_pct": 70,
+        "ebitda_margin_terminal_pct": 68,
+        "terminal_growth_pct": 1.5,
+        "capex_to_revenue_pct": 10
+      },
+      "key_drivers": [
+        "Generation 15% below plan due to low water",
+        "Tariff flat to slightly negative",
+        "Higher maintenance costs",
+        "Overseas investments break even only",
+        "Dividend maintained but no growth"
+      ],
+      "fcf_projections_cny_billion": [24, 24, 25, 25, 26, 26, 27, 27, 28, 28],
+      "terminal_value_by_wacc": {
+        "8_pct": 430.8,
+        "9_pct": 373.3,
+        "10_pct": 329.4,
+        "11_pct": 294.7
+      },
+      "intrinsic_value_per_share_cny": {
+        "8_pct": 26.20,
+        "9_pct": 23.50,
+        "10_pct": 21.30,
+        "11_pct": 19.50
+      }
+    },
+    "base": {
+      "probability_pct": 50,
+      "name": "Base Case - Steady Operations",
+      "narrative": "Normal hydrological conditions with generation meeting targets. Tariffs remain stable with modest inflation adjustments. Operational efficiency maintained. Dividend policy continues with 70%+ payout. Modest growth from pumped hydro and overseas investments.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 3,
+        "revenue_growth_yr6_10_pct": 2,
+        "ebitda_margin_yr1_5_pct": 76,
+        "ebitda_margin_yr6_10_pct": 75,
+        "ebitda_margin_terminal_pct": 74,
+        "terminal_growth_pct": 2.0,
+        "capex_to_revenue_pct": 10
+      },
+      "key_drivers": [
+        "Generation meets plan (~300 TWh)",
+        "Tariff +2% annually with inflation",
+        "Operational efficiency maintained",
+        "70%+ dividend payout continues",
+        "Modest pumped hydro expansion"
+      ],
+      "fcf_projections_cny_billion": [28, 29, 30, 31, 32, 33, 34, 35, 36, 37],
+      "terminal_value_by_wacc": {
+        "8_pct": 617.0,
+        "9_pct": 528.6,
+        "10_pct": 462.5,
+        "11_pct": 411.1
+      },
+      "intrinsic_value_per_share_cny": {
+        "8_pct": 36.80,
+        "9_pct": 32.50,
+        "10_pct": 29.00,
+        "11_pct": 26.10
+      }
+    },
+    "bull": {
+      "probability_pct": 20,
+      "name": "Bull - Above Expectations",
+      "narrative": "Above-average precipitation leads to record generation. Tariff increases granted to incentivize clean energy investment. Successful pumped hydro expansion adds new revenue streams. Overseas investments outperform. Dividend growth accelerates.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 5,
+        "revenue_growth_yr6_10_pct": 3,
+        "ebitda_margin_yr1_5_pct": 78,
+        "ebitda_margin_yr6_10_pct": 77,
+        "ebitda_margin_terminal_pct": 76,
+        "terminal_growth_pct": 2.5,
+        "capex_to_revenue_pct": 12
+      },
+      "key_drivers": [
+        "Generation 10% above plan",
+        "Tariff increases 3-4% annually",
+        "Pumped hydro projects add 5 GW capacity",
+        "Overseas investments contribute 10%+ of profits",
+        "Dividend growth 8-10% annually"
+      ],
+      "fcf_projections_cny_billion": [30, 32, 34, 36, 38, 40, 42, 44, 46, 48],
+      "terminal_value_by_wacc": {
+        "8_pct": 872.7,
+        "9_pct": 738.5,
+        "10_pct": 640.0,
+        "11_pct": 564.7
+      },
+      "intrinsic_value_per_share_cny": {
+        "8_pct": 48.50,
+        "9_pct": 42.30,
+        "10_pct": 37.40,
+        "11_pct": 33.40
+      }
+    },
+    "super_bull": {
+      "probability_pct": 5,
+      "name": "Super Bull - Perfect Storm Upside",
+      "narrative": "Carbon pricing creates significant premium for clean baseload power. Electricity demand surge from AI/data centers, EVs, and industrial upgrade. Multi-year above-average precipitation. Major pumped hydro buildout. Successful international expansion. Significant tariff increases to incentivize renewable investment.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 8,
+        "revenue_growth_yr6_10_pct": 5,
+        "ebitda_margin_yr1_5_pct": 80,
+        "ebitda_margin_yr6_10_pct": 78,
+        "ebitda_margin_terminal_pct": 76,
+        "terminal_growth_pct": 3.0,
+        "capex_to_revenue_pct": 15
+      },
+      "key_drivers": [
+        "Carbon pricing benefits clean energy",
+        "Generation 20% above plan",
+        "Tariff increases 5-6% annually",
+        "Major pumped hydro expansion (10 GW)",
+        "International expansion success",
+        "Dividend doubles over 10 years"
+      ],
+      "fcf_projections_cny_billion": [32, 36, 40, 45, 50, 54, 58, 62, 66, 70],
+      "terminal_value_by_wacc": {
+        "8_pct": 1400.0,
+        "9_pct": 1166.7,
+        "10_pct": 1000.0,
+        "11_pct": 875.0
+      },
+      "intrinsic_value_per_share_cny": {
+        "8_pct": 72.50,
+        "9_pct": 62.80,
+        "10_pct": 55.20,
+        "11_pct": 49.00
+      }
+    }
+  },
+
+  "valuation_matrix": {
+    "intrinsic_values_by_scenario_and_discount_rate": {
+      "discount_rate": ["8%", "9%", "10%", "11%"],
+      "super_bear_5pct": [18.50, 16.80, 15.40, 14.20],
+      "bear_20pct": [26.20, 23.50, 21.30, 19.50],
+      "base_50pct": [36.80, 32.50, 29.00, 26.10],
+      "bull_20pct": [48.50, 42.30, 37.40, 33.40],
+      "super_bull_5pct": [72.50, 62.80, 55.20, 49.00]
+    },
+    "probability_weighted_fair_value": {
+      "8_pct_wacc": 36.35,
+      "9_pct_wacc": 31.95,
+      "10_pct_wacc": 28.49,
+      "11_pct_wacc": 25.63,
+      "calculation_8pct": "(5% x 18.50) + (20% x 26.20) + (50% x 36.80) + (20% x 48.50) + (5% x 72.50) = 36.35",
+      "calculation_9pct": "(5% x 16.80) + (20% x 23.50) + (50% x 32.50) + (20% x 42.30) + (5% x 62.80) = 31.95"
+    },
+    "central_estimate": {
+      "discount_rate": "9%",
+      "fair_value_cny": 31.95,
+      "rounded_target": 32.00,
+      "rationale": "9% WACC appropriate for utility with regulatory and governance risk premium above calculated 5.9% WACC"
+    },
+    "current_price_cny": 28.50,
+    "upside_to_fair_value_pct": 12.3,
+    "recommendation": "HOLD"
+  },
+
+  "multi_agent_debate": {
+    "debate_rounds": 10,
+    "participants": ["Bull Analyst", "Bear Analyst", "Independent Critic", "Synthesizer"],
+    "debate_log": [
+      {
+        "round": 1,
+        "speaker": "Bull Analyst",
+        "position": "Strong BUY - Undervalued Clean Energy Champion",
+        "arguments": [
+          "CYPC is the world's largest and lowest-cost hydropower operator with irreplaceable assets",
+          "Three Gorges Dam and cascade system represent a natural monopoly impossible to replicate",
+          "4-5% dividend yield with 70%+ payout ratio offers compelling income in low-yield environment",
+          "Zero fuel costs mean inflation protection - revenues rise with tariffs while costs stable",
+          "China's carbon neutrality goals by 2060 ensure long-term policy support for clean energy",
+          "Stock trades at 20x P/E vs 25-30x for global utility peers - discount unjustified",
+          "Pumped hydro storage expansion provides growth optionality as grid needs storage",
+          "Overseas investments in Latin America diversify geographic risk"
+        ],
+        "target_price_cny": 42.00,
+        "rating": "BUY"
+      },
+      {
+        "round": 2,
+        "speaker": "Bear Analyst",
+        "position": "SELL - Limited Upside, Underappreciated Risks",
+        "arguments": [
+          "Hydrological risk severely underpriced - drought years can cut generation 30%+",
+          "Climate change creating unprecedented precipitation volatility in Yangtze basin",
+          "State ownership prioritizes national policy over shareholder returns",
+          "Growth opportunity is minimal - all major Yangtze sites already developed",
+          "Tariff pressure inevitable as grid companies face cost pressures",
+          "Overseas investments carry execution and political risk",
+          "Dividend yield of 3.5% at current price not compelling vs risk-free rates",
+          "20x P/E expensive for utility with 2-3% growth outlook",
+          "Environmental and social liabilities from past dam construction may resurface"
+        ],
+        "target_price_cny": 22.00,
+        "rating": "SELL"
+      },
+      {
+        "round": 3,
+        "speaker": "Independent Critic",
+        "position": "Challenging Both Perspectives",
+        "critique_of_bull": [
+          "Bull overstates growth potential - where will growth come from post-cascade completion?",
+          "Dividend yield comparison ignores reinvestment risk in low-growth business",
+          "Natural monopoly argument ignores solar/wind as alternative clean energy sources",
+          "P/E comparison with global peers ignores governance and regulatory risk discount"
+        ],
+        "critique_of_bear": [
+          "Bear overstates hydrological risk - reservoirs provide multi-year water storage buffer",
+          "Climate models show mixed precipitation outlook, not uniformly negative",
+          "State ownership can be positive - ensures regulatory support and capital access",
+          "Growth may be slow but cash generation is robust and sustainable"
+        ],
+        "questions_raised": [
+          "What is appropriate discount rate given regulatory and governance risks?",
+          "How should we probability-weight drought scenarios?",
+          "Is pumped hydro a real growth opportunity or wishful thinking?",
+          "How does overseas expansion change the risk profile?"
+        ]
+      },
+      {
+        "round": 4,
+        "speaker": "Bull Analyst",
+        "rebuttal": "Responding to Critic's Challenges",
+        "arguments": [
+          "Growth comes from: (1) Pumped hydro - China needs 120 GW by 2030 for grid storage, (2) Tariff increases with inflation, (3) Overseas expansion",
+          "Dividend reinvestment risk is low - CYPC maintains 70%+ payout, minimizing capital destruction",
+          "Solar/wind cannot replace baseload hydro - complementary not competitive",
+          "9% discount rate already penalizes for governance; market uses 7-8% for global peers",
+          "Three Gorges reservoir holds 39 billion m3 - enough to buffer 2-3 years of low precipitation",
+          "CTG backing ensures capital access at favorable rates",
+          "Cash conversion ratio near 100% - this is real cash, not accounting earnings"
+        ]
+      },
+      {
+        "round": 5,
+        "speaker": "Bear Analyst",
+        "rebuttal": "Responding to Bull's Rebuttal",
+        "arguments": [
+          "Pumped hydro requires massive capex with uncertain returns - not free growth",
+          "Tariff increases unlikely - government wants cheap electricity for consumers and industry",
+          "Reservoir buffer point misleading - generation still falls in drought years even with storage",
+          "9% discount rate appropriate given minority shareholder protection concerns",
+          "Cash conversion good but cash goes to dividends and debt service, not growth",
+          "CTG backing cuts both ways - may demand subsidized sales to sister companies",
+          "2024 summer drought in Sichuan showed vulnerability - generation fell 15%"
+        ]
+      },
+      {
+        "round": 6,
+        "speaker": "Independent Critic",
+        "position": "Assessing the Debate Balance",
+        "observations": [
+          "Bull makes valid points on asset quality and cash generation",
+          "Bear correctly identifies hydrological and governance risks",
+          "Neither has convincingly addressed pumped hydro opportunity/risk",
+          "Dividend yield is adequate but not compelling at current price",
+          "State ownership is double-edged sword - cannot be decisive either direction"
+        ],
+        "revised_questions": [
+          "Should base case assume normal or below-normal water flow given climate trends?",
+          "What probability should we assign to drought scenarios?",
+          "Is 9% or 10% WACC more appropriate?"
+        ]
+      },
+      {
+        "round": 7,
+        "speaker": "Bull Analyst",
+        "final_position": "Maintaining BUY with Adjusted View",
+        "arguments": [
+          "Accept that growth is limited to 2-3% but cash yield justifies premium",
+          "Recommend 8-9% WACC given asset quality and state backing",
+          "Maintain Super Bull probability at 5% for carbon pricing upside",
+          "Acknowledge drought risk but 25% probability of adverse scenarios adequate",
+          "Fair value CNY 36-40 with BUY rating at current CNY 28.50"
+        ],
+        "final_target_cny": 38.00
+      },
+      {
+        "round": 8,
+        "speaker": "Bear Analyst",
+        "final_position": "Maintaining SELL with Adjusted View",
+        "arguments": [
+          "Accept cash generation is robust but growth insufficient to justify premium",
+          "Recommend 10-11% WACC given governance and regulatory risks",
+          "Increase drought probability to 30% given climate trends",
+          "Reduce bull case probabilities - carbon pricing unlikely near-term",
+          "Fair value CNY 22-25 with SELL rating at current CNY 28.50"
+        ],
+        "final_target_cny": 24.00
+      },
+      {
+        "round": 9,
+        "speaker": "Independent Critic",
+        "final_assessment": "Proposing Balanced Framework",
+        "position": [
+          "Both analysts have valid perspectives; truth lies between extremes",
+          "Appropriate WACC: 9% (balances asset quality vs governance risk)",
+          "Appropriate scenario probabilities: Super Bear 5%, Bear 20%, Base 50%, Bull 20%, Super Bull 5%",
+          "Base case should assume normal hydrology (not bullish, not bearish)",
+          "Fair value range: CNY 28-35, depending on WACC assumption",
+          "Current price CNY 28.50 is near lower bound of fair value - HOLD appropriate"
+        ],
+        "recommended_action": "HOLD - fully valued at current price"
+      },
+      {
+        "round": 10,
+        "speaker": "Synthesizer",
+        "final_synthesis": "Consolidated View and Recommendation",
+        "key_conclusions": [
+          "Asset Quality: World-class, irreplaceable assets with dominant market position - POSITIVE",
+          "Cash Generation: Strong FCF with high dividend payout - POSITIVE",
+          "Growth: Limited to 2-3% as expansion opportunities exhausted - NEUTRAL/NEGATIVE",
+          "Hydrological Risk: Real but manageable with reservoir buffers - priced into Bear scenarios",
+          "Governance: Typical Chinese SOE concerns, not exceptional - 6/10 score appropriate",
+          "Valuation: Fairly valued at current price with 9% WACC central estimate"
+        ],
+        "scenario_probabilities_final": {
+          "super_bear": "5%",
+          "bear": "20%",
+          "base": "50%",
+          "bull": "20%",
+          "super_bull": "5%"
+        },
+        "recommended_wacc": "9%",
+        "probability_weighted_fair_value_cny": 31.95,
+        "current_price_cny": 28.50,
+        "upside_pct": 12.1,
+        "rating": "HOLD",
+        "rationale": "CYPC is a high-quality utility with predictable cash flows and attractive dividend yield. However, limited growth prospects, hydrological variability, and governance concerns mean the stock is fairly valued at current levels. Investors seeking income and stability may find this acceptable, but those seeking capital appreciation should look elsewhere. Recommend HOLD with fair value CNY 32."
+      }
+    ]
+  },
+
+  "investment_recommendation": {
+    "rating": "HOLD",
+    "target_price_cny": 32.00,
+    "current_price_cny": 28.50,
+    "upside_pct": 12.3,
+    "investment_horizon": "12-18 months",
+    "conviction_level": "Medium",
+    "thesis_summary": "China Yangtze Power is a world-class hydropower operator with irreplaceable assets and predictable cash flows. The 4% dividend yield provides income, but limited growth opportunities and governance concerns suggest the stock is fairly valued. HOLD for existing investors; accumulate on weakness below CNY 25.",
+    "catalysts": {
+      "positive": [
+        "Above-average water inflows improving generation",
+        "Tariff increases from NDRC",
+        "Pumped hydro project approvals",
+        "Carbon pricing implementation",
+        "Dividend increase above expectations"
+      ],
+      "negative": [
+        "Drought conditions reducing generation",
+        "Tariff cuts",
+        "Unsuccessful overseas investments",
+        "Dam safety incidents",
+        "Governance issues or related party concerns"
+      ]
+    },
+    "suitable_for": [
+      "Income-focused investors seeking stable dividends",
+      "Long-term investors with clean energy thematic view",
+      "Conservative investors seeking defensive exposure"
+    ],
+    "not_suitable_for": [
+      "Growth investors seeking capital appreciation",
+      "Investors uncomfortable with Chinese SOE governance",
+      "Short-term traders"
+    ]
+  },
+
+  "appendix": {
+    "data_sources": [
+      "Company annual reports and investor presentations",
+      "National Energy Administration statistics",
+      "China Electricity Council data",
+      "Industry research reports",
+      "Analyst knowledge base"
+    ],
+    "key_assumptions_sensitivity": {
+      "wacc_1pct_change_impact_on_value": "CNY 3-4 per share",
+      "terminal_growth_1pct_change_impact": "CNY 4-5 per share",
+      "generation_10pct_change_impact": "CNY 2-3 per share"
+    },
+    "disclaimer": "This analysis is for informational purposes only and does not constitute investment advice. Projections are based on assumptions that may prove incorrect. Past performance is not indicative of future results. Investors should conduct their own due diligence."
+  },
+
+  "last_updated": "2026-01-20T15:30:00Z"
+}

@@ -87,7 +87,7 @@ class ContextManager:
 
     def is_completed(self, ticker: str) -> bool:
         """Check if an equity has been completed"""
-        return ticker in self.session_state["equities_completed"]
+        return ticker in self.session_state.get("equities_completed", [])
 
     def save_equity_context(self, ticker: str, context_data: Dict[str, Any]):
         """Save individual equity research context"""

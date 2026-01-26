@@ -1,16 +1,17 @@
 # Configuration file for API keys and settings
-# Fill in your API keys below
+# Set these environment variables before running:
+#   OPENAI_API_KEY, GOOGLE_API_KEY, XAI_API_KEY, DASHSCOPE_API_KEY
+import os
 
 API_KEYS = {
-    "openai": "",  # GPT API key - get from https://platform.openai.com/api-keys
-    "google": "",  # Gemini API key - get from https://aistudio.google.com/apikey
-    "xai": "",     # Grok API key - get from https://console.x.ai/
-    "deepseek": "",  # DeepSeek API key - get from https://platform.deepseek.com/
-    "dashscope": "",  # Qwen (Alibaba) AccessKey ID - get from Alibaba Cloud console
-    "dashscope_secret": "",  # Qwen AccessKey Secret
+    "openai": os.getenv("OPENAI_API_KEY", ""),
+    "google": os.getenv("GOOGLE_API_KEY", ""),
+    "xai": os.getenv("XAI_API_KEY", ""),
+    "dashscope": os.getenv("DASHSCOPE_API_KEY", ""),  # Alibaba Qwen (International)
 }
 
-# Equity list with Bloomberg tickers and company info (CORRECTED from list.txt)
+# Equity list with Bloomberg tickers and company info (synced from list.txt)
+# Currently 14 equities
 EQUITIES = {
     "6682 HK": {"name": "Beijing Fourth Paradigm Technology", "sector": "Technology", "industry": "AI/Machine Learning"},
     "LEGN US": {"name": "Legend Biotech", "sector": "Healthcare", "industry": "Biotechnology"},
@@ -40,7 +41,8 @@ SCENARIO_PROBABILITIES = {
 }
 
 # Number of debate rounds for multi-agent system
-DEBATE_ROUNDS = 10
+# Reduced from 10 to 5 to keep context within API token limits
+DEBATE_ROUNDS = 5
 
 # Output directory
 OUTPUT_DIR = "reports"

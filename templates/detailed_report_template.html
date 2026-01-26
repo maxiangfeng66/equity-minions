@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TICKER}} - Detailed Research Report | {{COMPANY_NAME}}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           SIDEBAR NAVIGATION
+           ======================================== */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #161b22;
+            border-right: 1px solid #30363d;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .nav-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .nav-header h3 {
+            color: #58a6ff;
+            font-size: 1.3em;
+        }
+
+        .nav-header p {
+            color: #8b949e;
+            font-size: 0.85em;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 20px;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #58a6ff;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 3px solid #58a6ff;
+        }
+
+        .nav-footer {
+            padding: 20px;
+            border-top: 1px solid #30363d;
+        }
+
+        .back-link {
+            display: block;
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           MAIN CONTENT AREA
+           ======================================== */
+        .content {
+            margin-left: 250px;
+            padding: 30px 40px;
+            max-width: 1200px;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #58a6ff;
+            font-size: 2.5em;
+        }
+
+        header h2 {
+            color: #c9d1d9;
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+
+        header .sector {
+            color: #8b949e;
+            margin-top: 8px;
+        }
+
+        /* ========================================
+           RECOMMENDATION BADGES
+           ======================================== */
+        .recommendation-badge {
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .badge-buy { background: #238636; color: #fff; }
+        .badge-hold { background: #9e6a03; color: #fff; }
+        .badge-sell { background: #da3633; color: #fff; }
+        .badge-outperform { background: #1f6feb; color: #fff; }
+
+        /* ========================================
+           SECTIONS
+           ======================================== */
+        section {
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        section h2 {
+            color: #58a6ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #30363d;
+        }
+
+        section h3 {
+            color: #c9d1d9;
+            font-size: 1.2em;
+            margin: 20px 0 15px;
+        }
+
+        section h4 {
+            color: #8b949e;
+            font-size: 1em;
+            margin: 15px 0 10px;
+        }
+
+        /* ========================================
+           HIGHLIGHT BOXES
+           ======================================== */
+        .highlight-box {
+            background: linear-gradient(135deg, #1f3a5c 0%, #1a2733 100%);
+            border-left: 4px solid #58a6ff;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .highlight-box.warning { border-left-color: #9e6a03; }
+        .highlight-box.success { border-left-color: #3fb950; }
+        .highlight-box.danger { border-left-color: #f85149; }
+
+        /* ========================================
+           KEY POINTS LIST
+           ======================================== */
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-points li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .key-points li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+        }
+
+        /* ========================================
+           TABLES
+           ======================================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        th {
+            background: #21262d;
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .positive { color: #3fb950; }
+        .negative { color: #f85149; }
+
+        /* ========================================
+           METRICS GRID
+           ======================================== */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #21262d;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .label {
+            color: #8b949e;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-card .value {
+            color: #58a6ff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .metric-card .value.positive { color: #3fb950; }
+        .metric-card .value.negative { color: #f85149; }
+
+        /* ========================================
+           SCENARIO CARDS
+           ======================================== */
+        .scenario-card {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .scenario-card.super-bear { border-left: 4px solid #da3633; }
+        .scenario-card.bear { border-left: 4px solid #f85149; }
+        .scenario-card.base { border-left: 4px solid #58a6ff; }
+        .scenario-card.bull { border-left: 4px solid #3fb950; }
+        .scenario-card.super-bull { border-left: 4px solid #238636; }
+
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .scenario-header h4 {
+            margin: 0;
+            color: #c9d1d9;
+        }
+
+        .probability-badge {
+            background: #30363d;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        /* ========================================
+           RISK ITEMS
+           ======================================== */
+        .risk-item {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #f85149;
+        }
+
+        .risk-item.medium { border-left-color: #9e6a03; }
+        .risk-item.low { border-left-color: #3fb950; }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .risk-header h5 {
+            color: #c9d1d9;
+            margin: 0;
+        }
+
+        .impact-badge {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: #30363d;
+        }
+
+        /* ========================================
+           DEBATE LOG
+           ======================================== */
+        .debate-round {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .debate-round h4 {
+            color: #58a6ff;
+            margin-bottom: 15px;
+        }
+
+        .debate-message {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #0d1117;
+        }
+
+        .debate-message.analyst { border-left: 3px solid #58a6ff; }
+        .debate-message.bull { border-left: 3px solid #3fb950; }
+        .debate-message.bear { border-left: 3px solid #f85149; }
+        .debate-message.critic { border-left: 3px solid #9e6a03; }
+        .debate-message.synthesizer { border-left: 3px solid #a371f7; }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+
+        .message-role {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .message-role.analyst { color: #58a6ff; }
+        .message-role.bull { color: #3fb950; }
+        .message-role.bear { color: #f85149; }
+        .message-role.critic { color: #9e6a03; }
+        .message-role.synthesizer { color: #a371f7; }
+
+        .message-ai { color: #8b949e; }
+
+        /* ========================================
+           CONSENSUS / DISAGREEMENT BOXES
+           ======================================== */
+        .consensus-box {
+            background: linear-gradient(135deg, #1a3d2e 0%, #1a2733 100%);
+            border-left: 4px solid #3fb950;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .disagreement-box {
+            background: linear-gradient(135deg, #3d1a1a 0%, #1a2733 100%);
+            border-left: 4px solid #f85149;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 0.9em;
+            border-top: 1px solid #30363d;
+            margin-top: 30px;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         SIDEBAR NAVIGATION
+         ======================================== -->
+    <nav class="sidebar">
+        <div class="nav-header">
+            <h3>{{TICKER}}</h3>
+            <p>{{COMPANY_NAME}}</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#industry-analysis">Industry Analysis</a></li>
+            <li><a href="#company-analysis">Company Analysis</a></li>
+            <li><a href="#financial-data">Financial Data</a></li>
+            <li><a href="#dcf-valuation">DCF Valuation</a></li>
+            <li><a href="#scenarios">Scenario Analysis</a></li>
+            <li><a href="#risks">Risk Assessment</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#debate-log">Debate Log</a></li>
+        </ul>
+        <div class="nav-footer">
+            <a href="{{SUMMARY_LINK}}" class="back-link">&lt;- Back to Summary</a>
+            <a href="index.html" class="back-link">&lt;- Portfolio Index</a>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         MAIN CONTENT
+         ======================================== -->
+    <main class="content">
+        <!-- HEADER -->
+        <header>
+            <div class="header-info">
+                <h1>{{TICKER}}</h1>
+                <h2>{{COMPANY_NAME}}</h2>
+                <p class="sector">{{SECTOR}} | {{EXCHANGE}}</p>
+                <p class="sector" style="margin-top: 5px;">{{COMPANY_INFO}}</p>
+            </div>
+            <div class="recommendation-badge {{RATING_CLASS}}">{{RATING}}</div>
+        </header>
+
+        <!-- ========================================
+             SECTION 1: EXECUTIVE SUMMARY
+             ======================================== -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="highlight-box">
+                <p>{{EXECUTIVE_SUMMARY_TEXT}}</p>
+            </div>
+
+            <h3>Investment Thesis</h3>
+            <p>{{INVESTMENT_THESIS}}</p>
+
+            <h3>Key Highlights</h3>
+            <ul class="key-points">
+                {{KEY_HIGHLIGHTS}}
+            </ul>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Target (Low)</div>
+                    <div class="value">{{CURRENCY}} {{TARGET_LOW}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Target (Base)</div>
+                    <div class="value">{{CURRENCY}} {{TARGET_BASE}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Target (High)</div>
+                    <div class="value">{{CURRENCY}} {{TARGET_HIGH}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Current Price</div>
+                    <div class="value">{{CURRENCY}} {{CURRENT_PRICE}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Upside to Base</div>
+                    <div class="value {{UPSIDE_CLASS}}">{{UPSIDE_PCT}}%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 2: INDUSTRY ANALYSIS
+             ======================================== -->
+        <section id="industry-analysis">
+            <h2>Industry Analysis</h2>
+
+            <h3>{{INDUSTRY_NAME}} Overview</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Market Size (Current)</div>
+                    <div class="value">{{MARKET_SIZE_CURRENT}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Projected ({{MARKET_SIZE_YEAR}})</div>
+                    <div class="value">{{MARKET_SIZE_PROJECTED}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">CAGR</div>
+                    <div class="value positive">{{INDUSTRY_CAGR}}%</div>
+                </div>
+            </div>
+
+            <h4>Key Growth Drivers</h4>
+            <ul class="key-points">
+                {{INDUSTRY_DRIVERS}}
+            </ul>
+
+            {{INDUSTRY_ADDITIONAL_CONTENT}}
+        </section>
+
+        <!-- ========================================
+             SECTION 3: COMPANY ANALYSIS
+             ======================================== -->
+        <section id="company-analysis">
+            <h2>Company Analysis</h2>
+
+            {{COMPANY_ANALYSIS_CONTENT}}
+
+            <h3>Competitive Advantages</h3>
+            <ul class="key-points">
+                {{COMPETITIVE_ADVANTAGES}}
+            </ul>
+        </section>
+
+        <!-- ========================================
+             SECTION 4: FINANCIAL DATA
+             ======================================== -->
+        <section id="financial-data">
+            <h2>Financial Data</h2>
+
+            <h3>Income Statement Summary ({{FINANCIAL_CURRENCY}} millions)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        {{FINANCIAL_YEARS_HEADER}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{FINANCIAL_DATA_ROWS}}
+                </tbody>
+            </table>
+
+            <h3>Balance Sheet Highlights</h3>
+            <div class="metrics-grid">
+                {{BALANCE_SHEET_METRICS}}
+            </div>
+
+            <h3>Key Valuation Metrics</h3>
+            <div class="metrics-grid">
+                {{VALUATION_METRICS}}
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 5: DCF VALUATION
+             ======================================== -->
+        <section id="dcf-valuation">
+            <h2>DCF Valuation</h2>
+
+            <h3>Methodology</h3>
+            <div class="highlight-box">
+                <p>{{DCF_METHODOLOGY}}</p>
+            </div>
+
+            <!-- PWV CALCULATION FORMULA -->
+            <h3>Probability-Weighted Value (PWV) Calculation</h3>
+            <div class="highlight-box success" style="background: linear-gradient(135deg, #1a3d2e 0%, #1a2733 100%);">
+                <p style="font-family: 'Courier New', monospace; font-size: 1.1em; color: #3fb950;">
+                    <strong>Formula:</strong> {{PWV_FORMULA}}
+                </p>
+                <p style="margin-top: 10px; color: #8b949e;">
+                    <em>Each scenario value is weighted by its probability to arrive at the probability-weighted fair value.</em>
+                </p>
+            </div>
+
+            <!-- SCENARIO BREAKDOWN TABLE -->
+            <h3>Scenario Breakdown</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th class="text-center">Probability</th>
+                        <th class="text-right">Fair Value</th>
+                        <th class="text-right">WACC</th>
+                        <th class="text-right">Terminal Value %</th>
+                        <th class="text-right">Contribution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{DCF_SCENARIO_ROWS}}
+                </tbody>
+                <tfoot>
+                    <tr style="background: #21262d; font-weight: bold;">
+                        <td colspan="5">Probability-Weighted Value (PWV)</td>
+                        <td class="text-right positive" style="font-size: 1.2em;">{{CURRENCY}} {{PWV}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <!-- WACC CALCULATION -->
+            <h3>WACC Calculation</h3>
+            <div class="highlight-box">
+                <p style="font-family: 'Courier New', monospace; margin-bottom: 15px;">
+                    <strong>WACC = Re × (E/V) + Rd × (1-T) × (D/V)</strong>
+                </p>
+                <p style="font-family: 'Courier New', monospace; margin-bottom: 15px;">
+                    <strong>Cost of Equity (Re) = Rf + β × (Rm - Rf) + CRP</strong>
+                </p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">Risk-Free Rate (Rf)</div>
+                    <div class="value">{{WACC_RF}}%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Beta (β)</div>
+                    <div class="value">{{WACC_BETA}}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Equity Risk Premium</div>
+                    <div class="value">{{WACC_ERP}}%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Country Risk Premium</div>
+                    <div class="value">{{WACC_CRP}}%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Tax Rate</div>
+                    <div class="value">{{WACC_TAX}}%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Calculated WACC</div>
+                    <div class="value positive">{{WACC_CALCULATED}}%</div>
+                </div>
+            </div>
+
+            <!-- SCENARIO ASSUMPTIONS TABLE -->
+            <h3>Scenario Assumptions Detail</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th class="text-right">Rev Growth Y1-3</th>
+                        <th class="text-right">Rev Growth Y4-5</th>
+                        <th class="text-right">Terminal Growth</th>
+                        <th class="text-right">Target EBIT Margin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{DCF_ASSUMPTIONS_ROWS}}
+                </tbody>
+            </table>
+
+            <!-- SCENARIO RATIONALES -->
+            <h3>Scenario Rationales</h3>
+            {{DCF_SCENARIO_RATIONALES}}
+
+            {{DCF_PROJECTIONS}}
+        </section>
+
+        <!-- ========================================
+             SECTION 6: SCENARIO ANALYSIS
+             ======================================== -->
+        <section id="scenarios">
+            <h2>Scenario Analysis</h2>
+
+            {{SCENARIO_CARDS}}
+
+            <h3>Probability-Weighted Valuation</h3>
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Probability-Weighted Price</div>
+                        <div class="value positive">{{CURRENCY}} {{PWV}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">{{CURRENCY}} {{CURRENT_PRICE}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Implied Upside</div>
+                        <div class="value {{UPSIDE_CLASS}}">{{UPSIDE_PCT}}%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECTION 7: RISK ASSESSMENT
+             ======================================== -->
+        <section id="risks">
+            <h2>Risk Assessment</h2>
+
+            {{RISK_SECTIONS}}
+        </section>
+
+        <!-- ========================================
+             SECTION 8: RECOMMENDATION
+             ======================================== -->
+        <section id="recommendation">
+            <h2>Recommendation</h2>
+
+            <div class="highlight-box">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="label">Rating</div>
+                        <div class="value {{RATING_VALUE_CLASS}}">{{RATING}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Target Price</div>
+                        <div class="value">{{CURRENCY}} {{TARGET_BASE}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Current Price</div>
+                        <div class="value">{{CURRENCY}} {{CURRENT_PRICE}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Upside</div>
+                        <div class="value {{UPSIDE_CLASS}}">{{UPSIDE_PCT}}%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Investment Horizon</div>
+                        <div class="value">{{INVESTMENT_HORIZON}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Conviction Level</div>
+                        <div class="value">{{CONVICTION_LEVEL}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Investment Rationale</h3>
+            <ul class="key-points">
+                {{INVESTMENT_RATIONALE}}
+            </ul>
+
+            <h3>Key Catalysts</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Catalyst</th>
+                        <th>Expected Timing</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{CATALYSTS_ROWS}}
+                </tbody>
+            </table>
+
+            <h3>Key Metrics to Monitor</h3>
+            <ul class="key-points">
+                {{MONITORING_METRICS}}
+            </ul>
+        </section>
+
+        <!-- ========================================
+             SECTION 9: DEBATE LOG
+             ======================================== -->
+        <section id="debate-log">
+            <h2>Multi-AI Debate Log</h2>
+
+            {{DEBATE_ROUNDS}}
+
+            <h3>Key Areas of Consensus</h3>
+            <div class="consensus-box">
+                <ul class="key-points">
+                    {{CONSENSUS_POINTS}}
+                </ul>
+            </div>
+
+            <h3>Key Areas of Disagreement</h3>
+            <div class="disagreement-box">
+                <ul class="key-points">
+                    {{DISAGREEMENT_POINTS}}
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========================================
+             FOOTER
+             ======================================== -->
+        <footer>
+            <p>Report Generated: {{REPORT_DATE}} | Data Disclaimer: This report is based on publicly available information up to the knowledge cutoff date. Investors should verify current figures before making investment decisions.</p>
+            <p>Multi-AI Equity Debate Framework | Claude Opus 4.5</p>
+        </footer>
+    </main>
+</body>
+</html>

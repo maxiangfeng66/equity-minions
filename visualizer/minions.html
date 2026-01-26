@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Research - Multi-AI Workflow</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a1a;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            height: 100vh;
+        }
+
+        /* Main Stage */
+        .stage {
+            position: relative;
+            background: linear-gradient(180deg, #1e1e3f 0%, #0d0d1a 100%);
+            overflow: hidden;
+        }
+
+        /* Pixel grid background */
+        .pixel-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Header */
+        .header {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.8);
+            border-bottom: 3px solid #7c3aed;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            text-shadow: 2px 2px #7c3aed;
+        }
+
+        .ticker-display {
+            font-family: 'Press Start 2P', cursive;
+            background: #7c3aed;
+            padding: 8px 16px;
+            font-size: 0.7rem;
+            color: #fff;
+            border: 3px solid #fff;
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+        }
+
+        .status-dot {
+            width: 12px; height: 12px;
+            background: #444;
+            border: 2px solid #fff;
+        }
+        .status-dot.connecting { background: #ffaa00; animation: blink 0.5s infinite; }
+        .status-dot.connected { background: #00ff88; }
+        .status-dot.running { background: #00d4ff; animation: blink 0.3s infinite; }
+        .status-dot.complete { background: #00ff88; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Flowchart container */
+        .flowchart {
+            position: absolute;
+            top: 70px; left: 0; right: 0; bottom: 80px;
+            padding: 20px;
+        }
+
+        /* SVG for connections */
+        .connections-svg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+
+        .connection {
+            stroke: #333;
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 8, 4;
+        }
+
+        .connection.active {
+            stroke: #00d4ff;
+            stroke-width: 4;
+            filter: drop-shadow(0 0 6px #00d4ff);
+            animation: flowDash 0.5s linear infinite;
+        }
+
+        @keyframes flowDash {
+            to { stroke-dashoffset: -12; }
+        }
+
+        .connection.complete {
+            stroke: #00ff88;
+            stroke-dasharray: none;
+        }
+
+        /* Agent nodes */
+        .agent-node {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .agent-node:hover { transform: scale(1.1); }
+
+        .minion-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.2s;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+        }
+
+        .minion-avatar svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .agent-node.idle .minion-avatar {
+            opacity: 0.4;
+            filter: grayscale(0.5) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .agent-node.active .minion-avatar {
+            filter: drop-shadow(0 0 15px #ffaa00);
+            animation: minionBounce 0.5s ease-in-out infinite;
+        }
+        .agent-node.thinking .minion-avatar {
+            filter: drop-shadow(0 0 20px #00d4ff);
+            animation: minionBounce 0.3s ease-in-out infinite, minionShake 0.1s ease-in-out infinite;
+        }
+        .agent-node.complete .minion-avatar {
+            filter: drop-shadow(0 0 15px #00ff88);
+            animation: minionCelebrate 0.5s ease-in-out;
+        }
+        .agent-node.error .minion-avatar {
+            filter: drop-shadow(0 0 15px #ff4444) grayscale(0.3);
+            animation: minionSad 0.5s ease-in-out;
+        }
+
+        /* OFFICE MINION ANIMATIONS */
+
+        /* Idle breathing animation - all minions "breathe" */
+        @keyframes minionIdle {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-2px) scale(1.02); }
+        }
+
+        /* Idle looking around - eyes move */
+        @keyframes minionLookAround {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-1px); }
+            75% { transform: translateX(1px); }
+        }
+
+        /* Active working bounce */
+        @keyframes minionBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.05); }
+        }
+
+        /* Thinking shake */
+        @keyframes minionShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+
+        /* Complete celebration */
+        @keyframes minionCelebrate {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.15) rotate(-5deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            75% { transform: scale(1.15) rotate(-3deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        /* Error sad */
+        @keyframes minionSad {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px) scale(0.95); }
+        }
+
+        /* Typing animation for working minions */
+        @keyframes minionTyping {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            10% { transform: translateY(-1px) rotate(-2deg); }
+            20% { transform: translateY(0) rotate(2deg); }
+            30% { transform: translateY(-1px) rotate(-1deg); }
+            40% { transform: translateY(0) rotate(1deg); }
+            50% { transform: translateY(-1px) rotate(-2deg); }
+        }
+
+        /* Coffee sip animation */
+        @keyframes minionCoffee {
+            0%, 90%, 100% { transform: translateY(0); }
+            95% { transform: translateY(-3px); }
+        }
+
+        /* Wave animation for greeting */
+        @keyframes minionWave {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        /* Glow effect for active nodes */
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 218, 0, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(255, 218, 0, 0.7), 0 0 50px rgba(255, 218, 0, 0.3); }
+        }
+
+        /* Floating particles around thinking minions */
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-30px) translateX(10px) scale(0); opacity: 0; }
+        }
+
+        /* Office desk bounce in */
+        @keyframes deskAppear {
+            0% { transform: scale(0) translateY(20px); opacity: 0; }
+            70% { transform: scale(1.1) translateY(-5px); }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        /* Apply idle animation to all minions */
+        .agent-node .minion-avatar {
+            animation: minionIdle 3s ease-in-out infinite;
+        }
+
+        /* Each minion has slightly different timing */
+        .agent-node:nth-child(odd) .minion-avatar {
+            animation-delay: 0.5s;
+        }
+        .agent-node:nth-child(3n) .minion-avatar {
+            animation-duration: 3.5s;
+        }
+        .agent-node:nth-child(5n) .minion-avatar {
+            animation-duration: 2.8s;
+        }
+
+        /* Override for active states */
+        .agent-node.idle .minion-avatar {
+            animation: minionIdle 3s ease-in-out infinite, minionCoffee 15s ease-in-out infinite;
+        }
+
+        .agent-node.active .minion-avatar {
+            animation: minionTyping 0.3s ease-in-out infinite, glowPulse 1s ease-in-out infinite !important;
+        }
+
+        .agent-node.thinking .minion-avatar {
+            animation: minionBounce 0.5s ease-in-out infinite, minionShake 0.1s ease-in-out infinite, glowPulse 0.5s ease-in-out infinite !important;
+        }
+
+        .agent-node.complete .minion-avatar {
+            animation: minionCelebrate 0.6s ease-in-out !important;
+        }
+
+        /* Desk/workspace under each minion */
+        .agent-node::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 42px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(100, 100, 150, 0.3), transparent);
+            border-radius: 2px;
+        }
+
+        /* Thought bubbles for thinking minions */
+        .thought-bubble {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 100;
+        }
+
+        .thought-bubble::before,
+        .thought-bubble::after,
+        .thought-bubble span {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: floatParticle 1s ease-out infinite;
+        }
+
+        .thought-bubble::before {
+            width: 8px;
+            height: 8px;
+            bottom: 0;
+            left: 0;
+        }
+
+        .thought-bubble::after {
+            width: 5px;
+            height: 5px;
+            bottom: 8px;
+            left: 10px;
+            animation-delay: 0.3s;
+        }
+
+        .thought-bubble span {
+            width: 4px;
+            height: 4px;
+            bottom: 14px;
+            left: 18px;
+            animation-delay: 0.6s;
+        }
+
+        .agent-node.thinking .thought-bubble {
+            display: block;
+        }
+
+        .agent-name {
+            margin-top: 3px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.35rem;
+            color: #888;
+            text-align: center;
+            max-width: 60px;
+            line-height: 1.2;
+        }
+
+        .agent-node.active .agent-name,
+        .agent-node.thinking .agent-name { color: #fff; }
+
+        /* Speech bubble */
+        .speech-bubble {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: #000;
+            padding: 6px 10px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.4rem;
+            border: 3px solid #000;
+            max-width: 120px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #000;
+        }
+
+        .agent-node.thinking .speech-bubble,
+        .agent-node.speaking .speech-bubble { opacity: 1; }
+
+        /* Bottom stats */
+        .stats-bar {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.9);
+            border-top: 3px solid #7c3aed;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .stat {
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+            color: #00d4ff;
+            text-shadow: 2px 2px #000;
+        }
+
+        .stat-label {
+            font-size: 0.4rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #0a0a0a;
+            border-left: 3px solid #7c3aed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            background: #111;
+            border-bottom: 2px solid #333;
+        }
+
+        .sidebar-header h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            color: #7c3aed;
+        }
+
+        .company-name {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        /* Chat log */
+        .chat-log {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chat-entry {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #111;
+            border-left: 4px solid #333;
+            animation: slideIn 0.2s ease;
+            font-size: 0.75rem;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .chat-entry.openai { border-left-color: #10a37f; }
+        .chat-entry.google { border-left-color: #4285f4; }
+        .chat-entry.xai { border-left-color: #e44d26; }
+        .chat-entry.dashscope { border-left-color: #ff6a00; }
+        .chat-entry.system { border-left-color: #7c3aed; }
+        .chat-entry.error { border-left-color: #ff4444; background: rgba(255,68,68,0.1); }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .chat-agent {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.45rem;
+        }
+        .chat-agent.openai { color: #10a37f; }
+        .chat-agent.google { color: #4285f4; }
+        .chat-agent.xai { color: #e44d26; }
+        .chat-agent.dashscope { color: #ff6a00; }
+        .chat-agent.system { color: #7c3aed; }
+
+        .chat-time { font-size: 0.6rem; color: #444; }
+        .chat-content { color: #999; line-height: 1.4; }
+
+        /* Progress */
+        .progress-section {
+            padding: 12px 15px;
+            background: #111;
+            border-top: 2px solid #333;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.4rem;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #222;
+            border: 2px solid #444;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            transition: width 0.3s;
+            width: 0%;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-overlay.hidden { display: none; }
+
+        .loading-text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            animation: blink 1s infinite;
+        }
+
+        /* Agent Detail Modal */
+        .agent-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .agent-modal.visible {
+            display: flex;
+            animation: modalFadeIn 0.2s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(180deg, #1a1a3a 0%, #0d0d1a 100%);
+            border: 3px solid #7c3aed;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.5), 0 0 60px rgba(0, 212, 255, 0.2);
+            animation: modalSlideIn 0.2s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: scale(0.9) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid #333;
+        }
+
+        .modal-minion {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .modal-title-area {
+            flex: 1;
+        }
+
+        .modal-agent-name {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .modal-agent-role {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .modal-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .modal-status.idle { background: #333; color: #666; }
+        .modal-status.thinking { background: #00d4ff; color: #000; animation: blink 0.5s infinite; }
+        .modal-status.complete { background: #00ff88; color: #000; }
+        .modal-status.error { background: #ff4444; color: #fff; }
+
+        .modal-close {
+            background: none;
+            border: 2px solid #666;
+            color: #666;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            border-color: #ff4444;
+            color: #ff4444;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 20px;
+            max-height: calc(80vh - 100px);
+            overflow-y: auto;
+        }
+
+        .modal-section {
+            margin-bottom: 20px;
+        }
+
+        .modal-section-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            color: #7c3aed;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .modal-info-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #7c3aed;
+        }
+
+        .modal-info-label {
+            font-size: 0.6rem;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .modal-info-value {
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .modal-info-value.provider-openai { color: #10a37f; }
+        .modal-info-value.provider-google { color: #4285f4; }
+        .modal-info-value.provider-xai { color: #e44d26; }
+        .modal-info-value.provider-dashscope { color: #ff6a00; }
+
+        .modal-output {
+            background: #0a0a12;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.75rem;
+            color: #aaa;
+            line-height: 1.6;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .modal-output::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-output::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        .modal-output::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        .modal-output::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+
+        .modal-empty {
+            color: #444;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .modal-tier-badge {
+            display: inline-block;
+            background: #7c3aed;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-text">CONNECTING...</div>
+    </div>
+
+    <!-- Agent Detail Modal -->
+    <div class="agent-modal" id="agent-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-minion" id="modal-minion"></div>
+                <div class="modal-title-area">
+                    <div class="modal-agent-name" id="modal-agent-name">Agent Name</div>
+                    <div class="modal-agent-role" id="modal-agent-role">Role description</div>
+                </div>
+                <div class="modal-status idle" id="modal-status">Idle</div>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <div class="modal-section-title">Agent Info</div>
+                    <div class="modal-info-grid">
+                        <div class="modal-info-item">
+                            <div class="modal-info-label">Provider</div>
+                            <div class="modal-info-value" id="modal-provider">-</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="modal-info-label">Tier</div>
+                            <div class="modal-info-value" id="modal-tier">-</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="modal-info-label">Started</div>
+                            <div class="modal-info-value" id="modal-started">-</div>
+                        </div>
+                        <div class="modal-info-item">
+                            <div class="modal-info-label">Status</div>
+                            <div class="modal-info-value" id="modal-status-text">Waiting</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title">Current Task</div>
+                    <div class="modal-output" id="modal-task">
+                        <span class="modal-empty">No task assigned yet...</span>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title">Output Preview</div>
+                    <div class="modal-output" id="modal-output">
+                        <span class="modal-empty">Waiting for agent to produce output...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="stage">
+            <div class="pixel-grid"></div>
+
+            <div class="header">
+                <div class="title">EQUITY QUEST</div>
+                <div class="ticker-display" id="ticker-display">---</div>
+                <div class="status-bar">
+                    <div class="status-dot connecting" id="status-dot"></div>
+                    <span id="status-text" style="color:#888">WAIT</span>
+                    <span id="timer" style="color:#00d4ff">00:00</span>
+                </div>
+            </div>
+
+            <div class="flowchart" id="flowchart">
+                <svg class="connections-svg" id="connections-svg"></svg>
+                <!-- Agent nodes will be placed here -->
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-value" id="nodes-done">0</div>
+                    <div class="stat-label">COMPLETE</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="iterations">0</div>
+                    <div class="stat-label">ROUNDS</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="total-chars">0</div>
+                    <div class="stat-label">OUTPUT</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>RESEARCH LOG</h2>
+                <div class="company-name" id="company-name">Waiting...</div>
+            </div>
+            <div class="chat-log" id="chat-log"></div>
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span>PROGRESS</span>
+                    <span id="progress-pct">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Agent definitions with positions for flowchart layout
+        // V4 Architecture: Continuous Quality Control with Bird's Eye Oversight
+        // Key: Data Verifier + Data Checkpoint BEFORE debates, DCF AFTER debates
+        const MINION_YELLOW = '#FFDA00';  // Classic banana yellow!
+
+        // Agent role descriptions for the modal
+        const agentDescriptions = {
+            "START": "Entry point that initiates the research workflow and routes to the Research Supervisor.",
+            "Research Supervisor": "Senior supervisor overseeing the entire equity research process. Creates research plans, reviews outputs, and ensures quality standards.",
+            "Market Data Collector": "Specialized data gathering agent that collects comprehensive market data including price, financials, valuation multiples, and analyst data from multiple sources.",
+            "Industry Deep Dive": "Industry analysis expert conducting exhaustive industry research including market size, competitive landscape, dynamics, and macro factors.",
+            "Company Deep Dive": "Company analysis expert providing comprehensive company research including business model, competitive advantages (moat), management, and capital allocation.",
+            "Data Verifier": "Independent data verification agent running parallel to collectors. Cross-references and validates key data points to ensure accuracy.",
+            "Data Checkpoint": "Quality gate that blocks bad data before debates. Compares collector data vs verifier findings and decides if research can proceed.",
+            "Debate Moderator": "Moderator overseeing the bull/bear debate. Frames key issues, sets debate rules, and ensures structured argumentation.",
+            "Bull Advocate R1": "Bull case advocate presenting the strongest arguments for why the stock will outperform. Round 1 initial arguments.",
+            "Bear Advocate R1": "Bear case advocate presenting the strongest arguments for why the stock will underperform. Round 1 initial arguments.",
+            "Devils Advocate": "Challenges BOTH bull and bear arguments. Identifies weaknesses, fact-checks claims, and presents black swan scenarios.",
+            "Bull Advocate R2": "Bull case advocate Round 2 rebuttal. Responds to bear arguments and Devil's Advocate challenges, introduces new arguments.",
+            "Bear Advocate R2": "Bear case advocate Round 2 rebuttal. Responds to bull arguments and Devil's Advocate challenges, introduces new arguments.",
+            "Debate Critic": "Evaluates debate argument quality, scores both sides, and synthesizes valuation inputs for the DCF model.",
+            "Pre-Model Validator": "Validates all inputs BEFORE the DCF model is built. Ensures growth rates, margins, and WACC assumptions are reasonable.",
+            "Financial Modeler": "Primary valuation engine building comprehensive DCF models with 5 scenarios (Super Bear to Super Bull) and probability-weighted values.",
+            "DCF Validator": "Compares DCF output with broker research and analyst consensus. Validates divergence and ensures calculations are correct.",
+            "Assumption Challenger": "Stress-tests every major DCF assumption. Challenges revenue growth, margins, WACC, and terminal value inputs.",
+            "Comparable Validator": "Cross-checks DCF against comparable peer company valuations using relative multiples (EV/Revenue, EV/EBITDA, P/E).",
+            "Sensitivity Auditor": "Analyzes how sensitive the DCF is to key assumptions. Tests WACC, terminal growth, revenue growth, and margin variations.",
+            "Data Verification Gate": "Final data accuracy check before synthesis. Verifies price consistency, market cap, and internal consistency.",
+            "Logic Verification Gate": "Final logical consistency check. Ensures recommendation matches valuation and identifies contradictions.",
+            "Birds Eye Reviewer": "Holistic quality control reviewer seeing the full picture. Can route research back to any tier if issues found.",
+            "Quality Supervisor": "Manages quality gates and routes appropriately based on gate results and Bird's Eye review.",
+            "Synthesizer": "Creates the final comprehensive equity research report with all sections including executive summary, thesis, valuation, and risks.",
+            "Research Supervisor Final Sign-off": "Final approval from Research Supervisor. Reviews completed report and signs off for publication."
+        };
+
+        // Store detailed agent data for modal display
+        let agentData = {};
+        // Cache for node outputs from workflow result
+        let nodeOutputsCache = {};
+        let outputsCacheTime = 0;
+
+        // Fetch node outputs from workflow result file
+        async function fetchNodeOutputs() {
+            // Cache for 5 seconds to avoid too many requests
+            if (Date.now() - outputsCacheTime < 5000 && Object.keys(nodeOutputsCache).length > 0) {
+                return nodeOutputsCache;
+            }
+
+            try {
+                const resp = await fetch('/api/outputs');
+                if (resp.ok) {
+                    nodeOutputsCache = await resp.json();
+                    outputsCacheTime = Date.now();
+                }
+            } catch (err) {
+                console.error('Failed to fetch outputs:', err);
+            }
+            return nodeOutputsCache;
+        }
+
+        // Modal functions
+        async function showAgentModal(agentId) {
+            const agent = agents[agentId];
+            if (!agent) return;
+
+            const modal = document.getElementById('agent-modal');
+            const data = agentData[agentId] || {};
+
+            // Set minion avatar
+            document.getElementById('modal-minion').innerHTML = agent.svg;
+
+            // Set agent name and role
+            document.getElementById('modal-agent-name').textContent = agentId;
+            document.getElementById('modal-agent-role').textContent = agentDescriptions[agentId] || 'Research agent';
+
+            // Set status
+            const statusEl = document.getElementById('modal-status');
+            const status = data.status || 'idle';
+            statusEl.className = `modal-status ${status}`;
+            statusEl.textContent = status === 'thinking' ? 'Working' : status === 'complete' ? 'Done' : status === 'error' ? 'Error' : 'Idle';
+
+            // Set provider with color
+            const providerEl = document.getElementById('modal-provider');
+            const providerNames = { openai: 'OpenAI GPT-4o', google: 'Google Gemini', xai: 'xAI Grok', dashscope: 'Alibaba Qwen', system: 'System' };
+            providerEl.textContent = providerNames[agent.provider] || agent.provider;
+            providerEl.className = `modal-info-value provider-${agent.provider}`;
+
+            // Set tier
+            const tierNames = { 0: 'Orchestration', 1: 'Research', 1.5: 'Data Gate', 2: 'Debate', 2.5: 'Pre-Validation', 3: 'Valuation', 4: 'Quality Control', 5: 'Quality Gates', 6: 'Synthesis', 7: 'Final Sign-off' };
+            document.getElementById('modal-tier').textContent = `Tier ${agent.tier} - ${tierNames[agent.tier] || 'Unknown'}`;
+
+            // Set started time
+            document.getElementById('modal-started').textContent = data.start_time ? new Date(data.start_time).toLocaleTimeString() : '-';
+
+            // Set status text
+            document.getElementById('modal-status-text').textContent = data.message || (status === 'idle' ? 'Waiting for task' : status);
+
+            // Set task - show role description as the task
+            const taskEl = document.getElementById('modal-task');
+            taskEl.textContent = agentDescriptions[agentId] || 'Research task assigned by supervisor';
+
+            // Show modal first (for better UX)
+            modal.classList.add('visible');
+
+            // Set output - first show loading, then fetch
+            const outputEl = document.getElementById('modal-output');
+
+            // Check if we have output in agentData
+            if (data.output) {
+                const truncated = data.output.length > 3000 ? data.output.slice(0, 3000) + '\n\n... [Output truncated - ' + data.output.length + ' chars total]' : data.output;
+                outputEl.textContent = truncated;
+            } else {
+                // Try to fetch from workflow result
+                outputEl.innerHTML = '<span class="modal-empty">Loading output...</span>';
+
+                const outputs = await fetchNodeOutputs();
+                const nodeOutput = outputs[agentId];
+
+                if (nodeOutput && nodeOutput.content) {
+                    const content = nodeOutput.content;
+                    const truncated = content.length > 3000 ? content.slice(0, 3000) + '\n\n... [Output truncated - ' + nodeOutput.full_length + ' chars total]' : content;
+                    outputEl.textContent = truncated;
+
+                    // Also update provider info if available
+                    if (nodeOutput.provider) {
+                        const providerNames = { openai: 'OpenAI GPT-4o', google: 'Google Gemini', xai: 'xAI Grok', dashscope: 'Alibaba Qwen', system: 'System' };
+                        document.getElementById('modal-provider').textContent = providerNames[nodeOutput.provider] || nodeOutput.provider;
+                        document.getElementById('modal-provider').className = `modal-info-value provider-${nodeOutput.provider}`;
+                    }
+                } else if (status === 'thinking') {
+                    outputEl.innerHTML = '<span class="modal-empty">Agent is currently working...</span>';
+                } else if (status === 'idle') {
+                    outputEl.innerHTML = '<span class="modal-empty">Waiting for agent to be activated...</span>';
+                } else {
+                    outputEl.innerHTML = '<span class="modal-empty">No output available yet</span>';
+                }
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('agent-modal').classList.remove('visible');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('agent-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        const agents = {
+            // === TIER 0: ORCHESTRATION ===
+            "START": {
+                svg: createMinion(MINION_YELLOW, '🚀', 'goggles'),
+                provider: "system", name: "START",
+                x: 50, y: 1, tier: 0
+            },
+            "Research Supervisor": {
+                svg: createMinion(MINION_YELLOW, '👔', 'smart'),
+                provider: "openai", name: "SUPER",
+                x: 50, y: 5, tier: 0
+            },
+
+            // === TIER 1: RESEARCH WORKERS + DATA VERIFIER (Parallel) ===
+            "Market Data Collector": {
+                svg: createMinion(MINION_YELLOW, '📊', 'one-eye'),
+                provider: "google", name: "DATA",
+                x: 15, y: 10, tier: 1
+            },
+            "Industry Deep Dive": {
+                svg: createMinion(MINION_YELLOW, '🔬', 'two-eye'),
+                provider: "openai", name: "INDUS",
+                x: 38, y: 10, tier: 1
+            },
+            "Company Deep Dive": {
+                svg: createMinion(MINION_YELLOW, '🏢', 'goggles'),
+                provider: "openai", name: "COMP",
+                x: 62, y: 10, tier: 1
+            },
+            "Data Verifier": {
+                svg: createMinion(MINION_YELLOW, '✓', 'smart'),
+                provider: "openai", name: "VERIFY",
+                x: 85, y: 10, tier: 1
+            },
+
+            // === TIER 1.5: DATA CHECKPOINT (Gate Before Debates) ===
+            "Data Checkpoint": {
+                svg: createMinion(MINION_YELLOW, '🚦', 'goggles'),
+                provider: "openai", name: "DCP",
+                x: 50, y: 15, tier: 1.5
+            },
+
+            // === TIER 2: DEBATE SYSTEM ===
+            "Debate Moderator": {
+                svg: createMinion(MINION_YELLOW, '🎙️', 'goggles'),
+                provider: "openai", name: "MOD",
+                x: 50, y: 20, tier: 2
+            },
+            "Bull Advocate R1": {
+                svg: createMinion(MINION_YELLOW, '🐂', 'happy'),
+                provider: "xai", name: "BULL1",
+                x: 30, y: 25, tier: 2
+            },
+            "Bear Advocate R1": {
+                svg: createMinion(MINION_YELLOW, '🐻', 'angry'),
+                provider: "dashscope", name: "BEAR1",
+                x: 70, y: 25, tier: 2
+            },
+            "Devils Advocate": {
+                svg: createMinion(MINION_YELLOW, '😈', 'smart'),
+                provider: "openai", name: "DEVIL",
+                x: 50, y: 30, tier: 2
+            },
+            "Bull Advocate R2": {
+                svg: createMinion(MINION_YELLOW, '🐂', 'happy'),
+                provider: "xai", name: "BULL2",
+                x: 30, y: 35, tier: 2
+            },
+            "Bear Advocate R2": {
+                svg: createMinion(MINION_YELLOW, '🐻', 'angry'),
+                provider: "dashscope", name: "BEAR2",
+                x: 70, y: 35, tier: 2
+            },
+            "Debate Critic": {
+                svg: createMinion(MINION_YELLOW, '⚖️', 'smart'),
+                provider: "openai", name: "CRIT",
+                x: 50, y: 40, tier: 2
+            },
+
+            // === TIER 2.5: PRE-MODEL VALIDATOR (New in V4) ===
+            "Pre-Model Validator": {
+                svg: createMinion(MINION_YELLOW, '📋', 'two-eye'),
+                provider: "openai", name: "PREVAL",
+                x: 50, y: 45, tier: 2.5
+            },
+
+            // === TIER 3: FINANCIAL MODELING (POST-DEBATE) ===
+            "Financial Modeler": {
+                svg: createMinion(MINION_YELLOW, '💰', 'smart'),
+                provider: "google", name: "DCF",
+                x: 50, y: 50, tier: 3
+            },
+
+            // === TIER 4: VALUATION QUALITY CONTROL ===
+            "DCF Validator": {
+                svg: createMinion(MINION_YELLOW, '🔢', 'smart'),
+                provider: "openai", name: "DCFV",
+                x: 15, y: 56, tier: 4
+            },
+            "Assumption Challenger": {
+                svg: createMinion(MINION_YELLOW, '❓', 'two-eye'),
+                provider: "openai", name: "ASMQC",
+                x: 38, y: 56, tier: 4
+            },
+            "Comparable Validator": {
+                svg: createMinion(MINION_YELLOW, '📈', 'one-eye'),
+                provider: "openai", name: "CMPQC",
+                x: 62, y: 56, tier: 4
+            },
+            "Sensitivity Auditor": {
+                svg: createMinion(MINION_YELLOW, '📉', 'two-eye'),
+                provider: "openai", name: "SENQC",
+                x: 85, y: 56, tier: 4
+            },
+
+            // === TIER 5: QUALITY GATES + BIRD'S EYE ===
+            "Data Verification Gate": {
+                svg: createMinion(MINION_YELLOW, '🔍', 'one-eye'),
+                provider: "openai", name: "DCHK",
+                x: 25, y: 62, tier: 5
+            },
+            "Logic Verification Gate": {
+                svg: createMinion(MINION_YELLOW, '🧠', 'two-eye'),
+                provider: "openai", name: "LCHK",
+                x: 50, y: 62, tier: 5
+            },
+            "Birds Eye Reviewer": {
+                svg: createMinion(MINION_YELLOW, '🦅', 'goggles'),
+                provider: "openai", name: "BIRD",
+                x: 75, y: 62, tier: 5
+            },
+            "Quality Supervisor": {
+                svg: createMinion(MINION_YELLOW, '✅', 'goggles'),
+                provider: "openai", name: "QASUP",
+                x: 50, y: 68, tier: 5
+            },
+
+            // === TIER 6: SYNTHESIS ===
+            "Synthesizer": {
+                svg: createMinion(MINION_YELLOW, '📝', 'goggles'),
+                provider: "openai", name: "SYNTH",
+                x: 50, y: 74, tier: 6
+            },
+
+            // === TIER 7: FINAL SIGN-OFF ===
+            "Research Supervisor Final Sign-off": {
+                svg: createMinion(MINION_YELLOW, '✍️', 'smart'),
+                provider: "openai", name: "FINAL",
+                x: 50, y: 80, tier: 7
+            }
+        };
+
+        // Create cute animated minion SVG with office personality
+        function createMinion(color, tool, eyeType) {
+            // Unique animation IDs for each minion to avoid conflicts
+            const uid = Math.random().toString(36).substr(2, 9);
+
+            const eyeStyles = {
+                'one-eye': `<g class="eye-group">
+                    <ellipse cx="32" cy="24" rx="14" ry="14" fill="#888" stroke="#555" stroke-width="3"/>
+                    <circle cx="32" cy="24" r="8" fill="white"/>
+                    <circle class="pupil" cx="32" cy="24" r="4" fill="#333">
+                        <animate attributeName="cx" values="32;31;33;32" dur="4s" repeatCount="indefinite"/>
+                    </circle>
+                    <ellipse cx="33" cy="22" rx="2" ry="2" fill="white"/>
+                    <!-- Blink animation -->
+                    <ellipse cx="32" cy="24" rx="8" ry="8" fill="${color}">
+                        <animate attributeName="ry" values="0;0;0;8;8;8;8;8;8;8;0" dur="5s" repeatCount="indefinite"/>
+                    </ellipse>
+                </g>`,
+                'two-eye': `<g class="eye-group">
+                    <ellipse cx="24" cy="24" rx="10" ry="10" fill="#888" stroke="#555" stroke-width="2"/>
+                    <ellipse cx="40" cy="24" rx="10" ry="10" fill="#888" stroke="#555" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="6" fill="white"/><circle class="pupil-l" cx="24" cy="24" r="3" fill="#333">
+                        <animate attributeName="cx" values="24;23;25;24" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="40" cy="24" r="6" fill="white"/><circle class="pupil-r" cx="40" cy="24" r="3" fill="#333">
+                        <animate attributeName="cx" values="40;39;41;40" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <!-- Blink left -->
+                    <ellipse cx="24" cy="24" rx="6" ry="6" fill="${color}">
+                        <animate attributeName="ry" values="0;0;0;0;6;6;0;0;0;0" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    <!-- Blink right -->
+                    <ellipse cx="40" cy="24" rx="6" ry="6" fill="${color}">
+                        <animate attributeName="ry" values="0;0;0;0;6;6;0;0;0;0" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                </g>`,
+                'goggles': `<g class="eye-group">
+                    <rect x="12" y="18" width="40" height="14" rx="7" fill="#888" stroke="#555" stroke-width="2"/>
+                    <circle cx="24" cy="25" r="6" fill="white"/>
+                    <circle class="pupil-l" cx="24" cy="25" r="3" fill="#333">
+                        <animate attributeName="cx" values="24;23;25;24" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="40" cy="25" r="6" fill="white"/>
+                    <circle class="pupil-r" cx="40" cy="25" r="3" fill="#333">
+                        <animate attributeName="cx" values="40;39;41;40" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <rect x="8" y="22" width="6" height="6" fill="#555"/>
+                    <rect x="50" y="22" width="6" height="6" fill="#555"/>
+                    <!-- Goggle shine -->
+                    <ellipse cx="20" cy="22" rx="2" ry="1" fill="rgba(255,255,255,0.3)">
+                        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+                    </ellipse>
+                </g>`,
+                'happy': `<g class="eye-group">
+                    <ellipse cx="24" cy="24" rx="8" ry="8" fill="#888" stroke="#555" stroke-width="2"/>
+                    <ellipse cx="40" cy="24" rx="8" ry="8" fill="#888" stroke="#555" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="5" fill="white"/><circle class="pupil-l" cx="24" cy="22" r="3" fill="#333">
+                        <animate attributeName="cy" values="22;21;23;22" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="40" cy="24" r="5" fill="white"/><circle class="pupil-r" cx="40" cy="22" r="3" fill="#333">
+                        <animate attributeName="cy" values="22;21;23;22" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <!-- Happy smile with animation -->
+                    <path d="M22 38 Q32 45 42 38" stroke="#333" stroke-width="2" fill="none">
+                        <animate attributeName="d" values="M22 38 Q32 45 42 38;M22 38 Q32 47 42 38;M22 38 Q32 45 42 38" dur="3s" repeatCount="indefinite"/>
+                    </path>
+                </g>`,
+                'angry': `<g class="eye-group">
+                    <ellipse cx="24" cy="24" rx="8" ry="8" fill="#888" stroke="#555" stroke-width="2"/>
+                    <ellipse cx="40" cy="24" rx="8" ry="8" fill="#888" stroke="#555" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="5" fill="white"/><circle class="pupil-l" cx="24" cy="26" r="3" fill="#333"/>
+                    <circle cx="40" cy="24" r="5" fill="white"/><circle class="pupil-r" cx="40" cy="26" r="3" fill="#333"/>
+                    <!-- Angry eyebrows that twitch -->
+                    <line x1="18" y1="18" x2="28" y2="22" stroke="#333" stroke-width="2">
+                        <animate attributeName="y1" values="18;17;18" dur="1s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="46" y1="18" x2="36" y2="22" stroke="#333" stroke-width="2">
+                        <animate attributeName="y1" values="18;17;18" dur="1s" repeatCount="indefinite"/>
+                    </line>
+                    <path d="M26 40 Q32 36 38 40" stroke="#333" stroke-width="2" fill="none"/>
+                </g>`,
+                'smart': `<g class="eye-group">
+                    <ellipse cx="24" cy="24" rx="9" ry="9" fill="#888" stroke="#555" stroke-width="2"/>
+                    <ellipse cx="40" cy="24" rx="9" ry="9" fill="#888" stroke="#555" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="6" fill="white"/><circle class="pupil-l" cx="24" cy="24" r="3" fill="#333">
+                        <animate attributeName="cx" values="24;22;26;24" dur="5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="40" cy="24" r="6" fill="white"/><circle class="pupil-r" cx="40" cy="24" r="3" fill="#333">
+                        <animate attributeName="cx" values="40;38;42;40" dur="5s" repeatCount="indefinite"/>
+                    </circle>
+                    <!-- Thinking eyebrows -->
+                    <line x1="18" y1="16" x2="30" y2="18" stroke="#333" stroke-width="2">
+                        <animate attributeName="y2" values="18;17;18" dur="2s" repeatCount="indefinite"/>
+                    </line>
+                    <line x1="46" y1="16" x2="34" y2="18" stroke="#333" stroke-width="2">
+                        <animate attributeName="y2" values="18;17;18" dur="2s" repeatCount="indefinite"/>
+                    </line>
+                </g>`
+            };
+
+            return `<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="minion-svg">
+                <!-- Shadow under minion -->
+                <ellipse cx="32" cy="58" rx="16" ry="3" fill="rgba(0,0,0,0.2)">
+                    <animate attributeName="rx" values="16;14;16" dur="3s" repeatCount="indefinite"/>
+                </ellipse>
+                <!-- Body with breathing animation -->
+                <g class="body-group">
+                    <ellipse cx="32" cy="42" rx="22" ry="18" fill="${color}">
+                        <animate attributeName="ry" values="18;18.5;18" dur="3s" repeatCount="indefinite"/>
+                    </ellipse>
+                </g>
+                <!-- Overalls -->
+                <rect x="14" y="38" width="36" height="20" rx="4" fill="#1e40af"/>
+                <rect x="20" y="40" width="24" height="12" fill="#1e3a8a"/>
+                <!-- Pocket -->
+                <rect x="26" y="44" width="12" height="6" rx="1" fill="#1e3a8a" stroke="#0f2557" stroke-width="1"/>
+                <!-- Straps -->
+                <rect x="18" y="32" width="6" height="14" fill="#1e40af"/>
+                <rect x="40" y="32" width="6" height="14" fill="#1e40af"/>
+                <!-- Buttons -->
+                <circle cx="21" cy="34" r="2" fill="#333"/>
+                <circle cx="43" cy="34" r="2" fill="#333"/>
+                <!-- Head -->
+                <ellipse cx="32" cy="28" rx="20" ry="18" fill="${color}"/>
+                <!-- Eyes -->
+                ${eyeStyles[eyeType] || eyeStyles['two-eye']}
+                <!-- Mouth with subtle animation -->
+                <ellipse cx="32" cy="38" rx="6" ry="3" fill="#333">
+                    <animate attributeName="ry" values="3;3.5;3" dur="4s" repeatCount="indefinite"/>
+                </ellipse>
+                <!-- Hair with wiggle -->
+                <g class="hair">
+                    <path d="M24 10 Q26 6 28 10" stroke="#333" stroke-width="2" fill="none">
+                        <animate attributeName="d" values="M24 10 Q26 6 28 10;M24 11 Q26 5 28 11;M24 10 Q26 6 28 10" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M32 8 Q34 4 36 8" stroke="#333" stroke-width="2" fill="none">
+                        <animate attributeName="d" values="M32 8 Q34 4 36 8;M32 9 Q34 3 36 9;M32 8 Q34 4 36 8" dur="2.5s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M38 10 Q40 6 42 10" stroke="#333" stroke-width="2" fill="none">
+                        <animate attributeName="d" values="M38 10 Q40 6 42 10;M38 11 Q40 5 42 11;M38 10 Q40 6 42 10" dur="2.2s" repeatCount="indefinite"/>
+                    </path>
+                </g>
+                <!-- Tool badge with glow -->
+                <g class="badge">
+                    <circle cx="50" cy="50" r="10" fill="white" stroke="#333" stroke-width="1">
+                        <animate attributeName="r" values="10;10.5;10" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="50" y="54" text-anchor="middle" font-size="12">${tool}</text>
+                </g>
+                <!-- Arms (simple) -->
+                <ellipse cx="10" cy="42" rx="4" ry="6" fill="${color}">
+                    <animate attributeName="cy" values="42;41;42" dur="3s" repeatCount="indefinite"/>
+                </ellipse>
+                <ellipse cx="54" cy="42" rx="4" ry="6" fill="${color}">
+                    <animate attributeName="cy" values="42;43;42" dur="3s" repeatCount="indefinite"/>
+                </ellipse>
+            </svg>`;
+        }
+
+        // Connections between agents (from -> to) - V4 Enhanced Workflow
+        // Key: Data Verifier + Data Checkpoint BEFORE debates, DCF AFTER all debates
+        const connections = [
+            // Tier 0: Orchestration
+            ["START", "Research Supervisor"],
+
+            // Tier 1: Parallel Research + Data Verifier
+            ["Research Supervisor", "Market Data Collector"],
+            ["Research Supervisor", "Industry Deep Dive"],
+            ["Research Supervisor", "Company Deep Dive"],
+            ["Research Supervisor", "Data Verifier"],
+
+            // Tier 1.5: All collectors + verifier -> Data Checkpoint
+            ["Market Data Collector", "Data Checkpoint"],
+            ["Industry Deep Dive", "Data Checkpoint"],
+            ["Company Deep Dive", "Data Checkpoint"],
+            ["Data Verifier", "Data Checkpoint"],
+
+            // Tier 2: Debate System (AFTER Data Checkpoint verifies data)
+            ["Data Checkpoint", "Debate Moderator"],
+            ["Debate Moderator", "Bull Advocate R1"],
+            ["Debate Moderator", "Bear Advocate R1"],
+            ["Bull Advocate R1", "Devils Advocate"],
+            ["Bear Advocate R1", "Devils Advocate"],
+            ["Devils Advocate", "Bull Advocate R2"],
+            ["Devils Advocate", "Bear Advocate R2"],
+            ["Bull Advocate R2", "Debate Critic"],
+            ["Bear Advocate R2", "Debate Critic"],
+
+            // Tier 2.5: Pre-Model Validator
+            ["Debate Critic", "Pre-Model Validator"],
+            ["Pre-Model Validator", "Financial Modeler"],
+
+            // Tier 3: Financial Modeling triggers 4 parallel QC agents
+            ["Financial Modeler", "DCF Validator"],
+            ["Financial Modeler", "Assumption Challenger"],
+            ["Financial Modeler", "Comparable Validator"],
+            ["Financial Modeler", "Sensitivity Auditor"],
+
+            // Tier 4: QC agents feed directly to Quality Gates (no Valuation Committee)
+            ["DCF Validator", "Data Verification Gate"],
+            ["Assumption Challenger", "Data Verification Gate"],
+            ["Assumption Challenger", "Logic Verification Gate"],
+            ["Assumption Challenger", "Birds Eye Reviewer"],
+
+            // Tier 5: Quality Gates feed into Quality Supervisor
+            ["Data Verification Gate", "Quality Supervisor"],
+            ["Logic Verification Gate", "Quality Supervisor"],
+            ["Birds Eye Reviewer", "Quality Supervisor"],
+
+            // Tier 6: Quality Supervisor routes to Synthesizer
+            ["Quality Supervisor", "Synthesizer"],
+
+            // Tier 7: Synthesizer to Final Sign-off
+            ["Synthesizer", "Research Supervisor Final Sign-off"]
+        ];
+
+        let ws = null;
+        let startTime = null;
+        let timerInterval = null;
+        let nodesDone = 0;
+        let totalChars = 0;
+        let activeConnections = new Set();
+
+        // Initialize the flowchart
+        function initFlowchart() {
+            const container = document.getElementById('flowchart');
+            const svg = document.getElementById('connections-svg');
+
+            // Clear
+            container.querySelectorAll('.agent-node').forEach(n => n.remove());
+            svg.innerHTML = '';
+
+            // Get container dimensions
+            const rect = container.getBoundingClientRect();
+
+            // Draw connections first
+            connections.forEach(([from, to], idx) => {
+                const fromAgent = agents[from];
+                const toAgent = agents[to];
+                if (!fromAgent || !toAgent) return;
+
+                const x1 = (fromAgent.x / 100) * rect.width;
+                const y1 = (fromAgent.y / 100) * rect.height + 24;
+                const x2 = (toAgent.x / 100) * rect.width;
+                const y2 = (toAgent.y / 100) * rect.height - 6;
+
+                // Create curved path
+                const midY = (y1 + y2) / 2;
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', `M${x1},${y1} C${x1},${midY} ${x2},${midY} ${x2},${y2}`);
+                path.setAttribute('class', 'connection');
+                path.setAttribute('id', `conn-${from.replace(/\s/g, '-')}-${to.replace(/\s/g, '-')}`);
+                svg.appendChild(path);
+            });
+
+            // Create agent nodes
+            Object.entries(agents).forEach(([id, agent]) => {
+                const node = document.createElement('div');
+                node.className = 'agent-node idle';
+                node.id = `agent-${id.replace(/\s/g, '-')}`;
+                node.style.left = `calc(${agent.x}% - 24px)`;
+                node.style.top = `calc(${agent.y}% - 24px)`;
+
+                node.innerHTML = `
+                    <div class="speech-bubble">Ready</div>
+                    <div class="minion-avatar ${agent.provider}">${agent.svg}</div>
+                    <div class="agent-name">${agent.name}</div>
+                `;
+
+                // Add click handler to show agent details
+                node.addEventListener('click', () => showAgentModal(id));
+
+                container.appendChild(node);
+            });
+        }
+
+        // Set agent state
+        function setAgentState(nodeId, state, message = '') {
+            const node = document.getElementById(`agent-${nodeId.replace(/\s/g, '-')}`);
+            if (!node) return;
+
+            node.className = `agent-node ${state}`;
+
+            const bubble = node.querySelector('.speech-bubble');
+            if (message && bubble) {
+                bubble.textContent = message.length > 15 ? message.slice(0, 12) + '...' : message;
+            }
+        }
+
+        // Activate connection
+        function activateConnection(from, to) {
+            const connId = `conn-${from.replace(/\s/g, '-')}-${to.replace(/\s/g, '-')}`;
+            const conn = document.getElementById(connId);
+            if (conn) {
+                conn.classList.add('active');
+                activeConnections.add(connId);
+            }
+        }
+
+        // Complete connection
+        function completeConnection(from, to) {
+            const connId = `conn-${from.replace(/\s/g, '-')}-${to.replace(/\s/g, '-')}`;
+            const conn = document.getElementById(connId);
+            if (conn) {
+                conn.classList.remove('active');
+                conn.classList.add('complete');
+            }
+        }
+
+        // Add chat entry
+        function addChat(agent, message, provider = 'system') {
+            const log = document.getElementById('chat-log');
+            const time = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            const entry = document.createElement('div');
+            entry.className = `chat-entry ${provider}`;
+            entry.innerHTML = `
+                <div class="chat-header">
+                    <span class="chat-agent ${provider}">${agent}</span>
+                    <span class="chat-time">${time}</span>
+                </div>
+                <div class="chat-content">${message}</div>
+            `;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Update progress
+        function updateProgress(pct) {
+            document.getElementById('progress-fill').style.width = `${pct}%`;
+            document.getElementById('progress-pct').textContent = `${Math.round(pct)}%`;
+        }
+
+        // Update timer
+        function updateTimer() {
+            if (!startTime) return;
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const min = Math.floor(elapsed / 60).toString().padStart(2, '0');
+            const sec = (elapsed % 60).toString().padStart(2, '0');
+            document.getElementById('timer').textContent = `${min}:${sec}`;
+        }
+
+        // Track previous node for connections
+        let previousNode = null;
+
+        // Handle events
+        function handleEvent(msg) {
+            const { type, data } = msg;
+
+            switch (type) {
+                case 'connected':
+                    addChat('SYSTEM', 'Connected!', 'system');
+                    break;
+
+                case 'workflow_init':
+                    document.getElementById('ticker-display').textContent = data.ticker;
+                    startTime = Date.now();
+                    timerInterval = setInterval(updateTimer, 1000);
+                    document.getElementById('status-dot').className = 'status-dot running';
+                    document.getElementById('status-text').textContent = 'RUN';
+                    addChat('SYSTEM', `Starting: ${data.ticker}`, 'system');
+                    break;
+
+                case 'company_info':
+                    document.getElementById('company-name').textContent = data.company_name;
+                    break;
+
+                case 'node_start':
+                    setAgentState(data.node_id, 'thinking', 'Working...');
+                    // Activate incoming connection
+                    if (previousNode) {
+                        activateConnection(previousNode, data.node_id);
+                    }
+                    const def = agents[data.node_id];
+                    if (def) addChat(data.node_id, 'Analyzing...', def.provider);
+                    break;
+
+                case 'node_complete':
+                    setAgentState(data.node_id, 'complete', 'Done!');
+                    // Complete incoming connection
+                    if (previousNode) {
+                        completeConnection(previousNode, data.node_id);
+                    }
+                    previousNode = data.node_id;
+                    nodesDone++;
+                    document.getElementById('nodes-done').textContent = nodesDone;
+                    if (data.details?.output_length) {
+                        totalChars += data.details.output_length;
+                        document.getElementById('total-chars').textContent =
+                            totalChars > 1000 ? `${(totalChars/1000).toFixed(0)}K` : totalChars;
+                    }
+                    updateProgress(Math.min((nodesDone / 21) * 100, 100));  // 21 nodes in v3 workflow
+                    break;
+
+                case 'node_error':
+                    setAgentState(data.node_id, 'error', 'ERROR!');
+                    addChat(data.node_id, 'API Error!', 'error');
+                    break;
+
+                case 'node_triggered':
+                    setAgentState(data.node_id, 'active', 'Ready!');
+                    break;
+
+                case 'iteration_start':
+                    document.getElementById('iterations').textContent = data.details?.iteration || 0;
+                    break;
+
+                case 'workflow_complete':
+                    clearInterval(timerInterval);
+                    document.getElementById('status-dot').className = 'status-dot complete';
+                    document.getElementById('status-text').textContent = 'WIN!';
+                    updateProgress(100);
+                    addChat('SYSTEM', `Done in ${data.execution_time?.toFixed(0)}s!`, 'system');
+                    break;
+
+                case 'node_output':
+                    const prov = agents[data.node_id]?.provider || 'system';
+                    const preview = data.content_preview?.slice(0, 60) + '...';
+                    addChat(data.node_id, preview, prov);
+                    break;
+            }
+        }
+
+        // Poll HTTP API for state updates
+        let pollInterval = null;
+        let lastUpdate = null;
+        let renderedChatCount = 0;
+
+        async function fetchState() {
+            try {
+                const resp = await fetch('/api/state');
+                if (!resp.ok) throw new Error('HTTP error');
+                const state = await resp.json();
+
+                // Update UI with state data
+                if (state.last_updated !== lastUpdate) {
+                    lastUpdate = state.last_updated;
+                    renderState(state);
+                }
+            } catch (err) {
+                console.error('Fetch error:', err);
+                document.getElementById('status-dot').className = 'status-dot';
+                document.getElementById('status-text').textContent = 'OFF';
+            }
+        }
+
+        function renderState(state) {
+            // Update ticker and company name
+            if (state.ticker) {
+                document.getElementById('ticker-display').textContent = state.ticker;
+            }
+            if (state.company_name) {
+                document.getElementById('company-name').textContent = state.company_name;
+            }
+
+            // Update progress
+            updateProgress(state.progress || 0);
+
+            // Update stats
+            document.getElementById('nodes-done').textContent = state.nodes_done || 0;
+            document.getElementById('iterations').textContent = state.iterations || 0;
+
+            // Format total chars
+            const totalChars = state.total_chars || 0;
+            document.getElementById('total-chars').textContent =
+                totalChars > 1000 ? `${(totalChars/1000).toFixed(0)}K` : totalChars;
+
+            // Update agent states from state.agents (now a dictionary)
+            Object.entries(state.agents || {}).forEach(([nodeId, agent]) => {
+                // Store agent data for modal display
+                agentData[nodeId] = {
+                    ...agentData[nodeId],  // Preserve existing data
+                    ...agent,              // Update with new data
+                    status: agent.status,
+                    message: agent.message,
+                    start_time: agent.start_time,
+                    output: agent.output || agentData[nodeId]?.output,  // Keep output if not in update
+                    task: agent.task || agentData[nodeId]?.task
+                };
+
+                let uiState = 'idle';
+                if (agent.status === 'thinking') uiState = 'thinking';
+                else if (agent.status === 'active') uiState = 'active';
+                else if (agent.status === 'complete') uiState = 'complete';
+                else if (agent.status === 'error') uiState = 'error';
+
+                setAgentState(nodeId, uiState, agent.message || 'Ready');
+            });
+
+            // Update connections
+            (state.connections || []).forEach(conn => {
+                if (conn.status === 'active') {
+                    activateConnection(conn.from, conn.to);
+                } else if (conn.status === 'complete') {
+                    completeConnection(conn.from, conn.to);
+                }
+            });
+
+            // Add new chat messages (only new ones)
+            const chatLog = state.chat_log || [];
+            if (chatLog.length > renderedChatCount) {
+                for (let i = renderedChatCount; i < chatLog.length; i++) {
+                    const entry = chatLog[i];
+                    addChatDirect(entry.agent, entry.message, entry.provider, entry.time);
+                }
+                renderedChatCount = chatLog.length;
+            }
+
+            // Update status indicator based on workflow status
+            if (state.status === 'running') {
+                document.getElementById('status-dot').className = 'status-dot running';
+                document.getElementById('status-text').textContent = 'RUN';
+            } else if (state.status === 'complete') {
+                document.getElementById('status-dot').className = 'status-dot complete';
+                document.getElementById('status-text').textContent = 'WIN';
+            } else if (state.status === 'error') {
+                document.getElementById('status-dot').className = 'status-dot';
+                document.getElementById('status-text').textContent = 'ERR';
+            } else if (state.status === 'waiting' || state.status === 'idle') {
+                document.getElementById('status-dot').className = 'status-dot connected';
+                document.getElementById('status-text').textContent = 'WAIT';
+            }
+        }
+
+        // Add chat entry with provided timestamp (for state sync)
+        function addChatDirect(agent, message, provider = 'system', time = null) {
+            const log = document.getElementById('chat-log');
+            const timeStr = time || new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            const entry = document.createElement('div');
+            entry.className = `chat-entry ${provider}`;
+            entry.innerHTML = `
+                <div class="chat-header">
+                    <span class="chat-agent ${provider}">${agent}</span>
+                    <span class="chat-time">${timeStr}</span>
+                </div>
+                <div class="chat-content">${message}</div>
+            `;
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function connect() {
+            console.log('Starting HTTP polling from /api/state');
+            document.getElementById('loading-overlay').classList.add('hidden');
+            document.getElementById('status-dot').className = 'status-dot connecting';
+            document.getElementById('status-text').textContent = 'POLL';
+            addChat('SYSTEM', 'Visualizer ready - waiting for workflow...', 'system');
+
+            // Start timer
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+
+            // Poll immediately then every 500ms for real-time feel
+            fetchState();
+            pollInterval = setInterval(fetchState, 500);
+        }
+
+        // Init
+        initFlowchart();
+        connect();
+        window.addEventListener('resize', initFlowchart);
+    </script>
+</body>
+</html>

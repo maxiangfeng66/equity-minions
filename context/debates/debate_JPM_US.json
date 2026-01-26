@@ -1,0 +1,149 @@
+{
+  "ticker": "JPM_US",
+  "company": "JPMorgan Chase & Co",
+  "debate_date": "2026-01-20",
+  "total_rounds": 10,
+  "participants": ["Lead Analyst", "Bull Advocate", "Bear Advocate", "Critic", "Synthesizer"],
+  "final_recommendation": "HOLD",
+  "fair_value": 256.80,
+  "current_price": 248.50,
+  "upside": 3.3,
+  "governance_score": 8.5,
+
+  "scenario_probabilities": {
+    "super_bear": 0.05,
+    "bear": 0.20,
+    "base": 0.50,
+    "bull": 0.20,
+    "super_bull": 0.05
+  },
+
+  "scenario_values_10pct_discount": {
+    "super_bear": 165,
+    "bear": 205,
+    "base": 260,
+    "bull": 310,
+    "super_bull": 375
+  },
+
+  "valuation_matrix": {
+    "8%": {"super_bear": 182, "bear": 228, "base": 288, "bull": 345, "super_bull": 418, "prob_weighted": 285.65},
+    "9%": {"super_bear": 172, "bear": 215, "base": 272, "bull": 326, "super_bull": 395, "prob_weighted": 269.55},
+    "10%": {"super_bear": 165, "bear": 205, "base": 260, "bull": 310, "super_bull": 375, "prob_weighted": 256.80},
+    "11%": {"super_bear": 155, "bear": 192, "base": 242, "bull": 290, "super_bull": 352, "prob_weighted": 240.00}
+  },
+
+  "key_metrics": {
+    "market_cap_B": 712,
+    "pe_ttm": 12.8,
+    "p_tbv": 2.1,
+    "dividend_yield": 2.1,
+    "cet1_ratio": 15.3,
+    "rotce": 19.8,
+    "eps_2025e": 19.42,
+    "eps_2026e": 17.85,
+    "eps_2027e": 19.20
+  },
+
+  "debate_summary": {
+    "resolved_points": [
+      "JPM has the widest moat in US banking",
+      "NII will decline in 2026 (magnitude: -6 to -8%)",
+      "Credit normalization is occurring (NCO rising to 0.9-1.1%)",
+      "2.1x P/TBV is above historical average",
+      "Dimon succession is a real risk (3-7% valuation impact)"
+    ],
+    "unresolved_points": [
+      "Sustainable ROTCE level (Bull: 19%, Bear: 15%, Base: 17%)",
+      "Fee income trajectory (Bull: +15% CAGR, Bear: +3%, Base: +6%)",
+      "Terminal multiple (Bull: 2.3x, Bear: 1.4x, Base: 1.85x)"
+    ],
+    "risk_adjustments": [
+      {"item": "Credit card fee cap", "impact": -0.50, "probability": 0.50},
+      {"item": "Dimon succession", "impact": "-3% terminal value", "probability": 0.40},
+      {"item": "Basel III capital", "impact": -0.30, "probability": 0.60},
+      {"item": "Office CRE reserves", "impact": -0.40, "probability": 0.30}
+    ]
+  },
+
+  "debate_rounds": [
+    {
+      "round": 1,
+      "speakers": ["Lead Analyst", "Bull Advocate", "Bear Advocate", "Critic"],
+      "key_points": {
+        "analyst": "Initial HOLD at $256.80, 3.3% upside. Quality premium justified but NII headwinds.",
+        "bull": "IB recovery understated (30-40% not 15-20%), AWM hidden gem, tech payoff. Bull should be 30% prob.",
+        "bear": "NII cliff steeper than feared, credit cycle has room to worsen, office CRE landmine, multiple compression risk.",
+        "critic": "IB assumes all M&A closes (historical 85%), AWM 5-7% organic unrealistic, card NCO comparison uses benign period."
+      }
+    },
+    {
+      "round": 2,
+      "speakers": ["Synthesizer"],
+      "key_points": {
+        "synthesis": "NII trajectory: $85-90B likely. Credit NCO adjusted to 1.0% from 0.9%. Multiple range 1.8-2.2x."
+      }
+    },
+    {
+      "round": 3,
+      "speakers": ["Bull Advocate", "Bear Advocate", "Critic"],
+      "key_points": {
+        "bull": "Payments deserves premium multiple ($127B standalone), share repurchase value accretion, First Republic synergies.",
+        "bear": "IB backlog not equal to revenue, payments competition intensifying, buybacks at rich valuations destroy value.",
+        "critic": "Payments valuation uses tech multiples inappropriately, buybacks neutral at 2.1x P/TBV, credit card fee cap valid risk."
+      }
+    },
+    {
+      "round": 4,
+      "speakers": ["Lead Analyst"],
+      "key_points": {
+        "analyst": "Revised model: IB growth 22%, NII $86B, card NCO 2.9%, Dimon 5% terminal discount. Fair value $253.40."
+      }
+    },
+    {
+      "round": 5,
+      "speakers": ["Bull Advocate", "Bear Advocate", "Critic"],
+      "key_points": {
+        "bull": "Private credit partnership, AI cost savings (20% efficiency gains), international growth, TBV growth 8% supports $279.",
+        "bear": "Private credit adds risk, AI could help competitors, international currency/geopolitical risk, structural ROTCE 15-16%.",
+        "critic": "Private credit realistic but 5+ year timeframe, AI reinvestment rate 60-70%, execution risk on international."
+      }
+    },
+    {
+      "round": 6,
+      "speakers": ["Synthesizer"],
+      "key_points": {
+        "synthesis": "Mid-debate consensus on moat (wide), NII decline, credit normalization. Unresolved: ROTCE, fees, terminal multiple."
+      }
+    },
+    {
+      "round": 7,
+      "speakers": ["Synthesizer"],
+      "key_points": {
+        "synthesis": "Valuation highly sensitive to terminal multiple (0.2x P/TBV = $24/share). Fair value range $235-$280."
+      }
+    },
+    {
+      "round": 8,
+      "speakers": ["Bull Advocate", "Bear Advocate"],
+      "key_points": {
+        "bull": "Relative valuation supports premium (500bp ROTCE above peers), 2006-2007 P/TBV was 2.5-3.0x.",
+        "bear": "Peers cheap for reasons (BAC rate sensitivity, WFC asset cap), 2006-2007 comparison dangerous (ended in 50% drawdown)."
+      }
+    },
+    {
+      "round": 9,
+      "speakers": ["Critic"],
+      "key_points": {
+        "critic": "Premium 60% structural, 40% cyclical. Fair terminal P/TBV = 1.85x. Adjusted fair value $255."
+      }
+    },
+    {
+      "round": 10,
+      "speakers": ["Synthesizer"],
+      "key_points": {
+        "synthesis": "Final values: Super Bear $165, Bear $205, Base $260, Bull $310, Super Bull $375. Prob-weighted $256.80. HOLD rating."
+      }
+    }
+  ]
+}

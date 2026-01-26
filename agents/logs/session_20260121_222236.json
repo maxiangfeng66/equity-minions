@@ -1,0 +1,572 @@
+{
+  "summary": {
+    "session_id": "20260121_222236",
+    "session_name": "Demo Research Session",
+    "session_start": "2026-01-21T22:22:36.120091",
+    "session_end": "2026-01-21T22:22:36.120164",
+    "duration_seconds": 7.3e-05,
+    "architecture": {
+      "total_tiers": 4,
+      "tier_details": {
+        "tier_0": {
+          "name": "Architect",
+          "description": "Strategic Planning Layer",
+          "responsibilities": [
+            "System-wide strategy coordination",
+            "Research pool creation",
+            "Quality threshold management",
+            "Resource allocation"
+          ],
+          "agents": [
+            "ChiefArchitectAgent",
+            "PriorityManager",
+            "ResourceAllocator"
+          ],
+          "source_files": [
+            "agents/architects/chief_architect.py",
+            "agents/architects/priority_manager.py"
+          ]
+        },
+        "tier_1": {
+          "name": "Supervisor",
+          "description": "Orchestration Layer",
+          "responsibilities": [
+            "Research lifecycle management",
+            "Worker agent spawning",
+            "Debate orchestration",
+            "Quality coordination"
+          ],
+          "agents": [
+            "ResearchSupervisor",
+            "DebateModerator"
+          ],
+          "source_files": [
+            "agents/supervisors/research_supervisor.py",
+            "agents/supervisors/debate_moderator.py"
+          ]
+        },
+        "tier_2": {
+          "name": "Worker",
+          "description": "Execution Layer",
+          "responsibilities": [
+            "Research analysis execution",
+            "Bull/Bear debate arguments",
+            "Critical analysis",
+            "Synthesis of findings",
+            "Domain specialization"
+          ],
+          "agents": [
+            "AnalystAgent",
+            "BullAgent",
+            "BearAgent",
+            "CriticAgent",
+            "SynthesizerAgent",
+            "EnhancedAnalystAgent",
+            "EnhancedBullAgent",
+            "EnhancedBearAgent",
+            "EnhancedCriticAgent",
+            "EnhancedSynthesizerAgent",
+            "SpecialistAgent",
+            "DevilsAdvocateAgent"
+          ],
+          "source_files": [
+            "agents/analyst_agent.py",
+            "agents/workers/enhanced_workers.py",
+            "agents/workers/specialist.py",
+            "agents/workers/devils_advocate.py"
+          ]
+        },
+        "tier_3": {
+          "name": "Goalkeeper",
+          "description": "Quality Gate Layer",
+          "responsibilities": [
+            "Final publication approval",
+            "Logical consistency validation",
+            "Fact-checking",
+            "Consensus verification",
+            "Due diligence for high-conviction calls"
+          ],
+          "agents": [
+            "PublishGatekeeperAgent",
+            "LogicAuditorAgent",
+            "FactCheckerAgent",
+            "ConsensusValidatorAgent",
+            "DueDiligenceAgent"
+          ],
+          "source_files": [
+            "agents/goalkeepers/publish_gatekeeper.py",
+            "agents/goalkeepers/logic_auditor.py",
+            "agents/goalkeepers/fact_checker_gate.py"
+          ]
+        }
+      }
+    },
+    "agents": {
+      "total_spawned": 7,
+      "total_terminated": 0,
+      "currently_active": 7,
+      "by_tier": {
+        "Architect (Strategy)": 1,
+        "Supervisor (Oversight)": 1,
+        "Worker (Execution)": 4,
+        "Goalkeeper (Quality)": 1
+      },
+      "by_role": {
+        "ChiefArchitectAgent": 1,
+        "ResearchSupervisor": 1,
+        "AnalystAgent": 1,
+        "BullAgent": 1,
+        "BearAgent": 1,
+        "CriticAgent": 1,
+        "PublishGatekeeperAgent": 1
+      }
+    },
+    "ai_providers": {
+      "deepseek": {
+        "display_name": "DeepSeek",
+        "model": "deepseek-chat",
+        "endpoint": "https://api.deepseek.com/v1/chat/completions",
+        "rate_limit": "Standard (varies by plan)",
+        "call_method": {
+          "type": "POST",
+          "auth": "Authorization: Bearer {API_KEY}",
+          "payload_format": "OpenAI-compatible Chat Completions format",
+          "example": {
+            "model": "deepseek-chat",
+            "messages": [
+              {
+                "role": "system",
+                "content": "..."
+              },
+              {
+                "role": "user",
+                "content": "..."
+              }
+            ],
+            "temperature": 0.7,
+            "max_tokens": 4096
+          }
+        },
+        "total_calls": 1,
+        "tokens_in": 1000,
+        "tokens_out": 1500,
+        "errors": 0
+      },
+      "grok": {
+        "display_name": "xAI (Grok)",
+        "model": "grok-3",
+        "endpoint": "https://api.x.ai/v1/chat/completions",
+        "rate_limit": "100,000 TPM (Tokens Per Minute)",
+        "call_method": {
+          "type": "POST",
+          "auth": "Authorization: Bearer {API_KEY}",
+          "payload_format": "OpenAI-compatible Chat Completions format",
+          "example": {
+            "model": "grok-3",
+            "messages": [
+              {
+                "role": "system",
+                "content": "..."
+              },
+              {
+                "role": "user",
+                "content": "..."
+              }
+            ],
+            "temperature": 0.7,
+            "max_tokens": 4096
+          }
+        },
+        "total_calls": 1,
+        "tokens_in": 1200,
+        "tokens_out": 1800,
+        "errors": 0
+      },
+      "gemini": {
+        "display_name": "Google (Gemini)",
+        "model": "gemini-2.0-flash",
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+        "rate_limit": "15 RPM (Requests Per Minute) - Free Tier",
+        "call_method": {
+          "type": "POST",
+          "auth": "Query parameter: ?key={API_KEY}",
+          "payload_format": "Gemini GenerateContent format",
+          "example": {
+            "contents": [
+              {
+                "parts": [
+                  {
+                    "text": "..."
+                  }
+                ]
+              }
+            ],
+            "generationConfig": {
+              "temperature": 0.7,
+              "maxOutputTokens": 4096
+            }
+          }
+        },
+        "total_calls": 1,
+        "tokens_in": 800,
+        "tokens_out": 500,
+        "errors": 0
+      },
+      "qwen": {
+        "display_name": "Alibaba (Qwen)",
+        "model": "qwen-turbo",
+        "endpoint": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions",
+        "rate_limit": "Standard (international endpoint)",
+        "call_method": {
+          "type": "POST",
+          "auth": "Authorization: Bearer {API_KEY}",
+          "payload_format": "OpenAI-compatible Chat Completions format",
+          "example": {
+            "model": "qwen-turbo",
+            "messages": [
+              {
+                "role": "system",
+                "content": "..."
+              },
+              {
+                "role": "user",
+                "content": "..."
+              }
+            ],
+            "temperature": 0.7,
+            "max_tokens": 4096
+          }
+        },
+        "total_calls": 1,
+        "tokens_in": 1300,
+        "tokens_out": 1700,
+        "errors": 0
+      },
+      "openai": {
+        "display_name": "OpenAI (GPT)",
+        "model": "gpt-4o",
+        "endpoint": "https://api.openai.com/v1/chat/completions",
+        "rate_limit": "28,000 TPM (Tokens Per Minute)",
+        "call_method": {
+          "type": "POST",
+          "auth": "Authorization: Bearer {API_KEY}",
+          "payload_format": "OpenAI Chat Completions format",
+          "example": {
+            "model": "gpt-4o",
+            "messages": [
+              {
+                "role": "system",
+                "content": "..."
+              },
+              {
+                "role": "user",
+                "content": "..."
+              }
+            ],
+            "temperature": 0.7,
+            "max_tokens": 4096
+          }
+        },
+        "total_calls": 1,
+        "tokens_in": 1500,
+        "tokens_out": 2000,
+        "errors": 0
+      }
+    },
+    "ai_provider_reference": {
+      "openai": {
+        "display_name": "OpenAI (GPT)",
+        "model": "gpt-4o",
+        "endpoint": "https://api.openai.com/v1/chat/completions",
+        "rate_limit": "28,000 TPM (Tokens Per Minute)",
+        "auth_method": "Authorization: Bearer {API_KEY}",
+        "payload_format": "OpenAI Chat Completions format"
+      },
+      "gemini": {
+        "display_name": "Google (Gemini)",
+        "model": "gemini-2.0-flash",
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+        "rate_limit": "15 RPM (Requests Per Minute) - Free Tier",
+        "auth_method": "Query parameter: ?key={API_KEY}",
+        "payload_format": "Gemini GenerateContent format"
+      },
+      "grok": {
+        "display_name": "xAI (Grok)",
+        "model": "grok-3",
+        "endpoint": "https://api.x.ai/v1/chat/completions",
+        "rate_limit": "100,000 TPM (Tokens Per Minute)",
+        "auth_method": "Authorization: Bearer {API_KEY}",
+        "payload_format": "OpenAI-compatible Chat Completions format"
+      },
+      "deepseek": {
+        "display_name": "DeepSeek",
+        "model": "deepseek-chat",
+        "endpoint": "https://api.deepseek.com/v1/chat/completions",
+        "rate_limit": "Standard (varies by plan)",
+        "auth_method": "Authorization: Bearer {API_KEY}",
+        "payload_format": "OpenAI-compatible Chat Completions format"
+      },
+      "qwen": {
+        "display_name": "Alibaba (Qwen)",
+        "model": "qwen-turbo",
+        "endpoint": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions",
+        "rate_limit": "Standard (international endpoint)",
+        "auth_method": "Authorization: Bearer {API_KEY}",
+        "payload_format": "OpenAI-compatible Chat Completions format"
+      },
+      "claude": {
+        "display_name": "Anthropic (Claude)",
+        "model": "claude-3-opus / claude-3-sonnet",
+        "endpoint": "https://api.anthropic.com/v1/messages",
+        "rate_limit": "Varies by tier",
+        "auth_method": "x-api-key: {API_KEY}, anthropic-version: 2023-06-01",
+        "payload_format": "Anthropic Messages API format"
+      }
+    },
+    "total_ai_calls": 5,
+    "total_tokens": {
+      "in": 5800,
+      "out": 7500
+    }
+  },
+  "hierarchy": {
+    "root_agents": [
+      "arch_001"
+    ],
+    "all_agents": {
+      "arch_001": {
+        "id": "arch_001",
+        "role": "ChiefArchitectAgent",
+        "tier": 0,
+        "tier_name": "Architect (Strategy)",
+        "provider": "openai",
+        "provider_name": "OpenAI (GPT-4)",
+        "parent_id": null,
+        "children": [
+          "sup_001"
+        ]
+      },
+      "sup_001": {
+        "id": "sup_001",
+        "role": "ResearchSupervisor",
+        "tier": 1,
+        "tier_name": "Supervisor (Oversight)",
+        "provider": "gemini",
+        "provider_name": "Google (Gemini)",
+        "parent_id": "arch_001",
+        "children": [
+          "analyst_001",
+          "bull_001",
+          "bear_001",
+          "critic_001",
+          "gate_001"
+        ]
+      },
+      "analyst_001": {
+        "id": "analyst_001",
+        "role": "AnalystAgent",
+        "tier": 2,
+        "tier_name": "Worker (Execution)",
+        "provider": "openai",
+        "provider_name": "OpenAI (GPT-4)",
+        "parent_id": "sup_001",
+        "children": []
+      },
+      "bull_001": {
+        "id": "bull_001",
+        "role": "BullAgent",
+        "tier": 2,
+        "tier_name": "Worker (Execution)",
+        "provider": "grok",
+        "provider_name": "xAI (Grok)",
+        "parent_id": "sup_001",
+        "children": []
+      },
+      "bear_001": {
+        "id": "bear_001",
+        "role": "BearAgent",
+        "tier": 2,
+        "tier_name": "Worker (Execution)",
+        "provider": "qwen",
+        "provider_name": "Alibaba (Qwen)",
+        "parent_id": "sup_001",
+        "children": []
+      },
+      "critic_001": {
+        "id": "critic_001",
+        "role": "CriticAgent",
+        "tier": 2,
+        "tier_name": "Worker (Execution)",
+        "provider": "deepseek",
+        "provider_name": "DeepSeek",
+        "parent_id": "sup_001",
+        "children": []
+      },
+      "gate_001": {
+        "id": "gate_001",
+        "role": "PublishGatekeeperAgent",
+        "tier": 3,
+        "tier_name": "Goalkeeper (Quality)",
+        "provider": "gemini",
+        "provider_name": "Google (Gemini)",
+        "parent_id": "sup_001",
+        "children": []
+      }
+    }
+  },
+  "events": [
+    {
+      "timestamp": "2026-01-21T22:22:36.120116",
+      "event_type": "spawn",
+      "agent_id": "arch_001",
+      "agent_role": "ChiefArchitectAgent",
+      "tier": 0,
+      "parent_id": null,
+      "ai_provider": "openai",
+      "details": {
+        "config": {},
+        "provider_name": "OpenAI (GPT-4)"
+      }
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120126",
+      "event_type": "spawn",
+      "agent_id": "sup_001",
+      "agent_role": "ResearchSupervisor",
+      "tier": 1,
+      "parent_id": "arch_001",
+      "ai_provider": "gemini",
+      "details": {
+        "config": {},
+        "provider_name": "Google (Gemini)"
+      }
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120133",
+      "event_type": "spawn",
+      "agent_id": "analyst_001",
+      "agent_role": "AnalystAgent",
+      "tier": 2,
+      "parent_id": "sup_001",
+      "ai_provider": "openai",
+      "details": {
+        "config": {},
+        "provider_name": "OpenAI (GPT-4)"
+      }
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120137",
+      "event_type": "spawn",
+      "agent_id": "bull_001",
+      "agent_role": "BullAgent",
+      "tier": 2,
+      "parent_id": "sup_001",
+      "ai_provider": "grok",
+      "details": {
+        "config": {},
+        "provider_name": "xAI (Grok)"
+      }
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120140",
+      "event_type": "spawn",
+      "agent_id": "bear_001",
+      "agent_role": "BearAgent",
+      "tier": 2,
+      "parent_id": "sup_001",
+      "ai_provider": "qwen",
+      "details": {
+        "config": {},
+        "provider_name": "Alibaba (Qwen)"
+      }
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120143",
+      "event_type": "spawn",
+      "agent_id": "critic_001",
+      "agent_role": "CriticAgent",
+      "tier": 2,
+      "parent_id": "sup_001",
+      "ai_provider": "deepseek",
+      "details": {
+        "config": {},
+        "provider_name": "DeepSeek"
+      }
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120147",
+      "event_type": "spawn",
+      "agent_id": "gate_001",
+      "agent_role": "PublishGatekeeperAgent",
+      "tier": 3,
+      "parent_id": "sup_001",
+      "ai_provider": "gemini",
+      "details": {
+        "config": {},
+        "provider_name": "Google (Gemini)"
+      }
+    }
+  ],
+  "ai_calls": [
+    {
+      "timestamp": "2026-01-21T22:22:36.120150",
+      "provider": "openai",
+      "model": "gpt-4o",
+      "agent_id": "analyst_001",
+      "agent_role": "AnalystAgent",
+      "call_type": "analysis",
+      "tokens_in": 1500,
+      "tokens_out": 2000,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120155",
+      "provider": "grok",
+      "model": "grok-3",
+      "agent_id": "bull_001",
+      "agent_role": "BullAgent",
+      "call_type": "debate",
+      "tokens_in": 1200,
+      "tokens_out": 1800,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120158",
+      "provider": "qwen",
+      "model": "qwen-turbo",
+      "agent_id": "bear_001",
+      "agent_role": "BearAgent",
+      "call_type": "debate",
+      "tokens_in": 1300,
+      "tokens_out": 1700,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120160",
+      "provider": "deepseek",
+      "model": "deepseek-chat",
+      "agent_id": "critic_001",
+      "agent_role": "CriticAgent",
+      "call_type": "critique",
+      "tokens_in": 1000,
+      "tokens_out": 1500,
+      "success": true,
+      "error": null
+    },
+    {
+      "timestamp": "2026-01-21T22:22:36.120162",
+      "provider": "gemini",
+      "model": "gemini-2.0-flash",
+      "agent_id": "gate_001",
+      "agent_role": "PublishGatekeeperAgent",
+      "call_type": "validation",
+      "tokens_in": 800,
+      "tokens_out": 500,
+      "success": true,
+      "error": null
+    }
+  ]
+}

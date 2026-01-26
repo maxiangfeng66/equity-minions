@@ -1,0 +1,448 @@
+<!--
+EQUITY RESEARCH REPORT TEMPLATE v1.0
+====================================
+This is the CANONICAL template for all equity research reports.
+ALL reports MUST follow this exact structure and styling.
+
+Last Updated: 2026-01-20
+Template Version: 1.0
+
+IMPORTANT: When generating reports, use this template exactly.
+Do NOT modify styling, section order, or structure.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TICKER}} - {{COMPANY_NAME}} | Equity Research Report</title>
+    <style>
+        /* ===== BASE STYLES - DO NOT MODIFY ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: #c9d1d9;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 30px; }
+
+        /* ===== HEADER SECTION ===== */
+        .header {
+            background: linear-gradient(135deg, #1f3a5c 0%, #21262d 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid #30363d;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        .header-left h1 { color: #58a6ff; font-size: 3em; margin-bottom: 10px; }
+        .header-left h2 { color: #c9d1d9; font-size: 1.4em; font-weight: 400; margin-bottom: 15px; }
+        .header-left .sector { color: #8b949e; font-size: 1.1em; }
+        .header-left .date { color: #6e7681; margin-top: 15px; }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* Rating badges - color by recommendation */
+        .rating-badge {
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .rating-badge.buy { background: #238636; }
+        .rating-badge.hold { background: #9e6a03; }
+        .rating-badge.sell { background: #da3633; }
+
+        .price-info { text-align: right; }
+        .price-info .current { font-size: 2em; color: #58a6ff; }
+        .price-info .target { color: #3fb950; font-size: 1.2em; margin-top: 5px; }
+        .price-info .upside { color: #8b949e; }
+        .price-info .upside.positive { color: #3fb950; }
+        .price-info .upside.negative { color: #f85149; }
+
+        /* ===== KEY METRICS STRIP ===== */
+        .metrics-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .metric-box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .metric-box .label { color: #8b949e; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric-box .value { color: #58a6ff; font-size: 1.6em; font-weight: bold; margin-top: 8px; }
+        .metric-box .value.positive { color: #3fb950; }
+        .metric-box .value.negative { color: #f85149; }
+        .metric-box .change { font-size: 0.85em; margin-top: 5px; color: #8b949e; }
+        .metric-box .change.positive { color: #3fb950; }
+        .metric-box .change.negative { color: #f85149; }
+
+        /* ===== SECTION STYLING ===== */
+        section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 25px;
+        }
+        section h2 {
+            color: #58a6ff;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #30363d;
+        }
+        section h3 { color: #c9d1d9; font-size: 1.25em; margin: 25px 0 15px; }
+        section h4 { color: #8b949e; font-size: 1.05em; margin: 20px 0 12px; }
+
+        /* ===== TABLES ===== */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #30363d; }
+        th { background: #21262d; color: #58a6ff; font-weight: 600; font-size: 0.9em; text-transform: uppercase; }
+        tr:hover { background: rgba(88, 166, 255, 0.05); }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .total-row { background: #21262d; font-weight: bold; }
+
+        /* ===== HIGHLIGHT BOXES ===== */
+        .highlight-box {
+            background: linear-gradient(135deg, #1f3a5c 0%, #1a2733 100%);
+            border-left: 4px solid #58a6ff;
+            padding: 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .highlight-box.warning { border-left-color: #9e6a03; }
+        .highlight-box.success { border-left-color: #3fb950; }
+        .highlight-box.danger { border-left-color: #f85149; }
+
+        /* ===== SCENARIO CARDS ===== */
+        .scenarios-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin: 25px 0; }
+        .scenario-card {
+            background: #21262d;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border-top: 4px solid;
+        }
+        .scenario-card.super-bear { border-color: #da3633; }
+        .scenario-card.bear { border-color: #f85149; }
+        .scenario-card.base { border-color: #58a6ff; }
+        .scenario-card.bull { border-color: #3fb950; }
+        .scenario-card.super-bull { border-color: #238636; }
+        .scenario-card .name { font-weight: bold; color: #c9d1d9; margin-bottom: 8px; }
+        .scenario-card .prob { color: #8b949e; font-size: 0.9em; margin-bottom: 12px; }
+        .scenario-card .value { font-size: 1.5em; font-weight: bold; }
+        .scenario-card .contribution { color: #8b949e; font-size: 0.85em; margin-top: 8px; }
+
+        /* ===== DCF TABLE ===== */
+        .dcf-table { font-size: 0.9em; }
+        .dcf-table th, .dcf-table td { padding: 10px 12px; }
+
+        /* ===== RISK CARDS ===== */
+        .risk-card {
+            background: #21262d;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+            border-left: 4px solid #f85149;
+        }
+        .risk-card.medium { border-left-color: #9e6a03; }
+        .risk-card.low { border-left-color: #3fb950; }
+        .risk-card .risk-header { display: flex; justify-content: space-between; align-items: center; }
+        .risk-card h5 { color: #c9d1d9; margin: 0; }
+        .risk-card .badge { font-size: 0.75em; padding: 4px 10px; border-radius: 12px; background: #30363d; }
+        .risk-card p { color: #8b949e; margin-top: 10px; font-size: 0.95em; }
+        .risk-card .mitigation { color: #3fb950; margin-top: 8px; }
+
+        /* ===== LISTS ===== */
+        .key-points { list-style: none; padding: 0; }
+        .key-points li {
+            padding: 12px 0 12px 28px;
+            position: relative;
+            border-bottom: 1px solid #21262d;
+        }
+        .key-points li:before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+        .key-points li:last-child { border-bottom: none; }
+
+        /* ===== LAYOUTS ===== */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6e7681;
+            font-size: 0.9em;
+            border-top: 1px solid #30363d;
+            margin-top: 30px;
+        }
+
+        /* ===== SENSITIVITY TABLE ===== */
+        .sensitivity-table td { text-align: center; }
+        .sensitivity-table .current { background: rgba(88, 166, 255, 0.2); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .scenarios-grid { grid-template-columns: repeat(3, 1fr); }
+            .metrics-strip { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .header { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+            .scenarios-grid { grid-template-columns: 1fr 1fr; }
+            .metrics-strip { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ===== SECTION 1: HEADER ===== -->
+        <header class="header">
+            <div class="header-left">
+                <h1>{{TICKER}}</h1>
+                <h2>{{COMPANY_NAME}}</h2>
+                <p class="sector">{{SECTOR}} | {{EXCHANGE}}</p>
+                <p class="date">Valuation Date: {{VALUATION_DATE}}</p>
+            </div>
+            <div class="header-right">
+                <div class="rating-badge {{RATING_CLASS}}">{{RATING}}</div>
+                <div class="price-info">
+                    <div class="current">{{CURRENCY}} {{CURRENT_PRICE}}</div>
+                    <div class="target">Fair Value: {{CURRENCY}} {{FAIR_VALUE}}</div>
+                    <div class="upside {{UPSIDE_CLASS}}">Implied Return: {{UPSIDE_PCT}}%</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== SECTION 2: KEY METRICS STRIP ===== -->
+        <div class="metrics-strip">
+            <div class="metric-box">
+                <div class="label">Market Cap</div>
+                <div class="value">{{MARKET_CAP}}</div>
+                <div class="change">{{MARKET_CAP_USD}}</div>
+            </div>
+            <div class="metric-box">
+                <div class="label">{{LATEST_YEAR}} Revenue</div>
+                <div class="value">{{REVENUE}}</div>
+                <div class="change {{REVENUE_GROWTH_CLASS}}">{{REVENUE_GROWTH}}</div>
+            </div>
+            <div class="metric-box">
+                <div class="label">Latest Growth</div>
+                <div class="value {{GROWTH_CLASS}}">{{GROWTH_RATE}}</div>
+                <div class="change">{{GROWTH_TREND}}</div>
+            </div>
+            <div class="metric-box">
+                <div class="label">Gross Margin</div>
+                <div class="value">{{GROSS_MARGIN}}</div>
+                <div class="change {{MARGIN_CHANGE_CLASS}}">{{MARGIN_CHANGE}}</div>
+            </div>
+            <div class="metric-box">
+                <div class="label">Net Debt</div>
+                <div class="value {{NET_DEBT_CLASS}}">{{NET_DEBT}}</div>
+                <div class="change">{{NET_DEBT_DETAIL}}</div>
+            </div>
+            <div class="metric-box">
+                <div class="label">52-Week Range</div>
+                <div class="value">{{RANGE_52W}}</div>
+                <div class="change">{{RANGE_POSITION}}</div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 3: EXECUTIVE SUMMARY ===== -->
+        <section>
+            <h2>Executive Summary</h2>
+            <div class="highlight-box">
+                <p><strong>Investment Thesis:</strong> {{INVESTMENT_THESIS}}</p>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h3>Bull Case</h3>
+                    <ul class="key-points">
+                        {{BULL_POINTS}}
+                    </ul>
+                </div>
+                <div>
+                    <h3>Bear Case</h3>
+                    <ul class="key-points">
+                        {{BEAR_POINTS}}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: FINANCIAL PERFORMANCE ===== -->
+        <section>
+            <h2>Financial Performance</h2>
+
+            <h3>Historical Revenue & Profitability</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        {{FINANCIAL_YEARS_HEADER}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{FINANCIAL_TABLE_ROWS}}
+                </tbody>
+            </table>
+
+            {{SEGMENT_BREAKDOWN}}
+
+            {{KEY_INSIGHT_BOX}}
+        </section>
+
+        <!-- ===== SECTION 5: DCF VALUATION ===== -->
+        <section>
+            <h2>DCF Valuation Model</h2>
+
+            <h3>Key Assumptions</h3>
+            <div class="metrics-strip" style="grid-template-columns: repeat(5, 1fr);">
+                <div class="metric-box">
+                    <div class="label">Discount Rate (WACC)</div>
+                    <div class="value">{{DISCOUNT_RATE}}%</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Terminal Growth</div>
+                    <div class="value">{{TERMINAL_GROWTH}}%</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Tax Rate</div>
+                    <div class="value">{{TAX_RATE}}%</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Projection Period</div>
+                    <div class="value">{{PROJECTION_YEARS}} Years</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Shares Outstanding</div>
+                    <div class="value">{{SHARES_OUTSTANDING}}</div>
+                </div>
+            </div>
+
+            <div class="highlight-box warning">
+                <strong>Discount Rate Rationale ({{DISCOUNT_RATE}}%):</strong> {{DISCOUNT_RATE_RATIONALE}}
+            </div>
+
+            <h3>Base Case DCF ({{BASE_PROBABILITY}}% Probability)</h3>
+            <p style="margin-bottom: 15px; color: #8b949e;">{{BASE_CASE_DESCRIPTION}}</p>
+
+            {{DCF_PROJECTION_TABLE}}
+
+            {{DCF_SUMMARY_TABLE}}
+        </section>
+
+        <!-- ===== SECTION 6: SCENARIO ANALYSIS ===== -->
+        <section>
+            <h2>Scenario Analysis</h2>
+
+            <div class="scenarios-grid">
+                {{SCENARIO_CARDS}}
+            </div>
+
+            <div class="highlight-box">
+                <h4 style="color: #58a6ff; margin-bottom: 15px;">Probability-Weighted Fair Value: {{CURRENCY}} {{PWV}}</h4>
+                <p>Current Price: {{CURRENCY}} {{CURRENT_PRICE}} | Implied Return: <strong>{{UPSIDE_PCT}}%</strong></p>
+                <p style="color: #8b949e; margin-top: 10px;">{{PWV_COMMENTARY}}</p>
+            </div>
+
+            <h3>Scenario Details</h3>
+            {{SCENARIO_DETAILS_TABLE}}
+        </section>
+
+        <!-- ===== SECTION 7: SENSITIVITY ANALYSIS ===== -->
+        <section>
+            <h2>Sensitivity Analysis</h2>
+
+            <h3>Base Case Value vs. Discount Rate</h3>
+            {{DISCOUNT_SENSITIVITY_TABLE}}
+
+            <h3>Probability Allocation Sensitivity</h3>
+            {{PROBABILITY_SENSITIVITY_TABLE}}
+        </section>
+
+        <!-- ===== SECTION 8: VALUATION CROSS-CHECKS ===== -->
+        <section>
+            <h2>Valuation Cross-Checks</h2>
+            {{COMPARABLE_TABLE}}
+        </section>
+
+        <!-- ===== SECTION 9: KEY RISKS ===== -->
+        <section>
+            <h2>Key Risks</h2>
+
+            <h3>High Impact Risks</h3>
+            {{HIGH_RISKS}}
+
+            <h3>Medium Impact Risks</h3>
+            {{MEDIUM_RISKS}}
+        </section>
+
+        <!-- ===== SECTION 10: INVESTMENT CONCLUSION ===== -->
+        <section>
+            <h2>Investment Conclusion</h2>
+
+            <div class="highlight-box {{RATING_BOX_CLASS}}">
+                <h3 style="color: {{RATING_COLOR}}; margin-bottom: 15px;">{{RATING}} - {{RATING_SUBTITLE}}</h3>
+                <div class="metrics-strip" style="grid-template-columns: repeat(4, 1fr); margin: 20px 0;">
+                    <div class="metric-box">
+                        <div class="label">Current Price</div>
+                        <div class="value">{{CURRENCY}} {{CURRENT_PRICE}}</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Fair Value</div>
+                        <div class="value">{{CURRENCY}} {{FAIR_VALUE}}</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Implied Return</div>
+                        <div class="value {{UPSIDE_CLASS}}">{{UPSIDE_PCT}}%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Conviction</div>
+                        <div class="value">{{CONVICTION}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Entry Points</h3>
+            {{ENTRY_POINTS_TABLE}}
+
+            <h3>Key Metrics to Monitor</h3>
+            <ul class="key-points">
+                {{MONITORING_METRICS}}
+            </ul>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <p>Multi-AI Equity Research System | Report Generated: {{GENERATION_DATE}}</p>
+            <p>This report is for informational purposes only and does not constitute investment advice.</p>
+            <p>Data Sources: {{DATA_SOURCES}}</p>
+        </footer>
+    </div>
+</body>
+</html>

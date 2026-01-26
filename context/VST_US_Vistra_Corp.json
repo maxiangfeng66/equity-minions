@@ -1,0 +1,847 @@
+{
+  "ticker": "VST US",
+  "company": "Vistra Corp",
+  "sector": "Utilities - Integrated Power/Independent Power Producers",
+  "executive_summary": {
+    "overview": "Vistra Corp (VST US) is a leading integrated retail electricity and power generation company in the United States, with a dominant position in Texas's deregulated ERCOT market. The company operates approximately 41 GW of generation capacity across nuclear, natural gas, coal, and solar assets, serving over 5 million retail customers through brands including TXU Energy, Ambit Energy, and Dynegy. Vistra is uniquely positioned to benefit from the AI-driven data center power demand boom.",
+    "investment_highlights": [
+      "Dominant integrated position in ERCOT (Texas) with ~18 GW generation capacity and leading retail market share",
+      "Irreplaceable 6.4 GW Comanche Peak nuclear asset providing zero-carbon baseload power",
+      "Data center power demand growth creating structural tailwind for dispatchable generation",
+      "Vertically integrated model provides natural hedge between generation and retail segments",
+      "Aggressive share repurchase program returning capital to shareholders",
+      "Strong free cash flow generation with improving balance sheet"
+    ],
+    "key_risks": [
+      "ERCOT market volatility and potential regulatory changes post-Winter Storm Uri",
+      "Natural gas price exposure affecting generation margins",
+      "Coal fleet phase-out execution and stranded asset risk",
+      "Nuclear operational risk and capital intensity",
+      "Competition from renewable energy and battery storage",
+      "Data center demand may not materialize as aggressively as expected"
+    ],
+    "rating": "BUY",
+    "target_price": {
+      "value": 175.00,
+      "currency": "USD",
+      "methodology": "Probability-weighted DCF at 9% WACC"
+    }
+  },
+  "industry_analysis": {
+    "us_power_market_overview": {
+      "total_capacity_gw": 1200,
+      "annual_generation_twh": 4100,
+      "market_structure": "Mix of regulated, deregulated, and hybrid markets",
+      "key_trends": [
+        "Data center demand growth accelerating from AI/cloud computing",
+        "Grid reliability concerns driving need for dispatchable generation",
+        "Energy transition creating opportunities and challenges",
+        "Electrification of transportation and heating increasing demand"
+      ]
+    },
+    "texas_ercot_market": {
+      "description": "ERCOT (Electric Reliability Council of Texas) operates as an energy-only wholesale market without capacity payments, covering ~90% of Texas electricity load",
+      "capacity_gw": 140,
+      "peak_demand_gw": 85,
+      "market_characteristics": [
+        "Energy-only market with $5,000/MWh price cap (raised from $9,000 post-Uri)",
+        "No capacity market creates scarcity pricing opportunities",
+        "Rapid load growth from population migration and industrial expansion",
+        "Limited interconnection with other US grids",
+        "High renewable penetration (solar and wind) creating volatility"
+      ],
+      "load_growth_drivers": [
+        "Population growth: Texas gaining ~1,000 residents daily",
+        "Data center expansion: Austin, Dallas, Houston corridors",
+        "Industrial reshoring: Semiconductor fabs, LNG facilities",
+        "Bitcoin mining operations (variable but significant)",
+        "Electric vehicle adoption"
+      ],
+      "supply_dynamics": {
+        "thermal_retirement_gw": "10-15 GW of coal/gas expected to retire 2025-2030",
+        "renewable_additions_gw": "50+ GW solar/wind in queue",
+        "battery_storage_gw": "20+ GW in development pipeline",
+        "reserve_margin_pct": "10-15% (below optimal 15-20%)",
+        "key_insight": "Intermittent renewable additions not replacing firm capacity from thermal retirements, creating scarcity value for dispatchable generation"
+      }
+    },
+    "data_center_demand_growth": {
+      "current_us_data_center_power_gw": 20,
+      "projected_2030_power_gw": 50,
+      "growth_rate_cagr_pct": 15,
+      "key_drivers": [
+        "Generative AI training and inference requires massive compute",
+        "Cloud computing expansion continues",
+        "Edge computing and 5G deployment",
+        "Cryptocurrency mining (cyclical)"
+      ],
+      "texas_specific_growth": {
+        "current_capacity_gw": 4,
+        "announced_expansions_gw": 8,
+        "key_locations": ["Austin", "Dallas-Fort Worth", "Houston", "San Antonio"],
+        "why_texas": [
+          "Cheap land and favorable business environment",
+          "Access to wind and solar resources",
+          "No state income tax",
+          "Robust transmission infrastructure",
+          "Proximity to major tech hubs"
+        ]
+      },
+      "hyperscaler_activity": [
+        {"company": "Microsoft/OpenAI", "status": "Expanding Texas operations significantly"},
+        {"company": "Google", "status": "Multiple Texas data center campuses"},
+        {"company": "Amazon Web Services", "status": "Large Texas footprint with expansion plans"},
+        {"company": "Meta", "status": "AI training facilities requiring massive power"},
+        {"company": "Tesla", "status": "Dojo supercomputer and manufacturing"}
+      ],
+      "power_requirements": {
+        "traditional_data_center_mw": "20-50 MW",
+        "ai_training_cluster_mw": "100-500+ MW",
+        "hyperscale_campus_mw": "500-1,000+ MW",
+        "key_insight": "AI compute is 10x more power-intensive than traditional workloads"
+      }
+    },
+    "regulatory_environment": {
+      "ercot_post_uri_reforms": [
+        "Price cap reduced from $9,000/MWh to $5,000/MWh",
+        "Performance Credit Mechanism (PCM) under development",
+        "Weatherization requirements for generators",
+        "Ancillary service market reforms",
+        "Potential for reliability-based payments"
+      ],
+      "federal_policy": {
+        "inflation_reduction_act": "Production tax credits favor nuclear; investment tax credits for storage",
+        "nuclear_ptc": "$15/MWh production tax credit for existing nuclear through 2032",
+        "clean_energy_targets": "Federal push for clean electricity but no mandates"
+      },
+      "texas_policy": {
+        "renewable_mandate": "None (market-driven adoption)",
+        "carbon_policy": "No state carbon pricing",
+        "grid_reliability_focus": "Post-Uri emphasis on dispatchable capacity"
+      }
+    },
+    "competitive_landscape": {
+      "ercot_major_players": [
+        {"company": "Vistra Corp (VST)", "capacity_gw": 18, "market_position": "Dominant integrated player"},
+        {"company": "NRG Energy (NRG)", "capacity_gw": 15, "market_position": "Major retail and generation"},
+        {"company": "Calpine", "capacity_gw": 12, "market_position": "Large gas fleet"},
+        {"company": "Talen Energy", "capacity_gw": 5, "market_position": "Focused fleet"},
+        {"company": "NextEra Energy (NEE)", "capacity_gw": 8, "market_position": "Renewables focused"}
+      ],
+      "national_ipp_comparisons": {
+        "constellation_energy": {
+          "ticker": "CEG",
+          "description": "Largest US nuclear operator, benefiting from same data center demand theme",
+          "nuclear_capacity_gw": 23,
+          "ev_ebitda_multiple": "12-14x"
+        },
+        "nrg_energy": {
+          "ticker": "NRG",
+          "description": "Closest peer with Texas focus and integrated model",
+          "total_capacity_gw": 23,
+          "ev_ebitda_multiple": "6-8x"
+        }
+      }
+    }
+  },
+  "company_analysis": {
+    "business_model": {
+      "overview": "Vistra operates an integrated power generation and retail electricity business, primarily in Texas (ERCOT) with additional presence in PJM, MISO, and other markets",
+      "segments": {
+        "texas_generation": {
+          "description": "Power generation fleet in ERCOT market",
+          "revenue_contribution_pct": 45,
+          "key_assets": "Comanche Peak nuclear, large gas fleet, remaining coal",
+          "competitive_advantage": "Scale economies, diversified fuel mix, strategic locations"
+        },
+        "texas_retail": {
+          "description": "Retail electricity sales to residential and commercial customers",
+          "revenue_contribution_pct": 35,
+          "brands": ["TXU Energy", "Ambit Energy", "Value Based Brands"],
+          "customers_million": 4.3,
+          "market_share_pct": 25,
+          "competitive_advantage": "Integrated hedge with generation, brand recognition"
+        },
+        "east_generation": {
+          "description": "Generation assets in PJM, ISO-NE, and MISO markets",
+          "revenue_contribution_pct": 15,
+          "capacity_gw": 14,
+          "focus": "Gas and renewables, coal phase-out in progress"
+        },
+        "sunset_assets": {
+          "description": "Coal plants scheduled for retirement",
+          "revenue_contribution_pct": 5,
+          "capacity_gw": 6,
+          "strategy": "Managed decline, cash extraction, site repurposing"
+        }
+      }
+    },
+    "generation_fleet": {
+      "total_capacity_gw": 41,
+      "by_fuel_type": {
+        "nuclear": {
+          "capacity_gw": 6.4,
+          "pct_of_total": 16,
+          "assets": [
+            {
+              "name": "Comanche Peak Nuclear Generating Station",
+              "location": "Glen Rose, Texas",
+              "units": 2,
+              "capacity_mw": 2400,
+              "unit_1_commercial_date": 1990,
+              "unit_2_commercial_date": 1993,
+              "remaining_license_years": 15,
+              "license_expiration": ["2030 (Unit 1)", "2033 (Unit 2)"],
+              "license_extension_status": "Expected 20-year extension to 2050/2053",
+              "capacity_factor_pct": 92,
+              "strategic_value": "Irreplaceable zero-carbon baseload in ERCOT"
+            }
+          ],
+          "nuclear_ptc_benefit": "$15/MWh production tax credit through 2032 (IRA benefit)",
+          "annual_ptc_value_million": 280
+        },
+        "natural_gas": {
+          "capacity_gw": 23,
+          "pct_of_total": 56,
+          "technologies": ["Combined Cycle (CCGT)", "Simple Cycle (Peakers)", "Steam Turbines"],
+          "key_characteristics": [
+            "Flexible dispatch capability",
+            "Low maintenance capex",
+            "Fuel cost exposure (natural hedge via retail)",
+            "High capacity factors for CCGTs (70-80%)"
+          ],
+          "key_assets": [
+            {"name": "Forney Energy Center", "capacity_mw": 1800, "type": "CCGT", "location": "Texas"},
+            {"name": "Midlothian Energy", "capacity_mw": 1600, "type": "CCGT", "location": "Texas"},
+            {"name": "Odessa-Ector", "capacity_mw": 1054, "type": "CCGT", "location": "Texas"},
+            {"name": "Wolf Hollow", "capacity_mw": 705, "type": "CCGT", "location": "Texas"}
+          ]
+        },
+        "coal": {
+          "capacity_gw": 8,
+          "pct_of_total": 19,
+          "status": "Phase-out in progress",
+          "retirement_timeline": "Most units to retire by 2027-2030",
+          "key_assets": [
+            {"name": "Martin Lake", "capacity_mw": 2380, "status": "Retirement planned 2027"},
+            {"name": "Oak Grove", "capacity_mw": 1600, "status": "Retirement planned 2028"},
+            {"name": "Luminant Mining", "status": "Associated lignite mining operations"}
+          ],
+          "stranded_asset_risk": "Manageable with planned retirements and site repurposing",
+          "site_repurposing_potential": "Battery storage, solar, data centers at existing sites"
+        },
+        "solar_and_storage": {
+          "solar_capacity_gw": 1.5,
+          "battery_storage_gw": 1.2,
+          "development_pipeline_gw": 5,
+          "strategy": "Repurposing coal sites for solar+storage installations",
+          "vistra_zero": "Company's zero-carbon business unit",
+          "key_projects": [
+            {"name": "Moss Landing Battery Storage", "capacity_mw": 750, "location": "California", "status": "Operational, expanding"},
+            {"name": "DeCordova Battery Storage", "capacity_mw": 260, "location": "Texas"},
+            {"name": "Upton Solar", "capacity_mw": 180, "location": "Texas"}
+          ]
+        }
+      },
+      "geographic_distribution": {
+        "texas_ercot": {
+          "capacity_gw": 18,
+          "pct_of_total": 44,
+          "strategic_importance": "Core market, integrated with retail"
+        },
+        "pjm": {
+          "capacity_gw": 12,
+          "pct_of_total": 29,
+          "strategic_importance": "Capacity market provides revenue stability"
+        },
+        "miso": {
+          "capacity_gw": 6,
+          "pct_of_total": 15,
+          "strategic_importance": "Midwest industrial demand"
+        },
+        "iso_ne_nyiso_other": {
+          "capacity_gw": 5,
+          "pct_of_total": 12,
+          "strategic_importance": "Diversification and merchant exposure"
+        }
+      }
+    },
+    "retail_business": {
+      "overview": "Vistra's retail segment serves ~5 million customers primarily in Texas, making it the largest retail electricity provider in the state",
+      "customer_base": {
+        "total_customers_million": 5.0,
+        "texas_customers_million": 4.3,
+        "residential_pct": 80,
+        "commercial_pct": 20,
+        "market_share_texas_pct": 25
+      },
+      "brands": [
+        {"name": "TXU Energy", "positioning": "Premium brand, largest residential provider in Texas", "customers_million": 2.5},
+        {"name": "Ambit Energy", "positioning": "Multi-level marketing model, direct sales", "customers_million": 1.0},
+        {"name": "Value Based Brands", "positioning": "Discount brands for price-sensitive customers", "customers_million": 1.5}
+      ],
+      "integrated_model_benefits": [
+        "Natural hedge: Generation profits offset retail losses in high price environments",
+        "Customer acquisition advantage through brand recognition",
+        "Load forecasting synergies between generation and retail",
+        "Margin capture across value chain"
+      ],
+      "customer_acquisition_cost_usd": 150,
+      "churn_rate_annual_pct": 15,
+      "average_revenue_per_customer_usd": 1800
+    },
+    "competitive_advantages": [
+      {
+        "advantage": "Irreplaceable Nuclear Asset (Comanche Peak)",
+        "description": "6.4 GW of zero-carbon baseload capacity in ERCOT cannot be replicated due to permitting/construction challenges",
+        "moat_durability": "Very High - impossible to build new nuclear in Texas"
+      },
+      {
+        "advantage": "Integrated Generation-Retail Model",
+        "description": "Natural hedge between generation and retail reduces earnings volatility and provides margin capture",
+        "moat_durability": "High - requires scale in both segments to replicate"
+      },
+      {
+        "advantage": "Scale and Diversification",
+        "description": "41 GW across multiple fuel types and geographies provides operational flexibility",
+        "moat_durability": "Medium-High - scale is replicable but takes time/capital"
+      },
+      {
+        "advantage": "ERCOT Market Position",
+        "description": "Dominant position in fastest-growing US power market with deregulated structure",
+        "moat_durability": "High - market position built over decades"
+      },
+      {
+        "advantage": "Data Center Demand Exposure",
+        "description": "Positioned to capture hyperscaler demand for 24/7 clean power",
+        "moat_durability": "Medium - competitors also pursuing this opportunity"
+      },
+      {
+        "advantage": "Site Redevelopment Optionality",
+        "description": "Coal plant sites can be repurposed for battery storage, solar, data centers",
+        "moat_durability": "Medium - one-time value capture opportunity"
+      }
+    ],
+    "competitive_disadvantages": [
+      "Coal exposure creates ESG concerns and stranded asset risk",
+      "Natural gas price exposure affects generation margins",
+      "ERCOT-heavy concentration increases regional risk",
+      "No capacity payments in ERCOT creates earnings volatility",
+      "Nuclear license extensions not yet fully secured"
+    ],
+    "data_center_opportunity": {
+      "strategic_positioning": "Vistra is actively pursuing data center co-location and power purchase agreements",
+      "key_initiatives": [
+        "Behind-the-meter nuclear PPAs for hyperscalers seeking 24/7 carbon-free power",
+        "Battery storage co-location at data center sites for reliability",
+        "Site redevelopment at retired coal plants for data center campuses",
+        "Long-term fixed-price contracts providing revenue visibility"
+      ],
+      "comanche_peak_data_center_potential": {
+        "available_capacity_mw": "500-1,000 (incremental or off-peak)",
+        "ppa_structure": "Behind-the-meter or direct connection agreements",
+        "pricing_potential_usd_mwh": "70-90 (premium to wholesale for reliability)",
+        "interested_parties": "Multiple hyperscalers in discussions (per management commentary)"
+      },
+      "valuation_upside": "Data center contracts not fully reflected in base case - represents option value"
+    }
+  },
+  "financial_analysis": {
+    "currency": "USD",
+    "fiscal_year_end": "December",
+    "shares_outstanding_million": 340,
+    "current_stock_price_usd": 140,
+    "market_cap_billion": 47.6,
+    "historical_financials": {
+      "fy2022": {
+        "revenue_billion": 16.2,
+        "ebitda_billion": 3.1,
+        "ebitda_margin_pct": 19,
+        "net_income_billion": 0.5,
+        "eps_usd": 1.47,
+        "fcf_billion": 1.8,
+        "notes": "Weather and commodity volatility impact"
+      },
+      "fy2023": {
+        "revenue_billion": 14.8,
+        "ebitda_billion": 4.2,
+        "ebitda_margin_pct": 28,
+        "net_income_billion": 1.6,
+        "eps_usd": 4.70,
+        "fcf_billion": 2.5,
+        "notes": "EBITDA recovery, margin expansion"
+      },
+      "fy2024e": {
+        "revenue_billion": 15.5,
+        "ebitda_billion": 5.0,
+        "ebitda_margin_pct": 32,
+        "net_income_billion": 2.2,
+        "eps_usd": 6.50,
+        "fcf_billion": 3.0,
+        "notes": "Strong ERCOT pricing, nuclear PTC benefit, data center optionality"
+      }
+    },
+    "guidance_fy2024": {
+      "ebitda_range_billion": [4.8, 5.2],
+      "fcf_range_billion": [2.8, 3.2],
+      "capex_billion": 1.5,
+      "share_repurchase_authorization_billion": 4.25
+    },
+    "balance_sheet": {
+      "total_debt_billion": 12.5,
+      "cash_billion": 1.2,
+      "net_debt_billion": 11.3,
+      "net_debt_to_ebitda_x": 2.3,
+      "target_leverage_x": "2.0-2.5x",
+      "debt_maturity_profile": "Well-laddered with no significant near-term maturities",
+      "credit_rating": "BB+ (S&P), Ba1 (Moody's) - investment grade trajectory"
+    },
+    "capital_allocation": {
+      "priorities": [
+        "Maintain investment grade credit metrics",
+        "Invest in Vistra Zero (renewables/storage)",
+        "Return excess cash to shareholders via buybacks",
+        "Opportunistic M&A"
+      ],
+      "share_buyback_program": {
+        "total_authorization_billion": 4.25,
+        "executed_to_date_billion": 2.8,
+        "remaining_authorization_billion": 1.45,
+        "shares_repurchased_million": 85,
+        "pct_of_shares_repurchased": 20,
+        "average_price_paid_usd": 33
+      },
+      "dividend": {
+        "current_quarterly_dividend_usd": 0.2175,
+        "annual_dividend_usd": 0.87,
+        "dividend_yield_pct": 0.6,
+        "payout_ratio_pct": 13,
+        "policy": "Modest dividend with emphasis on buybacks"
+      }
+    },
+    "key_valuation_metrics": {
+      "at_current_price_140": {
+        "pe_forward_x": 21.5,
+        "ev_ebitda_x": 11.8,
+        "price_to_fcf_x": 15.9,
+        "dividend_yield_pct": 0.6,
+        "fcf_yield_pct": 6.3
+      },
+      "historical_trading_range": {
+        "52_week_low_usd": 35,
+        "52_week_high_usd": 165,
+        "3_year_low_usd": 18,
+        "3_year_high_usd": 165
+      },
+      "peer_comparison": {
+        "constellation_energy_ceg": {"ev_ebitda_x": 13.5, "pe_x": 25},
+        "nrg_energy_nrg": {"ev_ebitda_x": 7.5, "pe_x": 15},
+        "ipp_sector_average": {"ev_ebitda_x": 9, "pe_x": 18}
+      }
+    }
+  },
+  "corporate_governance": {
+    "board_composition": {
+      "total_directors": 11,
+      "independent_directors": 9,
+      "female_directors": 3,
+      "diversity_pct": 36,
+      "average_tenure_years": 5,
+      "key_committees": ["Audit", "Compensation", "Nominating/Governance", "Sustainability"]
+    },
+    "key_board_members": [
+      {
+        "name": "Scott Helm",
+        "role": "Chairman",
+        "background": "Former Managing Director, Luminus Management",
+        "tenure_years": 7,
+        "expertise": "Energy sector, capital markets"
+      },
+      {
+        "name": "Jim Burke",
+        "role": "CEO and Director",
+        "background": "Career Vistra executive, former CFO",
+        "tenure_years": 8,
+        "expertise": "Operations, finance, energy markets"
+      }
+    ],
+    "management_team": [
+      {
+        "name": "Jim Burke",
+        "role": "President and CEO",
+        "tenure_years": 8,
+        "background": "Vistra veteran, former CFO, deep knowledge of operations and markets",
+        "compensation_2023_million": 15.2,
+        "ownership_shares_million": 0.8
+      },
+      {
+        "name": "Kris Moldovan",
+        "role": "EVP and CFO",
+        "tenure_years": 5,
+        "background": "Former investment banker, financial strategy",
+        "compensation_2023_million": 5.5
+      },
+      {
+        "name": "Stacy Hock",
+        "role": "EVP and Chief Commercial Officer",
+        "tenure_years": 6,
+        "background": "Commercial operations, trading",
+        "compensation_2023_million": 4.8
+      }
+    ],
+    "executive_compensation": {
+      "ceo_total_comp_million": 15.2,
+      "ceo_comp_vs_median_employee_ratio": 180,
+      "performance_metrics": ["Adjusted EBITDA", "FCF", "Safety metrics", "TSR"],
+      "equity_vesting_period_years": 3,
+      "clawback_policy": "Yes"
+    },
+    "shareholder_rights": {
+      "dual_class_shares": "No",
+      "poison_pill": "No",
+      "annual_director_elections": "Yes",
+      "proxy_access": "Yes (3%/3 years)",
+      "majority_voting": "Yes"
+    },
+    "esg_considerations": {
+      "environmental": {
+        "carbon_reduction_target": "60% reduction by 2030 (from 2010 baseline)",
+        "net_zero_target": "2050",
+        "coal_phase_out": "Most coal capacity retiring by 2027-2030",
+        "vistra_zero_investment": "$2+ billion in renewables and storage",
+        "water_usage": "Cooling requirements for nuclear and thermal plants"
+      },
+      "social": {
+        "workforce_size": 5500,
+        "safety_record": "Top quartile in industry TRIR metrics",
+        "community_engagement": "Local community support programs",
+        "diversity_initiatives": "Active DEI programs"
+      },
+      "governance": {
+        "board_independence_pct": 82,
+        "separation_of_chairman_ceo": "Yes",
+        "political_contributions_disclosure": "Yes",
+        "cybersecurity_oversight": "Board-level cybersecurity committee"
+      }
+    },
+    "governance_score": {
+      "score": 7.5,
+      "scale": "1-10",
+      "strengths": [
+        "Strong board independence and separation of roles",
+        "Shareholder-friendly capital allocation (buybacks)",
+        "Clear ESG targets and execution",
+        "Experienced management team with operational expertise",
+        "No dual-class shares or poison pill"
+      ],
+      "weaknesses": [
+        "Coal exposure creates ESG overhang",
+        "CEO compensation relatively high vs peers",
+        "Some board members have lengthy tenure",
+        "Lobbying activities on energy policy"
+      ],
+      "overall_assessment": "Above-average governance for IPP sector with clear strategic direction and shareholder alignment through buybacks"
+    }
+  },
+  "dcf_valuation": {
+    "methodology": {
+      "forecast_period_years": 10,
+      "terminal_value_method": "Gordon Growth Model",
+      "formula": "TV = FCF_10 x (1 + g) / (WACC - g)",
+      "enterprise_to_equity": "EV - Net Debt",
+      "net_debt_billion": 11.3,
+      "shares_outstanding_million": 340
+    },
+    "base_financial_data_fy2024e": {
+      "revenue_billion": 15.5,
+      "ebitda_billion": 5.0,
+      "ebitda_margin_pct": 32,
+      "fcf_billion": 3.0,
+      "capex_billion": 1.5,
+      "depreciation_billion": 1.2
+    },
+    "common_assumptions": {
+      "tax_rate_pct": 22,
+      "depreciation_as_pct_revenue": "7-8%",
+      "maintenance_capex_as_pct_revenue": "6-7%",
+      "growth_capex_varies_by_scenario": true,
+      "working_capital_change": "Minimal (stable utility)"
+    },
+    "discount_rates_used": [8, 9, 10, 11],
+    "wacc_components": {
+      "risk_free_rate_pct": 4.5,
+      "equity_risk_premium_pct": 5.0,
+      "beta": 1.1,
+      "cost_of_equity_pct": 10.0,
+      "cost_of_debt_pct": 6.0,
+      "debt_to_capital_pct": 40,
+      "calculated_wacc_pct": 8.4,
+      "recommended_wacc_range_pct": "8-10%",
+      "rationale": "IPP/merchant exposure warrants higher discount rate than regulated utilities; ERCOT volatility adds risk premium; data center opportunity provides upside optionality"
+    }
+  },
+  "scenarios": [
+    {
+      "name": "Super Bear",
+      "probability_pct": 5,
+      "narrative": "ERCOT regulatory overhaul eliminates scarcity pricing; data center demand disappoints; accelerated coal retirements without replacement capacity; nuclear license extension denied; severe weather event damages fleet.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": -3,
+        "revenue_growth_yr6_10_pct": 0,
+        "ebitda_margin_yr1_5_pct": 22,
+        "ebitda_margin_yr6_10_pct": 18,
+        "ebitda_margin_terminal_pct": 16,
+        "capex_to_revenue_pct": 12,
+        "terminal_growth_pct": 0
+      },
+      "drivers": [
+        "ERCOT implements capacity market, compressing merchant margins",
+        "Data center demand growth fails to materialize as AI scaling slows",
+        "Natural gas prices spike, destroying generation margins",
+        "Nuclear license extension denied, stranding Comanche Peak value",
+        "Coal assets become completely uneconomic before planned retirement"
+      ],
+      "fcf_projections_billion": {
+        "year_1": 1.5,
+        "year_5": 1.0,
+        "year_10": 0.8,
+        "terminal": 0.8
+      }
+    },
+    {
+      "name": "Bear",
+      "probability_pct": 20,
+      "narrative": "Moderate ERCOT reforms reduce scarcity pricing; data center growth slower than expected; natural gas prices elevated; coal phase-out on schedule but limited site repurposing value.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 2,
+        "revenue_growth_yr6_10_pct": 1,
+        "ebitda_margin_yr1_5_pct": 28,
+        "ebitda_margin_yr6_10_pct": 25,
+        "ebitda_margin_terminal_pct": 23,
+        "capex_to_revenue_pct": 10,
+        "terminal_growth_pct": 1
+      },
+      "drivers": [
+        "ERCOT Performance Credit Mechanism implemented, providing some stability but capping upside",
+        "Data center demand grows 8-10% vs expected 15%",
+        "Natural gas prices remain elevated at $4-5/MMBtu",
+        "Nuclear license extensions approved but on standard terms",
+        "Retail competition intensifies, compressing margins"
+      ],
+      "fcf_projections_billion": {
+        "year_1": 2.5,
+        "year_5": 2.8,
+        "year_10": 3.0,
+        "terminal": 3.0
+      }
+    },
+    {
+      "name": "Base",
+      "probability_pct": 50,
+      "narrative": "ERCOT market remains energy-only with modest reforms; data center demand grows 12-15% annually; natural gas prices normalize; nuclear license extensions approved; coal phase-out proceeds with battery/solar replacement.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 5,
+        "revenue_growth_yr6_10_pct": 3,
+        "ebitda_margin_yr1_5_pct": 32,
+        "ebitda_margin_yr6_10_pct": 30,
+        "ebitda_margin_terminal_pct": 28,
+        "capex_to_revenue_pct": 9,
+        "terminal_growth_pct": 2
+      },
+      "drivers": [
+        "ERCOT maintains energy-only structure with targeted reliability improvements",
+        "Data center demand grows 12-15% annually, Vistra captures share",
+        "Natural gas prices stabilize at $3-4/MMBtu",
+        "Nuclear license extensions approved with 20-year extension",
+        "Vistra Zero expansion adds 5 GW renewables/storage by 2030",
+        "Share buybacks continue reducing share count"
+      ],
+      "fcf_projections_billion": {
+        "year_1": 3.0,
+        "year_5": 3.8,
+        "year_10": 4.5,
+        "terminal": 4.5
+      }
+    },
+    {
+      "name": "Bull",
+      "probability_pct": 20,
+      "narrative": "Data center demand accelerates beyond expectations; hyperscaler PPAs provide premium pricing for nuclear output; ERCOT scarcity pricing persists; coal sites successfully repurposed for high-value uses.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 8,
+        "revenue_growth_yr6_10_pct": 5,
+        "ebitda_margin_yr1_5_pct": 35,
+        "ebitda_margin_yr6_10_pct": 33,
+        "ebitda_margin_terminal_pct": 30,
+        "capex_to_revenue_pct": 8,
+        "terminal_growth_pct": 2.5
+      },
+      "drivers": [
+        "AI demand growth exceeds expectations, data center power needs 2x base case",
+        "Vistra signs multiple hyperscaler PPAs at $85-100/MWh for nuclear",
+        "ERCOT scarcity pricing produces periodic $1,000+/MWh events",
+        "Coal sites repurposed as data center campuses at premium valuations",
+        "Nuclear license extensions include expansion optionality",
+        "Vistra Zero achieves scale and profitability"
+      ],
+      "fcf_projections_billion": {
+        "year_1": 3.5,
+        "year_5": 5.0,
+        "year_10": 6.5,
+        "terminal": 6.5
+      }
+    },
+    {
+      "name": "Super Bull",
+      "probability_pct": 5,
+      "narrative": "AI-driven power demand creates unprecedented growth; Comanche Peak becomes irreplaceable asset for hyperscalers; carbon pricing implemented benefiting nuclear; Vistra becomes data center power platform.",
+      "assumptions": {
+        "revenue_growth_yr1_5_pct": 12,
+        "revenue_growth_yr6_10_pct": 8,
+        "ebitda_margin_yr1_5_pct": 38,
+        "ebitda_margin_yr6_10_pct": 36,
+        "ebitda_margin_terminal_pct": 33,
+        "capex_to_revenue_pct": 10,
+        "terminal_growth_pct": 3
+      },
+      "drivers": [
+        "AI demand creates structural power shortage in Texas",
+        "Vistra signs $10+ billion of long-term hyperscaler contracts",
+        "Carbon pricing implemented, providing $30-50/MWh premium for nuclear",
+        "Comanche Peak Unit 3 development becomes feasible",
+        "Coal sites become premium data center locations",
+        "Vistra valued as technology infrastructure platform, not utility"
+      ],
+      "fcf_projections_billion": {
+        "year_1": 4.0,
+        "year_5": 6.5,
+        "year_10": 10.0,
+        "terminal": 10.0
+      }
+    }
+  ],
+  "valuation_by_scenario_and_discount_rate": {
+    "super_bear": {
+      "wacc_8_pct": {"ev_billion": 15.2, "equity_value_billion": 3.9, "price_per_share_usd": 11.5},
+      "wacc_9_pct": {"ev_billion": 12.8, "equity_value_billion": 1.5, "price_per_share_usd": 4.4},
+      "wacc_10_pct": {"ev_billion": 11.0, "equity_value_billion": 0, "price_per_share_usd": 0},
+      "wacc_11_pct": {"ev_billion": 9.6, "equity_value_billion": 0, "price_per_share_usd": 0}
+    },
+    "bear": {
+      "wacc_8_pct": {"ev_billion": 52.0, "equity_value_billion": 40.7, "price_per_share_usd": 120},
+      "wacc_9_pct": {"ev_billion": 44.5, "equity_value_billion": 33.2, "price_per_share_usd": 98},
+      "wacc_10_pct": {"ev_billion": 38.5, "equity_value_billion": 27.2, "price_per_share_usd": 80},
+      "wacc_11_pct": {"ev_billion": 33.8, "equity_value_billion": 22.5, "price_per_share_usd": 66}
+    },
+    "base": {
+      "wacc_8_pct": {"ev_billion": 85.0, "equity_value_billion": 73.7, "price_per_share_usd": 217},
+      "wacc_9_pct": {"ev_billion": 72.0, "equity_value_billion": 60.7, "price_per_share_usd": 179},
+      "wacc_10_pct": {"ev_billion": 62.0, "equity_value_billion": 50.7, "price_per_share_usd": 149},
+      "wacc_11_pct": {"ev_billion": 54.0, "equity_value_billion": 42.7, "price_per_share_usd": 126}
+    },
+    "bull": {
+      "wacc_8_pct": {"ev_billion": 125.0, "equity_value_billion": 113.7, "price_per_share_usd": 334},
+      "wacc_9_pct": {"ev_billion": 105.0, "equity_value_billion": 93.7, "price_per_share_usd": 276},
+      "wacc_10_pct": {"ev_billion": 89.0, "equity_value_billion": 77.7, "price_per_share_usd": 229},
+      "wacc_11_pct": {"ev_billion": 77.0, "equity_value_billion": 65.7, "price_per_share_usd": 193}
+    },
+    "super_bull": {
+      "wacc_8_pct": {"ev_billion": 195.0, "equity_value_billion": 183.7, "price_per_share_usd": 540},
+      "wacc_9_pct": {"ev_billion": 160.0, "equity_value_billion": 148.7, "price_per_share_usd": 437},
+      "wacc_10_pct": {"ev_billion": 133.0, "equity_value_billion": 121.7, "price_per_share_usd": 358},
+      "wacc_11_pct": {"ev_billion": 113.0, "equity_value_billion": 101.7, "price_per_share_usd": 299}
+    }
+  },
+  "probability_weighted_valuation": {
+    "by_discount_rate": {
+      "wacc_8_pct": {
+        "calculation": "(5% x 11.5) + (20% x 120) + (50% x 217) + (20% x 334) + (5% x 540)",
+        "probability_weighted_price_usd": 227.1
+      },
+      "wacc_9_pct": {
+        "calculation": "(5% x 4.4) + (20% x 98) + (50% x 179) + (20% x 276) + (5% x 437)",
+        "probability_weighted_price_usd": 186.7
+      },
+      "wacc_10_pct": {
+        "calculation": "(5% x 0) + (20% x 80) + (50% x 149) + (20% x 229) + (5% x 358)",
+        "probability_weighted_price_usd": 154.2
+      },
+      "wacc_11_pct": {
+        "calculation": "(5% x 0) + (20% x 66) + (50% x 126) + (20% x 193) + (5% x 299)",
+        "probability_weighted_price_usd": 129.8
+      }
+    },
+    "central_case": {
+      "recommended_wacc_pct": 9,
+      "probability_weighted_fair_value_usd": 186.7,
+      "rounded_target_price_usd": 185,
+      "current_price_usd": 140,
+      "upside_pct": 32,
+      "rationale": "9% WACC reflects IPP merchant exposure offset by integrated model stability; data center optionality provides upside not fully captured"
+    }
+  },
+  "valuation_summary_table": {
+    "headers": ["Scenario", "Probability", "8% WACC", "9% WACC", "10% WACC", "11% WACC"],
+    "rows": [
+      ["Super Bear", "5%", "$11.5", "$4.4", "$0", "$0"],
+      ["Bear", "20%", "$120", "$98", "$80", "$66"],
+      ["Base", "50%", "$217", "$179", "$149", "$126"],
+      ["Bull", "20%", "$334", "$276", "$229", "$193"],
+      ["Super Bull", "5%", "$540", "$437", "$358", "$299"],
+      ["Prob-Weighted", "100%", "$227", "$187", "$154", "$130"]
+    ]
+  },
+  "recommendation": {
+    "rating": "BUY",
+    "target_price_usd": 185,
+    "current_price_usd": 140,
+    "upside_pct": 32,
+    "dividend_yield_pct": 0.6,
+    "total_return_potential_pct": 33,
+    "investment_horizon": "12-18 months",
+    "conviction_level": "Medium-High",
+    "thesis": {
+      "summary": "Vistra Corp offers compelling exposure to the AI-driven data center power demand theme through its irreplaceable Comanche Peak nuclear asset and dominant ERCOT market position, with downside protection from the integrated retail business and aggressive share buyback program.",
+      "key_points": [
+        "Data Center Thematic Play: Vistra's nuclear and gas fleet provides 24/7 dispatchable power essential for hyperscaler data centers, a theme with structural multi-year tailwinds",
+        "Irreplaceable Nuclear Asset: Comanche Peak's 6.4 GW cannot be replicated in Texas; hyperscalers increasingly willing to pay premium for carbon-free baseload",
+        "Integrated Model Stability: Generation-retail hedge reduces earnings volatility compared to pure merchant generators",
+        "Shareholder-Friendly Capital Allocation: Aggressive buybacks have reduced share count 20% at attractive prices; strong FCF supports continued returns",
+        "ERCOT Structural Tailwind: Texas population and economic growth driving sustained power demand increase",
+        "Attractive Valuation: Trading at 11.8x EV/EBITDA vs Constellation at 13.5x despite similar data center exposure potential"
+      ]
+    },
+    "catalysts": {
+      "positive": [
+        "Hyperscaler PPA announcements for Comanche Peak nuclear output",
+        "Data center co-location or site development deals",
+        "Nuclear license extension approval",
+        "ERCOT summer/winter scarcity pricing events",
+        "Additional share buyback authorization",
+        "Coal site repurposing announcements"
+      ],
+      "negative": [
+        "ERCOT regulatory changes reducing scarcity pricing",
+        "Nuclear operational issues or extended outages",
+        "Natural gas price spikes affecting margins",
+        "Data center demand growth disappointment",
+        "Severe weather events damaging fleet",
+        "ESG-driven divestment from coal exposure"
+      ]
+    },
+    "suitable_for": [
+      "Growth-oriented investors seeking AI/data center exposure through power sector",
+      "Value investors seeing discount to nuclear peers like Constellation",
+      "GARP investors (growth at reasonable price) given modest valuation with upside optionality",
+      "Total return investors benefiting from buybacks and dividends"
+    ],
+    "not_suitable_for": [
+      "ESG-focused investors uncomfortable with coal exposure",
+      "Income-focused investors seeking high dividend yields",
+      "Risk-averse investors uncomfortable with ERCOT volatility",
+      "Short-term traders due to potential earnings volatility"
+    ]
+  },
+  "last_updated": "2026-01-20",
+  "disclaimer": "This report is for informational purposes only and does not constitute investment advice. The analysis is based on publicly available information and analyst estimates. Actual results may differ materially from projections. Investors should conduct their own due diligence before making investment decisions."
+}

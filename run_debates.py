@@ -122,13 +122,13 @@ async def run_all_debates(num_rounds: int = 10, use_visualizer: bool = True):
             if visualizer:
                 visualizer.start_debate(ticker, company)
 
-            # Run debate with progress updates
-            debate_result = await orchestrator.run_full_debate(equity_data)
+            # Create progress callback for real-time visualizer updates
+            def debate_progress(round_num, total_rounds, t):
+                if visualizer:
+                    visualizer.update_debate_round(t, round_num, total_rounds)
 
-            # Update visualizer during debate rounds
-            if visualizer:
-                for round_num in range(1, num_rounds + 1):
-                    visualizer.update_debate_round(ticker, round_num, num_rounds)
+            # Run debate with real-time progress updates
+            debate_result = await orchestrator.run_full_debate(equity_data, progress_callback=debate_progress)
 
             # Save debate result
             output_file = os.path.join(output_dir, f"debate_{research_file}")

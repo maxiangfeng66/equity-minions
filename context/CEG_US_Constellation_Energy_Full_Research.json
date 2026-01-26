@@ -1,0 +1,845 @@
+{
+  "ticker": "CEG US",
+  "company": "Constellation Energy Corporation",
+  "sector": "Utilities - Nuclear Power Generation",
+  "exchange": "NASDAQ",
+  "currency": "USD",
+  "research_date": "2026-01-20",
+  "current_price_estimate": 275.00,
+  "shares_outstanding_million": 314,
+  "market_cap_billion": 86.4,
+
+  "executive_summary": {
+    "overview": "Constellation Energy Corporation (CEG US) is the largest producer of carbon-free energy in the United States, operating the nation's largest nuclear fleet with approximately 21 GW of generating capacity across 14 nuclear power plants (23 reactors). The company spun off from Exelon in February 2022 and has emerged as a pure-play clean energy generator uniquely positioned to benefit from surging data center power demand, AI infrastructure buildout, and the broader clean energy transition.",
+    "investment_thesis": "CEG represents a compelling investment opportunity at the intersection of three powerful secular trends: (1) unprecedented data center/AI power demand growth, (2) the nuclear renaissance driven by recognition of nuclear's role in decarbonization, and (3) tightening power markets with rising electricity prices. The landmark 20-year Microsoft PPA for the Three Mile Island restart demonstrates the premium value tech companies place on 24/7 carbon-free power.",
+    "investment_highlights": [
+      "Largest US nuclear operator with 21 GW capacity, representing ~10% of total US nuclear capacity",
+      "Microsoft PPA: 20-year agreement to restart Three Mile Island Unit 1 (~800 MW) with premium pricing",
+      "Additional corporate PPA pipeline with hyperscalers including Google, Amazon, Meta",
+      "Nuclear production tax credits (PTCs) under IRA provide earnings floor",
+      "Rising wholesale power prices in PJM and other markets support merchant generation",
+      "Zero-carbon credentials increasingly valuable as corporates pursue net-zero targets",
+      "Strong free cash flow generation supporting dividends and share buybacks"
+    ],
+    "key_risks": [
+      "Nuclear operational risk - unplanned outages, safety incidents",
+      "Regulatory/political risk - changes to nuclear policy or subsidies",
+      "PPA execution risk - Crane Center (TMI) restart faces cost/timeline risk",
+      "Power price volatility - merchant exposure to wholesale markets",
+      "Capital intensity for reactor life extensions and potential new builds",
+      "Rising interest rates impact on utility valuations"
+    ],
+    "rating": "BUY",
+    "target_price": {
+      "value": 350,
+      "currency": "USD",
+      "methodology": "Probability-weighted DCF across 5 scenarios at 9% WACC"
+    },
+    "upside_potential_pct": 27.3
+  },
+
+  "industry_analysis": {
+    "us_nuclear_power_market": {
+      "total_capacity_gw": 95,
+      "number_of_reactors": 93,
+      "share_of_us_electricity_pct": 18.5,
+      "share_of_carbon_free_pct": 47,
+      "average_capacity_factor_pct": 93.5,
+      "operating_licenses_extended": "Most units to 60 years, some seeking 80-year extensions"
+    },
+    "market_structure": {
+      "top_operators": [
+        {"company": "Constellation Energy", "capacity_gw": 21, "share_pct": 22},
+        {"company": "Duke Energy", "capacity_gw": 11, "share_pct": 12},
+        {"company": "Southern Company", "capacity_gw": 9, "share_pct": 9},
+        {"company": "Dominion Energy", "capacity_gw": 6, "share_pct": 6},
+        {"company": "Tennessee Valley Authority", "capacity_gw": 6, "share_pct": 6}
+      ],
+      "market_characteristics": "Oligopolistic with high barriers to entry, long asset lives, regulated/merchant mix"
+    },
+    "data_center_power_demand": {
+      "current_us_data_center_load_gw": 22,
+      "projected_2030_load_gw": 60,
+      "cagr_pct": 14,
+      "key_drivers": [
+        "AI/ML training and inference workloads exponentially increasing",
+        "Cloud computing continued growth",
+        "Enterprise digital transformation",
+        "Edge computing proliferation"
+      ],
+      "location_preferences": [
+        "Northern Virginia (Dominion territory) - largest data center market",
+        "PJM Interconnection - Constellation's primary market",
+        "Texas ERCOT",
+        "Midwest/Illinois"
+      ],
+      "power_requirements": {
+        "24_7_reliability": "Critical - data centers cannot tolerate outages",
+        "carbon_free_preference": "Strong - tech companies have net-zero commitments",
+        "long_term_contracts": "Preferred - 10-20 year PPAs for budget certainty",
+        "premium_pricing": "Tech companies willing to pay 30-50% premium for clean 24/7 power"
+      }
+    },
+    "clean_energy_policy_tailwinds": {
+      "inflation_reduction_act_2022": {
+        "nuclear_production_tax_credit": "$15/MWh escalating with inflation (provides earnings floor)",
+        "technology_neutral_ptc": "Extended through 2032, potentially longer",
+        "hydrogen_production_credit": "Nuclear-powered electrolysis eligible for $3/kg credit"
+      },
+      "state_policies": {
+        "illinois": "Climate and Equitable Jobs Act - subsidies for existing nuclear",
+        "new_york": "Zero Emission Credits program",
+        "pennsylvania": "Potential nuclear support legislation",
+        "new_jersey": "Zero Emission Certificates"
+      },
+      "corporate_sustainability": {
+        "re100_companies": "Over 400 companies committed to 100% renewable electricity",
+        "24_7_carbon_free": "Growing movement beyond annual matching to hourly matching",
+        "scope_2_emissions": "Corporates increasingly focused on electricity carbon footprint"
+      }
+    },
+    "power_market_dynamics": {
+      "pjm_interconnection": {
+        "description": "Largest US wholesale power market covering 13 states + DC",
+        "capacity_market": "Cleared at multi-year highs reflecting tight supply",
+        "energy_prices": "Elevated due to gas prices and demand growth",
+        "transmission_constraints": "Benefiting must-run nuclear baseload"
+      },
+      "supply_demand_balance": {
+        "load_growth_acceleration": "Data centers driving 2-3% annual growth vs. historical flat",
+        "retirements": "Coal plant closures removing dispatchable capacity",
+        "new_supply_lag": "Interconnection queue delays for renewables/storage",
+        "grid_reliability_concerns": "Rising focus on firm capacity - nuclear advantage"
+      }
+    },
+    "nuclear_renaissance_drivers": [
+      "Climate change urgency requiring massive clean electricity expansion",
+      "Energy security concerns post-Russia/Ukraine highlighting fuel diversity",
+      "Grid reliability needs as intermittent renewables increase",
+      "AI/data center 24/7 power requirements",
+      "Bipartisan political support for nuclear at federal level",
+      "Technology advances: SMRs, advanced reactors in development"
+    ],
+    "competitive_landscape": {
+      "pure_play_nuclear": {
+        "constellation": "Dominant US nuclear operator, highest merchant exposure",
+        "public_service_enterprise_group": "3 nuclear plants in NJ, regulated focus"
+      },
+      "diversified_utilities_with_nuclear": [
+        "Duke Energy - regulated utility model",
+        "Southern Company - Vogtle new build experience",
+        "Dominion Energy - data center territory overlap",
+        "Entergy - Southeast nuclear fleet"
+      ],
+      "alternative_clean_power": [
+        "NextEra Energy - renewables leader, adding nuclear",
+        "Vistra Corp - competitive generation with nuclear",
+        "AES Corporation - renewables and gas"
+      ]
+    }
+  },
+
+  "company_analysis": {
+    "business_overview": {
+      "description": "Constellation Energy is America's largest producer of carbon-free energy and the nation's largest nuclear operator. The company generates approximately 90% of its output from nuclear plants, supplemented by hydro, wind, and solar assets.",
+      "spin_off": "Separated from Exelon Corporation in February 2022 to unlock value as pure-play competitive generator",
+      "headquarters": "Baltimore, Maryland",
+      "employees": 12500
+    },
+    "nuclear_fleet": {
+      "total_capacity_mw": 21000,
+      "number_of_plants": 14,
+      "number_of_reactors": 23,
+      "capacity_factor_pct": 93,
+      "plants": [
+        {"name": "Calvert Cliffs", "state": "Maryland", "units": 2, "capacity_mw": 1756, "reactor_type": "PWR", "ownership_pct": 100},
+        {"name": "Nine Mile Point", "state": "New York", "units": 2, "capacity_mw": 1895, "reactor_type": "BWR", "ownership_pct": 100},
+        {"name": "R.E. Ginna", "state": "New York", "units": 1, "capacity_mw": 582, "reactor_type": "PWR", "ownership_pct": 100},
+        {"name": "James A. FitzPatrick", "state": "New York", "units": 1, "capacity_mw": 852, "reactor_type": "BWR", "ownership_pct": 100},
+        {"name": "Braidwood", "state": "Illinois", "units": 2, "capacity_mw": 2389, "reactor_type": "PWR", "ownership_pct": 100},
+        {"name": "Byron", "state": "Illinois", "units": 2, "capacity_mw": 2347, "reactor_type": "PWR", "ownership_pct": 100},
+        {"name": "Dresden", "state": "Illinois", "units": 2, "capacity_mw": 1845, "reactor_type": "BWR", "ownership_pct": 100},
+        {"name": "LaSalle", "state": "Illinois", "units": 2, "capacity_mw": 2320, "reactor_type": "BWR", "ownership_pct": 100},
+        {"name": "Quad Cities", "state": "Illinois", "units": 2, "capacity_mw": 1819, "reactor_type": "BWR", "ownership_pct": 75, "partner": "MidAmerican"},
+        {"name": "Clinton", "state": "Illinois", "units": 1, "capacity_mw": 1065, "reactor_type": "BWR", "ownership_pct": 100},
+        {"name": "Limerick", "state": "Pennsylvania", "units": 2, "capacity_mw": 2317, "reactor_type": "BWR", "ownership_pct": 100},
+        {"name": "Peach Bottom", "state": "Pennsylvania", "units": 2, "capacity_mw": 2779, "reactor_type": "BWR", "ownership_pct": 50, "partner": "PSEG"},
+        {"name": "Salem", "state": "New Jersey", "units": 2, "capacity_mw": 2346, "reactor_type": "PWR", "ownership_pct": 57, "partner": "PSEG"},
+        {"name": "Hope Creek", "state": "New Jersey", "units": 1, "capacity_mw": 1262, "reactor_type": "BWR", "ownership_pct": 100}
+      ],
+      "geographic_concentration": {
+        "illinois": "45% of capacity",
+        "pennsylvania_new_jersey": "35% of capacity",
+        "new_york": "12% of capacity",
+        "maryland": "8% of capacity"
+      }
+    },
+    "crane_clean_energy_center_tmi_restart": {
+      "announcement_date": "September 2024",
+      "location": "Middletown, Pennsylvania",
+      "unit": "Three Mile Island Unit 1",
+      "capacity_mw": 835,
+      "previous_status": "Shutdown in 2019 due to poor economics",
+      "restart_target": "2028",
+      "investment_required_billion": 1.6,
+      "ppa_counterparty": "Microsoft Corporation",
+      "ppa_term_years": 20,
+      "ppa_structure": "All output contracted at premium to wholesale prices",
+      "strategic_significance": [
+        "First nuclear plant restart in US history",
+        "Validates value of nuclear for 24/7 carbon-free power",
+        "Establishes blueprint for other potential restarts",
+        "Microsoft's largest single clean energy commitment",
+        "Premium pricing reflects scarcity value of firm clean capacity"
+      ],
+      "execution_risks": [
+        "NRC license reinstatement (expected but not guaranteed)",
+        "Refurbishment cost overruns",
+        "Supply chain challenges for nuclear components",
+        "Skilled labor availability",
+        "Timeline delays impacting PPA economics"
+      ]
+    },
+    "corporate_ppa_pipeline": {
+      "microsoft_tmi": {"capacity_mw": 835, "term_years": 20, "status": "Announced", "start_year": 2028},
+      "other_hyperscaler_discussions": {
+        "google": "In discussions for multi-hundred MW nuclear PPA",
+        "amazon": "Exploring nuclear options for AWS data centers",
+        "meta": "Interest in 24/7 CFE for data centers"
+      },
+      "corporate_demand_drivers": [
+        "Net-zero commitments by 2030-2040",
+        "24/7 Carbon Free Energy (CFE) goals beyond annual matching",
+        "Electricity demand growth from AI training",
+        "Reputational benefits of nuclear partnerships",
+        "Energy security and price stability"
+      ]
+    },
+    "other_generation_assets": {
+      "hydro_mw": 600,
+      "wind_mw": 2500,
+      "solar_mw": 800,
+      "natural_gas_mw": 2000,
+      "total_non_nuclear_mw": 5900,
+      "clean_energy_pct_of_total": 90
+    },
+    "competitive_advantages": [
+      "Scale: Largest US nuclear fleet provides cost efficiency and operational expertise",
+      "Market position: Dominant in PJM, the largest US wholesale power market",
+      "Carbon-free: Only large-scale 24/7 carbon-free generation technology",
+      "Operational excellence: Industry-leading capacity factors >93%",
+      "Regulatory relationships: Decades of NRC experience and strong safety record",
+      "Political support: Bipartisan backing for nuclear at federal and state levels",
+      "IRA benefits: Production tax credits provide earnings floor",
+      "First mover: Crane Center restart establishes template for future projects",
+      "Corporate PPA demand: Unique ability to serve hyperscaler 24/7 CFE needs",
+      "Fuel cost advantage: Nuclear fuel <$10/MWh vs. gas >$30/MWh"
+    ],
+    "competitive_disadvantages": [
+      "Merchant exposure: ~40% of output exposed to wholesale price volatility",
+      "Nuclear operational risk: Single-plant outages can significantly impact earnings",
+      "Capital intensity: Life extensions and potential new builds require billions",
+      "Regulatory uncertainty: Nuclear policy could change with political shifts",
+      "Public perception: Nuclear still faces opposition in some areas",
+      "Waste disposal: Long-term spent fuel storage remains unresolved nationally"
+    ],
+    "recent_developments": [
+      "September 2024: Announced Microsoft PPA and TMI restart",
+      "2024: Record financial performance with strong merchant margins",
+      "2024: Expanded share repurchase authorization",
+      "2024: Raised dividend for third consecutive year post-spin",
+      "2024: License renewal applications for 80-year operations",
+      "2025: Multiple additional corporate PPA negotiations ongoing"
+    ]
+  },
+
+  "corporate_governance": {
+    "board_of_directors": {
+      "size": 12,
+      "independent_pct": 92,
+      "chairman": "Joseph Nigro (Independent Chairman)",
+      "ceo_on_board": true,
+      "key_committees": ["Audit", "Compensation", "Governance", "Operations & Safety"],
+      "diversity": {
+        "gender_diversity_pct": 42,
+        "ethnic_diversity_pct": 25
+      },
+      "expertise_areas": ["Nuclear operations", "Energy markets", "Finance", "Regulation", "Technology", "ESG"],
+      "average_tenure_years": 3,
+      "note": "Relatively new board given 2022 spin-off, strong relevant experience"
+    },
+    "management_team": {
+      "ceo": {
+        "name": "Joseph Dominguez",
+        "tenure_years": 4,
+        "background": "Long Exelon executive, nuclear industry veteran",
+        "compensation_alignment": "Significant equity stake, performance-based incentives",
+        "track_record": "Successfully executed spin-off, delivered strong financial results"
+      },
+      "cfo": {
+        "name": "Daniel Eggers",
+        "background": "Former analyst, deep sector knowledge",
+        "focus": "Capital allocation, investor relations"
+      },
+      "coo": {
+        "name": "Bryan Hanson",
+        "background": "Nuclear operations executive",
+        "focus": "Fleet performance, safety, efficiency"
+      }
+    },
+    "capital_allocation": {
+      "priorities": [
+        "Maintain investment grade credit rating",
+        "Fund organic growth (TMI restart, life extensions)",
+        "Return capital to shareholders (dividends + buybacks)",
+        "Opportunistic M&A if accretive"
+      ],
+      "dividend_policy": {
+        "current_annual_dps": 3.54,
+        "payout_ratio_target_pct": "25-30%",
+        "growth_commitment": "Mid-single digit annual increases",
+        "yield_at_current_pct": 1.3
+      },
+      "share_repurchases": {
+        "authorization_billion": 3.0,
+        "executed_since_spinoff_billion": 1.8,
+        "strategy": "Opportunistic based on valuation"
+      },
+      "credit_metrics": {
+        "target_debt_to_ebitda": "2.0-2.5x",
+        "credit_rating": "BBB+ (S&P), Baa1 (Moody's)",
+        "outlook": "Stable"
+      }
+    },
+    "esg_profile": {
+      "environmental": {
+        "scope_1_emissions": "Near zero from nuclear fleet",
+        "carbon_free_generation_pct": 90,
+        "sustainability_reports": "Annual CDP disclosure, TCFD alignment"
+      },
+      "social": {
+        "employee_safety": "Top quartile nuclear industry safety record",
+        "community_engagement": "Strong in host communities",
+        "diversity_initiatives": "Active DEI programs"
+      },
+      "governance": {
+        "board_independence": "Strong",
+        "executive_compensation": "Well-aligned with TSR",
+        "shareholder_rights": "Standard provisions"
+      }
+    },
+    "governance_score": {
+      "score_out_of_10": 8,
+      "rationale": "Strong independent board, experienced nuclear management, disciplined capital allocation, good shareholder alignment. Minor deductions for relatively new board (post-spinoff) and concentration in single commodity (power prices)."
+    }
+  },
+
+  "financial_data": {
+    "currency": "USD",
+    "fiscal_year_end": "December",
+    "historical_financials": {
+      "2022": {
+        "revenue_billion": 24.5,
+        "operating_income_billion": 2.8,
+        "net_income_billion": 1.9,
+        "adjusted_ebitda_billion": 3.2,
+        "eps": 5.85,
+        "operating_cash_flow_billion": 3.0,
+        "capex_billion": 1.2,
+        "free_cash_flow_billion": 1.8
+      },
+      "2023": {
+        "revenue_billion": 25.3,
+        "operating_income_billion": 3.5,
+        "net_income_billion": 2.8,
+        "adjusted_ebitda_billion": 4.1,
+        "eps": 8.55,
+        "operating_cash_flow_billion": 4.2,
+        "capex_billion": 1.4,
+        "free_cash_flow_billion": 2.8
+      },
+      "2024E": {
+        "revenue_billion": 27.0,
+        "operating_income_billion": 4.2,
+        "net_income_billion": 3.5,
+        "adjusted_ebitda_billion": 4.8,
+        "eps": 11.00,
+        "operating_cash_flow_billion": 5.0,
+        "capex_billion": 1.8,
+        "free_cash_flow_billion": 3.2
+      },
+      "2025E": {
+        "revenue_billion": 28.5,
+        "operating_income_billion": 4.5,
+        "net_income_billion": 3.8,
+        "adjusted_ebitda_billion": 5.2,
+        "eps": 12.20,
+        "operating_cash_flow_billion": 5.5,
+        "capex_billion": 2.2,
+        "free_cash_flow_billion": 3.3
+      },
+      "2026E": {
+        "revenue_billion": 30.5,
+        "operating_income_billion": 5.0,
+        "net_income_billion": 4.2,
+        "adjusted_ebitda_billion": 5.8,
+        "eps": 13.50,
+        "operating_cash_flow_billion": 6.0,
+        "capex_billion": 2.5,
+        "free_cash_flow_billion": 3.5
+      }
+    },
+    "key_metrics": {
+      "gross_margin_pct": 28,
+      "ebitda_margin_pct": 20,
+      "net_margin_pct": 14,
+      "roe_pct": 25,
+      "roic_pct": 15,
+      "asset_turnover": 0.4,
+      "debt_to_equity": 0.85,
+      "interest_coverage_x": 8.5
+    },
+    "balance_sheet": {
+      "total_assets_billion": 45,
+      "total_debt_billion": 12,
+      "net_debt_billion": 10,
+      "shareholders_equity_billion": 14,
+      "net_debt_to_ebitda_x": 2.1,
+      "current_ratio": 1.2
+    },
+    "segment_breakdown": {
+      "nuclear_generation_pct": 85,
+      "renewable_generation_pct": 8,
+      "natural_gas_peaking_pct": 5,
+      "other_pct": 2
+    }
+  },
+
+  "dcf_valuation": {
+    "methodology": {
+      "model_type": "Two-stage DCF with terminal value",
+      "forecast_period_years": 10,
+      "explicit_forecast_years": "2025-2034",
+      "terminal_value_method": "Gordon Growth Model",
+      "currency": "USD"
+    },
+    "wacc_derivation": {
+      "risk_free_rate_pct": 4.0,
+      "equity_risk_premium_pct": 5.5,
+      "beta": 0.9,
+      "cost_of_equity_pct": 8.95,
+      "cost_of_debt_pre_tax_pct": 5.5,
+      "tax_rate_pct": 21,
+      "cost_of_debt_after_tax_pct": 4.35,
+      "debt_weight_pct": 40,
+      "equity_weight_pct": 60,
+      "wacc_pct": 7.11,
+      "wacc_rounded_for_scenarios": [8, 9, 10, 11],
+      "rationale": "Nuclear utility with stable cash flows warrants lower beta (~0.9). IRA tax credits reduce effective tax rate. Investment grade credit provides low cost of debt. WACC range of 8-11% captures uncertainty around growth trajectory and regulatory environment."
+    },
+    "terminal_growth_rate_pct": 2.5,
+    "shares_outstanding_million": 314,
+    "net_debt_billion": 10
+  },
+
+  "scenarios": [
+    {
+      "name": "Super Bear",
+      "probability_pct": 5,
+      "narrative": "Major nuclear incident (domestic or global) triggers regulatory crackdown and public backlash. Data center power demand disappoints as AI winter occurs. TMI restart cancelled or massively delayed. Power prices collapse. IRA nuclear credits repealed.",
+      "assumptions": {
+        "revenue_growth_yr1_3_pct": -5,
+        "revenue_growth_yr4_5_pct": 0,
+        "revenue_growth_yr6_10_pct": 0,
+        "ebitda_margin_pct": 12,
+        "terminal_growth_pct": 0,
+        "capex_to_revenue_pct": 8
+      },
+      "key_drivers": [
+        "Nuclear safety incident destroys sentiment",
+        "AI demand growth stalls",
+        "IRA subsidies repealed",
+        "Power prices fall 30%+",
+        "Early plant retirements"
+      ],
+      "dcf_value_by_discount_rate": {
+        "8_pct": 85,
+        "9_pct": 72,
+        "10_pct": 62,
+        "11_pct": 53
+      }
+    },
+    {
+      "name": "Bear",
+      "probability_pct": 20,
+      "narrative": "Data center demand grows slower than expected. TMI restart delayed to 2030 with cost overruns. Wholesale power prices normalize lower. Competition from renewables+storage intensifies. Corporate PPAs sign at lower premiums than anticipated.",
+      "assumptions": {
+        "revenue_growth_yr1_3_pct": 3,
+        "revenue_growth_yr4_5_pct": 2,
+        "revenue_growth_yr6_10_pct": 1,
+        "ebitda_margin_pct": 16,
+        "terminal_growth_pct": 1.5,
+        "capex_to_revenue_pct": 9
+      },
+      "key_drivers": [
+        "TMI restart delayed 2 years",
+        "Cost overruns on TMI",
+        "Wholesale prices decline 15%",
+        "Fewer corporate PPAs",
+        "Battery storage competition"
+      ],
+      "dcf_value_by_discount_rate": {
+        "8_pct": 220,
+        "9_pct": 195,
+        "10_pct": 175,
+        "11_pct": 158
+      }
+    },
+    {
+      "name": "Base",
+      "probability_pct": 50,
+      "narrative": "TMI restart on schedule (2028) at expected cost. Data center demand continues strong growth. Corporate PPA pipeline converts at good rates. Wholesale power prices remain elevated. Fleet operates at high capacity factors. IRA credits continue.",
+      "assumptions": {
+        "revenue_growth_yr1_3_pct": 7,
+        "revenue_growth_yr4_5_pct": 5,
+        "revenue_growth_yr6_10_pct": 3,
+        "ebitda_margin_pct": 20,
+        "terminal_growth_pct": 2.5,
+        "capex_to_revenue_pct": 8
+      },
+      "key_drivers": [
+        "TMI online 2028 as planned",
+        "2-3 additional corporate PPAs",
+        "High power prices persist",
+        "Strong fleet performance",
+        "License extensions approved"
+      ],
+      "dcf_value_by_discount_rate": {
+        "8_pct": 420,
+        "9_pct": 365,
+        "10_pct": 320,
+        "11_pct": 282
+      }
+    },
+    {
+      "name": "Bull",
+      "probability_pct": 20,
+      "narrative": "AI/data center demand exceeds expectations, driving premium PPA pricing. TMI success leads to additional restart projects. Nuclear recognized as essential grid reliability resource. Power prices surge. Multiple hyperscaler PPAs signed.",
+      "assumptions": {
+        "revenue_growth_yr1_3_pct": 12,
+        "revenue_growth_yr4_5_pct": 8,
+        "revenue_growth_yr6_10_pct": 5,
+        "ebitda_margin_pct": 24,
+        "terminal_growth_pct": 3,
+        "capex_to_revenue_pct": 10
+      },
+      "key_drivers": [
+        "TMI success, 2nd restart announced",
+        "5+ major corporate PPAs",
+        "Power prices +20%",
+        "AI demand accelerates",
+        "Nuclear premium recognized"
+      ],
+      "dcf_value_by_discount_rate": {
+        "8_pct": 580,
+        "9_pct": 505,
+        "10_pct": 445,
+        "11_pct": 395
+      }
+    },
+    {
+      "name": "Super Bull",
+      "probability_pct": 5,
+      "narrative": "Nuclear renaissance in full swing. CEG becomes strategic infrastructure provider to hyperscalers. Government designates nuclear as critical infrastructure with enhanced support. New SMR partnerships announced. M&A premium potential.",
+      "assumptions": {
+        "revenue_growth_yr1_3_pct": 18,
+        "revenue_growth_yr4_5_pct": 12,
+        "revenue_growth_yr6_10_pct": 8,
+        "ebitda_margin_pct": 28,
+        "terminal_growth_pct": 3.5,
+        "capex_to_revenue_pct": 12
+      },
+      "key_drivers": [
+        "Multiple restarts announced",
+        "SMR partnership with tech company",
+        "Nuclear treated as strategic asset",
+        "M&A interest from hyperscalers",
+        "Premium valuation multiples"
+      ],
+      "dcf_value_by_discount_rate": {
+        "8_pct": 850,
+        "9_pct": 740,
+        "10_pct": 650,
+        "11_pct": 575
+      }
+    }
+  ],
+
+  "probability_weighted_valuation": {
+    "methodology": "Sum of (Scenario Probability x Scenario Fair Value)",
+    "by_discount_rate": {
+      "8_pct": {
+        "calculation": "(5% x 85) + (20% x 220) + (50% x 420) + (20% x 580) + (5% x 850)",
+        "super_bear_contrib": 4.25,
+        "bear_contrib": 44.0,
+        "base_contrib": 210.0,
+        "bull_contrib": 116.0,
+        "super_bull_contrib": 42.5,
+        "total": 416.75
+      },
+      "9_pct": {
+        "calculation": "(5% x 72) + (20% x 195) + (50% x 365) + (20% x 505) + (5% x 740)",
+        "super_bear_contrib": 3.6,
+        "bear_contrib": 39.0,
+        "base_contrib": 182.5,
+        "bull_contrib": 101.0,
+        "super_bull_contrib": 37.0,
+        "total": 363.1
+      },
+      "10_pct": {
+        "calculation": "(5% x 62) + (20% x 175) + (50% x 320) + (20% x 445) + (5% x 650)",
+        "super_bear_contrib": 3.1,
+        "bear_contrib": 35.0,
+        "base_contrib": 160.0,
+        "bull_contrib": 89.0,
+        "super_bull_contrib": 32.5,
+        "total": 319.6
+      },
+      "11_pct": {
+        "calculation": "(5% x 53) + (20% x 158) + (50% x 282) + (20% x 395) + (5% x 575)",
+        "super_bear_contrib": 2.65,
+        "bear_contrib": 31.6,
+        "base_contrib": 141.0,
+        "bull_contrib": 79.0,
+        "super_bull_contrib": 28.75,
+        "total": 283.0
+      }
+    },
+    "central_estimate": {
+      "discount_rate_pct": 9,
+      "fair_value_usd": 363,
+      "current_price_usd": 275,
+      "upside_pct": 32.0
+    },
+    "fair_value_range": {
+      "low_11_pct_wacc": 283,
+      "mid_9_pct_wacc": 363,
+      "high_8_pct_wacc": 417
+    }
+  },
+
+  "valuation_summary_table": {
+    "headers": ["Scenario", "Probability", "8% WACC", "9% WACC", "10% WACC", "11% WACC"],
+    "rows": [
+      ["Super Bear", "5%", "$85", "$72", "$62", "$53"],
+      ["Bear", "20%", "$220", "$195", "$175", "$158"],
+      ["Base", "50%", "$420", "$365", "$320", "$282"],
+      ["Bull", "20%", "$580", "$505", "$445", "$395"],
+      ["Super Bull", "5%", "$850", "$740", "$650", "$575"],
+      ["Prob-Weighted", "100%", "$417", "$363", "$320", "$283"]
+    ]
+  },
+
+  "sensitivity_analysis": {
+    "discount_rate_impact": {
+      "base_case_sensitivity": {
+        "7_pct": 495,
+        "8_pct": 420,
+        "9_pct": 365,
+        "10_pct": 320,
+        "11_pct": 282,
+        "12_pct": 250
+      }
+    },
+    "power_price_sensitivity": {
+      "description": "Impact of wholesale power price changes on Base Case value at 9% WACC",
+      "minus_20_pct": 290,
+      "minus_10_pct": 325,
+      "base": 365,
+      "plus_10_pct": 405,
+      "plus_20_pct": 445
+    },
+    "tmi_restart_sensitivity": {
+      "description": "Impact of TMI restart scenarios on Base Case value at 9% WACC",
+      "cancelled": 320,
+      "delayed_2_years": 340,
+      "on_schedule": 365,
+      "accelerated_plus_second_restart": 420
+    }
+  },
+
+  "multi_agent_debate": {
+    "debate_rounds": 10,
+    "participants": ["Bull Agent (GPT-4)", "Bear Agent (Gemini)", "Critic Agent (Grok)", "Synthesizer Agent (Qwen)"],
+    "rounds": [
+      {
+        "round": 1,
+        "topic": "Data Center Power Demand Growth",
+        "bull_position": "AI/data center demand is inflecting higher than any forecast. Microsoft deal proves hyperscalers will pay massive premiums for 24/7 carbon-free power. This is just the beginning - Google, Amazon, Meta all need the same. 60 GW by 2030 is conservative.",
+        "bear_position": "Data center demand growth is overhyped. Energy efficiency improvements will moderate growth. Not all hyperscalers will pay nuclear premiums when renewables+storage get cheaper. Microsoft deal may be unique rather than replicable.",
+        "critic_challenge": "Both sides are speculating. What's the actual contracted pipeline? Microsoft is one deal. Where's the evidence of Google/Amazon willingness to pay similar premiums? Bull is extrapolating from one data point."
+      },
+      {
+        "round": 2,
+        "topic": "TMI Restart Execution Risk",
+        "bull_position": "Constellation has decades of nuclear operational excellence. TMI Unit 1 was in good condition when shut down - only closed for economics, not safety. $1.6B investment is manageable. NRC license reinstatement is straightforward.",
+        "bear_position": "No nuclear plant has ever been restarted in the US. This is unprecedented execution risk. Supply chain for nuclear components is constrained. Skilled labor is scarce. Cost overruns are endemic to nuclear projects.",
+        "critic_challenge": "Bear makes valid points on execution risk. However, TMI-1 is different from new construction - the plant exists. The real question is: what's the probability distribution of cost overruns and delays? Neither side has quantified this."
+      },
+      {
+        "round": 3,
+        "topic": "Wholesale Power Price Outlook",
+        "bull_position": "Power prices will stay elevated. Coal retirements removing supply, data center demand adding load, interconnection delays for renewables. PJM capacity prices at multi-year highs. This is structural, not cyclical.",
+        "bear_position": "Power prices are cyclical. Current levels reflect temporary tightness. Renewable costs keep falling. Storage is scaling. Gas prices could decline. Merchant nuclear exposure is a risk, not an advantage.",
+        "critic_challenge": "Bull's structural argument has merit but ignores mean reversion risk. Bear underestimates how long capacity tightness can persist. Neither addresses the IRA price floor - PTCs provide downside protection for nuclear."
+      },
+      {
+        "round": 4,
+        "topic": "Nuclear Policy and Regulatory Risk",
+        "bull_position": "Nuclear has bipartisan support. IRA passed with nuclear credits. Republican administrations have been pro-nuclear. State subsidies exist in IL, NY, NJ, PA. Risk of policy reversal is low.",
+        "bear_position": "One nuclear incident anywhere in the world could shift public opinion and policy rapidly. Fukushima killed nuclear expansion in Germany and Japan. US is not immune to similar reactions.",
+        "critic_challenge": "Both have valid points. Bipartisan support is real but fragile. The tail risk of a nuclear incident is low probability but high impact. This should be reflected in scenario probabilities and discount rates."
+      },
+      {
+        "round": 5,
+        "topic": "Valuation Multiple Expansion/Contraction",
+        "bull_position": "CEG trades at a discount to growth. As market recognizes data center theme and TMI success, multiple should expand. Look at Vistra - similar re-rating potential. P/E of 25x earnings is justified.",
+        "bear_position": "Utilities don't deserve growth multiples. CEG is at historical highs. The stock has tripled since spin-off. Much of the good news is priced in. Downside risk to multiple if growth disappoints.",
+        "critic_challenge": "Bull is right that CEG has unique growth profile among utilities. Bear is right that stock has re-rated significantly. The question is: what multiple is appropriate for a nuclear generator with contracted growth? Historical utility comps may not apply."
+      },
+      {
+        "round": 6,
+        "topic": "Competition from Renewables + Storage",
+        "bull_position": "Renewables cannot replace nuclear. Solar/wind are intermittent. Batteries are expensive at scale. Nuclear provides 24/7 baseload. For data centers requiring 100% uptime, nuclear is the only option.",
+        "bear_position": "Battery costs falling 15% per year. Long-duration storage emerging. Renewable overbuild + storage can provide firm power. Nuclear's cost advantage is shrinking. Microsoft also buys lots of wind/solar.",
+        "critic_challenge": "Both miss nuance. For annual carbon accounting, renewables work fine. For hourly 24/7 CFE, nuclear has clear advantage. The question is: what premium will corporates pay for hourly matching? Microsoft deal suggests significant premium."
+      },
+      {
+        "round": 7,
+        "topic": "Capital Allocation Priorities",
+        "bull_position": "Management is excellent capital allocators. Balanced approach: growth investment (TMI), shareholder returns (buybacks + dividends), and maintaining investment grade. Free cash flow generation supports all three.",
+        "bear_position": "TMI is a $1.6B bet. If it fails or is delayed, that capital is at risk. Share buybacks at current prices may prove poorly timed. Dividend isn't high enough to attract income investors.",
+        "critic_challenge": "Bull gives management too much credit without examining alternatives. Bear ignores that management successfully executed spin-off. The key question: is TMI the best use of $1.6B versus buying back stock or other investments?"
+      },
+      {
+        "round": 8,
+        "topic": "Scenario Probability Weights",
+        "bull_position": "Base and Bull scenarios are most likely. Data center demand is real. Nuclear policy support is real. Super Bear (nuclear incident) is extremely low probability. I'd weight Bull higher than 20%.",
+        "bear_position": "Base case is too optimistic. Execution risks on TMI, power price risks, and competition risks should push probability toward Bear. I'd weight Bear at 30% not 20%.",
+        "critic_challenge": "Current weights (5/20/50/20/5) seem reasonable. Bull wants to skew optimistic, Bear wants to skew pessimistic. The fundamental question: is market consensus (current price) already reflecting Base case or something different?"
+      },
+      {
+        "round": 9,
+        "topic": "Appropriate Discount Rate",
+        "bull_position": "8-9% is appropriate. CEG is a utility with stable, regulated-like cash flows thanks to IRA PTCs. Lower beta than market. Investment grade credit. Nuclear fuel costs are stable and low.",
+        "bear_position": "10-11% is needed. Merchant power exposure adds volatility. Nuclear operational risk warrants premium. Execution risk on TMI. Single commodity exposure (electricity prices).",
+        "critic_challenge": "WACC derivation should drive this debate, not gut feel. CEG's beta is around 0.9. Cost of debt is ~5%. Standard WACC calculation yields 7-8%, but adding nuclear-specific risk premium gets to 9-10% range."
+      },
+      {
+        "round": 10,
+        "topic": "Final Investment Recommendation",
+        "bull_position": "Strong Buy. Current price of ~$275 versus fair value of $363 (9% WACC) implies 32% upside. Risk/reward is compelling. Data center theme is in early innings. TMI success will catalyze further re-rating.",
+        "bear_position": "Hold at best. Stock has tripled. Much of the positive narrative is priced in. Execution risks are underappreciated. Wait for pullback or evidence of TMI success before adding.",
+        "critic_challenge": "Bull's math works at 9% WACC. But if 10% WACC is more appropriate, fair value is $320, implying only 16% upside. The debate comes down to risk assessment. For long-term investors, BUY is reasonable. Position sizing should reflect execution risk."
+      }
+    ],
+    "synthesis": {
+      "areas_of_agreement": [
+        "Data center power demand is a real structural growth driver",
+        "Nuclear has unique 24/7 carbon-free advantage",
+        "IRA production tax credits provide meaningful downside protection",
+        "Management has executed well since spin-off",
+        "TMI restart is unprecedented and carries execution risk"
+      ],
+      "key_disagreements": [
+        "Magnitude and sustainability of power price increases",
+        "Replicability of Microsoft-style premium PPAs",
+        "Appropriate discount rate (8-9% vs 10-11%)",
+        "TMI execution probability",
+        "How much optimism is already in the stock"
+      ],
+      "final_recommendation": "BUY with target price of $350 (using 9% WACC as central estimate, rounded down for conservatism). Position sizing should be moderate given execution risks. Key catalyst to monitor: TMI restart progress and additional corporate PPA announcements."
+    }
+  },
+
+  "key_risks": {
+    "operational": {
+      "description": "Nuclear operational incident at any CEG plant",
+      "probability": "Low",
+      "impact": "Very High",
+      "mitigation": "Industry-leading safety record, rigorous NRC oversight"
+    },
+    "execution": {
+      "description": "TMI restart delays or cost overruns",
+      "probability": "Medium",
+      "impact": "Medium",
+      "mitigation": "Experienced management, conservative budgeting"
+    },
+    "regulatory": {
+      "description": "Adverse changes to nuclear policy or IRA credits",
+      "probability": "Low-Medium",
+      "impact": "High",
+      "mitigation": "Bipartisan support, state-level backup policies"
+    },
+    "market": {
+      "description": "Wholesale power price decline",
+      "probability": "Medium",
+      "impact": "Medium",
+      "mitigation": "PTCs provide floor, contracted PPAs reduce exposure"
+    },
+    "competition": {
+      "description": "Renewables+storage erode nuclear economics",
+      "probability": "Medium",
+      "impact": "Low-Medium",
+      "mitigation": "24/7 CFE advantage, baseload necessity"
+    }
+  },
+
+  "catalysts": {
+    "positive": [
+      "Additional corporate PPA announcements (Google, Amazon, Meta)",
+      "TMI restart milestones (NRC approval, construction progress)",
+      "Elevated power prices persist or increase",
+      "Additional nuclear restart announcements",
+      "SMR or advanced reactor partnerships",
+      "License extensions approved for 80-year operations"
+    ],
+    "negative": [
+      "Nuclear safety incident anywhere globally",
+      "TMI restart delays or cost overruns",
+      "Power price collapse",
+      "IRA credit modifications",
+      "Data center demand disappointment",
+      "Unplanned fleet outages"
+    ]
+  },
+
+  "investment_recommendation": {
+    "rating": "BUY",
+    "target_price_usd": 350,
+    "current_price_usd": 275,
+    "upside_pct": 27.3,
+    "time_horizon": "12-18 months",
+    "conviction": "Medium-High",
+    "thesis_summary": "Constellation Energy is uniquely positioned at the intersection of data center power demand and nuclear's role in decarbonization. The Microsoft TMI deal validates premium pricing for 24/7 carbon-free power. With strong free cash flow, disciplined capital allocation, and multiple additional catalysts, CEG offers compelling risk-adjusted returns.",
+    "position_sizing": "Core holding for utilities/clean energy allocation (4-6% of portfolio). Size reflects upside potential balanced against TMI execution risk.",
+    "entry_strategy": {
+      "current_levels": "Initiate 50% position",
+      "on_pullback_to_250": "Add to full position",
+      "on_rally_above_350": "Trim and reassess"
+    }
+  },
+
+  "monitoring_checklist": [
+    "TMI restart progress - quarterly updates",
+    "Corporate PPA announcements",
+    "Wholesale power prices (PJM)",
+    "Fleet capacity factors - quarterly",
+    "Earnings vs estimates",
+    "Capital allocation decisions",
+    "Regulatory developments",
+    "Nuclear safety metrics"
+  ],
+
+  "disclaimer": "This analysis is for informational purposes only and does not constitute investment advice. Investments in securities involve risk. Past performance is not indicative of future results. The author may hold positions in securities mentioned. Always conduct your own due diligence and consult with qualified financial advisors before making investment decisions."
+}

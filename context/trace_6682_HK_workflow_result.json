@@ -1,0 +1,135 @@
+{
+  "ticker": "6682 HK",
+  "workflow_result_path": "context\\6682_HK_workflow_result.json",
+  "data_integrity_score": 31.25,
+  "critical_failures": [
+    "Price diverged from verified value at Industry Deep Dive",
+    "Missing 'DATA: VERIFIED' - Data Checkpoint may not have executed properly",
+    "Missing 'INPUTS: VALIDATED' - Pre-Model Validator may not have executed properly",
+    "Missing 'ROUTE: Synthesizer' - Quality Supervisor may not have executed properly",
+    "Possible wrong company data (microsoft) at Industry Deep Dive",
+    "Possible wrong company data (amazon) at Industry Deep Dive",
+    "Possible wrong company data (google) at Industry Deep Dive",
+    "Possible wrong company data (tesla) at Bull Advocate R1",
+    "Possible wrong company data (apple) at Devils Advocate",
+    "Possible wrong company data (google) at Devils Advocate",
+    "Possible wrong company data (tesla) at Devils Advocate",
+    "Possible wrong company data (apple) at Bull Advocate R2",
+    "Possible wrong company data (google) at Bull Advocate R2",
+    "Possible wrong company data (tesla) at Bull Advocate R2",
+    "Possible wrong company data (tesla) at Bear Advocate R2",
+    "Possible wrong company data (tesla) at Debate Critic"
+  ],
+  "node_reliability": {
+    "START": 25.0,
+    "Research Supervisor": 0.0,
+    "Market Data Collector": 0.0,
+    "Industry Deep Dive": 0.0,
+    "Company Deep Dive": 0.0,
+    "Debate Moderator": 0.0,
+    "Bull Advocate R1": 12.5,
+    "Bear Advocate R1": 0.0,
+    "Devils Advocate": 0.0,
+    "Bull Advocate R2": 0.0,
+    "Bear Advocate R2": 0.0,
+    "Debate Critic": 0.0,
+    "Financial Modeler": 0.0,
+    "Assumption Challenger": 0.0,
+    "Comparable Validator": 0.0,
+    "Sensitivity Auditor": 0.0,
+    "Valuation Committee": 12.5,
+    "Data Verification Gate": 0.0,
+    "Logic Verification Gate": 0.0,
+    "Quality Supervisor": 0.0
+  },
+  "recommendations": [
+    "Ensure prefetch_data.py runs BEFORE workflow execution",
+    "Verify Data Checkpoint is catching price mismatches",
+    "Check why routing keywords are missing: ['DATA: VERIFIED', 'INPUTS: VALIDATED', 'ROUTE: Synthesizer']",
+    "Workflow may be taking unexpected paths or terminating early",
+    "Data collectors may be returning wrong company data",
+    "Strengthen company identity checks in Data Checkpoint"
+  ],
+  "data_points": {
+    "ticker": {
+      "name": "Ticker",
+      "expected_value": "6682 HK",
+      "node_values": {
+        "START": "present"
+      },
+      "first_appearance": "START",
+      "issues": []
+    },
+    "current_price": {
+      "name": "Current Price",
+      "expected_value": 50.0,
+      "node_values": {
+        "START": 50.0,
+        "Industry Deep Dive": 480.0,
+        "Bull Advocate R1": 50.0,
+        "Bull Advocate R2": 3.0
+      },
+      "first_appearance": "START",
+      "issues": [
+        "Wrong price 480 found at Industry Deep Dive (expected 50.0)"
+      ]
+    },
+    "currency": {
+      "name": "Currency",
+      "expected_value": "HKD",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "company_name": {
+      "name": "Company Name",
+      "expected_value": "6682 HK",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": [
+        "Possible wrong company data (microsoft) at Industry Deep Dive",
+        "Possible wrong company data (amazon) at Industry Deep Dive",
+        "Possible wrong company data (google) at Industry Deep Dive",
+        "Possible wrong company data (tesla) at Bull Advocate R1",
+        "Possible wrong company data (apple) at Devils Advocate",
+        "Possible wrong company data (google) at Devils Advocate",
+        "Possible wrong company data (tesla) at Devils Advocate",
+        "Possible wrong company data (apple) at Bull Advocate R2",
+        "Possible wrong company data (google) at Bull Advocate R2",
+        "Possible wrong company data (tesla) at Bull Advocate R2",
+        "Possible wrong company data (tesla) at Bear Advocate R2",
+        "Possible wrong company data (tesla) at Debate Critic"
+      ]
+    },
+    "data_verified_keyword": {
+      "name": "DATA: VERIFIED keyword",
+      "expected_value": "DATA: VERIFIED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "inputs_validated_keyword": {
+      "name": "INPUTS: VALIDATED keyword",
+      "expected_value": "INPUTS: VALIDATED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "valuation_approved_keyword": {
+      "name": "VALUATION: APPROVED keyword",
+      "expected_value": "VALUATION: APPROVED",
+      "node_values": {
+        "Valuation Committee": "present"
+      },
+      "first_appearance": "Valuation Committee",
+      "issues": []
+    },
+    "route_synthesizer_keyword": {
+      "name": "ROUTE: Synthesizer keyword",
+      "expected_value": "ROUTE: Synthesizer",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    }
+  }
+}

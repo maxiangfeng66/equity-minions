@@ -33,5 +33,13 @@ Thumbs.db
 # Claude chat history (large file)
 claudechat.txt
 
+# API Keys backup (contains secrets - NEVER commit)
+api_keys_backup.txt
+api_keys_backup.md
+
 # Temp task outputs
 *.output
+
+# Windows reserved names
+nul
+NUL

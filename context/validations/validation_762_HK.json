@@ -1,0 +1,104 @@
+{
+  "ticker": "762 HK",
+  "company_name": "762 HK",
+  "overall_score": 16,
+  "needs_revision": true,
+  "factual_issues": [
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "missing_data",
+      "severity": "major",
+      "issue": "Missing revenue in financial data",
+      "evidence": "Field 'revenue' is empty or missing",
+      "recommendation": "Fetch revenue from reliable source",
+      "timestamp": "2026-01-19T23:30:50.100522"
+    },
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "missing_data",
+      "severity": "major",
+      "issue": "Missing net_income in financial data",
+      "evidence": "Field 'net_income' is empty or missing",
+      "recommendation": "Fetch net_income from reliable source",
+      "timestamp": "2026-01-19T23:30:50.100524"
+    },
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "missing_data",
+      "severity": "major",
+      "issue": "Missing total_assets in financial data",
+      "evidence": "Field 'total_assets' is empty or missing",
+      "recommendation": "Fetch total_assets from reliable source",
+      "timestamp": "2026-01-19T23:30:50.100525"
+    },
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "missing_data",
+      "severity": "major",
+      "issue": "Missing total_equity in financial data",
+      "evidence": "Field 'total_equity' is empty or missing",
+      "recommendation": "Fetch total_equity from reliable source",
+      "timestamp": "2026-01-19T23:30:50.100526"
+    },
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "incomplete_data",
+      "severity": "minor",
+      "issue": "Company description too brief",
+      "evidence": "Description length: 0 chars",
+      "recommendation": "Expand company description with more detail",
+      "timestamp": "2026-01-19T23:30:50.100529"
+    },
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "invalid_data",
+      "severity": "critical",
+      "issue": "Invalid or missing current price",
+      "evidence": "Current price: 0",
+      "recommendation": "Fetch current price from market data source",
+      "timestamp": "2026-01-19T23:30:50.100531"
+    },
+    {
+      "agent_type": "FactChecker",
+      "ticker": "762 HK",
+      "category": "missing_data",
+      "severity": "minor",
+      "issue": "No competitors identified",
+      "evidence": "Competitor list is empty",
+      "recommendation": "Research and add key competitors",
+      "timestamp": "2026-01-19T23:30:50.100533"
+    }
+  ],
+  "logic_issues": [
+    {
+      "agent_type": "LogicValidator",
+      "ticker": "762 HK",
+      "category": "aggressive_assumption",
+      "severity": "major",
+      "issue": "Discount rate too low: 0.0%",
+      "evidence": "WACC of 0.0% is below risk-free rate",
+      "recommendation": "Use appropriate risk-adjusted discount rate (8-12%)",
+      "timestamp": "2026-01-19T23:30:50.100536"
+    }
+  ],
+  "data_issues": [
+    {
+      "agent_type": "DataConsistency",
+      "ticker": "762 HK",
+      "category": "stale_data",
+      "severity": "major",
+      "issue": "Research data is 366 days old",
+      "evidence": "Last updated: 2025-01-18",
+      "recommendation": "Refresh research with current data",
+      "timestamp": "2026-01-19T23:30:50.100547"
+    }
+  ],
+  "calculation_issues": [],
+  "timestamp": "2026-01-19T23:30:50.102777"
+}

@@ -1,0 +1,917 @@
+{
+  "mode": "full",
+  "start_time": "2026-01-19T23:11:44.106901",
+  "validation": {
+    "6682 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "LEGN US": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "9660 HK": {
+      "score": 6,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "9926 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "762 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "1799 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "3888 HK": {
+      "score": 0,
+      "needs_revision": true,
+      "issues": 10
+    },
+    "3800 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "1045 HK": {
+      "score": 16,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "2696 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "9969 HK": {
+      "score": 6,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "3319 HK": {
+      "score": 6,
+      "needs_revision": true,
+      "issues": 9
+    },
+    "2869 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    },
+    "1816 HK": {
+      "score": 26,
+      "needs_revision": true,
+      "issues": 8
+    }
+  },
+  "monitoring": {
+    "events_count": 0,
+    "tickers_requiring_update": [
+      "6682 HK Equity\t BEIJING FOURTH PARADIGM TE-H",
+      "LEGN US Equity\t LEGEND BIOTECH CORP-ADR",
+      "9660 HK Equity\t HORIZON ROBOTICS INC",
+      "9926 HK Equity\t AKESO INC",
+      "762 HK Equity\t CHINA UNICOM HONG KONG LTD",
+      "1799 HK Equity\t XINTE ENERGY CO LTD-H",
+      "3888 HK Equity\t KINGSOFT CORP LTD",
+      "3800 HK Equity\t GCL TECHNOLOGY HOLDINGS LTD",
+      "1045 HK Equity\t APT SATELLITE HOLDINGS LTD",
+      "2696 HK Equity\t SHANGHAI HENLIUS BIOTECH I-H",
+      "9969 HK Equity\t INNOCARE PHARMA LTD-H",
+      "3319 HK Equity\t A-LIVING SMART CITY SERVIC-H",
+      "2869 HK Equity\t GREENTOWN SERVICE GROUP CO L",
+      "1816 HK Equity\t CGN POWER CO LTD-H",
+      "600900 CH Equity\t CHINA YANGTZE POWER CO LTD-A",
+      "VST US Equity\t VISTRA CORP",
+      "CEG US Equity\t CONSTELLATION ENERGY",
+      "388 HK Equity\t HONG KONG EXCHANGES & CLEAR",
+      "JPM US Equity\t JPMORGAN CHASE & CO",
+      "3968 HK Equity\t CHINA MERCHANTS BANK-H"
+    ],
+    "new_companies": [
+      "6682 HK Equity\t BEIJING FOURTH PARADIGM TE-H",
+      "LEGN US Equity\t LEGEND BIOTECH CORP-ADR",
+      "9660 HK Equity\t HORIZON ROBOTICS INC",
+      "9926 HK Equity\t AKESO INC",
+      "762 HK Equity\t CHINA UNICOM HONG KONG LTD",
+      "1799 HK Equity\t XINTE ENERGY CO LTD-H",
+      "3888 HK Equity\t KINGSOFT CORP LTD",
+      "3800 HK Equity\t GCL TECHNOLOGY HOLDINGS LTD",
+      "1045 HK Equity\t APT SATELLITE HOLDINGS LTD",
+      "2696 HK Equity\t SHANGHAI HENLIUS BIOTECH I-H",
+      "9969 HK Equity\t INNOCARE PHARMA LTD-H",
+      "3319 HK Equity\t A-LIVING SMART CITY SERVIC-H",
+      "2869 HK Equity\t GREENTOWN SERVICE GROUP CO L",
+      "1816 HK Equity\t CGN POWER CO LTD-H",
+      "600900 CH Equity\t CHINA YANGTZE POWER CO LTD-A",
+      "VST US Equity\t VISTRA CORP",
+      "CEG US Equity\t CONSTELLATION ENERGY",
+      "388 HK Equity\t HONG KONG EXCHANGES & CLEAR",
+      "JPM US Equity\t JPMORGAN CHASE & CO",
+      "3968 HK Equity\t CHINA MERCHANTS BANK-H"
+    ],
+    "summary": "MONITORING SUMMARY - 2026-01-19\n========================================\nTotal events detected: 0\nTickers requiring update: 20\nNew companies detected: 20\n\nUpdates needed for: 6682 HK Equity\t BEIJING FOURTH PARADIGM TE-H, LEGN US Equity\t LEGEND BIOTECH CORP-ADR, 9660 HK Equity\t HORIZON ROBOTICS INC, 9926 HK Equity\t AKESO INC, 762 HK Equity\t CHINA UNICOM HONG KONG LTD, 1799 HK Equity\t XINTE ENERGY CO LTD-H, 3888 HK Equity\t KINGSOFT CORP LTD, 3800 HK Equity\t GCL TECHNOLOGY HOLDINGS LTD, 1045 HK Equity\t APT SATELLITE HOLDINGS LTD, 2696 HK Equity\t SHANGHAI HENLIUS BIOTECH I-H, 9969 HK Equity\t INNOCARE PHARMA LTD-H, 3319 HK Equity\t A-LIVING SMART CITY SERVIC-H, 2869 HK Equity\t GREENTOWN SERVICE GROUP CO L, 1816 HK Equity\t CGN POWER CO LTD-H, 600900 CH Equity\t CHINA YANGTZE POWER CO LTD-A, VST US Equity\t VISTRA CORP, CEG US Equity\t CONSTELLATION ENERGY, 388 HK Equity\t HONG KONG EXCHANGES & CLEAR, JPM US Equity\t JPMORGAN CHASE & CO, 3968 HK Equity\t CHINA MERCHANTS BANK-H\n\nNew companies to research: 6682 HK Equity\t BEIJING FOURTH PARADIGM TE-H, LEGN US Equity\t LEGEND BIOTECH CORP-ADR, 9660 HK Equity\t HORIZON ROBOTICS INC, 9926 HK Equity\t AKESO INC, 762 HK Equity\t CHINA UNICOM HONG KONG LTD, 1799 HK Equity\t XINTE ENERGY CO LTD-H, 3888 HK Equity\t KINGSOFT CORP LTD, 3800 HK Equity\t GCL TECHNOLOGY HOLDINGS LTD, 1045 HK Equity\t APT SATELLITE HOLDINGS LTD, 2696 HK Equity\t SHANGHAI HENLIUS BIOTECH I-H, 9969 HK Equity\t INNOCARE PHARMA LTD-H, 3319 HK Equity\t A-LIVING SMART CITY SERVIC-H, 2869 HK Equity\t GREENTOWN SERVICE GROUP CO L, 1816 HK Equity\t CGN POWER CO LTD-H, 600900 CH Equity\t CHINA YANGTZE POWER CO LTD-A, VST US Equity\t VISTRA CORP, CEG US Equity\t CONSTELLATION ENERGY, 388 HK Equity\t HONG KONG EXCHANGES & CLEAR, JPM US Equity\t JPMORGAN CHASE & CO, 3968 HK Equity\t CHINA MERCHANTS BANK-H"
+  },
+  "updates": {
+    "tasks_processed": 54,
+    "successful": 22,
+    "failed": 47,
+    "details": [
+      {
+        "ticker": "6682 HK Equity\t BEIJING FOURTH PARADIGM TE-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\6682_HK_Equity\\t_BEIJING_FOURTH_PARADIGM_TE-H.json'"
+        ]
+      },
+      {
+        "ticker": "LEGN US Equity\t LEGEND BIOTECH CORP-ADR",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\LEGN_US_Equity\\t_LEGEND_BIOTECH_CORP-ADR.json'"
+        ]
+      },
+      {
+        "ticker": "9660 HK Equity\t HORIZON ROBOTICS INC",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\9660_HK_Equity\\t_HORIZON_ROBOTICS_INC.json'"
+        ]
+      },
+      {
+        "ticker": "9926 HK Equity\t AKESO INC",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\9926_HK_Equity\\t_AKESO_INC.json'"
+        ]
+      },
+      {
+        "ticker": "762 HK Equity\t CHINA UNICOM HONG KONG LTD",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\762_HK_Equity\\t_CHINA_UNICOM_HONG_KONG_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "1799 HK Equity\t XINTE ENERGY CO LTD-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\1799_HK_Equity\\t_XINTE_ENERGY_CO_LTD-H.json'"
+        ]
+      },
+      {
+        "ticker": "3888 HK Equity\t KINGSOFT CORP LTD",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\3888_HK_Equity\\t_KINGSOFT_CORP_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "3800 HK Equity\t GCL TECHNOLOGY HOLDINGS LTD",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\3800_HK_Equity\\t_GCL_TECHNOLOGY_HOLDINGS_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "1045 HK Equity\t APT SATELLITE HOLDINGS LTD",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\1045_HK_Equity\\t_APT_SATELLITE_HOLDINGS_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "2696 HK Equity\t SHANGHAI HENLIUS BIOTECH I-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\2696_HK_Equity\\t_SHANGHAI_HENLIUS_BIOTECH_I-H.json'"
+        ]
+      },
+      {
+        "ticker": "9969 HK Equity\t INNOCARE PHARMA LTD-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\9969_HK_Equity\\t_INNOCARE_PHARMA_LTD-H.json'"
+        ]
+      },
+      {
+        "ticker": "3319 HK Equity\t A-LIVING SMART CITY SERVIC-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\3319_HK_Equity\\t_A-LIVING_SMART_CITY_SERVIC-H.json'"
+        ]
+      },
+      {
+        "ticker": "2869 HK Equity\t GREENTOWN SERVICE GROUP CO L",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\2869_HK_Equity\\t_GREENTOWN_SERVICE_GROUP_CO_L.json'"
+        ]
+      },
+      {
+        "ticker": "1816 HK Equity\t CGN POWER CO LTD-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\1816_HK_Equity\\t_CGN_POWER_CO_LTD-H.json'"
+        ]
+      },
+      {
+        "ticker": "600900 CH Equity\t CHINA YANGTZE POWER CO LTD-A",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\600900_CH_Equity\\t_CHINA_YANGTZE_POWER_CO_LTD-A.json'"
+        ]
+      },
+      {
+        "ticker": "VST US Equity\t VISTRA CORP",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\VST_US_Equity\\t_VISTRA_CORP.json'"
+        ]
+      },
+      {
+        "ticker": "CEG US Equity\t CONSTELLATION ENERGY",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\CEG_US_Equity\\t_CONSTELLATION_ENERGY.json'"
+        ]
+      },
+      {
+        "ticker": "388 HK Equity\t HONG KONG EXCHANGES & CLEAR",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\388_HK_Equity\\t_HONG_KONG_EXCHANGES_&_CLEAR.json'"
+        ]
+      },
+      {
+        "ticker": "JPM US Equity\t JPMORGAN CHASE & CO",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\JPM_US_Equity\\t_JPMORGAN_CHASE_&_CO.json'"
+        ]
+      },
+      {
+        "ticker": "3968 HK Equity\t CHINA MERCHANTS BANK-H",
+        "success": false,
+        "changes": [
+          "Completed: data_gathering",
+          "Completed: industry_analysis",
+          "Completed: company_analysis",
+          "Completed: dcf_valuation",
+          "Completed: scenario_analysis"
+        ],
+        "errors": [
+          "Research failed: [Errno 22] Invalid argument: 'context\\\\3968_HK_Equity\\t_CHINA_MERCHANTS_BANK-H.json'"
+        ]
+      },
+      {
+        "ticker": "6682 HK Equity\t BEIJING FOURTH PARADIGM TE-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\6682_HK_Equity\\t_BEIJING_FOURTH_PARADIGM_TE-H.json'"
+        ]
+      },
+      {
+        "ticker": "LEGN US Equity\t LEGEND BIOTECH CORP-ADR",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\LEGN_US_Equity\\t_LEGEND_BIOTECH_CORP-ADR.json'"
+        ]
+      },
+      {
+        "ticker": "9660 HK Equity\t HORIZON ROBOTICS INC",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\9660_HK_Equity\\t_HORIZON_ROBOTICS_INC.json'"
+        ]
+      },
+      {
+        "ticker": "9926 HK Equity\t AKESO INC",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\9926_HK_Equity\\t_AKESO_INC.json'"
+        ]
+      },
+      {
+        "ticker": "762 HK Equity\t CHINA UNICOM HONG KONG LTD",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\762_HK_Equity\\t_CHINA_UNICOM_HONG_KONG_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "1799 HK Equity\t XINTE ENERGY CO LTD-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\1799_HK_Equity\\t_XINTE_ENERGY_CO_LTD-H.json'"
+        ]
+      },
+      {
+        "ticker": "3888 HK Equity\t KINGSOFT CORP LTD",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\3888_HK_Equity\\t_KINGSOFT_CORP_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "3800 HK Equity\t GCL TECHNOLOGY HOLDINGS LTD",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\3800_HK_Equity\\t_GCL_TECHNOLOGY_HOLDINGS_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "1045 HK Equity\t APT SATELLITE HOLDINGS LTD",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\1045_HK_Equity\\t_APT_SATELLITE_HOLDINGS_LTD.json'"
+        ]
+      },
+      {
+        "ticker": "2696 HK Equity\t SHANGHAI HENLIUS BIOTECH I-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\2696_HK_Equity\\t_SHANGHAI_HENLIUS_BIOTECH_I-H.json'"
+        ]
+      },
+      {
+        "ticker": "9969 HK Equity\t INNOCARE PHARMA LTD-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\9969_HK_Equity\\t_INNOCARE_PHARMA_LTD-H.json'"
+        ]
+      },
+      {
+        "ticker": "3319 HK Equity\t A-LIVING SMART CITY SERVIC-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\3319_HK_Equity\\t_A-LIVING_SMART_CITY_SERVIC-H.json'"
+        ]
+      },
+      {
+        "ticker": "2869 HK Equity\t GREENTOWN SERVICE GROUP CO L",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\2869_HK_Equity\\t_GREENTOWN_SERVICE_GROUP_CO_L.json'"
+        ]
+      },
+      {
+        "ticker": "1816 HK Equity\t CGN POWER CO LTD-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\1816_HK_Equity\\t_CGN_POWER_CO_LTD-H.json'"
+        ]
+      },
+      {
+        "ticker": "600900 CH Equity\t CHINA YANGTZE POWER CO LTD-A",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\600900_CH_Equity\\t_CHINA_YANGTZE_POWER_CO_LTD-A.json'"
+        ]
+      },
+      {
+        "ticker": "VST US Equity\t VISTRA CORP",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\VST_US_Equity\\t_VISTRA_CORP.json'"
+        ]
+      },
+      {
+        "ticker": "CEG US Equity\t CONSTELLATION ENERGY",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\CEG_US_Equity\\t_CONSTELLATION_ENERGY.json'"
+        ]
+      },
+      {
+        "ticker": "388 HK Equity\t HONG KONG EXCHANGES & CLEAR",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\388_HK_Equity\\t_HONG_KONG_EXCHANGES_&_CLEAR.json'"
+        ]
+      },
+      {
+        "ticker": "JPM US Equity\t JPMORGAN CHASE & CO",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\JPM_US_Equity\\t_JPMORGAN_CHASE_&_CO.json'"
+        ]
+      },
+      {
+        "ticker": "3968 HK Equity\t CHINA MERCHANTS BANK-H",
+        "success": false,
+        "changes": [
+          "Created new context",
+          "Market data refresh attempted",
+          "Financial data refresh attempted",
+          "News refresh attempted"
+        ],
+        "errors": [
+          "Refresh failed: [Errno 22] Invalid argument: 'context\\\\3968_HK_Equity\\t_CHINA_MERCHANTS_BANK-H.json'"
+        ]
+      },
+      {
+        "ticker": "6682 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "LEGN US",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "9660 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "9926 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "762 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "1799 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "3888 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "3800 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "1045 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "2696 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "9969 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "3319 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "2869 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "1816 HK",
+        "success": true,
+        "changes": [],
+        "errors": []
+      },
+      {
+        "ticker": "6682 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\6682.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: Unknown format code 'f' for object of type 'str'"
+        ]
+      },
+      {
+        "ticker": "LEGN US",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\LEGN_US.html",
+          "Detailed report updated: reports\\LEGN_US_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "9660 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\9660.HK.html",
+          "Detailed report updated: reports\\9660.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "9926 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\9926.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "762 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\762_HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "1799 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\1799.HK.html",
+          "Detailed report updated: reports\\1799.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "3888 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\3888.HK.html",
+          "Detailed report updated: reports\\3888.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "3800 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\3800.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "1045 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\1045.HK.html",
+          "Detailed report updated: reports\\1045.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "2696 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\2696.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "9969 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\9969.HK.html",
+          "Detailed report updated: reports\\9969.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "3319 HK",
+        "success": true,
+        "changes": [
+          "Summary report updated: reports\\3319.HK.html",
+          "Detailed report updated: reports\\3319.HK_detailed.html"
+        ],
+        "errors": []
+      },
+      {
+        "ticker": "2869 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\2869.HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "1816 HK",
+        "success": false,
+        "changes": [
+          "Summary report updated: reports\\1816_HK.html"
+        ],
+        "errors": [
+          "Regeneration failed: 'list' object has no attribute 'get'"
+        ]
+      },
+      {
+        "ticker": "INDEX",
+        "success": true,
+        "changes": [
+          "Updated generation timestamp"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "summary": {
+    "timestamp": "2026-01-19T23:11:44.183056",
+    "equities_processed": 14,
+    "validation": {
+      "total_validated": 14,
+      "needs_revision": 14,
+      "avg_score": 16.285714285714285
+    },
+    "monitoring": {
+      "events_detected": 0,
+      "updates_triggered": 20,
+      "new_companies": 20
+    },
+    "updates": {
+      "tasks_processed": 54,
+      "successful": 22,
+      "failed": 47
+    }
+  },
+  "end_time": "2026-01-19T23:11:44.183050",
+  "duration_seconds": 0.076149
+}

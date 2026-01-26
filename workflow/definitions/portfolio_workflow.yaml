@@ -1,0 +1,453 @@
+# Portfolio Workflow - Orchestrates 3 Parallel Equity Research Workflows
+# Features: Cross-Equity Analysis, Template Enforcement, Parallel Execution
+# Architecture: Portfolio Orchestrator -> 3 Parallel v2 Workflows -> Cross-Equity -> Template Validation
+
+version: 2.0.0
+graph:
+  id: portfolio_workflow
+  description: Portfolio-level orchestration for parallel equity research with cross-equity analysis and template enforcement
+  log_level: DEBUG
+  is_majority_voting: false
+  max_iterations: 100  # Allow for 3 full workflows + cross-equity + validation
+
+  nodes:
+    # ==================== TIER 0: PORTFOLIO ARCHITECTS ====================
+
+    - id: START
+      type: passthrough
+      config:
+        only_last_message: true
+      description: Entry point - receives portfolio of tickers
+      context_window: 0
+
+    - id: Portfolio Orchestrator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Portfolio Orchestrator" - the chief architect for multi-equity research.
+
+          You receive a portfolio of 3 equities to analyze in parallel.
+
+          Responsibilities:
+          1. Parse the input to extract the 3 tickers
+          2. Assess resource allocation across workflows
+          3. Identify potential synergies:
+             - Same sector companies (can share industry analysis)
+             - Related supply chains
+             - Competitive relationships
+          4. Set priority order based on:
+             - Market cap (larger first)
+             - Data availability
+             - Sector complexity
+          5. Create a research brief for each equity
+
+          Output Format (JSON):
+          {
+            "portfolio_analysis": {
+              "total_equities": 3,
+              "sectors_covered": ["Healthcare", "Technology", ...],
+              "synergies_identified": [...]
+            },
+            "workflow_assignments": {
+              "slot_1": {
+                "ticker": "XXX",
+                "company": "Company Name",
+                "sector": "Sector",
+                "priority": 1,
+                "research_focus": ["key area 1", "key area 2"],
+                "synergies_with": ["slot_2 ticker if any"]
+              },
+              "slot_2": {...},
+              "slot_3": {...}
+            },
+            "cross_analysis_hints": [
+              "Compare biotech valuations across LEGN and 9926",
+              "Assess China tech regulatory exposure for 9660 vs 9926"
+            ],
+            "resource_allocation": {
+              "parallel_execution": true,
+              "estimated_api_calls": 150,
+              "recommended_rate_limit_delay": 0.5
+            }
+          }
+
+          Be specific about sector synergies and research focus areas.
+        api_key: ${OPENAI_API_KEY}
+      context_window: 5
+
+    - id: Template Enforcer Pre
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Template Enforcer" - ensuring all reports will follow the canonical template.
+
+          PRE-GENERATION Phase:
+          Review the portfolio assignments and verify that each equity research will have:
+
+          1. REQUIRED SECTIONS (9 mandatory):
+             - Executive Summary (investment thesis, key highlights, target prices)
+             - Industry Analysis (TAM/SAM/SOM, growth drivers, competitive landscape)
+             - Company Analysis (competitive advantages, business model, management)
+             - Financial Data (income statement, balance sheet, valuation metrics)
+             - DCF Valuation (methodology, assumptions, 10-year projections)
+             - Scenario Analysis (5 scenarios with probabilities summing to 100%)
+             - Risk Assessment (categorized risks with impact levels)
+             - Recommendation (rating, catalysts, monitoring metrics)
+             - Debate Log (bull/bear arguments, consensus/disagreement points)
+
+          2. REQUIRED DATA POINTS:
+             - Ticker, Company Name, Sector, Exchange
+             - Current Price, Fair Value, Upside %
+             - Market Cap, Revenue, Growth Rate
+             - 5 scenarios: super_bear, bear, base, bull, super_bull
+             - At least 3 key risks
+             - At least 3 catalysts
+
+          3. TEMPLATE COMPLIANCE:
+             - Dark theme colors (#0d1117 background)
+             - Sidebar navigation
+             - Consistent metric card styling
+
+          Output Format (JSON):
+          {
+            "validation_status": "READY" or "NEEDS_PREPARATION",
+            "checklist": {
+              "slot_1": {"ticker": "XXX", "ready": true, "missing": []},
+              "slot_2": {"ticker": "YYY", "ready": true, "missing": []},
+              "slot_3": {"ticker": "ZZZ", "ready": true, "missing": []}
+            },
+            "template_requirements": {
+              "sections_required": 9,
+              "placeholders_required": 60,
+              "css_theme": "dark"
+            },
+            "recommendations": [...]
+          }
+
+          Output "READY" to proceed with parallel workflow execution.
+        api_key: ${OPENAI_API_KEY}
+      context_window: 10
+
+    # ==================== TIER 1: PARALLEL WORKFLOW EXECUTION ====================
+    # Note: The actual v2 workflows are executed by run_portfolio_live.py
+    # These nodes serve as coordination points
+
+    - id: Workflow Coordinator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Workflow Coordinator" - managing parallel execution.
+
+          The 3 equity research workflows are now running in parallel:
+          - Slot 1: First equity (17 agents)
+          - Slot 2: Second equity (17 agents)
+          - Slot 3: Third equity (17 agents)
+
+          Your job is to:
+          1. Acknowledge the parallel execution has started
+          2. Note any cross-workflow dependencies
+          3. Prepare context for cross-equity analysis
+
+          Output:
+          {
+            "execution_status": "PARALLEL_RUNNING",
+            "workflows": {
+              "slot_1": {"status": "started", "agents": 17},
+              "slot_2": {"status": "started", "agents": 17},
+              "slot_3": {"status": "started", "agents": 17}
+            },
+            "cross_equity_preparation": {
+              "comparison_dimensions": [
+                "Valuation multiples (P/E, EV/EBITDA)",
+                "Growth rates",
+                "Risk profiles",
+                "Sector positioning"
+              ]
+            }
+          }
+
+          This node triggers when pre-validation passes.
+        api_key: ${OPENAI_API_KEY}
+      context_window: 10
+
+    # ==================== TIER 2: CROSS-EQUITY ANALYSIS ====================
+
+    - id: Cross-Equity Analyst
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Cross-Equity Analyst" - finding insights across the portfolio.
+
+          You receive the completed research from all 3 equities.
+
+          Analysis Framework:
+
+          1. RELATIVE VALUATION:
+             - Compare P/E ratios across the 3 stocks
+             - Compare EV/EBITDA multiples
+             - Compare P/S and P/B ratios
+             - Identify which is cheapest/most expensive relative to peers
+
+          2. GROWTH COMPARISON:
+             - Revenue growth rates
+             - Earnings growth trajectories
+             - Market share trends
+             - R&D/Capex intensity
+
+          3. RISK CORRELATION:
+             - Are risks correlated or diversified?
+             - Common macro exposures (China, rates, regulation)
+             - Idiosyncratic risks unique to each
+
+          4. QUALITY RANKING:
+             - Rank by competitive moat strength
+             - Rank by management quality
+             - Rank by financial health
+             - Rank by governance
+
+          5. PORTFOLIO RECOMMENDATIONS:
+             - Suggested weighting for a 3-stock portfolio
+             - Pairs trades if any (long X, short Y)
+             - Sequencing (which to buy first given entry points)
+
+          Output Format (JSON):
+          {
+            "relative_rankings": {
+              "by_valuation": ["ticker1", "ticker2", "ticker3"],
+              "by_growth": ["ticker1", "ticker2", "ticker3"],
+              "by_quality": ["ticker1", "ticker2", "ticker3"],
+              "by_risk_adjusted_return": ["ticker1", "ticker2", "ticker3"]
+            },
+            "valuation_comparison": {
+              "ticker1": {"P/E": X, "EV/EBITDA": X, "relative": "cheap/fair/expensive"},
+              "ticker2": {...},
+              "ticker3": {...}
+            },
+            "correlation_analysis": {
+              "risk_correlation": "low/medium/high",
+              "common_factors": [...],
+              "diversification_benefit": "..."
+            },
+            "portfolio_recommendations": {
+              "optimal_weights": {"ticker1": 0.4, "ticker2": 0.35, "ticker3": 0.25},
+              "rationale": "...",
+              "rebalancing_triggers": [...]
+            },
+            "key_insights": [
+              "Insight 1 about relative value",
+              "Insight 2 about sector dynamics",
+              "Insight 3 about portfolio construction"
+            ]
+          }
+
+          Be specific with numbers and provide actionable portfolio recommendations.
+        api_key: ${OPENAI_API_KEY}
+      context_window: -1  # Full context from all 3 workflows
+
+    # ==================== TIER 3: TEMPLATE ENFORCEMENT ====================
+
+    - id: Template Enforcer Post
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Template Enforcer" - POST-GENERATION validation.
+
+          You validate that ALL generated reports follow the canonical template.
+
+          POST-GENERATION Validation Checklist:
+
+          1. STRUCTURAL INTEGRITY:
+             - [ ] All 9 sections present in each report
+             - [ ] Sidebar navigation exists and links work
+             - [ ] Section ordering matches template
+
+          2. PLACEHOLDER COVERAGE:
+             - [ ] No {{PLACEHOLDER}} tags remaining
+             - [ ] All metric cards have values
+             - [ ] All tables have data
+
+          3. SCENARIO COMPLETENESS:
+             - [ ] 5 scenario cards present (super_bear to super_bull)
+             - [ ] Probabilities sum to 100%
+             - [ ] Each scenario has target price
+
+          4. DEBATE LOG:
+             - [ ] Has entries from multiple AI providers
+             - [ ] Consensus points listed
+             - [ ] Disagreement points listed
+
+          5. CSS CONSISTENCY:
+             - [ ] Dark theme (#0d1117, #161b22)
+             - [ ] Accent colors correct (blue #58a6ff, green #3fb950, red #f85149)
+             - [ ] Font families match
+
+          6. CROSS-REPORT CONSISTENCY:
+             - [ ] Same styling across all 3 reports
+             - [ ] Navigation links work between reports
+             - [ ] Index.html links to all reports
+
+          Output Format (JSON):
+          {
+            "validation_result": "APPROVED" or "REVISION_NEEDED",
+            "reports_validated": {
+              "slot_1": {
+                "ticker": "XXX",
+                "sections_complete": 9,
+                "placeholders_filled": 60,
+                "issues": []
+              },
+              "slot_2": {...},
+              "slot_3": {...}
+            },
+            "consistency_score": 95,
+            "template_compliance": 100,
+            "issues_found": [],
+            "revision_required": []
+          }
+
+          Output "APPROVED" only if ALL reports pass ALL checks.
+        api_key: ${OPENAI_API_KEY}
+      context_window: 20
+
+    # ==================== TIER 4: PORTFOLIO REPORT ====================
+
+    - id: Portfolio Report Generator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Portfolio Report Generator" - creating the final portfolio summary.
+
+          Create a portfolio-level summary that:
+
+          1. EXECUTIVE SUMMARY:
+             - Portfolio thesis (why these 3 stocks together)
+             - Total portfolio expected return
+             - Risk profile summary
+
+          2. HOLDINGS TABLE:
+             | Ticker | Company | Sector | Rating | Weight | Target | Upside |
+             |--------|---------|--------|--------|--------|--------|--------|
+             | XXX    | Name    | Sector | BUY    | 40%    | $XX    | +XX%   |
+
+          3. CROSS-EQUITY INSIGHTS:
+             - Key comparative findings
+             - Relative value opportunities
+             - Correlation and diversification
+
+          4. PORTFOLIO METRICS:
+             - Weighted average upside
+             - Sector allocation
+             - Geographic allocation
+             - Risk-adjusted metrics
+
+          5. ACTION ITEMS:
+             - Priority order for position building
+             - Entry point recommendations
+             - Monitoring triggers
+
+          Output the summary in a format suitable for the portfolio index.html page.
+          Include links to each individual equity report.
+        api_key: ${OPENAI_API_KEY}
+      context_window: -1
+
+  # ==================== EDGES ====================
+  edges:
+    # Phase 1: Portfolio Setup
+    - from: START
+      to: Portfolio Orchestrator
+      trigger: true
+      condition: 'true'
+      carry_data: true
+
+    - from: Portfolio Orchestrator
+      to: Template Enforcer Pre
+      trigger: true
+      condition: 'true'
+      carry_data: true
+
+    # Phase 2: Workflow Coordination (triggers parallel execution externally)
+    - from: Template Enforcer Pre
+      to: Workflow Coordinator
+      trigger: true
+      condition:
+        type: keyword
+        config:
+          any:
+            - 'READY'
+            - 'validation_status'
+      carry_data: true
+
+    # Phase 3: Cross-Equity Analysis (receives results from parallel workflows)
+    - from: Workflow Coordinator
+      to: Cross-Equity Analyst
+      trigger: true
+      condition: 'true'
+      carry_data: true
+
+    # Phase 4: Post-Generation Validation
+    - from: Cross-Equity Analyst
+      to: Template Enforcer Post
+      trigger: true
+      condition: 'true'
+      carry_data: true
+
+    # Phase 5: Final Report Generation (if approved)
+    - from: Template Enforcer Post
+      to: Portfolio Report Generator
+      trigger: true
+      condition:
+        type: keyword
+        config:
+          any:
+            - 'APPROVED'
+      carry_data: true
+
+    # Revision Loop (if validation fails)
+    - from: Template Enforcer Post
+      to: Cross-Equity Analyst
+      trigger: true
+      condition:
+        type: keyword
+        config:
+          any:
+            - 'REVISION_NEEDED'
+      carry_data: true
+
+    # Context preservation
+    - from: START
+      to: Cross-Equity Analyst
+      trigger: false
+      condition: 'true'
+      carry_data: true
+      keep_message: true
+
+    - from: START
+      to: Portfolio Report Generator
+      trigger: false
+      condition: 'true'
+      carry_data: true
+      keep_message: true
+
+  memory: []
+  start:
+    - START
+  end:
+    - Portfolio Report Generator
+
+vars:
+  OPENAI_API_KEY: ${OPENAI_API_KEY}
+  GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+  XAI_API_KEY: ${XAI_API_KEY}
+  DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY}

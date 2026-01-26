@@ -1,0 +1,134 @@
+{
+  "ticker": "LEGN US",
+  "workflow_result_path": "context\\LEGN_US_workflow_result.json",
+  "data_integrity_score": 31.25,
+  "critical_failures": [
+    "Price diverged from verified value at Research Supervisor",
+    "Missing 'DATA: VERIFIED' - Data Checkpoint may not have executed properly",
+    "Missing 'VALUATION: APPROVED' - Valuation Committee may not have executed properly",
+    "Missing 'ROUTE: Synthesizer' - Quality Supervisor may not have executed properly",
+    "Possible wrong company data (google) at Market Data Collector"
+  ],
+  "node_reliability": {
+    "START": 25.0,
+    "Research Supervisor": 0.0,
+    "Market Data Collector": 0.0,
+    "Industry Deep Dive": 0.0,
+    "Company Deep Dive": 0.0,
+    "Data Verifier": 0.0,
+    "Data Checkpoint": 0.0,
+    "Debate Moderator": 12.5,
+    "Bull Advocate R1": 12.5,
+    "Bear Advocate R1": 12.5,
+    "Devils Advocate": 0.0,
+    "Bull Advocate R2": 0.0,
+    "Bear Advocate R2": 0.0,
+    "Debate Critic": 0.0,
+    "Pre-Model Validator": 12.5,
+    "Financial Modeler": 0.0,
+    "Relative Valuation Agent": 0.0,
+    "SOTP Valuation Agent": 0.0,
+    "Assumption Challenger": 0.0,
+    "Comparable Validator": 0.0,
+    "Sensitivity Auditor": 0.0,
+    "Valuation Committee": 0.0,
+    "Data Verification Gate": 0.0,
+    "Logic Verification Gate": 0.0,
+    "Birds Eye Reviewer": 0.0,
+    "Quality Supervisor": 0.0
+  },
+  "recommendations": [
+    "Ensure prefetch_data.py runs BEFORE workflow execution",
+    "Verify Data Checkpoint is catching price mismatches",
+    "Check why routing keywords are missing: ['DATA: VERIFIED', 'VALUATION: APPROVED', 'ROUTE: Synthesizer']",
+    "Workflow may be taking unexpected paths or terminating early",
+    "Data collectors may be returning wrong company data",
+    "Strengthen company identity checks in Data Checkpoint"
+  ],
+  "data_points": {
+    "ticker": {
+      "name": "Ticker",
+      "expected_value": "LEGN US",
+      "node_values": {
+        "START": "present"
+      },
+      "first_appearance": "START",
+      "issues": []
+    },
+    "current_price": {
+      "name": "Current Price",
+      "expected_value": 19.34,
+      "node_values": {
+        "START": 19.34,
+        "Research Supervisor": 49.6,
+        "Industry Deep Dive": 600.0,
+        "Data Verifier": 49.6,
+        "Data Checkpoint": 49.6,
+        "Debate Moderator": 19.34,
+        "Bull Advocate R1": 19.34,
+        "Bear Advocate R1": 19.34,
+        "Bull Advocate R2": 42.0,
+        "Debate Critic": 42.0,
+        "Pre-Model Validator": 42.0,
+        "Financial Modeler": 42.06,
+        "Relative Valuation Agent": 42.0,
+        "SOTP Valuation Agent": 42.0,
+        "Assumption Challenger": 42.0,
+        "Comparable Validator": 100.0,
+        "Sensitivity Auditor": 1.0,
+        "Valuation Committee": 42.06,
+        "Birds Eye Reviewer": 42.0
+      },
+      "first_appearance": "START",
+      "issues": [
+        "Wrong price 49.60 found at Research Supervisor (expected 19.34)"
+      ]
+    },
+    "currency": {
+      "name": "Currency",
+      "expected_value": "USD",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "company_name": {
+      "name": "Company Name",
+      "expected_value": "LEGN US",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": [
+        "Possible wrong company data (google) at Market Data Collector"
+      ]
+    },
+    "data_verified_keyword": {
+      "name": "DATA: VERIFIED keyword",
+      "expected_value": "DATA: VERIFIED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "inputs_validated_keyword": {
+      "name": "INPUTS: VALIDATED keyword",
+      "expected_value": "INPUTS: VALIDATED",
+      "node_values": {
+        "Pre-Model Validator": "present"
+      },
+      "first_appearance": "Pre-Model Validator",
+      "issues": []
+    },
+    "valuation_approved_keyword": {
+      "name": "VALUATION: APPROVED keyword",
+      "expected_value": "VALUATION: APPROVED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "route_synthesizer_keyword": {
+      "name": "ROUTE: Synthesizer keyword",
+      "expected_value": "ROUTE: Synthesizer",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    }
+  }
+}

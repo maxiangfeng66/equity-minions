@@ -1,0 +1,115 @@
+{
+  "ticker": "9926 HK",
+  "workflow_result_path": "context\\9926_HK_workflow_result.json",
+  "data_integrity_score": 25.0,
+  "critical_failures": [
+    "CRITICAL: Verified price never used - wrong price appeared at Market Data Collector",
+    "Missing 'DATA: VERIFIED' - Data Checkpoint may not have executed properly",
+    "Missing 'INPUTS: VALIDATED' - Pre-Model Validator may not have executed properly",
+    "Missing 'ROUTE: Synthesizer' - Quality Supervisor may not have executed properly"
+  ],
+  "node_reliability": {
+    "START": 12.5,
+    "Research Supervisor": 12.5,
+    "Market Data Collector": 12.5,
+    "Industry Deep Dive": 0.0,
+    "Company Deep Dive": 0.0,
+    "Debate Moderator": 12.5,
+    "Bull Advocate R1": 12.5,
+    "Bear Advocate R1": 12.5,
+    "Devils Advocate": 0.0,
+    "Bull Advocate R2": 0.0,
+    "Bear Advocate R2": 0.0,
+    "Debate Critic": 0.0,
+    "Financial Modeler": 0.0,
+    "Assumption Challenger": 0.0,
+    "Comparable Validator": 0.0,
+    "Sensitivity Auditor": 0.0,
+    "Valuation Committee": 12.5,
+    "Data Verification Gate": 0.0,
+    "Logic Verification Gate": 0.0,
+    "Quality Supervisor": 0.0
+  },
+  "recommendations": [
+    "Ensure prefetch_data.py runs BEFORE workflow execution",
+    "Verify Data Checkpoint is catching price mismatches",
+    "Check why routing keywords are missing: ['DATA: VERIFIED', 'INPUTS: VALIDATED', 'ROUTE: Synthesizer']",
+    "Workflow may be taking unexpected paths or terminating early"
+  ],
+  "data_points": {
+    "ticker": {
+      "name": "Ticker",
+      "expected_value": "9926 HK",
+      "node_values": {
+        "START": "present",
+        "Research Supervisor": "present",
+        "Market Data Collector": "present",
+        "Debate Moderator": "present",
+        "Bull Advocate R1": "present",
+        "Bear Advocate R1": "present"
+      },
+      "first_appearance": "START",
+      "issues": []
+    },
+    "current_price": {
+      "name": "Current Price",
+      "expected_value": 45.0,
+      "node_values": {
+        "Market Data Collector": 22.7,
+        "Industry Deep Dive": 752.0,
+        "Debate Moderator": 0.154,
+        "Bull Advocate R1": 0.154,
+        "Bear Advocate R1": 2.0,
+        "Bull Advocate R2": 500.0
+      },
+      "first_appearance": null,
+      "issues": [
+        "Wrong price 22.70 found at Market Data Collector (expected 45.0)"
+      ]
+    },
+    "currency": {
+      "name": "Currency",
+      "expected_value": "HKD",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "company_name": {
+      "name": "Company Name",
+      "expected_value": "9926 HK",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "data_verified_keyword": {
+      "name": "DATA: VERIFIED keyword",
+      "expected_value": "DATA: VERIFIED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "inputs_validated_keyword": {
+      "name": "INPUTS: VALIDATED keyword",
+      "expected_value": "INPUTS: VALIDATED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "valuation_approved_keyword": {
+      "name": "VALUATION: APPROVED keyword",
+      "expected_value": "VALUATION: APPROVED",
+      "node_values": {
+        "Valuation Committee": "present"
+      },
+      "first_appearance": "Valuation Committee",
+      "issues": []
+    },
+    "route_synthesizer_keyword": {
+      "name": "ROUTE: Synthesizer keyword",
+      "expected_value": "ROUTE: Synthesizer",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    }
+  }
+}

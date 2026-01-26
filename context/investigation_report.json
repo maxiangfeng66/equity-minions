@@ -1,0 +1,386 @@
+{
+  "total_files": 73,
+  "entry_points": [
+    "generate_reports.py",
+    "generate_report_from_workflow.py",
+    "generate_workflow_report.py",
+    "main.py",
+    "prefetch_data.py",
+    "regenerate_reports.py",
+    "run_debates.py",
+    "run_monitoring.py",
+    "run_portfolio_live.py",
+    "run_validation.py",
+    "run_workflow_live.py",
+    "scheduler.py",
+    "update_server.py",
+    "agents\\agent_logger.py",
+    "agents\\monitoring_agents.py",
+    "agents\\multi_ai_debate.py",
+    "agents\\update_agents.py",
+    "agents\\validation_agents.py",
+    "scripts\\convert_to_standard_template.py",
+    "utils\\detailed_report_generator.py",
+    "utils\\local_research_loader.py",
+    "utils\\price_fetcher.py",
+    "visualizer\\serve_visualizer.py",
+    "agents\\investigators\\data_flow_tracer.py",
+    "agents\\investigators\\node_function_validator.py",
+    "agents\\investigators\\project_structure_investigator.py",
+    "agents\\investigators\\workflow_integrity_checker.py"
+  ],
+  "orphaned_files": [
+    "agents\\ai_providers.py",
+    "agents\\analyst_agent.py",
+    "agents\\base_agent.py",
+    "agents\\critic_agent.py",
+    "agents\\debate_system.py",
+    "agents\\hierarchical_debate_system.py",
+    "research\\data_fetcher.py",
+    "research\\dcf.py",
+    "utils\\context_manager.py",
+    "utils\\html_generator.py",
+    "visualizer\\visualizer_bridge.py",
+    "workflow\\graph_executor.py",
+    "workflow\\node_executor.py",
+    "workflow\\quality_reviewer.py",
+    "workflow\\workflow_loader.py",
+    "agents\\architects\\chief_architect.py",
+    "agents\\architects\\priority_manager.py",
+    "agents\\architects\\resource_allocator.py",
+    "agents\\core\\agent_registry.py",
+    "agents\\core\\lifecycle.py",
+    "agents\\core\\spawnable_agent.py",
+    "agents\\goalkeepers\\consensus_validator.py",
+    "agents\\goalkeepers\\due_diligence_agent.py",
+    "agents\\goalkeepers\\fact_checker_gate.py",
+    "agents\\goalkeepers\\logic_auditor.py",
+    "agents\\goalkeepers\\publish_gatekeeper.py",
+    "agents\\portfolio\\cross_equity_analyst.py",
+    "agents\\portfolio\\portfolio_orchestrator.py",
+    "agents\\portfolio\\template_enforcer.py",
+    "agents\\supervisors\\debate_moderator.py",
+    "agents\\supervisors\\research_supervisor.py",
+    "agents\\workers\\devils_advocate.py",
+    "agents\\workers\\enhanced_workers.py",
+    "agents\\workers\\specialist.py"
+  ],
+  "missing_imports": [
+    {
+      "file": "generate_report_from_workflow.py",
+      "missing_import": "utils.html_generator"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "agents.ai_providers"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "agents.debate_system"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "utils.context_manager"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "utils.html_generator"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "agents.hierarchical_debate_system"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "agents.core.agent_registry"
+    },
+    {
+      "file": "main.py",
+      "missing_import": "agents.agent_logger"
+    },
+    {
+      "file": "regenerate_reports.py",
+      "missing_import": "utils.html_generator"
+    },
+    {
+      "file": "run_debates.py",
+      "missing_import": "agents.multi_ai_debate"
+    },
+    {
+      "file": "run_monitoring.py",
+      "missing_import": "agents.monitoring_agents"
+    },
+    {
+      "file": "run_portfolio_live.py",
+      "missing_import": "workflow.workflow_loader"
+    },
+    {
+      "file": "run_portfolio_live.py",
+      "missing_import": "workflow.graph_executor"
+    },
+    {
+      "file": "run_portfolio_live.py",
+      "missing_import": "agents.portfolio"
+    },
+    {
+      "file": "run_validation.py",
+      "missing_import": "agents.validation_agents"
+    },
+    {
+      "file": "run_workflow_live.py",
+      "missing_import": "workflow.workflow_loader"
+    },
+    {
+      "file": "run_workflow_live.py",
+      "missing_import": "workflow.graph_executor"
+    },
+    {
+      "file": "run_workflow_live.py",
+      "missing_import": "workflow.node_executor"
+    },
+    {
+      "file": "run_workflow_live.py",
+      "missing_import": "utils.local_research_loader"
+    },
+    {
+      "file": "scheduler.py",
+      "missing_import": "agents.validation_agents"
+    },
+    {
+      "file": "scheduler.py",
+      "missing_import": "agents.monitoring_agents"
+    },
+    {
+      "file": "scheduler.py",
+      "missing_import": "agents.update_agents"
+    },
+    {
+      "file": "update_server.py",
+      "missing_import": "agents.update_agents"
+    },
+    {
+      "file": "agents\\multi_ai_debate.py",
+      "missing_import": "agents.ai_providers"
+    },
+    {
+      "file": "agents\\update_agents.py",
+      "missing_import": "utils.html_generator"
+    },
+    {
+      "file": "agents\\update_agents.py",
+      "missing_import": "utils.detailed_report_generator"
+    },
+    {
+      "file": "workflow\\graph_executor.py",
+      "missing_import": "workflow_loader"
+    },
+    {
+      "file": "workflow\\node_executor.py",
+      "missing_import": "workflow_loader"
+    },
+    {
+      "file": "workflow\\__init__.py",
+      "missing_import": "workflow_loader"
+    },
+    {
+      "file": "agents\\architects\\chief_architect.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\architects\\chief_architect.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\architects\\chief_architect.py",
+      "missing_import": "agents.supervisors"
+    },
+    {
+      "file": "agents\\architects\\priority_manager.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\architects\\priority_manager.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\architects\\resource_allocator.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\architects\\resource_allocator.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\core\\spawnable_agent.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\core\\spawnable_agent.py",
+      "missing_import": "agents.agent_logger"
+    },
+    {
+      "file": "agents\\goalkeepers\\consensus_validator.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\consensus_validator.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\due_diligence_agent.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\due_diligence_agent.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\fact_checker_gate.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\fact_checker_gate.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\logic_auditor.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\logic_auditor.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\publish_gatekeeper.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\goalkeepers\\publish_gatekeeper.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\investigators\\node_function_validator.py",
+      "missing_import": "workflow.workflow_loader"
+    },
+    {
+      "file": "agents\\investigators\\node_function_validator.py",
+      "missing_import": "workflow.node_executor"
+    },
+    {
+      "file": "agents\\investigators\\__init__.py",
+      "missing_import": "workflow_integrity_checker"
+    },
+    {
+      "file": "agents\\supervisors\\debate_moderator.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\supervisors\\debate_moderator.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\supervisors\\debate_moderator.py",
+      "missing_import": "agents.workers"
+    },
+    {
+      "file": "agents\\supervisors\\debate_moderator.py",
+      "missing_import": "agents.workers"
+    },
+    {
+      "file": "agents\\supervisors\\research_supervisor.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\supervisors\\research_supervisor.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\supervisors\\research_supervisor.py",
+      "missing_import": "agents.workers"
+    },
+    {
+      "file": "agents\\supervisors\\research_supervisor.py",
+      "missing_import": "agents.supervisors.debate_moderator"
+    },
+    {
+      "file": "agents\\supervisors\\research_supervisor.py",
+      "missing_import": "agents.goalkeepers"
+    },
+    {
+      "file": "agents\\workers\\devils_advocate.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\workers\\devils_advocate.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\workers\\enhanced_workers.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\workers\\enhanced_workers.py",
+      "missing_import": "agents.base_agent"
+    },
+    {
+      "file": "agents\\workers\\specialist.py",
+      "missing_import": "agents.core.spawnable_agent"
+    },
+    {
+      "file": "agents\\workers\\specialist.py",
+      "missing_import": "agents.base_agent"
+    }
+  ],
+  "circular_dependencies": [],
+  "unused_agents": [
+    "AgentLogger",
+    "NewsMonitorAgent",
+    "PriceMonitorAgent",
+    "ListMonitorAgent",
+    "CompetitorMonitorAgent",
+    "ResearchRefreshAgent",
+    "ReportRegeneratorAgent",
+    "IndexUpdaterAgent",
+    "ValidationFixerAgent",
+    "NewCompanyResearchAgent",
+    "FactCheckerAgent",
+    "LogicValidatorAgent",
+    "DataConsistencyAgent",
+    "CalculationVerifierAgent",
+    "ChiefArchitectAgent",
+    "PriorityManagerAgent",
+    "ResourceAllocatorAgent",
+    "AgentRegistry",
+    "AgentLifecycleState",
+    "SpawnableAgent",
+    "ConsensusValidatorAgent",
+    "DueDiligenceAgent",
+    "IndustryDeepDiveAgent",
+    "FinancialVerificationAgent",
+    "CompetitiveAnalysisAgent",
+    "RiskFactorAgent",
+    "LogicAuditorAgent",
+    "PublishGatekeeperAgent",
+    "DevilsAdvocateAgent",
+    "EnhancedAnalystAgent",
+    "EnhancedBullAgent",
+    "EnhancedBearAgent",
+    "EnhancedCriticAgent",
+    "EnhancedSynthesizerAgent"
+  ],
+  "workflow_issues": [
+    "equity_research_v4.yaml: Parse error - 'gbk' codec can't decode byte 0x92 in position 6157: illegal multibyte sequence"
+  ],
+  "recommendations": [
+    "Review orphaned files - either integrate or remove them",
+    "Fix missing imports before running workflows",
+    "Always use equity_research_v4.yaml (not v3) for complete quality gates",
+    "Always prefetch prices with prefetch_data.py before running workflows",
+    "Verify Market Data Collector actually executes web searches",
+    "Test each workflow node individually before full pipeline"
+  ]
+}

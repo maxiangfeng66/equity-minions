@@ -176,35 +176,48 @@ YOUR ROLE: SYNTHESIZER
                                previous_messages: List[DebateMessage]) -> DebateRound:
         """Run a single round of debate across all AIs"""
 
+        # Reduced context size to avoid token limits (30K TPM for OpenAI)
         equity_context = f"""
 Ticker: {equity_data.get('ticker')}
 Company: {equity_data.get('company')}
 Sector: {equity_data.get('sector')}
-Current Research Summary: {json.dumps(equity_data.get('executive_summary', ''), indent=2)[:2000]}
-Financial Data: {json.dumps(equity_data.get('financial_data', {}), indent=2)[:1500]}
+Research Summary: {json.dumps(equity_data.get('executive_summary', ''), indent=2)[:800]}
+Key Financials: {json.dumps(equity_data.get('financial_data', {}), indent=2)[:400]}
 """
 
-        # Build context from previous messages
+        # Build context from previous messages (reduced from 10 to 5, 500 to 300 chars)
         prev_context = ""
         if previous_messages:
-            prev_context = "\n\nPREVIOUS DEBATE CONTEXT:\n"
-            for msg in previous_messages[-10:]:  # Last 10 messages
-                prev_context += f"\n[{msg.ai_provider} as {msg.role}]: {msg.content[:500]}...\n"
+            prev_context = "\n\nPREVIOUS DEBATE:\n"
+            for msg in previous_messages[-5:]:  # Last 5 messages only
+                prev_context += f"\n[{msg.ai_provider}/{msg.role}]: {msg.content[:300]}...\n"
 
         messages = []
 
-        # Assign roles to different AIs for this round
-        # Rotate roles each round for diversity
-        providers = self.provider_manager.get_all_providers()
+        # Assign roles to different AIs for this round using BALANCED distribution
+        # Use get_diversified_providers to ensure no single LLM dominates
+        providers = self.provider_manager.get_diversified_providers(4)
         provider_names = [p.name for p in providers]
 
-        # Role assignments (rotate based on round)
-        role_assignments = {
-            DebateRole.ANALYST: provider_names[round_num % len(provider_names)] if provider_names else "GPT",
-            DebateRole.BULL: provider_names[(round_num + 1) % len(provider_names)] if provider_names else "Gemini",
-            DebateRole.BEAR: provider_names[(round_num + 2) % len(provider_names)] if provider_names else "Grok",
-            DebateRole.CRITIC: provider_names[(round_num + 3) % len(provider_names)] if provider_names else "Qwen",
-        }
+        # Role assignments - each role gets a DIFFERENT provider
+        # Shuffle based on round to ensure variety across rounds
+        if len(provider_names) >= 4:
+            # Full diversity: each role gets unique provider
+            offset = (round_num - 1) % len(provider_names)
+            role_assignments = {
+                DebateRole.ANALYST: provider_names[(0 + offset) % len(provider_names)],
+                DebateRole.BULL: provider_names[(1 + offset) % len(provider_names)],
+                DebateRole.BEAR: provider_names[(2 + offset) % len(provider_names)],
+                DebateRole.CRITIC: provider_names[(3 + offset) % len(provider_names)],
+            }
+        else:
+            # Fallback for fewer providers - still rotate
+            role_assignments = {
+                DebateRole.ANALYST: provider_names[round_num % len(provider_names)] if provider_names else "GPT",
+                DebateRole.BULL: provider_names[(round_num + 1) % len(provider_names)] if provider_names else "Gemini",
+                DebateRole.BEAR: provider_names[(round_num + 2) % len(provider_names)] if provider_names else "Grok",
+                DebateRole.CRITIC: provider_names[(round_num + 3) % len(provider_names)] if provider_names else "Qwen",
+            }
 
         # Phase-specific prompts
         if round_num <= 3:
@@ -291,11 +304,17 @@ Be specific, quantitative, and challenge weak assumptions.
                         break
         return consensus[:5]
 
-    async def run_full_debate(self, equity_data: Dict) -> DebateResult:
-        """Run complete multi-round debate for one equity"""
+    async def run_full_debate(self, equity_data: Dict, progress_callback=None) -> DebateResult:
+        """Run complete multi-round debate for one equity
 
+        Args:
+            equity_data: Dict with ticker, company, research data
+            progress_callback: Optional callback(round_num, total_rounds, ticker) for progress updates
+        """
+
+        ticker = equity_data.get('ticker', '')
         print(f"\n{'='*60}")
-        print(f"Starting Multi-AI Debate: {equity_data.get('ticker')} - {equity_data.get('company')}")
+        print(f"Starting Multi-AI Debate: {ticker} - {equity_data.get('company')}")
         print(f"{'='*60}")
 
         all_messages = []
@@ -303,6 +322,10 @@ Be specific, quantitative, and challenge weak assumptions.
 
         for round_num in range(1, self.num_rounds + 1):
             print(f"  Round {round_num}/{self.num_rounds}...")
+
+            # Call progress callback for visualizer updates
+            if progress_callback:
+                progress_callback(round_num, self.num_rounds, ticker)
 
             round_result = await self.run_debate_round(round_num, equity_data, all_messages)
             debate_rounds.append(round_result)
@@ -331,6 +354,13 @@ Be specific, quantitative, and challenge weak assumptions.
 
         print(f"  Debate complete. Probability-weighted price: {result.probability_weighted_price}")
 
+        # Print provider usage stats to show distribution
+        stats = self.provider_manager.get_usage_stats()
+        if stats["total_requests"] > 0:
+            print(f"\n  Provider Usage Distribution:")
+            for name, data in stats["providers"].items():
+                print(f"    {name}: {data['actual_pct']}% (target: {data['target_pct']}%, {data['requests']} calls)")
+
         return result
 
     async def _generate_final_synthesis(self, equity_data: Dict,
@@ -349,19 +379,20 @@ Be specific, quantitative, and challenge weak assumptions.
         if not providers:
             return self._default_synthesis(equity_data)
 
+        # Reduced prompt size to avoid token limits
         synthesis_prompt = f"""
-Based on the multi-AI debate for {equity_data.get('ticker')} - {equity_data.get('company')}:
+Debate for {equity_data.get('ticker')} - {equity_data.get('company')}:
 
-KEY DISAGREEMENTS:
-{json.dumps(all_disagreements[:10], indent=2)}
+DISAGREEMENTS:
+{json.dumps(all_disagreements[:5], indent=2)}
 
-CONSENSUS POINTS:
-{json.dumps(all_consensus[:10], indent=2)}
+CONSENSUS:
+{json.dumps(all_consensus[:5], indent=2)}
 
-ORIGINAL RESEARCH:
-{json.dumps(equity_data.get('executive_summary', ''), indent=2)[:1500]}
+RESEARCH:
+{json.dumps(equity_data.get('executive_summary', ''), indent=2)[:600]}
 
-Provide a final investment synthesis in JSON format:
+Provide investment synthesis in JSON:
 {{
     "recommendation": "BUY/HOLD/SELL",
     "conviction": "HIGH/MEDIUM/LOW",

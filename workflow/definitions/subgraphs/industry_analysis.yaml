@@ -1,0 +1,170 @@
+# Industry Analysis Sub-Graph
+# Modular component for deep industry analysis
+
+graph:
+  id: industry_analysis_subgraph
+  description: Dedicated sub-workflow for comprehensive industry analysis
+  log_level: INFO
+
+  nodes:
+    - id: START
+      type: passthrough
+      config:
+        only_last_message: true
+
+    - id: Market Size Analyst
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          You are a Market Size Analyst specializing in TAM/SAM/SOM analysis.
+
+          Task: Analyze the total addressable market for the given equity's industry.
+
+          Required Output:
+          1. TAM (Total Addressable Market):
+             - Global market size in USD
+             - Growth rate (CAGR)
+             - Key drivers
+
+          2. SAM (Serviceable Available Market):
+             - Regional/segment focus
+             - Size in USD
+             - Company's addressable portion
+
+          3. SOM (Serviceable Obtainable Market):
+             - Realistic capture potential
+             - Market share assumptions
+             - Competitive constraints
+
+          Provide specific numbers with sources where available.
+        api_key: ${OPENAI_API_KEY}
+        tooling:
+          - type: function
+            config:
+              tools:
+                - name: web_search
+
+    - id: Competitive Analyst
+      type: agent
+      config:
+        name: gemini-2.0-flash
+        provider: google
+        role: |
+          You are a Competitive Landscape Analyst.
+
+          Task: Map the competitive dynamics of the industry.
+
+          Required Output:
+          1. Major Players:
+             - Top 5-10 competitors
+             - Market share estimates
+             - Competitive positioning
+
+          2. Competitive Dynamics:
+             - Porter's Five Forces summary
+             - Barriers to entry
+             - Threat of substitutes
+
+          3. Competitive Advantages:
+             - Key success factors in the industry
+             - Differentiation opportunities
+             - Sustainability of moats
+        api_key: ${GOOGLE_API_KEY}
+        tooling:
+          - type: function
+            config:
+              tools:
+                - name: web_search
+
+    - id: Trend Analyst
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          You are an Industry Trend Analyst.
+
+          Task: Identify key trends shaping the industry.
+
+          Required Output:
+          1. Technology Trends:
+             - Disruptive technologies
+             - Adoption curves
+             - Innovation cycles
+
+          2. Regulatory Environment:
+             - Key regulations
+             - Pending legislation
+             - Compliance requirements
+
+          3. Macro Factors:
+             - Economic sensitivity
+             - Demographic shifts
+             - Global trade dynamics
+
+          4. ESG Considerations:
+             - Environmental impact
+             - Social responsibility
+             - Governance standards
+        api_key: ${OPENAI_API_KEY}
+        tooling:
+          - type: function
+            config:
+              tools:
+                - name: web_search
+
+    - id: Industry Synthesizer
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          You are an Industry Research Synthesizer.
+
+          Task: Combine market size, competitive, and trend analyses into a cohesive industry overview.
+
+          Required Output:
+          1. Industry Summary (200-300 words)
+          2. Key Investment Implications
+          3. Industry Score (1-10) with justification
+          4. Top 3 Industry Risks
+          5. Top 3 Industry Opportunities
+        api_key: ${OPENAI_API_KEY}
+
+  edges:
+    - from: START
+      to: Market Size Analyst
+      trigger: true
+      carry_data: true
+
+    - from: START
+      to: Competitive Analyst
+      trigger: true
+      carry_data: true
+
+    - from: START
+      to: Trend Analyst
+      trigger: true
+      carry_data: true
+
+    - from: Market Size Analyst
+      to: Industry Synthesizer
+      trigger: false
+      carry_data: true
+
+    - from: Competitive Analyst
+      to: Industry Synthesizer
+      trigger: false
+      carry_data: true
+
+    - from: Trend Analyst
+      to: Industry Synthesizer
+      trigger: true
+      carry_data: true
+
+  start:
+    - START
+  end:
+    - Industry Synthesizer

@@ -1,0 +1,292 @@
+<html>
+<head>
+    <title>Equity Research Portfolio</title>
+    <HTA:APPLICATION
+        ID="EquityResearch"
+        APPLICATIONNAME="Equity Research Dashboard"
+        BORDER="thick"
+        BORDERSTYLE="normal"
+        CAPTION="yes"
+        ICON="reports/favicon.ico"
+        MAXIMIZEBUTTON="yes"
+        MINIMIZEBUTTON="yes"
+        NAVIGABLE="yes"
+        SCROLL="yes"
+        SHOWINTASKBAR="yes"
+        SINGLEINSTANCE="yes"
+        SYSMENU="yes"
+        VERSION="1.0"
+        WINDOWSTATE="maximize"
+    />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; color: #eee; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); border-radius: 12px; padding: 40px; margin-bottom: 40px; border: 1px solid #0f3460; text-align: center; }
+        header h1 { font-size: 2.8em; color: #e94560; margin-bottom: 10px; }
+        header p { color: #aaa; font-size: 1.2em; max-width: 800px; margin: 0 auto; }
+        .stats-bar { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2em; font-weight: bold; color: #00cec9; }
+        .stat-label { color: #888; font-size: 0.9em; }
+        .update-section { display: flex; justify-content: center; gap: 20px; margin-top: 25px; flex-wrap: wrap; align-items: center; }
+        .update-btn { padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; font-weight: bold; transition: all 0.3s; }
+        .update-btn-primary { background: #e94560; color: white; }
+        .update-btn-primary:hover { background: #d63050; }
+        .update-btn-secondary { background: #0f3460; color: #4ea8de; border: 1px solid #4ea8de; }
+        .update-btn-secondary:hover { background: #4ea8de; color: #0f3460; }
+        .last-update-info { color: #888; font-size: 0.9em; text-align: center; margin-top: 15px; }
+        .last-update-time { color: #00cec9; font-weight: bold; }
+        .next-update-time { color: #fdcb6e; }
+        .filters { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 20px; border: 1px solid #0f3460; background: #16213e; color: #eee; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: #e94560; border-color: #e94560; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+        .card { background: #16213e; border-radius: 12px; padding: 25px; border: 1px solid #0f3460; transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2); border-color: #e94560; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .card-ticker { font-size: 1.5em; font-weight: bold; color: #e94560; }
+        .card-company { color: #aaa; font-size: 0.95em; margin-top: 5px; }
+        .card-sector { color: #666; font-size: 0.85em; margin-top: 3px; }
+        .badge { padding: 6px 14px; border-radius: 4px; font-size: 0.85em; font-weight: bold; text-transform: uppercase; }
+        .badge-buy { background: #00b894; color: #fff; }
+        .badge-hold { background: #fdcb6e; color: #333; }
+        .card-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #0f3460; }
+        .metric { text-align: center; }
+        .metric-value { font-size: 1.2em; font-weight: bold; color: #00cec9; }
+        .metric-value.current { color: #e94560; }
+        .metric-value.upside { color: #00b894; }
+        .metric-value.downside { color: #d63031; }
+        .metric-label { font-size: 0.75em; color: #888; margin-top: 2px; }
+        .conviction-bar { height: 6px; background: #1a1a2e; border-radius: 3px; margin-top: 15px; overflow: hidden; }
+        .conviction-fill { height: 100%; background: linear-gradient(90deg, #d63031, #fdcb6e, #00b894); border-radius: 3px; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 0.85em; color: #666; }
+        .card-links { display: flex; gap: 15px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #0f3460; }
+        .card-links a { font-size: 0.8em; padding: 5px 12px; border-radius: 4px; text-decoration: none; transition: all 0.2s; cursor: pointer; }
+        .card-links .summary-link { background: #0f3460; color: #4ea8de; }
+        .card-links .detailed-link { background: #00b894; color: #fff; }
+        .card-links a:hover { transform: scale(1.05); }
+        .card-timestamp { font-size: 0.7em; color: #666; margin-top: 8px; padding-top: 8px; border-top: 1px solid #0f3460; display: flex; justify-content: space-between; align-items: center; }
+        .card-timestamp .time { color: #00cec9; }
+        .card-update-btn { background: #0f3460; color: #4ea8de; border: 1px solid #4ea8de; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.75em; transition: all 0.2s; }
+        .card-update-btn:hover { background: #4ea8de; color: #0f3460; }
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.9em; }
+        .status-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #16213e; border-top: 1px solid #0f3460; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .status-text { color: #888; font-size: 0.85em; }
+        .status-text.running { color: #fdcb6e; }
+        .status-text.success { color: #00b894; }
+        .status-text.error { color: #d63031; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Equity Research Portfolio</h1>
+            <p>Multi-AI Adversarial Debate Analysis - Bull, Bear, Critic, and Synthesizer perspectives on each equity</p>
+            <p style="color: #e94560; margin-top: 10px;">Verified Prices as of January 2026</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">14</div>
+                    <div class="stat-label">Total Reports</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color: #00b894;">8</div>
+                    <div class="stat-label">BUY Ratings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" style="color: #fdcb6e;">6</div>
+                    <div class="stat-label">HOLD Ratings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Sectors Covered</div>
+                </div>
+            </div>
+            <div class="update-section">
+                <button class="update-btn update-btn-primary" onclick="updateAllReports()">Update All Reports</button>
+                <button class="update-btn update-btn-secondary" onclick="startScheduler()">Start Auto-Scheduler (8pm SGT)</button>
+            </div>
+            <div class="last-update-info">
+                <div>Last Portfolio Update: <span class="last-update-time" id="last-update-time">January 2026</span></div>
+                <div style="margin-top: 5px;">Next Auto-Update: <span class="next-update-time" id="next-update-time">8:00 PM SGT Daily</span></div>
+            </div>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+            <button class="filter-btn" onclick="filterCards('buy', this)">BUY</button>
+            <button class="filter-btn" onclick="filterCards('hold', this)">HOLD</button>
+            <button class="filter-btn" onclick="filterCards('tech', this)">Technology</button>
+            <button class="filter-btn" onclick="filterCards('healthcare', this)">Healthcare</button>
+            <button class="filter-btn" onclick="filterCards('energy', this)">Energy</button>
+            <button class="filter-btn" onclick="filterCards('realestate', this)">Real Estate</button>
+        </div>
+
+        <div class="cards-grid" id="cards-container">
+            <!-- Cards will be generated by JavaScript -->
+        </div>
+
+        <footer>
+            <p>Generated January 2026 | Multi-AI Adversarial Debate Framework</p>
+            <p>All prices verified as of January 2026. This portfolio overview is for informational purposes only.</p>
+        </footer>
+    </div>
+
+    <div class="status-bar">
+        <span class="status-text" id="status-text">Ready</span>
+        <span class="status-text">HTA Application - Commands run directly on your system</span>
+    </div>
+
+    <script language="VBScript">
+        Dim shell
+        Set shell = CreateObject("WScript.Shell")
+
+        Sub RunCommand(cmd)
+            shell.Run cmd, 1, False
+        End Sub
+
+        Sub RunCommandWait(cmd)
+            shell.Run cmd, 1, True
+        End Sub
+
+        Function GetAppPath()
+            GetAppPath = Replace(document.location.pathname, "/", "\")
+            If Left(GetAppPath, 1) = "\" Then GetAppPath = Mid(GetAppPath, 2)
+            GetAppPath = Left(GetAppPath, InStrRev(GetAppPath, "\"))
+        End Function
+    </script>
+
+    <script language="JavaScript">
+        var appPath = GetAppPath();
+
+        // Company data
+        var companies = [
+            {ticker: "LEGN US", display: "LEGN", name: "Legend Biotech Corporation", sector: "Healthcare - CAR-T Therapy", rating: "buy", dataSector: "healthcare", current: "USD 22.12", target: "USD 65.00", upside: "+193.8%", conviction: 75, label: "EXCEPTIONAL VALUE", file: "LEGN_US_Legend_Biotech"},
+            {ticker: "3319 HK", display: "3319.HK", name: "A-Living Smart City Services", sector: "Real Estate - Property Management", rating: "buy", dataSector: "realestate", current: "HKD 2.90", target: "HKD 5.80", upside: "+100.0%", conviction: 60, label: "Deep Value / Parent Risk", file: "3319_HK_A_Living"},
+            {ticker: "6682 HK", display: "6682.HK", name: "Beijing Fourth Paradigm Technology", sector: "Technology - AI / Enterprise Software", rating: "buy", dataSector: "tech", current: "HKD 59.55", target: "HKD 65.08", upside: "+9.3%", conviction: 60, label: "Enterprise AI Leader", file: "6682_HK_Fourth_Paradigm"},
+            {ticker: "9926 HK", display: "9926.HK", name: "Akeso Inc.", sector: "Healthcare - Bispecific Antibodies", rating: "buy", dataSector: "healthcare", current: "HKD 121.00", target: "HKD 140.00", upside: "+15.7%", conviction: 70, label: "Cadonilimab Leader", file: "9926_HK_Akeso"},
+            {ticker: "9660 HK", display: "9660.HK", name: "Horizon Robotics Inc.", sector: "Technology - Autonomous Driving / ADAS", rating: "buy", dataSector: "tech", current: "HKD 9.55", target: "HKD 12.00", upside: "+25.7%", conviction: 65, label: "AD Chip Localization", file: "9660_HK_Horizon_Robotics"},
+            {ticker: "3888 HK", display: "3888.HK", name: "Kingsoft Corporation", sector: "Technology - Software / Cloud", rating: "buy", dataSector: "tech", current: "HKD 30.80", target: "HKD 38.00", upside: "+23.4%", conviction: 60, label: "WPS + Cloud + AI", file: "3888_HK_Kingsoft"},
+            {ticker: "1816 HK", display: "1816.HK", name: "CGN Power Co., Ltd.", sector: "Utilities - Nuclear Power", rating: "buy", dataSector: "energy", current: "HKD 3.08", target: "HKD 3.70", upside: "+20.1%", conviction: 65, label: "Nuclear Expansion", file: "1816_HK_CGN_Power"},
+            {ticker: "2869 HK", display: "2869.HK", name: "Greentown Service Group", sector: "Real Estate - Property Management", rating: "buy", dataSector: "realestate", current: "HKD 5.52", target: "HKD 6.20", upside: "+12.3%", conviction: 65, label: "Premium PM Brand", file: "2869_HK_Greentown_Service"},
+            {ticker: "762 HK", display: "762.HK", name: "China Unicom (Hong Kong)", sector: "Telecommunications", rating: "hold", dataSector: "tech", current: "HKD 7.95", target: "HKD 8.50", upside: "+6.9%", conviction: 55, label: "5G + Dividend", file: "762_HK_China_Unicom"},
+            {ticker: "3800 HK", display: "3800.HK", name: "GCL Technology Holdings", sector: "Energy - Polysilicon / FBR", rating: "hold", dataSector: "energy", current: "HKD 1.09", target: "HKD 1.45", upside: "+33.0%", conviction: 50, label: "FBR Tech / Oversupply", file: "3800_HK_GCL_Technology"},
+            {ticker: "1799 HK", display: "1799.HK", name: "Xinte Energy Co., Ltd.", sector: "Energy - Solar / Polysilicon", rating: "hold", dataSector: "energy", current: "HKD 7.27", target: "HKD 9.00", upside: "+23.8%", conviction: 50, label: "Polysilicon Oversupply", file: "1799_HK_Xinte_Energy"},
+            {ticker: "1045 HK", display: "1045.HK", name: "APT Satellite Holdings", sector: "Telecommunications - Satellite", rating: "hold", dataSector: "tech", current: "HKD 3.74", target: "HKD 2.50", upside: "-33.2%", conviction: 40, label: "LEO Competition Risk", file: "1045_HK_APT_Satellite", isDownside: true},
+            {ticker: "9969 HK", display: "9969.HK", name: "InnoCare Pharma Limited", sector: "Healthcare - BTK Inhibitors", rating: "hold", dataSector: "healthcare", current: "HKD 13.48", target: "HKD 9.50", upside: "-29.5%", conviction: 45, label: "Above Target Price", file: "9969_HK_InnoCare_Pharma", isDownside: true},
+            {ticker: "2696 HK", display: "2696.HK", name: "Shanghai Henlius Biotech", sector: "Healthcare - Biosimilars", rating: "hold", dataSector: "healthcare", current: "HKD 83.90", target: "HKD 12.80", upside: "-84.7%", conviction: 30, label: "Price Alert - Check Data", file: "2696_HK_Henlius_Biotech", isDownside: true, isCaution: true}
+        ];
+
+        function renderCards() {
+            var container = document.getElementById('cards-container');
+            var html = '';
+
+            for (var i = 0; i < companies.length; i++) {
+                var c = companies[i];
+                var badgeClass = c.rating === 'buy' ? 'badge-buy' : 'badge-hold';
+                var badgeText = c.isCaution ? 'CAUTION' : c.rating.toUpperCase();
+                var upsideClass = c.isDownside ? 'downside' : 'upside';
+                var upsideLabel = c.isDownside ? 'Downside' : 'Upside';
+
+                html += '<div class="card" data-rating="' + c.rating + '" data-sector="' + c.dataSector + '">';
+                html += '<div class="card-header"><div>';
+                html += '<div class="card-ticker">' + c.display + '</div>';
+                html += '<div class="card-company">' + c.name + '</div>';
+                html += '<div class="card-sector">' + c.sector + '</div>';
+                html += '</div><span class="badge ' + badgeClass + '">' + badgeText + '</span></div>';
+                html += '<div class="card-metrics">';
+                html += '<div class="metric"><div class="metric-value current">' + c.current + '</div><div class="metric-label">Current</div></div>';
+                html += '<div class="metric"><div class="metric-value">' + c.target + '</div><div class="metric-label">Target</div></div>';
+                html += '<div class="metric"><div class="metric-value ' + upsideClass + '">' + c.upside + '</div><div class="metric-label">' + upsideLabel + '</div></div>';
+                html += '</div>';
+                html += '<div class="conviction-bar"><div class="conviction-fill" style="width: ' + c.conviction + '%;"></div></div>';
+                html += '<div class="card-footer"><span>Conviction: ' + (c.conviction/10) + '/10</span><span>' + c.label + '</span></div>';
+                html += '<div class="card-links">';
+                html += '<a class="summary-link" onclick="openReport(\'' + c.file + '.html\')">Summary</a>';
+                html += '<a class="detailed-link" onclick="openReport(\'' + c.file + '_detailed.html\')">Full Report</a>';
+                html += '</div>';
+                html += '<div class="card-timestamp"><span>Updated: <span class="time">Jan 2026</span></span>';
+                html += '<button class="card-update-btn" onclick="updateCompany(\'' + c.ticker + '\')">Update</button>';
+                html += '</div></div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        function filterCards(filter, btn) {
+            var cards = document.querySelectorAll('.card');
+            var buttons = document.querySelectorAll('.filter-btn');
+
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].className = 'filter-btn';
+            }
+            btn.className = 'filter-btn active';
+
+            for (var i = 0; i < cards.length; i++) {
+                var card = cards[i];
+                var rating = card.getAttribute('data-rating');
+                var sector = card.getAttribute('data-sector');
+
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else if (filter === 'buy' || filter === 'hold') {
+                    card.style.display = rating === filter ? 'block' : 'none';
+                } else {
+                    card.style.display = sector === filter ? 'block' : 'none';
+                }
+            }
+        }
+
+        function setStatus(text, type) {
+            var el = document.getElementById('status-text');
+            el.innerHTML = text;
+            el.className = 'status-text ' + (type || '');
+        }
+
+        function openReport(filename) {
+            var path = appPath + 'reports\\' + filename;
+            RunCommand('cmd /c start "" "' + path + '"');
+        }
+
+        function updateAllReports() {
+            setStatus('Updating all reports... This may take several minutes.', 'running');
+            var cmd = 'cmd /c cd /d "' + appPath + '" && python scheduler.py --mode full';
+            RunCommand(cmd);
+            setTimeout(function() {
+                setStatus('Update started in background. Check the command window for progress.', 'success');
+            }, 2000);
+        }
+
+        function updateCompany(ticker) {
+            setStatus('Updating ' + ticker + '...', 'running');
+            var cmd = 'cmd /c cd /d "' + appPath + '" && python -c "import asyncio; from agents.update_agents import UpdateOrchestrator, UpdateTask; o = UpdateOrchestrator(); t = UpdateTask(ticker=\'' + ticker + '\', reason=\'manual\', priority=1); asyncio.run(o.process_update_tasks([t]))" && pause';
+            RunCommand(cmd);
+            setTimeout(function() {
+                setStatus('Update for ' + ticker + ' started. Check command window.', 'success');
+            }, 1000);
+        }
+
+        function startScheduler() {
+            setStatus('Starting scheduler (8pm SGT daily)...', 'running');
+            var cmd = 'cmd /c cd /d "' + appPath + '" && python scheduler.py --mode continuous';
+            RunCommand(cmd);
+            setTimeout(function() {
+                setStatus('Scheduler started in background. Will run at 8pm SGT.', 'success');
+            }, 2000);
+        }
+
+        // Initialize
+        renderCards();
+
+        // Calculate next update time
+        var now = new Date();
+        var next8pm = new Date(now);
+        next8pm.setHours(20, 0, 0, 0);
+        if (now.getHours() >= 20) {
+            next8pm.setDate(next8pm.getDate() + 1);
+        }
+        var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        document.getElementById('next-update-time').innerHTML = days[next8pm.getDay()] + ' ' + next8pm.toLocaleTimeString() + ' SGT';
+    </script>
+</body>
+</html>

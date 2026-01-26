@@ -1,0 +1,107 @@
+{
+  "ticker": "3888 HK",
+  "workflow_result_path": "context\\3888_HK_workflow_result.json",
+  "data_integrity_score": 18.75,
+  "critical_failures": [
+    "Price diverged from verified value at Industry Researcher",
+    "Missing 'DATA: VERIFIED' - Data Checkpoint may not have executed properly",
+    "Missing 'INPUTS: VALIDATED' - Pre-Model Validator may not have executed properly",
+    "Missing 'VALUATION: APPROVED' - Valuation Committee may not have executed properly",
+    "Missing 'ROUTE: Synthesizer' - Quality Supervisor may not have executed properly",
+    "Possible wrong company data (apple) at Bear Advocate",
+    "Possible wrong company data (amazon) at Bear Advocate",
+    "Possible wrong company data (google) at Bear Advocate"
+  ],
+  "node_reliability": {
+    "START": 12.5,
+    "Demand Analyst": 12.5,
+    "Industry Researcher": 12.5,
+    "Company Analyst": 12.5,
+    "DCF Modeler": 12.5,
+    "Bull Advocate": 0.0,
+    "Bear Advocate": 12.5,
+    "Critic": 0.0,
+    "Quality Reviewer": 0.0
+  },
+  "recommendations": [
+    "Ensure prefetch_data.py runs BEFORE workflow execution",
+    "Verify Data Checkpoint is catching price mismatches",
+    "Check why routing keywords are missing: ['DATA: VERIFIED', 'INPUTS: VALIDATED', 'VALUATION: APPROVED', 'ROUTE: Synthesizer']",
+    "Workflow may be taking unexpected paths or terminating early",
+    "Data collectors may be returning wrong company data",
+    "Strengthen company identity checks in Data Checkpoint"
+  ],
+  "data_points": {
+    "ticker": {
+      "name": "Ticker",
+      "expected_value": "3888 HK",
+      "node_values": {
+        "START": "present",
+        "Demand Analyst": "present",
+        "Industry Researcher": "present",
+        "Company Analyst": "present"
+      },
+      "first_appearance": "START",
+      "issues": []
+    },
+    "current_price": {
+      "name": "Current Price",
+      "expected_value": 35.0,
+      "node_values": {
+        "Industry Researcher": 159.3,
+        "DCF Modeler": 35.0,
+        "Bear Advocate": 35.0
+      },
+      "first_appearance": "DCF Modeler",
+      "issues": [
+        "Wrong price 159.3 found at Industry Researcher (expected 35.0)"
+      ]
+    },
+    "currency": {
+      "name": "Currency",
+      "expected_value": "HKD",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "company_name": {
+      "name": "Company Name",
+      "expected_value": "3888 HK",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": [
+        "Possible wrong company data (apple) at Bear Advocate",
+        "Possible wrong company data (amazon) at Bear Advocate",
+        "Possible wrong company data (google) at Bear Advocate"
+      ]
+    },
+    "data_verified_keyword": {
+      "name": "DATA: VERIFIED keyword",
+      "expected_value": "DATA: VERIFIED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "inputs_validated_keyword": {
+      "name": "INPUTS: VALIDATED keyword",
+      "expected_value": "INPUTS: VALIDATED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "valuation_approved_keyword": {
+      "name": "VALUATION: APPROVED keyword",
+      "expected_value": "VALUATION: APPROVED",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    },
+    "route_synthesizer_keyword": {
+      "name": "ROUTE: Synthesizer keyword",
+      "expected_value": "ROUTE: Synthesizer",
+      "node_values": {},
+      "first_appearance": null,
+      "issues": []
+    }
+  }
+}

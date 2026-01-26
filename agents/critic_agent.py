@@ -120,12 +120,18 @@ Your output should reflect the best thinking from all agents."""
 
     async def analyze(self, context: ResearchContext, **kwargs) -> str:
         """Synthesize debate into final conclusions"""
-        debate_log = context.debate_log
+        use_summary = kwargs.get("use_summary", False)
 
-        debate_summary = "\n\n".join([
-            f"**{msg.role.upper()}**: {msg.content[:800]}..."
-            for msg in debate_log
-        ])
+        # Use condensed summary if available to reduce tokens
+        if use_summary and hasattr(context, 'debate_summary') and context.debate_summary:
+            debate_summary = context.debate_summary
+        else:
+            # Fallback to truncated debate log (limit to last 6 messages)
+            debate_log = context.debate_log[-6:] if len(context.debate_log) > 6 else context.debate_log
+            debate_summary = "\n\n".join([
+                f"**{msg.role.upper()}**: {msg.content[:500]}..."
+                for msg in debate_log
+            ])
 
         prompt = f"""Synthesize this equity research debate for {context.company_name} ({context.ticker}):
 
@@ -169,10 +175,23 @@ Be balanced and reflect the full debate."""
 
     async def create_final_table(self, context: ResearchContext) -> Dict[str, Any]:
         """Create the final valuation data table"""
+        # Use condensed context to reduce tokens
+        compact_context = f"""
+Company: {context.company_name} ({context.ticker})
+Sector: {context.sector}
+Industry: {context.industry}
+
+Industry Analysis Summary: {context.industry_analysis[:800] if context.industry_analysis else 'N/A'}...
+
+Company Analysis Summary: {context.company_analysis[:800] if context.company_analysis else 'N/A'}...
+
+Debate Summary: {context.debate_summary[:1500] if hasattr(context, 'debate_summary') and context.debate_summary else 'See above'}
+"""
+
         prompt = f"""Based on the research for {context.company_name} ({context.ticker}), create a final valuation table.
 
 Context:
-{context.to_dict()}
+{compact_context}
 
 Output a JSON object with this exact structure:
 {{
