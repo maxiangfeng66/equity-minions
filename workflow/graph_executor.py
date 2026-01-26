@@ -282,9 +282,13 @@ class GraphExecutor:
             state.executed = True
             state.execution_count += 1
 
+            # Include output preview for visualizer (first 2000 chars)
+            output_preview = result.content[:2000] if result.content else ""
             self.log("node_complete", node_id, details={
                 "output_length": len(result.content),
-                "execution_count": state.execution_count
+                "execution_count": state.execution_count,
+                "output_preview": output_preview,
+                "provider": result.metadata.get("provider", "unknown")
             })
 
             # Process outgoing edges

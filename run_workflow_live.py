@@ -64,7 +64,9 @@ async def broadcast_event(event_type: str, data: dict):
             provider = data.get('details', {}).get('provider', 'openai')
             visualizer.node_start(node_id, provider)
         elif event_type == 'node_complete':
-            visualizer.node_complete(node_id, data.get('details', {}).get('output_length', 0))
+            # Pass output content if available for immediate display
+            output_content = data.get('details', {}).get('output_preview', '')
+            visualizer.node_complete(node_id, data.get('details', {}).get('output_length', 0), output_content)
         elif event_type == 'node_error':
             visualizer.node_error(node_id, data.get('message', 'Error'))
         elif event_type == 'workflow_complete':

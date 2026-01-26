@@ -193,7 +193,7 @@ class NodeExecutor:
         return ""
 
     async def _execute_openai(self, context: str) -> Message:
-        """Execute using OpenAI API with retry logic for rate limits"""
+        """Execute using OpenAI API with streaming for real-time output"""
         import openai
 
         api_key = self._get_api_key("openai") or self._get_api_key("OPENAI_API_KEY")
@@ -202,23 +202,39 @@ class NodeExecutor:
 
         client = openai.AsyncOpenAI(api_key=api_key)
 
-        async def make_request():
-            response = await client.chat.completions.create(
+        try:
+            # Use streaming to show real-time output
+            stream = await client.chat.completions.create(
                 model=self.config.model,
                 messages=[
                     {"role": "system", "content": self.config.role},
                     {"role": "user", "content": context}
                 ],
                 temperature=0.7,
-                max_tokens=4096
+                max_tokens=4096,
+                stream=True
             )
-            return response
 
-        try:
-            # Use retry logic for rate limits
-            response = await retry_with_backoff(make_request)
+            # Collect streamed content and send updates to visualizer
+            content_parts = []
+            last_update_len = 0
+            update_interval = 100  # Update visualizer every 100 chars
 
-            content = response.choices[0].message.content
+            async for chunk in stream:
+                if chunk.choices[0].delta.content:
+                    content_parts.append(chunk.choices[0].delta.content)
+
+                    # Send periodic updates to visualizer
+                    current_len = sum(len(p) for p in content_parts)
+                    if current_len - last_update_len >= update_interval:
+                        partial_content = "".join(content_parts)
+                        self._send_stream_update(partial_content)
+                        last_update_len = current_len
+
+            content = "".join(content_parts)
+
+            # Send final update
+            self._send_stream_update(content, is_final=True)
 
             return Message(
                 role="assistant",
@@ -227,10 +243,7 @@ class NodeExecutor:
                 metadata={
                     "provider": "openai",
                     "model": self.config.model,
-                    "tokens": {
-                        "prompt": response.usage.prompt_tokens,
-                        "completion": response.usage.completion_tokens
-                    }
+                    "streamed": True
                 }
             )
         except Exception as e:
@@ -241,8 +254,19 @@ class NodeExecutor:
                 metadata={"error": str(e), "is_error": True}
             )
 
+    def _send_stream_update(self, content: str, is_final: bool = False):
+        """Send streaming update to visualizer"""
+        try:
+            from visualizer.visualizer_bridge import VisualizerBridge
+            visualizer = VisualizerBridge.get_instance()
+            if visualizer:
+                # Update the agent's output in real-time
+                visualizer.node_stream(self.config.id, content, is_final)
+        except Exception:
+            pass  # Silently ignore if visualizer not available
+
     async def _execute_google(self, context: str) -> Message:
-        """Execute using Google Gemini API"""
+        """Execute using Google Gemini API with streaming"""
         import google.generativeai as genai
 
         api_key = self._get_api_key("google") or self._get_api_key("GOOGLE_API_KEY")
@@ -257,12 +281,27 @@ class NodeExecutor:
             # Build prompt with system instructions
             full_prompt = f"{self.config.role}\n\n{context}"
 
-            response = await asyncio.to_thread(
-                model.generate_content,
-                full_prompt
-            )
+            # Use streaming for real-time output
+            def stream_generate():
+                content_parts = []
+                last_update_len = 0
+                update_interval = 100
 
-            content = response.text
+                for chunk in model.generate_content(full_prompt, stream=True):
+                    if chunk.text:
+                        content_parts.append(chunk.text)
+                        current_len = sum(len(p) for p in content_parts)
+                        if current_len - last_update_len >= update_interval:
+                            partial_content = "".join(content_parts)
+                            self._send_stream_update(partial_content)
+                            last_update_len = current_len
+
+                return "".join(content_parts)
+
+            content = await asyncio.to_thread(stream_generate)
+
+            # Send final update
+            self._send_stream_update(content, is_final=True)
 
             return Message(
                 role="assistant",
@@ -270,7 +309,8 @@ class NodeExecutor:
                 source=self.config.id,
                 metadata={
                     "provider": "google",
-                    "model": self.config.model
+                    "model": self.config.model,
+                    "streamed": True
                 }
             )
         except Exception as e:
@@ -319,6 +359,9 @@ class NodeExecutor:
         try:
             data = await retry_with_backoff(make_request)
             content = data["choices"][0]["message"]["content"]
+
+            # Send output to visualizer
+            self._send_stream_update(content, is_final=True)
 
             return Message(
                 role="assistant",
@@ -375,6 +418,9 @@ class NodeExecutor:
             data = await retry_with_backoff(make_request)
             content = data["choices"][0]["message"]["content"]
 
+            # Send output to visualizer
+            self._send_stream_update(content, is_final=True)
+
             return Message(
                 role="assistant",
                 content=content,
@@ -423,6 +469,9 @@ class NodeExecutor:
 
                 data = response.json()
                 content = data["choices"][0]["message"]["content"]
+
+                # Send output to visualizer
+                self._send_stream_update(content, is_final=True)
 
                 return Message(
                     role="assistant",

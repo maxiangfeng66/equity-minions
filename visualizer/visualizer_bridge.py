@@ -147,6 +147,28 @@ class VisualizerBridge:
             self._state["agents"][node_id]["output_length"] = len(output) if output else 0
         self._save_state()
 
+    def node_stream(self, node_id: str, partial_output: str, is_final: bool = False):
+        """Update node with streaming partial output for real-time display"""
+        if node_id not in self._state["agents"]:
+            return
+
+        # Store the streaming output (last 2000 chars for live preview)
+        if len(partial_output) > 2000:
+            preview = "..." + partial_output[-1997:]
+        else:
+            preview = partial_output
+
+        self._state["agents"][node_id]["output"] = preview
+        self._state["agents"][node_id]["output_length"] = len(partial_output)
+
+        if is_final:
+            self._state["agents"][node_id]["message"] = "Completing..."
+        else:
+            # Update message with char count
+            self._state["agents"][node_id]["message"] = f"Generating... ({len(partial_output)} chars)"
+
+        self._save_state()
+
     def node_complete(self, node_id: str, output_length: int = 0, output: str = None):
         """Mark node as complete"""
         if node_id in self._state["agents"]:
