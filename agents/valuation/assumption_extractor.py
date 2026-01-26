@@ -388,18 +388,19 @@ class AssumptionExtractor:
             source="debate_synthesis"
         )
 
-        # Bull case
+        # Bull case - CONSTRAINED to avoid >150% upside scenarios
+        # Cap growth rates to realistic maximum values
         scenarios['bull'] = ScenarioAssumptions(
             name='bull',
             probability=self.default_probabilities['bull'],
-            revenue_growth_y1_3=bull['revenue_growth_y1_3'],
-            revenue_growth_y4_5=bull['revenue_growth_y4_5'],
-            revenue_growth_y6_10=bull.get('revenue_growth_y6_10', base['revenue_growth_y6_10'] * 1.2),
+            revenue_growth_y1_3=min(bull['revenue_growth_y1_3'], 0.22),  # Max 22% Y1-3 growth
+            revenue_growth_y4_5=min(bull['revenue_growth_y4_5'], 0.15),  # Max 15% Y4-5 growth
+            revenue_growth_y6_10=min(bull.get('revenue_growth_y6_10', base['revenue_growth_y6_10'] * 1.2), 0.07),  # Max 7%
             terminal_growth=CONSERVATIVE_TERMINAL_GROWTH,  # 0% for conservative valuation
-            target_ebit_margin=bull['target_ebit_margin'],
+            target_ebit_margin=min(bull['target_ebit_margin'], 0.28),  # Max 28% margin
             years_to_target_margin=base['years_to_target_margin'] - 1,
             wacc_adjustment=-0.01,
-            rationale="Bull advocate's main thesis (0% terminal growth for conservative valuation)",
+            rationale="Bull advocate's main thesis (0% terminal growth, constrained growth rates)",
             source="bull_r2"
         )
 
@@ -418,18 +419,19 @@ class AssumptionExtractor:
             source="bear_r2"
         )
 
-        # Super bull - extrapolate from bull
+        # Super bull - extrapolate from bull (CONSTRAINED to avoid unrealistic valuations)
+        # IMPORTANT: Cap growth rates to avoid >200% upside scenarios
         scenarios['super_bull'] = ScenarioAssumptions(
             name='super_bull',
             probability=self.default_probabilities['super_bull'],
-            revenue_growth_y1_3=min(bull['revenue_growth_y1_3'] + 0.10, 0.50),
-            revenue_growth_y4_5=min(bull['revenue_growth_y4_5'] + 0.08, 0.35),
-            revenue_growth_y6_10=base['revenue_growth_y6_10'] * 1.5,
+            revenue_growth_y1_3=min(bull['revenue_growth_y1_3'] * 1.15, 0.25),  # Max 25% (was 50%)
+            revenue_growth_y4_5=min(bull['revenue_growth_y4_5'] * 1.15, 0.18),  # Max 18% (was 35%)
+            revenue_growth_y6_10=min(base['revenue_growth_y6_10'] * 1.3, 0.08),  # Max 8%
             terminal_growth=CONSERVATIVE_TERMINAL_GROWTH,  # 0% for conservative valuation
-            target_ebit_margin=min(bull['target_ebit_margin'] + 0.03, 0.40),
-            years_to_target_margin=max(base['years_to_target_margin'] - 2, 2),
-            wacc_adjustment=-0.02,
-            rationale="Everything goes right - bull's best case (0% terminal growth for conservative valuation)",
+            target_ebit_margin=min(bull['target_ebit_margin'] + 0.02, 0.30),  # Max 30% (was 40%)
+            years_to_target_margin=max(base['years_to_target_margin'] - 1, 3),
+            wacc_adjustment=-0.01,  # Reduced from -0.02
+            rationale="Everything goes right - bull's best case (0% terminal growth, constrained growth)",
             source="extrapolation"
         )
 
@@ -539,13 +541,20 @@ class MultiAIAssumptionExtractor:
         bull_advocate_output: str = "",
         bear_advocate_output: str = "",
         industry_researcher_output: str = "",
-        business_model_output: str = ""
+        business_model_output: str = "",
+        dot_connector_output: str = ""
     ) -> Dict[str, Any]:
         """
         Extract validated assumptions using multi-AI pipeline.
 
         This is the NEW way to extract assumptions.
         NO HARDCODED DEFAULTS are used.
+
+        PRIORITY ORDER:
+        1. Dot Connector output (HIGHEST - may contain REVISED parameters)
+        2. Debate outputs (Bull/Bear/Critic)
+        3. Industry/Business analysis
+        4. Market data fallbacks (LOWEST)
 
         Args:
             ticker: Stock ticker (e.g., "6682 HK")
@@ -557,6 +566,7 @@ class MultiAIAssumptionExtractor:
             bear_advocate_output: Output from Bear Advocate R2
             industry_researcher_output: Output from Industry Researcher
             business_model_output: Output from Business Model node
+            dot_connector_output: Output from Dot Connector (PRIORITIZED!)
 
         Returns:
             Dictionary with:
@@ -577,6 +587,7 @@ class MultiAIAssumptionExtractor:
             bear_advocate_output=bear_advocate_output,
             industry_researcher_output=industry_researcher_output,
             business_model_output=business_model_output,
+            dot_connector_output=dot_connector_output,
             model=self.model
         )
 
@@ -642,7 +653,7 @@ class MultiAIAssumptionExtractor:
                 revenue_growth_y1_3=scenario_data.get('revenue_growth_y1_3', 0.10),
                 revenue_growth_y4_5=scenario_data.get('revenue_growth_y4_5', 0.07),
                 revenue_growth_y6_10=scenario_data.get('revenue_growth_y6_10', 0.04),
-                terminal_growth=scenario_data.get('terminal_growth', 0.025),
+                terminal_growth=scenario_data.get('terminal_growth', 0.0),  # CONSERVATIVE: 0%
                 target_ebit_margin=scenario_data.get('target_ebit_margin', 0.15),
                 years_to_target_margin=scenario_data.get('years_to_target_margin', 5),
                 wacc_adjustment=scenario_data.get('wacc_adjustment', 0.0),

@@ -1,13 +1,11 @@
 # Configuration file for API keys and settings
-# Set these environment variables before running:
-#   OPENAI_API_KEY, GOOGLE_API_KEY, XAI_API_KEY, DASHSCOPE_API_KEY
 import os
 
 API_KEYS = {
-    "openai": os.getenv("OPENAI_API_KEY", ""),
-    "google": os.getenv("GOOGLE_API_KEY", ""),
-    "xai": os.getenv("XAI_API_KEY", ""),
-    "dashscope": os.getenv("DASHSCOPE_API_KEY", ""),  # Alibaba Qwen (International)
+    "openai": os.environ.get("OPENAI_API_KEY", ""),
+    "google": os.environ.get("GOOGLE_API_KEY", ""),
+    "xai": os.environ.get("XAI_API_KEY", ""),
+    "dashscope": os.environ.get("DASHSCOPE_API_KEY", ""),  # Alibaba Qwen (International)
 }
 
 # Equity list with Bloomberg tickers and company info (synced from list.txt)

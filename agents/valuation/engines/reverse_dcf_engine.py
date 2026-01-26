@@ -91,7 +91,7 @@ class ReverseDCFEngine:
 
         # Get terminal growth from base scenario
         base_scenario = inputs.scenarios.get('base')
-        terminal_growth = base_scenario.terminal_growth if base_scenario else 0.025
+        terminal_growth = base_scenario.terminal_growth if base_scenario else 0.0  # CONSERVATIVE: 0%
 
         # Target: Current Enterprise Value
         target_ev = md.market_cap + md.net_debt

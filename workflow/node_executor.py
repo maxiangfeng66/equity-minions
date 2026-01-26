@@ -546,6 +546,17 @@ class PythonValuationExecutor:
             )
             company_name = self.context.get("company_name", ticker)
 
+            # CRITICAL: Get Dot Connector output - PRIORITIZED for parameters!
+            # Dot Connector synthesizes parameters from research and may include REVISIONS
+            dot_connector_output = self._find_prior_output(
+                prior_outputs,
+                ['Dot Connector', 'dot_connector', 'DotConnector']
+            )
+            if dot_connector_output:
+                print(f"  [Python Valuation Engine] Using Dot Connector parameters ({len(dot_connector_output)} chars)")
+                if '[REVISED]' in dot_connector_output or 'REVISION REQUESTED' in dot_connector_output:
+                    print(f"  [Python Valuation Engine] DOT CONNECTOR HAS REVISED PARAMETERS!")
+
             # Get market data from context
             market_data = self.context.get("market_data", {}).copy()
 
@@ -567,6 +578,7 @@ class PythonValuationExecutor:
                     market_data.update(msg.metadata["market_data"])
 
             # Run valuation with multi-AI extraction (if enabled)
+            # Pass dot_connector_output for parameter priority
             result = await asyncio.to_thread(
                 self.orchestrator.run_valuation,
                 ticker=ticker,
@@ -574,7 +586,8 @@ class PythonValuationExecutor:
                 market_data_raw=market_data,
                 industry_researcher_output=industry_researcher_output,
                 business_model_output=business_model_output,
-                company_name=company_name
+                company_name=company_name,
+                dot_connector_output=dot_connector_output
             )
 
             # Build formatted output
@@ -704,12 +717,59 @@ class PythonValuationExecutor:
 
         # Consensus
         consensus = result.get("consensus", {})
-        lines.append(f"Current Price: {result.get('currency', '')} {result.get('current_price', 0):.2f}")
-        lines.append(f"CONSENSUS FAIR VALUE: {result.get('currency', '')} {consensus.get('fair_value', 0):.2f}")
+        currency = result.get('currency', '')
+        current_price = result.get('current_price', 0)
+        pwv = consensus.get('fair_value', 0)
+
+        lines.append(f"Current Price: {currency} {current_price:.2f}")
+        lines.append(f"CONSENSUS FAIR VALUE: {currency} {pwv:.2f}")
         lines.append(f"Implied Upside: {consensus.get('implied_upside', 0)*100:+.1f}%")
         lines.append(f"RECOMMENDATION: {consensus.get('recommendation', 'N/A')}")
         lines.append(f"Confidence: {consensus.get('confidence', 'N/A')}")
         lines.append("")
+
+        # ============================================
+        # BROKER CONSENSUS - CRITICAL FOR DCF VALIDATOR
+        # This section is parsed by DCF Validator to compare our valuation
+        # ============================================
+        broker_target = result.get('broker_target_avg')
+        broker_low = result.get('broker_target_low')
+        broker_high = result.get('broker_target_high')
+        broker_count = result.get('broker_count', 5)
+
+        if broker_target and broker_target > 0:
+            divergence_pct = ((pwv - broker_target) / broker_target) * 100 if broker_target else 0
+
+            # Classify divergence
+            abs_div = abs(divergence_pct)
+            if abs_div < 15:
+                div_class = "ALIGNED"
+            elif abs_div < 30:
+                div_class = "MODERATE"
+            else:
+                div_class = "SIGNIFICANT"
+
+            lines.append("=" * 70)
+            lines.append("*** BROKER CONSENSUS DATA (FROM LOCAL RESEARCH) ***")
+            lines.append("*** DCF VALIDATOR: USE THESE VALUES - DO NOT HALLUCINATE ***")
+            lines.append("=" * 70)
+            lines.append(f"BROKER_AVG_TARGET: {currency} {broker_target:.2f}")
+            if broker_low:
+                lines.append(f"BROKER_TARGET_LOW: {currency} {broker_low:.2f}")
+            if broker_high:
+                lines.append(f"BROKER_TARGET_HIGH: {currency} {broker_high:.2f}")
+            lines.append(f"BROKER_COUNT: {broker_count}")
+            lines.append(f"OUR_DCF_TARGET: {currency} {pwv:.2f}")
+            lines.append(f"DIVERGENCE_PCT: {divergence_pct:.1f}%")
+            lines.append(f"DIVERGENCE_CLASS: {div_class}")
+            lines.append("=" * 70)
+            lines.append("")
+        else:
+            lines.append("=" * 70)
+            lines.append("*** WARNING: NO BROKER CONSENSUS DATA AVAILABLE ***")
+            lines.append("*** DCF Validator will use conservative assumptions ***")
+            lines.append("=" * 70)
+            lines.append("")
 
         # Cross-check
         cross = result.get("cross_check", {})

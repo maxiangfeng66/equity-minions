@@ -1,0 +1,118 @@
+{
+  "ticker": "LEGN_US",
+  "timestamp": "2026-01-26T23:58:28.908057",
+  "goalkeeper_score": 0,
+  "goalkeeper_issues": [
+    {
+      "severity": "HIGH",
+      "category": "Scenario Percentage",
+      "description": "Very high scenario percentage: 500.0%",
+      "value": "500.0%"
+    },
+    {
+      "severity": "HIGH",
+      "category": "Scenario Percentage",
+      "description": "Very high scenario percentage: 500.0%",
+      "value": "500.0%"
+    },
+    {
+      "severity": "HIGH",
+      "category": "Scenario Percentage",
+      "description": "Very high scenario percentage: 500.0%",
+      "value": "500.0%"
+    },
+    {
+      "severity": "HIGH",
+      "category": "Scenario Percentage",
+      "description": "Very high scenario percentage: 500.0%",
+      "value": "500.0%"
+    },
+    {
+      "severity": "HIGH",
+      "category": "Scenario Percentage",
+      "description": "Very high scenario percentage: 500.0%",
+      "value": "500.0%"
+    },
+    {
+      "severity": "CRITICAL",
+      "category": "Upside Percentage",
+      "description": "Unrealistic implied upside: 913.4%",
+      "value": "913.4%"
+    }
+  ],
+  "diagnosis": [
+    "Extreme upside detected: 1101.7%",
+    "  bear: 94.84 (402.1% upside)",
+    "  base: 109.10 (477.6% upside)",
+    "  bull: 373.02 (1874.7% upside)",
+    "  super_bull: 843.36 (4364.6% upside)",
+    "Extreme upside detected: 961.5%",
+    "  base: 106.82 (465.5% upside)",
+    "  bull: 318.02 (1583.6% upside)",
+    "  super_bull: 785.58 (4058.7% upside)",
+    "Extreme upside detected: 961.5%",
+    "  base: 106.82 (465.5% upside)",
+    "  bull: 318.02 (1583.6% upside)",
+    "  super_bull: 785.58 (4058.7% upside)",
+    "Extreme upside detected: 699.7%",
+    "  bull: 235.53 (1146.9% upside)",
+    "  super_bull: 785.58 (4058.7% upside)",
+    "Extreme upside detected: 928.4%",
+    "  base: 109.10 (477.6% upside)",
+    "  bull: 293.59 (1454.2% upside)",
+    "  super_bull: 789.36 (4078.7% upside)",
+    "Extreme upside detected: 1133.3%",
+    "  base: 109.10 (477.6% upside)",
+    "  bull: 293.59 (1454.2% upside)",
+    "  super_bull: 1171.68 (6102.7% upside)",
+    "Extreme upside detected: 913.4%",
+    "  bull: 235.53 (1146.9% upside)",
+    "  super_bull: 1167.34 (6079.7% upside)",
+    "Company is in biotech sector - traditional DCF may be inappropriate",
+    "Consider: risk-adjusted NPV, pipeline valuation, or comparable analysis",
+    "Company appears to be pre-profit - DCF assumptions may be unrealistic",
+    "Historical negative margins detected: operating margin: -816%",
+    "Historical negative margins detected: operating margin: -380%",
+    "Historical negative margins detected: operating margin: -284%",
+    "Historical negative margins detected: operating margin: -168%",
+    "Historical negative margins detected: net margin: -650%",
+    "Historical negative margins detected: net margin: -250%",
+    "Historical negative margins detected: net margin: -261%",
+    "Historical negative margins detected: net margin: -176%",
+    "Historical negative margins detected: net margin: -101%"
+  ],
+  "root_causes": [
+    "HIGH_MARGIN: bear targets 60% EBIT margin",
+    "HIGH_GROWTH_RATE: base uses 30% Y1-3 growth",
+    "HIGH_MARGIN: base targets 45% EBIT margin",
+    "HIGH_GROWTH_RATE: bull uses 40% Y1-3 growth",
+    "HIGH_MARGIN: bull targets 70% EBIT margin",
+    "HIGH_GROWTH_RATE: super_bull uses 50% Y1-3 growth",
+    "HIGH_MARGIN: super_bull targets 75% EBIT margin",
+    "HIGH_MARGIN: bull targets 60% EBIT margin",
+    "HIGH_MARGIN: super_bull targets 70% EBIT margin",
+    "HIGH_MARGIN: bull targets 45% EBIT margin",
+    "HIGH_MARGIN: bull targets 55% EBIT margin",
+    "HIGH_GROWTH_RATE: super_bull uses 55% Y1-3 growth",
+    "BIOTECH_SECTOR: Found biotech indicators (biotech, car-t, cell therapy, pharma, therapeutics)",
+    "PRE_PROFIT_COMPANY: Found indicators (negative ebit, negative earnings, eps: -)",
+    "NEGATIVE_MARGINS: operating margin: -816%",
+    "NEGATIVE_MARGINS: operating margin: -380%",
+    "NEGATIVE_MARGINS: operating margin: -284%",
+    "NEGATIVE_MARGINS: operating margin: -168%",
+    "NEGATIVE_MARGINS: net margin: -650%",
+    "NEGATIVE_MARGINS: net margin: -250%",
+    "NEGATIVE_MARGINS: net margin: -261%",
+    "NEGATIVE_MARGINS: net margin: -176%",
+    "NEGATIVE_MARGINS: net margin: -101%"
+  ],
+  "recommendations": [
+    "MANUAL REVIEW REQUIRED: This is a pre-profit/biotech company",
+    "Consider using: Risk-adjusted NPV, Sum-of-parts, or Comparable analysis",
+    "DCF is not appropriate for pipeline-driven biotech companies",
+    "Flag as 'SPECULATIVE' in report with appropriate disclaimers"
+  ],
+  "action": "manual_review_biotech",
+  "can_auto_fix": false,
+  "fix_parameters": {}
+}

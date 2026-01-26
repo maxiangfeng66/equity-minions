@@ -1,15 +1,15 @@
 {
   "status": "running",
-  "ticker": "6682_HK",
+  "ticker": "LEGN_US",
   "company_name": "",
-  "start_time": "2026-01-26T12:14:18.090333",
-  "last_updated": "2026-01-26T12:31:08.041096",
+  "start_time": "2026-01-27T02:51:18.710854",
+  "last_updated": "2026-01-27T02:55:34.158658",
   "agents": {
     "START": {
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:14:22.837421",
+      "start_time": "2026-01-27T02:51:22.695835",
       "task": null,
       "output": null
     },
@@ -17,7 +17,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:14:38.825936",
+      "start_time": "2026-01-27T02:51:42.060462",
       "task": null,
       "output": null
     },
@@ -25,7 +25,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:30:50.774644",
+      "start_time": "2026-01-27T02:52:20.299274",
       "task": null,
       "output": null
     },
@@ -33,7 +33,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:14:49.147768",
+      "start_time": "2026-01-27T02:51:55.771021",
       "task": null,
       "output": null
     },
@@ -41,7 +41,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:14:49.148702",
+      "start_time": "2026-01-27T02:51:55.772032",
       "task": null,
       "output": null
     },
@@ -49,7 +49,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:14:49.149213",
+      "start_time": "2026-01-27T02:51:55.772493",
       "task": null,
       "output": null
     },
@@ -57,7 +57,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:14:49.149615",
+      "start_time": "2026-01-27T02:51:55.773000",
       "task": null,
       "output": null
     },
@@ -65,15 +65,15 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:30:27.670393",
+      "start_time": "2026-01-27T02:53:15.910860",
       "task": null,
       "output": null
     },
     "Bull Advocate R1": {
-      "status": "thinking",
+      "status": "complete",
       "provider": "openai",
-      "message": "Working...",
-      "start_time": "2026-01-26T12:30:50.775763",
+      "message": "Done!",
+      "start_time": "2026-01-27T02:53:30.517032",
       "task": null,
       "output": null
     },
@@ -81,7 +81,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:30:50.776813",
+      "start_time": "2026-01-27T02:53:30.517943",
       "task": null,
       "output": null
     },
@@ -89,15 +89,15 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:18:06.862188",
+      "start_time": "2026-01-27T02:55:06.020087",
       "task": null,
       "output": null
     },
     "Bull Advocate R2": {
-      "status": "complete",
+      "status": "thinking",
       "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:18:21.258043",
+      "message": "Working...",
+      "start_time": "2026-01-27T02:55:19.744188",
       "task": null,
       "output": null
     },
@@ -105,7 +105,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:18:21.258990",
+      "start_time": "2026-01-27T02:55:19.745626",
       "task": null,
       "output": null
     },
@@ -113,7 +113,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:19:42.441447",
+      "start_time": "2026-01-27T02:55:06.020819",
       "task": null,
       "output": null
     },
@@ -121,87 +121,7 @@
       "status": "complete",
       "provider": "openai",
       "message": "Done!",
-      "start_time": "2026-01-26T12:19:58.166361",
-      "task": null,
-      "output": null
-    },
-    "Dot Connector": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:20:42.956785",
-      "task": null,
-      "output": null
-    },
-    "Financial Modeler": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:29:33.879718",
-      "task": null,
-      "output": null
-    },
-    "DCF Validator": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:14.304104",
-      "task": null,
-      "output": null
-    },
-    "Assumption Challenger": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:14.305593",
-      "task": null,
-      "output": null
-    },
-    "Comparable Validator": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:14.307265",
-      "task": null,
-      "output": null
-    },
-    "Sensitivity Auditor": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:14.308527",
-      "task": null,
-      "output": null
-    },
-    "Data Verification Gate": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:23.377041",
-      "task": null,
-      "output": null
-    },
-    "Logic Verification Gate": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:23.378155",
-      "task": null,
-      "output": null
-    },
-    "Birds Eye Reviewer": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:23.379090",
-      "task": null,
-      "output": null
-    },
-    "Quality Supervisor": {
-      "status": "complete",
-      "provider": "openai",
-      "message": "Done!",
-      "start_time": "2026-01-26T12:30:27.671629",
+      "start_time": "2026-01-27T02:55:19.746659",
       "task": null,
       "output": null
     }
@@ -209,609 +129,273 @@
   "connections": [],
   "chat_log": [
     {
-      "agent": "Financial Modeler",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:31"
+      "agent": "SYSTEM",
+      "message": "Starting research: LEGN_US",
+      "provider": "system",
+      "time": "02:51:18"
     },
     {
-      "agent": "DCF Validator",
+      "agent": "START",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:26:32"
+      "time": "02:51:22"
     },
     {
-      "agent": "Assumption Challenger",
+      "agent": "START",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:51:41"
+    },
+    {
+      "agent": "Research Supervisor",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:26:32"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:32"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:32"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:32"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:35"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:36"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:37"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:39"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:44"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:45"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:45"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:45"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:26:45"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:49"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:26:50"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:02"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:35"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:36"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:36"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:36"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:36"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:36"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:37"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:39"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:41"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:42"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:48"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:49"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:49"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:49"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:27:49"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:27:59"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:00"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:01"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:28"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:29"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:29"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:29"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:29"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:29"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:32"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:34"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:37"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:40"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:44"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:45"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:46"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:46"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:28:46"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:47"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:28:47"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:00"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:23"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:24"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:24"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:24"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:24"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:24"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:26"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:26"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:28"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:30"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:32"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:33"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:33"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:33"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:29:33"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:36"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:38"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:29:47"
-    },
-    {
-      "agent": "Financial Modeler",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:13"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:14"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:14"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:14"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:14"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:14"
-    },
-    {
-      "agent": "Quality Supervisor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:16"
-    },
-    {
-      "agent": "Comparable Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:18"
-    },
-    {
-      "agent": "DCF Validator",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:18"
-    },
-    {
-      "agent": "Sensitivity Auditor",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:22"
-    },
-    {
-      "agent": "Assumption Challenger",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:22"
+      "time": "02:51:42"
     },
     {
       "agent": "Data Checkpoint",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:30:23"
-    },
-    {
-      "agent": "Data Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:23"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:23"
-    },
-    {
-      "agent": "Birds Eye Reviewer",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:23"
-    },
-    {
-      "agent": "Logic Verification Gate",
-      "message": "Complete!",
-      "provider": "openai",
-      "time": "12:30:24"
+      "time": "02:51:42"
     },
     {
       "agent": "Data Checkpoint",
       "message": "Complete!",
       "provider": "openai",
-      "time": "12:30:25"
+      "time": "02:51:43"
     },
     {
-      "agent": "Data Verification Gate",
+      "agent": "Research Supervisor",
       "message": "Complete!",
       "provider": "openai",
-      "time": "12:30:26"
+      "time": "02:51:54"
     },
     {
-      "agent": "Birds Eye Reviewer",
-      "message": "Complete!",
+      "agent": "Market Data Collector",
+      "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:30:27"
+      "time": "02:51:55"
+    },
+    {
+      "agent": "Industry Deep Dive",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:51:55"
+    },
+    {
+      "agent": "Company Deep Dive",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:51:55"
+    },
+    {
+      "agent": "Data Verifier",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:51:55"
     },
     {
       "agent": "Debate Moderator",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:30:27"
+      "time": "02:51:55"
     },
     {
-      "agent": "Quality Supervisor",
-      "message": "Analyzing...",
-      "provider": "openai",
-      "time": "12:30:27"
-    },
-    {
-      "agent": "Quality Supervisor",
+      "agent": "Data Verifier",
       "message": "Complete!",
       "provider": "openai",
-      "time": "12:30:39"
+      "time": "02:52:00"
+    },
+    {
+      "agent": "Market Data Collector",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:52:01"
     },
     {
       "agent": "Debate Moderator",
       "message": "Complete!",
       "provider": "openai",
-      "time": "12:30:50"
+      "time": "02:52:07"
+    },
+    {
+      "agent": "Industry Deep Dive",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:52:14"
+    },
+    {
+      "agent": "Company Deep Dive",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:52:19"
     },
     {
       "agent": "Data Checkpoint",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:30:50"
+      "time": "02:52:20"
     },
     {
       "agent": "Bull Advocate R1",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:30:50"
+      "time": "02:52:20"
     },
     {
       "agent": "Bear Advocate R1",
       "message": "Analyzing...",
       "provider": "openai",
-      "time": "12:30:50"
+      "time": "02:52:20"
     },
     {
       "agent": "Data Checkpoint",
       "message": "Complete!",
       "provider": "openai",
-      "time": "12:30:52"
+      "time": "02:52:21"
     },
     {
       "agent": "Bear Advocate R1",
       "message": "Complete!",
       "provider": "openai",
-      "time": "12:31:08"
+      "time": "02:52:47"
+    },
+    {
+      "agent": "Bull Advocate R1",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:53:15"
+    },
+    {
+      "agent": "Debate Moderator",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:53:15"
+    },
+    {
+      "agent": "Devils Advocate",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:53:15"
+    },
+    {
+      "agent": "Debate Moderator",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:53:29"
+    },
+    {
+      "agent": "Devils Advocate",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:53:29"
+    },
+    {
+      "agent": "Bull Advocate R1",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:53:30"
+    },
+    {
+      "agent": "Bear Advocate R1",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:53:30"
+    },
+    {
+      "agent": "Bull Advocate R2",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:53:30"
+    },
+    {
+      "agent": "Bear Advocate R2",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:53:30"
+    },
+    {
+      "agent": "Bear Advocate R2",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:53:48"
+    },
+    {
+      "agent": "Bear Advocate R1",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:53:52"
+    },
+    {
+      "agent": "Bull Advocate R1",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:54:30"
+    },
+    {
+      "agent": "Bull Advocate R2",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:55:05"
+    },
+    {
+      "agent": "Devils Advocate",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:55:06"
+    },
+    {
+      "agent": "Debate Critic",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:55:06"
+    },
+    {
+      "agent": "Debate Critic",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:55:18"
+    },
+    {
+      "agent": "Devils Advocate",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:55:19"
+    },
+    {
+      "agent": "Bull Advocate R2",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:55:19"
+    },
+    {
+      "agent": "Bear Advocate R2",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:55:19"
+    },
+    {
+      "agent": "Pre-Model Validator",
+      "message": "Analyzing...",
+      "provider": "openai",
+      "time": "02:55:19"
+    },
+    {
+      "agent": "Pre-Model Validator",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:55:23"
+    },
+    {
+      "agent": "Bear Advocate R2",
+      "message": "Complete!",
+      "provider": "openai",
+      "time": "02:55:34"
     }
   ],
-  "progress": 100,
-  "nodes_done": 138,
+  "progress": 75,
+  "nodes_done": 21,
   "total_nodes": 28,
   "iterations": 0,
-  "total_chars": 240938
+  "total_chars": 83756
 }

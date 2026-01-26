@@ -67,7 +67,8 @@ class ValuationOrchestrator:
         broker_target: Optional[float] = None,
         industry_researcher_output: str = "",
         business_model_output: str = "",
-        company_name: str = ""
+        company_name: str = "",
+        dot_connector_output: str = ""
     ) -> Dict[str, Any]:
         """
         Run complete multi-method valuation.
@@ -84,6 +85,7 @@ class ValuationOrchestrator:
             industry_researcher_output: Output from Industry Researcher node
             business_model_output: Output from Business Model / Company Deep Dive node
             company_name: Company name for extraction
+            dot_connector_output: Output from Dot Connector node (PRIORITIZED for parameter extraction!)
 
         Returns:
             Comprehensive valuation result as dict
@@ -95,8 +97,11 @@ class ValuationOrchestrator:
         wacc_inputs = self._prepare_wacc_inputs(market_data_raw, market_data)
 
         # Step 3: Extract assumptions - USE MULTI-AI IF ENABLED
+        # PRIORITIZE: Dot Connector output contains synthesized parameters!
         if self.use_multi_ai and self.multi_ai_extractor:
             print(f"[ValuationOrchestrator] Using multi-AI extraction for {ticker}")
+            if dot_connector_output:
+                print(f"[ValuationOrchestrator] USING DOT CONNECTOR PARAMETERS (may include revisions)")
             valuation_inputs = self._run_multi_ai_extraction(
                 ticker=ticker,
                 company_name=company_name or ticker,
@@ -104,7 +109,8 @@ class ValuationOrchestrator:
                 debate_outputs=debate_outputs,
                 industry_researcher_output=industry_researcher_output,
                 business_model_output=business_model_output,
-                market_data_raw=market_data_raw
+                market_data_raw=market_data_raw,
+                dot_connector_output=dot_connector_output
             )
         else:
             # Fall back to old regex-based extraction (NOT RECOMMENDED)
@@ -146,11 +152,25 @@ class ValuationOrchestrator:
             broker_target=broker_target
         )
 
+        # Get broker target from market_data if not provided explicitly
+        actual_broker_target = broker_target
+        if not actual_broker_target and market_data_raw:
+            actual_broker_target = market_data_raw.get('broker_target_avg')
+
         # Step 7: Build comprehensive output
-        return self._build_output(
+        output = self._build_output(
             valuation_inputs, dcf_result, comps_result, ddm_result,
             reverse_dcf_result, cross_check, consensus
         )
+
+        # Add broker consensus data for DCF Validator
+        if actual_broker_target:
+            output['broker_target_avg'] = actual_broker_target
+            output['broker_target_low'] = market_data_raw.get('broker_target_low') if market_data_raw else None
+            output['broker_target_high'] = market_data_raw.get('broker_target_high') if market_data_raw else None
+            output['broker_count'] = market_data_raw.get('broker_count', 5) if market_data_raw else 5
+
+        return output
 
     def _run_multi_ai_extraction(
         self,
@@ -160,12 +180,18 @@ class ValuationOrchestrator:
         debate_outputs: Dict[str, str],
         industry_researcher_output: str,
         business_model_output: str,
-        market_data_raw: Dict[str, Any]
+        market_data_raw: Dict[str, Any],
+        dot_connector_output: str = ""
     ) -> ValuationInputs:
         """
         Run multi-AI assumption extraction pipeline.
 
         This is the NEW way to extract assumptions - NO HARDCODED DEFAULTS.
+
+        PRIORITY ORDER FOR PARAMETERS:
+        1. Dot Connector output (highest - may contain revised parameters)
+        2. Multi-AI extraction from debates
+        3. Market data defaults (lowest)
 
         Args:
             ticker: Stock ticker
@@ -175,11 +201,12 @@ class ValuationOrchestrator:
             industry_researcher_output: From Industry Researcher
             business_model_output: From Company Deep Dive
             market_data_raw: Raw market data dict
+            dot_connector_output: Output from Dot Connector (PRIORITIZED!)
 
         Returns:
             ValuationInputs with multi-AI extracted assumptions
         """
-        # Run multi-AI extraction
+        # Run multi-AI extraction - include Dot Connector output for parameter override
         extracted = self.multi_ai_extractor.extract_assumptions(
             ticker=ticker,
             company_name=company_name,
@@ -189,7 +216,8 @@ class ValuationOrchestrator:
             bull_advocate_output=debate_outputs.get('bull_r2', ''),
             bear_advocate_output=debate_outputs.get('bear_r2', ''),
             industry_researcher_output=industry_researcher_output,
-            business_model_output=business_model_output
+            business_model_output=business_model_output,
+            dot_connector_output=dot_connector_output  # PRIORITIZED!
         )
 
         # Convert to ValuationInputs
@@ -580,6 +608,15 @@ def run_valuation_node(
     business_model_output = prior_outputs.get('Company Deep Dive', '')
     company_name = context.get('company_name', ticker)
 
+    # CRITICAL: Get Dot Connector output - this is PRIORITIZED for parameters
+    # Dot Connector synthesizes parameters from research and may include REVISIONS
+    dot_connector_output = prior_outputs.get('Dot Connector', '')
+    if dot_connector_output:
+        print(f"[run_valuation_node] Found Dot Connector output ({len(dot_connector_output)} chars)")
+        # Check if this is a revision (contains REVISED markers)
+        if '[REVISED]' in dot_connector_output or 'REVISION REQUESTED' in dot_connector_output:
+            print(f"[run_valuation_node] DOT CONNECTOR CONTAINS REVISED PARAMETERS!")
+
     # Run valuation with multi-AI extraction
     result = orchestrator.run_valuation(
         ticker=ticker,
@@ -587,7 +624,8 @@ def run_valuation_node(
         market_data_raw=market_data,
         industry_researcher_output=industry_researcher_output,
         business_model_output=business_model_output,
-        company_name=company_name
+        company_name=company_name,
+        dot_connector_output=dot_connector_output
     )
 
     return json.dumps(result, indent=2, default=str)

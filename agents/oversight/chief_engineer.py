@@ -150,15 +150,18 @@ class ChiefEngineerAgent(SpawnableAgent):
         ai_provider: Optional[Any] = None,
         state_file: str = "context/chief_engineer_state.json"
     ):
+        # SpawnableAgent requires ai_provider as first arg
         super().__init__(
-            name="ChiefEngineer",
-            role="Master Oversight Agent",
-            tier=0
+            ai_provider=ai_provider,
+            role="ChiefEngineer",
+            parent_id=None,
+            tier=0,
+            config={'project_root': project_root}
         )
 
         self.project_root = Path(project_root)
         self.state_file = self.project_root / state_file
-        self.ai_provider = ai_provider
+        # ai_provider is now set by parent class
 
         # State
         self.knowledge = ProjectKnowledge()
@@ -169,6 +172,62 @@ class ChiefEngineerAgent(SpawnableAgent):
 
         # Load persisted state
         self._load_state()
+
+    # ==================== ABSTRACT METHOD IMPLEMENTATIONS ====================
+
+    def _get_system_prompt(self) -> str:
+        """Define the Chief Engineer's system prompt"""
+        return """You are the Chief Engineer - the master oversight agent for the Equity Minions system.
+
+Your responsibilities:
+1. Monitor the health of all system components
+2. Investigate quality gate failures and diagnose root causes
+3. Recommend remediation actions for failed reports
+4. Maintain project understanding and documentation
+5. Spawn specialized inspectors for deep analysis
+
+You have comprehensive knowledge of:
+- The equity research workflow architecture
+- DCF valuation methodologies and their limitations
+- Quality gate criteria and failure modes
+- How to diagnose and fix common issues
+
+When investigating failures, you should:
+1. Analyze the goalkeeper's validation results
+2. Review the workflow node outputs
+3. Identify root causes (data issues, assumption issues, methodology issues)
+4. Recommend specific remediation actions"""
+
+    async def analyze(self, context: Any, **kwargs) -> str:
+        """
+        Perform analysis based on the given context.
+
+        The Chief Engineer's analysis focuses on system health and quality investigation.
+        """
+        from ..core.spawnable_agent import ResearchContext
+
+        # Handle different analysis types based on kwargs
+        analysis_type = kwargs.get('analysis_type', 'health_check')
+
+        if analysis_type == 'investigate_failure':
+            ticker = kwargs.get('ticker')
+            workflow_result_path = kwargs.get('workflow_result_path')
+            report_path = kwargs.get('report_path')
+
+            if ticker and workflow_result_path:
+                result = await self.handle_quality_gate_failure(
+                    ticker=ticker,
+                    workflow_result_path=workflow_result_path,
+                    report_path=report_path or '',
+                    auto_remediate=kwargs.get('auto_remediate', False)
+                )
+                return json.dumps(result, indent=2)
+
+        elif analysis_type == 'health_check':
+            report = await self.get_system_report()
+            return json.dumps(report, indent=2)
+
+        return "No analysis performed - unknown analysis type"
 
     def _load_state(self):
         """Load persisted state from file"""
@@ -698,6 +757,361 @@ class ChiefEngineerAgent(SpawnableAgent):
         if issue_entry not in self.knowledge.known_issues:
             self.knowledge.known_issues.append(issue_entry)
             self._save_state()
+
+    # ==================== QUALITY FAILURE INVESTIGATION ====================
+
+    async def investigate_report_failure(
+        self,
+        ticker: str,
+        workflow_result_path: str,
+        goalkeeper_result: Dict
+    ) -> Dict:
+        """
+        Investigate why a report failed quality checks.
+
+        This is the main entry point for quality failure investigation.
+
+        Args:
+            ticker: Stock ticker
+            workflow_result_path: Path to workflow result JSON
+            goalkeeper_result: Result from ReportGoalkeeper validation
+
+        Returns:
+            Investigation report with diagnosis and recommendations
+        """
+        print(f"[ChiefEngineer] Investigating quality failure for {ticker}...")
+
+        investigation = {
+            'ticker': ticker,
+            'timestamp': datetime.now().isoformat(),
+            'goalkeeper_score': goalkeeper_result.get('score', 0),
+            'goalkeeper_issues': goalkeeper_result.get('issues', []),
+            'diagnosis': [],
+            'root_causes': [],
+            'recommendations': [],
+            'action': 'manual_review',  # Default action
+            'can_auto_fix': False
+        }
+
+        # Load workflow result
+        try:
+            with open(workflow_result_path, 'r', encoding='utf-8') as f:
+                workflow_data = json.load(f)
+        except Exception as e:
+            investigation['diagnosis'].append(f"Could not load workflow data: {e}")
+            return investigation
+
+        # Analyze the issues
+        issues = goalkeeper_result.get('issues', [])
+
+        # Check for unrealistic upside (most common failure)
+        upside_issues = [i for i in issues if 'upside' in str(i).lower() or 'percentage' in str(i).lower()]
+        if upside_issues:
+            valuation_diagnosis = await self._diagnose_valuation_issues(workflow_data, ticker)
+            investigation['diagnosis'].extend(valuation_diagnosis.get('findings', []))
+            investigation['root_causes'].extend(valuation_diagnosis.get('root_causes', []))
+
+        # Check for data issues
+        data_issues = [i for i in issues if 'data' in str(i).lower() or 'price' in str(i).lower()]
+        if data_issues:
+            data_diagnosis = self._diagnose_data_issues(workflow_data, ticker)
+            investigation['diagnosis'].extend(data_diagnosis.get('findings', []))
+            investigation['root_causes'].extend(data_diagnosis.get('root_causes', []))
+
+        # Determine recommendations and action
+        remediation = self._recommend_remediation(investigation, workflow_data, ticker)
+        investigation['recommendations'] = remediation['recommendations']
+        investigation['action'] = remediation['action']
+        investigation['can_auto_fix'] = remediation['can_auto_fix']
+        investigation['fix_parameters'] = remediation.get('fix_parameters', {})
+
+        # Log the investigation
+        self.report_issue(
+            f"Quality failure investigated: {ticker} - Score {investigation['goalkeeper_score']}/100 - Action: {investigation['action']}",
+            component="report_quality"
+        )
+
+        # Save investigation report
+        investigation_path = self.project_root / "context" / f"investigation_{ticker}.json"
+        with open(investigation_path, 'w') as f:
+            json.dump(investigation, f, indent=2)
+
+        print(f"[ChiefEngineer] Investigation complete. Action: {investigation['action']}")
+        return investigation
+
+    async def _diagnose_valuation_issues(self, workflow_data: Dict, ticker: str) -> Dict:
+        """Diagnose valuation-related issues"""
+        findings = []
+        root_causes = []
+
+        # Get Financial Modeler outputs
+        node_outputs = workflow_data.get('node_outputs', {})
+        fm_outputs = node_outputs.get('Financial Modeler', [])
+
+        # Check for high growth rates
+        for output in fm_outputs:
+            content = output.get('content', '')
+            metadata = output.get('metadata', {})
+
+            # Check valuation result from Python engine
+            valuation_result = metadata.get('valuation_result', {})
+            if valuation_result:
+                dcf_data = valuation_result.get('dcf', {})
+
+                # Check PWV vs current price
+                pwv = dcf_data.get('probability_weighted_value', 0)
+                current_price = valuation_result.get('current_price', 0)
+
+                if current_price and pwv:
+                    upside = (pwv - current_price) / current_price * 100
+                    if upside > 200:
+                        findings.append(f"Extreme upside detected: {upside:.1f}%")
+
+                        # Analyze scenarios
+                        scenarios = dcf_data.get('scenarios', {})
+                        for scenario_name, scenario_data in scenarios.items():
+                            fair_value = scenario_data.get('fair_value', 0)
+                            scenario_upside = (fair_value - current_price) / current_price * 100 if current_price else 0
+                            if scenario_upside > 300:
+                                findings.append(f"  {scenario_name}: {fair_value:.2f} ({scenario_upside:.1f}% upside)")
+
+                                # Check inputs_used for growth rates and margins
+                                inputs_used = scenario_data.get('inputs_used', {})
+                                growth_y1_3 = inputs_used.get('revenue_growth_y1_3', 0)
+                                margin = inputs_used.get('target_ebit_margin', 0)
+
+                                if growth_y1_3 > 0.25:
+                                    root_causes.append(f"HIGH_GROWTH_RATE: {scenario_name} uses {growth_y1_3*100:.0f}% Y1-3 growth")
+                                if margin > 0.35:
+                                    root_causes.append(f"HIGH_MARGIN: {scenario_name} targets {margin*100:.0f}% EBIT margin")
+
+        # Search ALL node outputs for biotech/pre-profit indicators
+        all_content = json.dumps(workflow_data).lower()
+
+        # Check for biotech sector indicators
+        biotech_indicators = ['biotech', 'car-t', 'cell therapy', 'pharma', 'therapeutics',
+                              'biopharma', 'oncology', 'gene therapy', 'immunotherapy',
+                              'clinical trial', 'fda approval', 'pipeline', 'carvykti',
+                              'multiple myeloma', 'cancer treatment']
+        biotech_matches = [ind for ind in biotech_indicators if ind in all_content]
+
+        if len(biotech_matches) >= 3:
+            root_causes.append(f"BIOTECH_SECTOR: Found biotech indicators ({', '.join(biotech_matches[:5])})")
+            findings.append("Company is in biotech sector - traditional DCF may be inappropriate")
+            findings.append("Consider: risk-adjusted NPV, pipeline valuation, or comparable analysis")
+
+        # Check for pre-profit company (negative margins mentioned)
+        pre_profit_indicators = ['loss-making', 'negative margin', 'not yet profitable',
+                                 'pre-profit', 'negative ebit', 'operating loss',
+                                 'net loss', 'negative earnings', 'eps: -']
+        pre_profit_matches = [ind for ind in pre_profit_indicators if ind in all_content]
+
+        if pre_profit_matches:
+            root_causes.append(f"PRE_PROFIT_COMPANY: Found indicators ({', '.join(pre_profit_matches[:3])})")
+            findings.append("Company appears to be pre-profit - DCF assumptions may be unrealistic")
+
+        # Check Market Data Collector output for negative margins
+        mdc_outputs = node_outputs.get('Market Data Collector', [])
+        for output in mdc_outputs:
+            content = output.get('content', '').lower()
+            # Look for negative operating margins
+            import re
+            margin_patterns = [
+                r'operating margin[:\s]+[-]?\d+%',
+                r'net margin[:\s]+[-]?\d+%',
+                r'ebit margin[:\s]+[-]?\d+%'
+            ]
+            for pattern in margin_patterns:
+                matches = re.findall(pattern, content)
+                for match in matches:
+                    if '-' in match:
+                        root_causes.append(f"NEGATIVE_MARGINS: {match}")
+                        findings.append(f"Historical negative margins detected: {match}")
+
+        # De-duplicate root causes
+        root_causes = list(dict.fromkeys(root_causes))
+
+        return {
+            'findings': findings,
+            'root_causes': root_causes
+        }
+
+    def _diagnose_data_issues(self, workflow_data: Dict, ticker: str) -> Dict:
+        """Diagnose data-related issues"""
+        findings = []
+        root_causes = []
+
+        # Check verified price
+        verified_price = workflow_data.get('verified_price')
+        context_price = workflow_data.get('context', {}).get('current_price')
+
+        if verified_price and context_price:
+            if abs(verified_price - context_price) / context_price > 0.1:
+                findings.append(f"Price discrepancy: verified={verified_price}, context={context_price}")
+                root_causes.append("PRICE_MISMATCH: Price inconsistency between verification and context")
+
+        # Check for missing data
+        context = workflow_data.get('context', {})
+        required_fields = ['company_name', 'current_price', 'market_cap', 'revenue_ttm']
+
+        for field in required_fields:
+            if not context.get(field):
+                findings.append(f"Missing required field: {field}")
+                root_causes.append(f"MISSING_DATA: {field} not found in context")
+
+        return {
+            'findings': findings,
+            'root_causes': root_causes
+        }
+
+    def _recommend_remediation(self, investigation: Dict, workflow_data: Dict, ticker: str) -> Dict:
+        """Determine recommended action based on diagnosis"""
+        root_causes = investigation.get('root_causes', [])
+        recommendations = []
+        action = 'manual_review'
+        can_auto_fix = False
+        fix_parameters = {}
+
+        # Categorize root causes
+        is_biotech = any('BIOTECH' in rc for rc in root_causes)
+        is_pre_profit = any('PRE_PROFIT' in rc for rc in root_causes)
+        has_high_growth = any('HIGH_GROWTH' in rc for rc in root_causes)
+        has_high_margin = any('HIGH_MARGIN' in rc for rc in root_causes)
+        has_data_issues = any('MISSING_DATA' in rc or 'PRICE_MISMATCH' in rc for rc in root_causes)
+
+        # Determine action
+        if is_biotech or is_pre_profit:
+            # Cannot auto-fix - needs manual review with different valuation approach
+            recommendations.append("MANUAL REVIEW REQUIRED: This is a pre-profit/biotech company")
+            recommendations.append("Consider using: Risk-adjusted NPV, Sum-of-parts, or Comparable analysis")
+            recommendations.append("DCF is not appropriate for pipeline-driven biotech companies")
+            recommendations.append("Flag as 'SPECULATIVE' in report with appropriate disclaimers")
+            action = 'manual_review_biotech'
+
+        elif has_high_growth or has_high_margin:
+            # Can potentially auto-fix by constraining assumptions
+            recommendations.append("RE-RUN with constrained assumptions")
+            recommendations.append("Cap base case growth to max 20% Y1-3")
+            recommendations.append("Cap target EBIT margin to max 25%")
+            action = 'rerun_constrained'
+            can_auto_fix = True
+            fix_parameters = {
+                'max_growth_y1_3': 0.20,
+                'max_growth_y4_5': 0.12,
+                'max_growth_y6_10': 0.06,
+                'max_target_margin': 0.25,
+                'force_conservative': True
+            }
+
+        elif has_data_issues:
+            recommendations.append("RE-FETCH market data and verify price")
+            recommendations.append("Check data sources for accuracy")
+            action = 'refetch_data'
+            can_auto_fix = True
+            fix_parameters = {
+                'refetch_market_data': True,
+                'verify_price': True
+            }
+
+        else:
+            recommendations.append("Manual review needed - unclear root cause")
+            action = 'manual_review'
+
+        return {
+            'recommendations': recommendations,
+            'action': action,
+            'can_auto_fix': can_auto_fix,
+            'fix_parameters': fix_parameters
+        }
+
+    async def handle_quality_gate_failure(
+        self,
+        ticker: str,
+        workflow_result_path: str,
+        report_path: str,
+        auto_remediate: bool = False
+    ) -> Dict:
+        """
+        Main entry point for handling a quality gate failure.
+
+        This is called when ReportGoalkeeper fails a report.
+
+        Args:
+            ticker: Stock ticker
+            workflow_result_path: Path to workflow result JSON
+            report_path: Path to the HTML report
+            auto_remediate: Whether to automatically fix if possible
+
+        Returns:
+            Action taken and results
+        """
+        from ..report_goalkeeper import ReportGoalkeeper
+
+        print(f"\n{'='*60}")
+        print(f"[ChiefEngineer] QUALITY GATE FAILURE - Investigating {ticker}")
+        print(f"{'='*60}\n")
+
+        # Get goalkeeper result
+        goalkeeper = ReportGoalkeeper()
+        gk_result = goalkeeper.validate_report(report_path, workflow_result_path)
+
+        goalkeeper_result = {
+            'score': gk_result.score,
+            'passed': gk_result.passed,
+            'issues': [
+                {
+                    'severity': issue.severity.value,
+                    'category': issue.category,
+                    'description': issue.description,
+                    'value': issue.value
+                }
+                for issue in gk_result.issues
+            ]
+        }
+
+        # Investigate
+        investigation = await self.investigate_report_failure(
+            ticker, workflow_result_path, goalkeeper_result
+        )
+
+        # Print diagnosis
+        print("\n--- DIAGNOSIS ---")
+        for finding in investigation.get('diagnosis', []):
+            print(f"  - {finding}")
+
+        print("\n--- ROOT CAUSES ---")
+        for cause in investigation.get('root_causes', []):
+            print(f"  - {cause}")
+
+        print("\n--- RECOMMENDATIONS ---")
+        for rec in investigation.get('recommendations', []):
+            print(f"  - {rec}")
+
+        print(f"\n--- RECOMMENDED ACTION: {investigation['action']} ---")
+        print(f"    Can auto-fix: {investigation['can_auto_fix']}")
+
+        result = {
+            'investigation': investigation,
+            'action_taken': 'none',
+            'rerun_result': None
+        }
+
+        # Auto-remediate if requested and possible
+        if auto_remediate and investigation['can_auto_fix']:
+            if investigation['action'] == 'rerun_constrained':
+                print("\n[ChiefEngineer] Auto-remediating: Re-running with constrained assumptions...")
+                # TODO: Implement re-run with constrained parameters
+                # This would call run_workflow_live.py with the fix_parameters
+                result['action_taken'] = 'scheduled_rerun'
+                result['fix_parameters'] = investigation.get('fix_parameters', {})
+
+            elif investigation['action'] == 'refetch_data':
+                print("\n[ChiefEngineer] Auto-remediating: Re-fetching market data...")
+                result['action_taken'] = 'scheduled_refetch'
+        else:
+            result['action_taken'] = 'flagged_for_manual_review'
+
+        return result
 
 
 # Convenience function for standalone execution

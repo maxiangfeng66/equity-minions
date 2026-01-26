@@ -536,7 +536,7 @@ Output ONLY the JSON, no other text.
             debt_to_capital=make_param(data.get('debt_to_capital', {}), 'debt_to_capital', 0.20, 'percent'),
 
             # Terminal
-            terminal_growth=make_param(data.get('terminal_growth', {}), 'terminal_growth', 0.025, 'percent'),
+            terminal_growth=make_param(data.get('terminal_growth', {}), 'terminal_growth', 0.0, 'percent'),  # CONSERVATIVE: 0%
 
             # Scenario probabilities
             prob_super_bear=make_param({'value': probs.get('super_bear', 0.10), 'source_node': 'Debate Synthesis',
@@ -594,7 +594,7 @@ Output ONLY the JSON, no other text.
             cost_of_debt=default_param('cost_of_debt', 0.05, 'percent'),
             tax_rate=default_param('tax_rate', 0.25, 'percent'),
             debt_to_capital=default_param('debt_to_capital', 0.20, 'percent'),
-            terminal_growth=default_param('terminal_growth', 0.025, 'percent'),
+            terminal_growth=default_param('terminal_growth', 0.0, 'percent'),  # CONSERVATIVE: 0%
             prob_super_bear=default_param('prob_super_bear', 0.10, 'percent'),
             prob_bear=default_param('prob_bear', 0.20, 'percent'),
             prob_base=default_param('prob_base', 0.40, 'percent'),

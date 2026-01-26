@@ -185,9 +185,36 @@ different prices. This is the authoritative, real-time market price.
     except Exception as e:
         print(f"Local research load error: {e}", flush=True)
 
+    # Build MANDATORY broker consensus section
+    broker_consensus_section = ""
+    if broker_consensus and broker_consensus.get('avg_target_price'):
+        avg_tp = broker_consensus.get('avg_target_price', 0)
+        min_tp = broker_consensus.get('min_target_price', 0)
+        max_tp = broker_consensus.get('max_target_price', 0)
+        sources = broker_consensus.get('target_price_sources', 0)
+        rating = broker_consensus.get('consensus_rating', 'N/A')
+
+        broker_consensus_section = f"""
+============================================================
+*** MANDATORY BROKER CONSENSUS DATA (FROM LOCAL RESEARCH) ***
+*** YOU MUST USE THESE VALUES - DO NOT HALLUCINATE ***
+============================================================
+BROKER_CONSENSUS_AVG_TARGET: {currency} {avg_tp:.2f}
+BROKER_CONSENSUS_LOW: {currency} {min_tp:.2f}
+BROKER_CONSENSUS_HIGH: {currency} {max_tp:.2f}
+BROKER_ANALYST_COUNT: {sources}
+BROKER_CONSENSUS_RATING: {rating}
+============================================================
+CRITICAL: The DCF Validator MUST compare against these EXACT values.
+If your PWV differs from broker consensus, you MUST explain WHY.
+DO NOT make up different broker targets - use ONLY the values above.
+============================================================
+"""
+
     # Build task prompt with strong company identity enforcement
     task_prompt = f"""
 {price_context}
+{broker_consensus_section}
 {local_research_context}
 ============================================================
 CRITICAL: COMPANY IDENTITY ENFORCEMENT
@@ -256,7 +283,11 @@ Remember: This research is ONLY for {company_name} ({ticker}). Any data from oth
     market_data = {
         "current_price": verified_price or 0,
         "currency": currency,
+        # CRITICAL: Broker consensus for DCF Validator (prevents hallucination)
         "broker_target_avg": broker_consensus.get('avg_target_price') if broker_consensus else None,
+        "broker_target_low": broker_consensus.get('min_target_price') if broker_consensus else None,
+        "broker_target_high": broker_consensus.get('max_target_price') if broker_consensus else None,
+        "broker_count": broker_consensus.get('target_price_sources', 5) if broker_consensus else 5,
     }
 
     # Add prefetched data from Yahoo Finance (public source)

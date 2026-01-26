@@ -703,6 +703,56 @@ CRITICAL:
         return scenarios
 
 
+def _parse_dot_connector_parameters(dot_connector_output: str) -> Dict[str, Any]:
+    """
+    Parse explicit parameters from Dot Connector output.
+
+    Dot Connector outputs parameters in this format:
+    REVENUE_GROWTH_Y1_3: 25%
+    CALCULATED_WACC: 10%
+    etc.
+
+    Returns dict with parsed values.
+    """
+    params = {}
+    if not dot_connector_output:
+        return params
+
+    # Patterns for Dot Connector's explicit parameter format
+    patterns = {
+        'revenue_growth_y1_3': r'REVENUE_GROWTH_Y1_3[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'revenue_growth_y4_5': r'REVENUE_GROWTH_Y4_5[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'revenue_growth_y6_10': r'REVENUE_GROWTH_Y6_10[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'terminal_growth': r'TERMINAL_GROWTH[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'current_ebit_margin': r'CURRENT_EBIT_MARGIN[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'target_ebit_margin': r'TARGET_EBIT_MARGIN[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'calculated_wacc': r'CALCULATED_WACC[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'risk_free_rate': r'RISK_FREE_RATE[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'beta': r'BETA[:\s]+([+-]?\d+(?:\.\d+)?)',
+        'equity_risk_premium': r'EQUITY_RISK_PREMIUM[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+        'country_risk_premium': r'COUNTRY_RISK_PREMIUM[:\s]+([+-]?\d+(?:\.\d+)?)\s*%',
+    }
+
+    for key, pattern in patterns.items():
+        match = re.search(pattern, dot_connector_output, re.IGNORECASE)
+        if match:
+            try:
+                value = float(match.group(1))
+                # Convert percentages to decimals
+                if key in ['revenue_growth_y1_3', 'revenue_growth_y4_5', 'revenue_growth_y6_10',
+                          'terminal_growth', 'current_ebit_margin', 'target_ebit_margin',
+                          'calculated_wacc', 'risk_free_rate', 'equity_risk_premium', 'country_risk_premium']:
+                    value = value / 100.0
+                params[key] = value
+                # Check if this is a REVISED parameter
+                if '[REVISED]' in dot_connector_output[max(0, match.start()-50):match.end()+20]:
+                    params[f'{key}_revised'] = True
+            except ValueError:
+                pass
+
+    return params
+
+
 def extract_validated_assumptions(
     ticker: str,
     company_name: str,
@@ -713,16 +763,26 @@ def extract_validated_assumptions(
     bear_advocate_output: str = "",
     industry_researcher_output: str = "",
     business_model_output: str = "",
+    dot_connector_output: str = "",
     model: str = "gpt-4o"
 ) -> Dict[str, Any]:
     """
     Main entry point for multi-AI assumption extraction.
 
     This function orchestrates the full extraction pipeline:
+    0. FIRST - Parse Dot Connector output (HIGHEST PRIORITY if available!)
     1. Extract from broker research (private data)
     2. Collect from public sources
     3. Synthesize from debate outputs
     4. Reconcile all sources
+    5. Override with Dot Connector values if present
+
+    PRIORITY ORDER:
+    1. Dot Connector explicit parameters (may include REVISIONS) - HIGHEST
+    2. Broker research
+    3. Public sources
+    4. Debate synthesis
+    5. Market data defaults - LOWEST
 
     Args:
         ticker: Stock ticker
@@ -734,6 +794,7 @@ def extract_validated_assumptions(
         bear_advocate_output: Output from Bear Advocate R2
         industry_researcher_output: Output from Industry Researcher
         business_model_output: Output from Business Model node
+        dot_connector_output: Output from Dot Connector (PRIORITIZED!)
         model: AI model to use
 
     Returns:
@@ -743,6 +804,20 @@ def extract_validated_assumptions(
         - metadata: Extraction metadata
     """
     print(f"[Assumption Extraction] Starting multi-AI extraction for {ticker}")
+
+    # Step 0: Parse Dot Connector parameters FIRST (highest priority)
+    dot_connector_params = _parse_dot_connector_parameters(dot_connector_output)
+    if dot_connector_params:
+        has_revisions = any(k.endswith('_revised') for k in dot_connector_params)
+        print(f"[Assumption Extraction] Found {len(dot_connector_params)} parameters from Dot Connector")
+        if has_revisions:
+            print(f"[Assumption Extraction] DOT CONNECTOR HAS REVISED PARAMETERS - will override!")
+        for key, val in dot_connector_params.items():
+            if not key.endswith('_revised'):
+                if isinstance(val, float) and val < 1:  # It's a percentage
+                    print(f"  {key}: {val*100:.1f}%")
+                else:
+                    print(f"  {key}: {val}")
 
     # Step 1: Extract from broker research
     print(f"[Assumption Extraction] Step 1: Extracting from broker research...")
@@ -800,26 +875,64 @@ def extract_validated_assumptions(
     # Use real beta from market_data if available
     real_beta = market_data.get('beta') if market_data.get('beta') and 0.3 < market_data.get('beta', 1.0) < 3.0 else None
 
-    # IMPORTANT: Priority for WACC inputs:
-    # 1. AI-extracted value from reconciliation (base_scenario)
-    # 2. Real market data (from yfinance via market_data dict)
-    # 3. Region-specific default (only as last resort)
+    # PRIORITY ORDER for WACC inputs:
+    # 1. Dot Connector explicit parameters (HIGHEST - may have revisions)
+    # 2. AI-extracted value from reconciliation (base_scenario)
+    # 3. Real market data (from yfinance via market_data dict)
+    # 4. Region-specific default (only as last resort)
+
+    wacc_inputs = {
+        'risk_free_rate': base_scenario.risk_free_rate or default_rf,
+        'beta': base_scenario.beta or real_beta or 1.0,
+        'equity_risk_premium': base_scenario.equity_risk_premium or 0.055,
+        'country_risk_premium': base_scenario.country_risk_premium if base_scenario.country_risk_premium is not None else default_crp,
+        'cost_of_debt': base_scenario.cost_of_debt or 0.05,
+        'tax_rate': base_scenario.tax_rate or 0.25,
+        'debt_to_equity': base_scenario.debt_to_equity or 0.2
+    }
+
+    # Override with Dot Connector parameters (HIGHEST PRIORITY)
+    if dot_connector_params:
+        if 'calculated_wacc' in dot_connector_params:
+            # Dot Connector provides calculated WACC directly
+            print(f"[Assumption Extraction] Using Dot Connector WACC: {dot_connector_params['calculated_wacc']*100:.1f}%")
+        if 'risk_free_rate' in dot_connector_params:
+            wacc_inputs['risk_free_rate'] = dot_connector_params['risk_free_rate']
+        if 'beta' in dot_connector_params:
+            wacc_inputs['beta'] = dot_connector_params['beta']
+        if 'equity_risk_premium' in dot_connector_params:
+            wacc_inputs['equity_risk_premium'] = dot_connector_params['equity_risk_premium']
+        if 'country_risk_premium' in dot_connector_params:
+            wacc_inputs['country_risk_premium'] = dot_connector_params['country_risk_premium']
+
+    # Build scenarios dict and override with Dot Connector values
+    scenarios_dict = {name: assum.to_dict() for name, assum in scenarios.items()}
+
+    # Override growth rates in scenarios with Dot Connector values
+    if dot_connector_params:
+        growth_override_keys = ['revenue_growth_y1_3', 'revenue_growth_y4_5', 'revenue_growth_y6_10', 'terminal_growth']
+        margin_override_keys = ['current_ebit_margin', 'target_ebit_margin']
+
+        for scenario_name in scenarios_dict:
+            for key in growth_override_keys + margin_override_keys:
+                if key in dot_connector_params:
+                    scenarios_dict[scenario_name][key] = dot_connector_params[key]
+                    # Mark as overridden
+                    if key + '_revised' in dot_connector_params:
+                        if 'overridden_by_dot_connector' not in scenarios_dict[scenario_name]:
+                            scenarios_dict[scenario_name]['overridden_by_dot_connector'] = []
+                        scenarios_dict[scenario_name]['overridden_by_dot_connector'].append(key)
+
+        print(f"[Assumption Extraction] Applied Dot Connector overrides to all scenarios")
+
     result = {
-        'scenarios': {name: assum.to_dict() for name, assum in scenarios.items()},
-        'wacc_inputs': {
-            'risk_free_rate': base_scenario.risk_free_rate or default_rf,
-            'beta': base_scenario.beta or real_beta or 1.0,  # Use real beta from yfinance
-            'equity_risk_premium': base_scenario.equity_risk_premium or 0.055,
-            'country_risk_premium': base_scenario.country_risk_premium if base_scenario.country_risk_premium is not None else default_crp,
-            'cost_of_debt': base_scenario.cost_of_debt or 0.05,
-            'tax_rate': base_scenario.tax_rate or 0.25,
-            'debt_to_equity': base_scenario.debt_to_equity or 0.2
-        },
+        'scenarios': scenarios_dict,
+        'wacc_inputs': wacc_inputs,
         'metadata': {
             'ticker': ticker,
             'company_name': company_name,
             'current_price': current_price,
-            'extraction_sources': ['broker', 'public', 'debate'],
+            'extraction_sources': ['broker', 'public', 'debate'] + (['dot_connector'] if dot_connector_params else []),
             'broker_confidence': broker_assumptions.confidence,
             'public_confidence': public_assumptions.confidence,
             'debate_confidence': debate_base.confidence,
@@ -827,7 +940,10 @@ def extract_validated_assumptions(
             'broker_target_price': broker_assumptions.broker_target_price,
             'broker_rating': broker_assumptions.broker_rating,
             'broker_firm': broker_assumptions.broker_firm,
-            'wacc_source': 'AI-extracted' if base_scenario.risk_free_rate else 'market-data/default'
+            'wacc_source': 'dot_connector' if dot_connector_params.get('calculated_wacc') else ('AI-extracted' if base_scenario.risk_free_rate else 'market-data/default'),
+            'dot_connector_used': bool(dot_connector_params),
+            'dot_connector_params': dot_connector_params if dot_connector_params else None,
+            'has_revisions': any(k.endswith('_revised') for k in dot_connector_params) if dot_connector_params else False
         }
     }
 

@@ -1,0 +1,14 @@
+{
+  "project_purpose": "",
+  "architecture_summary": "",
+  "key_components": [],
+  "known_issues": [
+    "[2026-01-26T23:56:06.908083] [report_quality] Quality failure investigated: LEGN_US - Score 0/100 - Action: manual_review",
+    "[2026-01-26T23:57:15.866136] [report_quality] Quality failure investigated: LEGN_US - Score 0/100 - Action: manual_review_biotech",
+    "[2026-01-26T23:58:28.917641] [report_quality] Quality failure investigated: LEGN_US - Score 0/100 - Action: manual_review_biotech"
+  ],
+  "improvement_backlog": [],
+  "last_full_inspection": null,
+  "component_health": {},
+  "saved_at": "2026-01-26T23:58:28.917829"
+}

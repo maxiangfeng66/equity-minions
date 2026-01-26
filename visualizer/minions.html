@@ -95,16 +95,45 @@
         /* Flowchart container */
         .flowchart {
             position: absolute;
-            top: 70px; left: 0; right: 0; bottom: 80px;
-            padding: 20px;
+            top: 60px; left: 0; right: 0; bottom: 70px;
+            padding: 10px 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .flowchart::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .flowchart::-webkit-scrollbar-track {
+            background: #1a1a2e;
+            border-radius: 5px;
+        }
+
+        .flowchart::-webkit-scrollbar-thumb {
+            background: #7c3aed;
+            border-radius: 5px;
+        }
+
+        .flowchart::-webkit-scrollbar-thumb:hover {
+            background: #9d5cff;
+        }
+
+        .flowchart-inner {
+            position: relative;
+            width: 100%;
+            min-height: 900px;
+            height: 900px;
         }
 
         /* SVG for connections */
         .connections-svg {
             position: absolute;
             top: 0; left: 0;
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
+            overflow: visible;
         }
 
         .connection {
@@ -143,8 +172,8 @@
         .agent-node:hover { transform: scale(1.1); }
 
         .minion-avatar {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -402,6 +431,278 @@
 
         .agent-node.thinking .speech-bubble,
         .agent-node.speaking .speech-bubble { opacity: 1; }
+
+        /* Agent Chatbox - shows current task */
+        .agent-chatbox {
+            position: absolute;
+            left: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #1a1a3a 0%, #0d0d2a 100%);
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            padding: 8px 12px;
+            min-width: 180px;
+            max-width: 250px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 50;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Arrow pointing to agent */
+        .agent-chatbox::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-right-color: #7c3aed;
+        }
+
+        .agent-chatbox::after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 5px solid transparent;
+            border-right-color: #1a1a3a;
+        }
+
+        /* Show chatbox when agent is active or thinking */
+        .agent-node.active .agent-chatbox,
+        .agent-node.thinking .agent-chatbox {
+            opacity: 1;
+            pointer-events: auto;
+            animation: chatboxAppear 0.3s ease-out;
+        }
+
+        @keyframes chatboxAppear {
+            from { opacity: 0; transform: translateY(-50%) translateX(-10px); }
+            to { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+
+        .chatbox-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .chatbox-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00d4ff;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .agent-node.thinking .chatbox-status {
+            background: #ffaa00;
+            animation: pulse 0.5s ease-in-out infinite;
+        }
+
+        .agent-node.complete .chatbox-status {
+            background: #00ff88;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .chatbox-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.35rem;
+            color: #00d4ff;
+            text-transform: uppercase;
+            flex: 1;
+        }
+
+        .chatbox-ticker {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.3rem;
+            color: #7c3aed;
+            background: rgba(124, 58, 237, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .chatbox-agent-name {
+            font-size: 0.65rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .chatbox-task {
+            font-size: 0.65rem;
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            min-height: 2.5em;
+        }
+
+        .chatbox-detail {
+            font-size: 0.6rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 4px;
+            padding-top: 4px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        /* Live output preview - scrolling text effect */
+        .chatbox-output {
+            font-size: 0.6rem;
+            color: #0f0;
+            font-family: 'Consolas', monospace;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 6px 8px;
+            border-radius: 4px;
+            margin-top: 6px;
+            max-height: 60px;
+            overflow: hidden;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .chatbox-output::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+
+        .chatbox-output.typing::before {
+            content: '▌';
+            animation: blink 0.5s infinite;
+            color: #0f0;
+        }
+
+        /* Debate-specific styling */
+        .agent-node .agent-chatbox.debate-bull {
+            border-color: #22c55e !important;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        }
+        .agent-node .agent-chatbox.debate-bull::before { border-right-color: #22c55e !important; }
+        .agent-node[data-side="left"] .agent-chatbox.debate-bull::before { border-left-color: #22c55e !important; border-right-color: transparent !important; }
+        .agent-node .agent-chatbox.debate-bull .chatbox-title { color: #22c55e; }
+        .agent-node .agent-chatbox.debate-bull .chatbox-output { color: #4ade80; }
+
+        .agent-node .agent-chatbox.debate-bear {
+            border-color: #ef4444 !important;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+        }
+        .agent-node .agent-chatbox.debate-bear::before { border-right-color: #ef4444 !important; }
+        .agent-node[data-side="left"] .agent-chatbox.debate-bear::before { border-left-color: #ef4444 !important; border-right-color: transparent !important; }
+        .agent-node .agent-chatbox.debate-bear .chatbox-title { color: #ef4444; }
+        .agent-node .agent-chatbox.debate-bear .chatbox-output { color: #f87171; }
+
+        .agent-node .agent-chatbox.debate-devil {
+            border-color: #a855f7 !important;
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+        }
+        .agent-node .agent-chatbox.debate-devil::before { border-right-color: #a855f7 !important; }
+        .agent-node[data-side="left"] .agent-chatbox.debate-devil::before { border-left-color: #a855f7 !important; border-right-color: transparent !important; }
+        .agent-node .agent-chatbox.debate-devil .chatbox-title { color: #a855f7; }
+        .agent-node .agent-chatbox.debate-devil .chatbox-output { color: #c084fc; }
+
+        /* Wider chatbox for debate agents */
+        .agent-node .agent-chatbox.debate-bull,
+        .agent-node .agent-chatbox.debate-bear,
+        .agent-node .agent-chatbox.debate-devil {
+            min-width: 280px;
+            max-width: 350px;
+        }
+
+        .chatbox-progress {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chatbox-progress-bar {
+            flex: 1;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .chatbox-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            width: 0%;
+            animation: progressPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+            0% { width: 20%; }
+            50% { width: 80%; }
+            100% { width: 20%; }
+        }
+
+        .agent-node.complete .chatbox-progress-fill {
+            width: 100%;
+            animation: none;
+        }
+
+        .chatbox-time {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.3rem;
+            color: #666;
+        }
+
+        /* Position adjustments for nodes on the right side */
+        .agent-node[data-side="left"] .agent-chatbox {
+            left: auto;
+            right: calc(100% + 12px);
+        }
+
+        .agent-node[data-side="left"] .agent-chatbox::before {
+            left: auto;
+            right: -8px;
+            border-right-color: transparent;
+            border-left-color: #7c3aed;
+        }
+
+        .agent-node[data-side="left"] .agent-chatbox::after {
+            left: auto;
+            right: -5px;
+            border-right-color: transparent;
+            border-left-color: #1a1a3a;
+        }
+
+        /* Different border colors by provider */
+        .agent-node .agent-chatbox.provider-openai { border-color: #10a37f; }
+        .agent-node .agent-chatbox.provider-openai::before { border-right-color: #10a37f; }
+        .agent-node[data-side="left"] .agent-chatbox.provider-openai::before { border-left-color: #10a37f; border-right-color: transparent; }
+        .agent-node .agent-chatbox.provider-openai .chatbox-title { color: #10a37f; }
+
+        .agent-node .agent-chatbox.provider-google { border-color: #4285f4; }
+        .agent-node .agent-chatbox.provider-google::before { border-right-color: #4285f4; }
+        .agent-node[data-side="left"] .agent-chatbox.provider-google::before { border-left-color: #4285f4; border-right-color: transparent; }
+        .agent-node .agent-chatbox.provider-google .chatbox-title { color: #4285f4; }
+
+        .agent-node .agent-chatbox.provider-xai { border-color: #e44d26; }
+        .agent-node .agent-chatbox.provider-xai::before { border-right-color: #e44d26; }
+        .agent-node[data-side="left"] .agent-chatbox.provider-xai::before { border-left-color: #e44d26; border-right-color: transparent; }
+        .agent-node .agent-chatbox.provider-xai .chatbox-title { color: #e44d26; }
+
+        .agent-node .agent-chatbox.provider-dashscope { border-color: #ff6a00; }
+        .agent-node .agent-chatbox.provider-dashscope::before { border-right-color: #ff6a00; }
+        .agent-node[data-side="left"] .agent-chatbox.provider-dashscope::before { border-left-color: #ff6a00; border-right-color: transparent; }
+        .agent-node .agent-chatbox.provider-dashscope .chatbox-title { color: #ff6a00; }
 
         /* Bottom stats */
         .stats-bar {
@@ -828,8 +1129,10 @@
             </div>
 
             <div class="flowchart" id="flowchart">
-                <svg class="connections-svg" id="connections-svg"></svg>
-                <!-- Agent nodes will be placed here -->
+                <div class="flowchart-inner" id="flowchart-inner">
+                    <svg class="connections-svg" id="connections-svg"></svg>
+                    <!-- Agent nodes will be placed here -->
+                </div>
             </div>
 
             <div class="stats-bar">
@@ -900,6 +1203,36 @@
             "Quality Supervisor": "Manages quality gates and routes appropriately based on gate results and Bird's Eye review.",
             "Synthesizer": "Creates the final comprehensive equity research report with all sections including executive summary, thesis, valuation, and risks.",
             "Research Supervisor Final Sign-off": "Final approval from Research Supervisor. Reviews completed report and signs off for publication."
+        };
+
+        // Short action descriptions for chatbox (what agent is currently DOING)
+        const agentActions = {
+            "START": "Initializing workflow, parsing ticker symbol...",
+            "Research Supervisor": "Creating research plan, assigning tasks to specialists...",
+            "Market Data Collector": "Fetching stock price, P/E ratio, market cap, 52-week range...",
+            "Industry Deep Dive": "Analyzing TAM/SAM/SOM, competitive landscape, growth drivers...",
+            "Company Deep Dive": "Evaluating business model, moat, management quality...",
+            "Data Verifier": "Cross-checking data from multiple sources for accuracy...",
+            "Data Checkpoint": "Validating all collected data before proceeding...",
+            "Debate Moderator": "Setting debate rules, framing key valuation questions...",
+            "Bull Advocate R1": "Building bullish thesis: growth catalysts, upside potential...",
+            "Bear Advocate R1": "Building bearish thesis: risks, headwinds, downside scenarios...",
+            "Devils Advocate": "Challenging both sides, identifying logical weaknesses...",
+            "Bull Advocate R2": "Rebutting bear arguments, strengthening bull case...",
+            "Bear Advocate R2": "Rebutting bull arguments, strengthening bear case...",
+            "Debate Critic": "Scoring arguments, extracting DCF inputs from debate...",
+            "Pre-Model Validator": "Checking growth rates, margins, WACC assumptions...",
+            "Financial Modeler": "Running 5-scenario DCF: revenue projections, FCF, terminal value...",
+            "DCF Validator": "Comparing DCF to broker targets, validating calculations...",
+            "Assumption Challenger": "Stress-testing: What if growth is 50% lower?",
+            "Comparable Validator": "Checking EV/Revenue, EV/EBITDA vs peer multiples...",
+            "Sensitivity Auditor": "Testing WACC ±2%, terminal growth ±1% impact...",
+            "Data Verification Gate": "Final price check, market cap verification...",
+            "Logic Verification Gate": "Ensuring recommendation matches valuation logic...",
+            "Birds Eye Reviewer": "Reviewing full analysis for inconsistencies...",
+            "Quality Supervisor": "Routing based on gate results, ensuring quality...",
+            "Synthesizer": "Writing executive summary, compiling final report...",
+            "Research Supervisor Final Sign-off": "Final review, approving for publication..."
         };
 
         // Store detailed agent data for modal display
@@ -1025,150 +1358,150 @@
             "START": {
                 svg: createMinion(MINION_YELLOW, '🚀', 'goggles'),
                 provider: "system", name: "START",
-                x: 50, y: 1, tier: 0
+                x: 50, y: 2, tier: 0
             },
             "Research Supervisor": {
                 svg: createMinion(MINION_YELLOW, '👔', 'smart'),
                 provider: "openai", name: "SUPER",
-                x: 50, y: 5, tier: 0
+                x: 50, y: 6, tier: 0
             },
 
             // === TIER 1: RESEARCH WORKERS + DATA VERIFIER (Parallel) ===
             "Market Data Collector": {
                 svg: createMinion(MINION_YELLOW, '📊', 'one-eye'),
                 provider: "google", name: "DATA",
-                x: 15, y: 10, tier: 1
+                x: 20, y: 11, tier: 1
             },
             "Industry Deep Dive": {
                 svg: createMinion(MINION_YELLOW, '🔬', 'two-eye'),
                 provider: "openai", name: "INDUS",
-                x: 38, y: 10, tier: 1
+                x: 40, y: 11, tier: 1
             },
             "Company Deep Dive": {
                 svg: createMinion(MINION_YELLOW, '🏢', 'goggles'),
                 provider: "openai", name: "COMP",
-                x: 62, y: 10, tier: 1
+                x: 60, y: 11, tier: 1
             },
             "Data Verifier": {
                 svg: createMinion(MINION_YELLOW, '✓', 'smart'),
                 provider: "openai", name: "VERIFY",
-                x: 85, y: 10, tier: 1
+                x: 80, y: 11, tier: 1
             },
 
             // === TIER 1.5: DATA CHECKPOINT (Gate Before Debates) ===
             "Data Checkpoint": {
                 svg: createMinion(MINION_YELLOW, '🚦', 'goggles'),
                 provider: "openai", name: "DCP",
-                x: 50, y: 15, tier: 1.5
+                x: 50, y: 16, tier: 1.5
             },
 
             // === TIER 2: DEBATE SYSTEM ===
             "Debate Moderator": {
                 svg: createMinion(MINION_YELLOW, '🎙️', 'goggles'),
                 provider: "openai", name: "MOD",
-                x: 50, y: 20, tier: 2
+                x: 50, y: 21, tier: 2
             },
             "Bull Advocate R1": {
                 svg: createMinion(MINION_YELLOW, '🐂', 'happy'),
                 provider: "xai", name: "BULL1",
-                x: 30, y: 25, tier: 2
+                x: 35, y: 25, tier: 2
             },
             "Bear Advocate R1": {
                 svg: createMinion(MINION_YELLOW, '🐻', 'angry'),
                 provider: "dashscope", name: "BEAR1",
-                x: 70, y: 25, tier: 2
+                x: 65, y: 25, tier: 2
             },
             "Devils Advocate": {
                 svg: createMinion(MINION_YELLOW, '😈', 'smart'),
                 provider: "openai", name: "DEVIL",
-                x: 50, y: 30, tier: 2
+                x: 50, y: 29, tier: 2
             },
             "Bull Advocate R2": {
                 svg: createMinion(MINION_YELLOW, '🐂', 'happy'),
                 provider: "xai", name: "BULL2",
-                x: 30, y: 35, tier: 2
+                x: 35, y: 33, tier: 2
             },
             "Bear Advocate R2": {
                 svg: createMinion(MINION_YELLOW, '🐻', 'angry'),
                 provider: "dashscope", name: "BEAR2",
-                x: 70, y: 35, tier: 2
+                x: 65, y: 33, tier: 2
             },
             "Debate Critic": {
                 svg: createMinion(MINION_YELLOW, '⚖️', 'smart'),
                 provider: "openai", name: "CRIT",
-                x: 50, y: 40, tier: 2
+                x: 50, y: 37, tier: 2
             },
 
             // === TIER 2.5: PRE-MODEL VALIDATOR (New in V4) ===
             "Pre-Model Validator": {
                 svg: createMinion(MINION_YELLOW, '📋', 'two-eye'),
                 provider: "openai", name: "PREVAL",
-                x: 50, y: 45, tier: 2.5
+                x: 50, y: 41, tier: 2.5
             },
 
             // === TIER 3: FINANCIAL MODELING (POST-DEBATE) ===
             "Financial Modeler": {
                 svg: createMinion(MINION_YELLOW, '💰', 'smart'),
                 provider: "google", name: "DCF",
-                x: 50, y: 50, tier: 3
+                x: 50, y: 45, tier: 3
             },
 
             // === TIER 4: VALUATION QUALITY CONTROL ===
             "DCF Validator": {
                 svg: createMinion(MINION_YELLOW, '🔢', 'smart'),
                 provider: "openai", name: "DCFV",
-                x: 15, y: 56, tier: 4
+                x: 20, y: 50, tier: 4
             },
             "Assumption Challenger": {
                 svg: createMinion(MINION_YELLOW, '❓', 'two-eye'),
                 provider: "openai", name: "ASMQC",
-                x: 38, y: 56, tier: 4
+                x: 40, y: 50, tier: 4
             },
             "Comparable Validator": {
                 svg: createMinion(MINION_YELLOW, '📈', 'one-eye'),
                 provider: "openai", name: "CMPQC",
-                x: 62, y: 56, tier: 4
+                x: 60, y: 50, tier: 4
             },
             "Sensitivity Auditor": {
                 svg: createMinion(MINION_YELLOW, '📉', 'two-eye'),
                 provider: "openai", name: "SENQC",
-                x: 85, y: 56, tier: 4
+                x: 80, y: 50, tier: 4
             },
 
             // === TIER 5: QUALITY GATES + BIRD'S EYE ===
             "Data Verification Gate": {
                 svg: createMinion(MINION_YELLOW, '🔍', 'one-eye'),
                 provider: "openai", name: "DCHK",
-                x: 25, y: 62, tier: 5
+                x: 30, y: 55, tier: 5
             },
             "Logic Verification Gate": {
                 svg: createMinion(MINION_YELLOW, '🧠', 'two-eye'),
                 provider: "openai", name: "LCHK",
-                x: 50, y: 62, tier: 5
+                x: 50, y: 55, tier: 5
             },
             "Birds Eye Reviewer": {
                 svg: createMinion(MINION_YELLOW, '🦅', 'goggles'),
                 provider: "openai", name: "BIRD",
-                x: 75, y: 62, tier: 5
+                x: 70, y: 55, tier: 5
             },
             "Quality Supervisor": {
                 svg: createMinion(MINION_YELLOW, '✅', 'goggles'),
                 provider: "openai", name: "QASUP",
-                x: 50, y: 68, tier: 5
+                x: 50, y: 60, tier: 5
             },
 
             // === TIER 6: SYNTHESIS ===
             "Synthesizer": {
                 svg: createMinion(MINION_YELLOW, '📝', 'goggles'),
                 provider: "openai", name: "SYNTH",
-                x: 50, y: 74, tier: 6
+                x: 50, y: 65, tier: 6
             },
 
             // === TIER 7: FINAL SIGN-OFF ===
             "Research Supervisor Final Sign-off": {
                 svg: createMinion(MINION_YELLOW, '✍️', 'smart'),
                 provider: "openai", name: "FINAL",
-                x: 50, y: 80, tier: 7
+                x: 50, y: 70, tier: 7
             }
         };
 
@@ -1397,7 +1730,7 @@
 
         // Initialize the flowchart
         function initFlowchart() {
-            const container = document.getElementById('flowchart');
+            const container = document.getElementById('flowchart-inner');
             const svg = document.getElementById('connections-svg');
 
             // Clear
@@ -1432,13 +1765,42 @@
                 const node = document.createElement('div');
                 node.className = 'agent-node idle';
                 node.id = `agent-${id.replace(/\s/g, '-')}`;
-                node.style.left = `calc(${agent.x}% - 24px)`;
-                node.style.top = `calc(${agent.y}% - 24px)`;
+                node.style.left = `calc(${agent.x}% - 22px)`;
+                node.style.top = `calc(${agent.y}% - 22px)`;
+
+                // Determine which side to show chatbox (left side of screen = chatbox on right, vice versa)
+                const side = agent.x > 50 ? 'left' : 'right';
+                node.setAttribute('data-side', side);
+
+                // Get task description for this agent
+                const actionDesc = agentActions[id] || 'Processing data...';
+
+                // Determine debate class
+                let debateClass = '';
+                if (id.includes('Bull')) debateClass = 'debate-bull';
+                else if (id.includes('Bear')) debateClass = 'debate-bear';
+                else if (id.includes('Devil')) debateClass = 'debate-devil';
 
                 node.innerHTML = `
                     <div class="speech-bubble">Ready</div>
                     <div class="minion-avatar ${agent.provider}">${agent.svg}</div>
                     <div class="agent-name">${agent.name}</div>
+                    <div class="agent-chatbox provider-${agent.provider} ${debateClass}">
+                        <div class="chatbox-header">
+                            <div class="chatbox-status"></div>
+                            <div class="chatbox-title">Working</div>
+                            <div class="chatbox-ticker">---</div>
+                        </div>
+                        <div class="chatbox-agent-name">${id}</div>
+                        <div class="chatbox-task">${actionDesc}</div>
+                        <div class="chatbox-output typing"></div>
+                        <div class="chatbox-progress">
+                            <div class="chatbox-progress-bar">
+                                <div class="chatbox-progress-fill"></div>
+                            </div>
+                            <div class="chatbox-time">00:00</div>
+                        </div>
+                    </div>
                 `;
 
                 // Add click handler to show agent details
@@ -1448,18 +1810,129 @@
             });
         }
 
+        // Track agent start times for elapsed time display
+        let agentStartTimes = {};
+
+        // Current ticker for chatbox display
+        let currentTicker = '---';
+
         // Set agent state
-        function setAgentState(nodeId, state, message = '') {
+        function setAgentState(nodeId, state, message = '', taskOverride = null, outputPreview = null) {
             const node = document.getElementById(`agent-${nodeId.replace(/\s/g, '-')}`);
             if (!node) return;
 
+            // Keep data-side attribute when updating class
+            const side = node.getAttribute('data-side');
             node.className = `agent-node ${state}`;
+            if (side) node.setAttribute('data-side', side);
 
             const bubble = node.querySelector('.speech-bubble');
             if (message && bubble) {
                 bubble.textContent = message.length > 15 ? message.slice(0, 12) + '...' : message;
             }
+
+            // Update chatbox
+            const chatbox = node.querySelector('.agent-chatbox');
+            if (chatbox) {
+                const titleEl = chatbox.querySelector('.chatbox-title');
+                const taskEl = chatbox.querySelector('.chatbox-task');
+                const timeEl = chatbox.querySelector('.chatbox-time');
+                const tickerEl = chatbox.querySelector('.chatbox-ticker');
+                const outputEl = chatbox.querySelector('.chatbox-output');
+
+                // Update ticker
+                if (tickerEl && currentTicker) {
+                    tickerEl.textContent = currentTicker;
+                }
+
+                // Update title based on state
+                if (state === 'thinking') {
+                    // Custom titles for debate agents
+                    if (nodeId.includes('Bull')) {
+                        titleEl.textContent = '🐂 BULL CASE';
+                    } else if (nodeId.includes('Bear')) {
+                        titleEl.textContent = '🐻 BEAR CASE';
+                    } else if (nodeId.includes('Devil')) {
+                        titleEl.textContent = '😈 CHALLENGING';
+                    } else {
+                        titleEl.textContent = 'Analyzing...';
+                    }
+                    // Track start time
+                    if (!agentStartTimes[nodeId]) {
+                        agentStartTimes[nodeId] = Date.now();
+                    }
+                } else if (state === 'active') {
+                    titleEl.textContent = 'Starting';
+                    agentStartTimes[nodeId] = Date.now();
+                } else if (state === 'complete') {
+                    titleEl.textContent = '✓ Complete';
+                    delete agentStartTimes[nodeId];
+                } else if (state === 'error') {
+                    titleEl.textContent = '✗ Error';
+                    delete agentStartTimes[nodeId];
+                }
+
+                // Update task description
+                if (taskOverride) {
+                    taskEl.textContent = taskOverride;
+                }
+
+                // Update output preview - show actual agent output
+                if (outputEl) {
+                    if (outputPreview && outputPreview.length > 0) {
+                        // Clean and format the output for display
+                        let cleanOutput = outputPreview
+                            .replace(/```[\s\S]*?```/g, '[code]')  // Replace code blocks
+                            .replace(/#+\s*/g, '')                  // Remove markdown headers
+                            .replace(/\*\*/g, '')                   // Remove bold
+                            .replace(/\n{2,}/g, '\n')               // Collapse multiple newlines
+                            .trim();
+
+                        // Show last ~150 chars for a "live typing" effect
+                        if (cleanOutput.length > 150) {
+                            cleanOutput = '...' + cleanOutput.slice(-147);
+                        }
+
+                        outputEl.textContent = cleanOutput;
+                        outputEl.classList.add('typing');
+                        outputEl.style.display = 'block';
+                    } else if (state === 'thinking') {
+                        // Show placeholder while waiting for output
+                        outputEl.textContent = 'Generating response...';
+                        outputEl.classList.add('typing');
+                        outputEl.style.display = 'block';
+                    } else if (state === 'complete') {
+                        outputEl.classList.remove('typing');
+                    } else {
+                        outputEl.style.display = 'none';
+                    }
+                }
+
+                // Update elapsed time
+                if (agentStartTimes[nodeId]) {
+                    const elapsed = Math.floor((Date.now() - agentStartTimes[nodeId]) / 1000);
+                    const min = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                    const sec = (elapsed % 60).toString().padStart(2, '0');
+                    timeEl.textContent = `${min}:${sec}`;
+                }
+            }
         }
+
+        // Update chatbox times periodically
+        setInterval(() => {
+            Object.entries(agentStartTimes).forEach(([nodeId, startTime]) => {
+                const node = document.getElementById(`agent-${nodeId.replace(/\s/g, '-')}`);
+                if (node) {
+                    const timeEl = node.querySelector('.chatbox-time');
+                    if (timeEl) {
+                        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                        const min = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                        const sec = (elapsed % 60).toString().padStart(2, '0');
+                        timeEl.textContent = `${min}:${sec}`;
+                    }
+                }
+            });
+        }, 1000);
 
         // Activate connection
         function activateConnection(from, to) {
@@ -1540,7 +2013,9 @@
                     break;
 
                 case 'node_start':
-                    setAgentState(data.node_id, 'thinking', 'Working...');
+                    // Get task description for chatbox
+                    const taskDesc = agentDescriptions[data.node_id] || 'Processing...';
+                    setAgentState(data.node_id, 'thinking', 'Working...', taskDesc);
                     // Activate incoming connection
                     if (previousNode) {
                         activateConnection(previousNode, data.node_id);
@@ -1550,7 +2025,7 @@
                     break;
 
                 case 'node_complete':
-                    setAgentState(data.node_id, 'complete', 'Done!');
+                    setAgentState(data.node_id, 'complete', 'Done!', 'Task completed successfully');
                     // Complete incoming connection
                     if (previousNode) {
                         completeConnection(previousNode, data.node_id);
@@ -1622,6 +2097,7 @@
             // Update ticker and company name
             if (state.ticker) {
                 document.getElementById('ticker-display').textContent = state.ticker;
+                currentTicker = state.ticker;  // Store for chatboxes
             }
             if (state.company_name) {
                 document.getElementById('company-name').textContent = state.company_name;
@@ -1658,7 +2134,16 @@
                 else if (agent.status === 'complete') uiState = 'complete';
                 else if (agent.status === 'error') uiState = 'error';
 
-                setAgentState(nodeId, uiState, agent.message || 'Ready');
+                // Get action description for chatbox
+                const actionText = agentActions[nodeId] || 'Processing data...';
+
+                // Get output preview - show actual agent output if available
+                let outputPreview = null;
+                if (agent.output && agent.output.length > 0) {
+                    outputPreview = agent.output;
+                }
+
+                setAgentState(nodeId, uiState, agent.message || 'Ready', actionText, outputPreview);
             });
 
             // Update connections

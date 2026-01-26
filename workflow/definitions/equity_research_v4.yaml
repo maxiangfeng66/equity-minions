@@ -899,9 +899,54 @@ graph:
           between qualitative insights and quantitative model inputs.
 
           ============================================
+          HANDLING REVISION FEEDBACK (CRITICAL!)
+          ============================================
+          If you receive feedback containing "NEEDS_PARAMETER_REVISION", you are being KICKED BACK
+          to revise your parameters. This is NOT your first run - previous parameters were REJECTED.
+
+          When you see "DCF: NEEDS_PARAMETER_REVISION - [PARAMETER] - REASON: [reason]":
+          1. ACKNOWLEDGE the feedback explicitly: "REVISION REQUESTED: [parameter]"
+          2. IDENTIFY what was wrong: growth too conservative? WACC too high?
+          3. REVISE that specific parameter toward broker consensus
+          4. JUSTIFY the revision with reference to broker data
+          5. Mark the revised parameter with "[REVISED]"
+
+          REVISION RULES:
+          - If kicked back for GROWTH: Increase growth assumptions toward broker levels
+          - If kicked back for WACC: Decrease WACC toward broker's 8-12% range
+          - If kicked back for MARGIN: Adjust margin expectations
+          - If kicked back multiple times: Make LARGER adjustments
+
+          Example revision:
+          BEFORE: REVENUE_GROWTH_Y1_3: 15%
+          FEEDBACK: "NEEDS_PARAMETER_REVISION - GROWTH - REASON: Our growth 15% vs broker 40%"
+          AFTER: REVENUE_GROWTH_Y1_3: 30% [REVISED - moved toward broker 40%]
+
+          DO NOT just repeat the same parameters. You MUST make REAL CHANGES.
+          ============================================
+
+          ============================================
+          CRITICAL: USE BROKER RESEARCH AS REFERENCE
+          ============================================
+          Search the context for "BROKER_CONSENSUS" markers. If present, you MUST:
+          1. Note the broker average target price
+          2. Reference broker assumptions when available (WACC, growth, margins)
+          3. If your parameters differ significantly from brokers, explain WHY
+
+          Look for these markers in the context:
+          - BROKER_CONSENSUS_AVG_TARGET: [the broker target price]
+          - PROPRIETARY FINANCIAL MODELS: [Excel model data with WACC]
+          - Broker target prices from research documents
+
+          Your parameters should be INFORMED by broker research. If you deviate significantly
+          from broker assumptions (e.g., using WACC 15% when broker uses 9%), you MUST justify.
+          ============================================
+
+          ============================================
           YOUR CRITICAL MISSION
           ============================================
           Every DCF parameter MUST be explicitly connected to insights from:
+          - LOCAL RESEARCH (broker reports, Excel models) - HIGHEST PRIORITY
           - Industry Deep Dive (TAM/SAM/SOM, growth rates, competitive dynamics)
           - Company Deep Dive (business model, margins, moat)
           - Bull Advocate R2 (upside assumptions)
@@ -910,9 +955,10 @@ graph:
 
           For EACH parameter, you MUST show:
           1. The VALUE chosen
-          2. The SOURCE (which analyst/node)
+          2. The SOURCE (which analyst/node OR local broker research)
           3. A QUOTE or insight from that source
           4. Your REASONING for choosing this value
+          5. BROKER REFERENCE (if available) - what do brokers use?
           ============================================
 
           OUTPUT FORMAT - MANDATORY:
@@ -966,7 +1012,7 @@ graph:
 
           EQUITY_RISK_PREMIUM: [X]%
           - Source: Standard Market
-          - Reasoning: Historical equity premium ~5.5%
+          - Reasoning: Historical equity premium ~5.5-7.5%
 
           COUNTRY_RISK_PREMIUM: [X]%
           - Source: Regional Default
@@ -974,6 +1020,15 @@ graph:
 
           CALCULATED_WACC: [X]%
           - Formula: Rf + β×ERP + CRP = [show calculation]
+          - Broker Reference: [If broker WACC available, show it. If differs >2%, explain why]
+
+          === BROKER CROSS-CHECK (MANDATORY) ===
+
+          If BROKER_CONSENSUS data is available in context:
+          - Broker Avg Target: [from BROKER_CONSENSUS_AVG_TARGET]
+          - Broker WACC (if available): [from Excel models]
+          - Our parameters vs Broker: [compare key assumptions]
+          - Justification for differences: [if any]
 
           === TERMINAL VALUE ===
 
@@ -1168,56 +1223,83 @@ graph:
         role: |
           Role: You are the "DCF Validator" - comparing your DCF with broker research.
 
-          Task: Compare the Financial Modeler's DCF output with broker/analyst reports from local research.
+          Task: Compare the Financial Modeler's DCF output with broker/analyst reports.
+          Your goal is to VALIDATE or REJECT our DCF - and if we differ from brokers, we MUST articulate WHY.
 
           ============================================
-          CRITICAL MISSION: BROKER CROSS-REFERENCE
+          *** CRITICAL: READ BROKER DATA FROM FINANCIAL MODELER OUTPUT ***
           ============================================
-          You have access to proprietary broker research data in the LOCAL RESEARCH CONTEXT.
-          Look for sections titled "PROPRIETARY FINANCIAL MODELS (from Excel)" and "BROKER CONSENSUS DATA".
+          DO NOT HALLUCINATE BROKER TARGETS. DO NOT MAKE UP VALUES.
 
-          These contain:
-          - Broker target prices (from Goldman Sachs, Morgan Stanley, JPMorgan, Chinese brokers)
-          - Broker WACC assumptions
-          - Broker terminal growth rates
-          - Broker revenue/EBIT projections
-          - DCF-implied prices from their models
+          The Financial Modeler output CONTAINS broker consensus data in a clearly marked section:
+          Look for these EXACT markers in the Financial Modeler's output:
+          - BROKER_AVG_TARGET: [currency] [price]
+          - BROKER_TARGET_LOW: [currency] [price]
+          - BROKER_TARGET_HIGH: [currency] [price]
+          - BROKER_COUNT: [number]
+          - OUR_DCF_TARGET: [currency] [price]
+          - DIVERGENCE_PCT: [percentage]
+          - DIVERGENCE_CLASS: ALIGNED / MODERATE / SIGNIFICANT
 
-          YOUR VALIDATION PROCESS:
+          YOU MUST USE THESE VALUES. DO NOT INVENT YOUR OWN BROKER TARGETS.
+
+          If you see "*** WARNING: NO BROKER CONSENSUS DATA AVAILABLE ***", then use
+          conservative assumptions and note that no broker reference was available.
+
+          ============================================
+          YOUR VALIDATION PROCESS
+          ============================================
 
           STEP 1: EXTRACT FINANCIAL MODELER'S DCF OUTPUT
-          - What is the DCF target price?
-          - What WACC was used?
-          - What terminal growth rate was used?
-          - What revenue growth assumptions were used?
-          - What is the probability-weighted value?
+          - Current Price: [from output]
+          - CONSENSUS FAIR VALUE (PWV): [from output]
+          - Implied Upside: [from output]
 
-          STEP 2: EXTRACT BROKER CONSENSUS FROM LOCAL RESEARCH
-          - Look for "Average Target Price" in BROKER CONSENSUS DATA
-          - Look for "WACC" in PROPRIETARY FINANCIAL MODELS
-          - Look for broker target prices and ratings
-          - If no local research available, note this clearly
+          STEP 2: EXTRACT BROKER DATA FROM FINANCIAL MODELER OUTPUT
+          *** LOOK FOR THE EXPLICIT BROKER CONSENSUS SECTION ***
+          - BROKER_AVG_TARGET: [use this value - DO NOT MAKE UP YOUR OWN]
+          - BROKER_TARGET_LOW: [use this value]
+          - BROKER_TARGET_HIGH: [use this value]
+          - DIVERGENCE_PCT: [already calculated for you]
+          - DIVERGENCE_CLASS: [already classified for you]
 
-          STEP 3: CALCULATE DIVERGENCE
-          - Divergence = (Your DCF Target - Broker Average) / Broker Average * 100%
-          - Example: Your target $60, Broker average $50 → Divergence = +20%
+          STEP 3: VERIFY THE DIVERGENCE
+          - If DIVERGENCE_CLASS is ALIGNED (<15%): DCF is valid
+          - If DIVERGENCE_CLASS is MODERATE (15-30%): Requires explanation
+          - If DIVERGENCE_CLASS is SIGNIFICANT (>30%): Requires strong justification or kick back
 
-          STEP 4: IF DIVERGENCE > 20%, INVESTIGATE:
+          STEP 4: CRITICAL DECISION LOGIC
 
-          A) CHECK YOUR OWN CALCULATIONS FOR ERRORS:
-             - Are the revenue growth rates internally consistent?
-             - Does WACC calculation look correct? (RF + Beta * ERP + Country Risk)
-             - Is terminal growth < GDP growth (should be 2-4%)?
-             - Does terminal value represent <70% of total value?
-             - Are FCF calculations correct (EBIT - Tax + D&A - CapEx - ΔWC)?
-             - Are shares outstanding correct for per-share value?
+          CASE A: OUR PWV IS WITHIN BROKER RANGE (Low to High)
+          → VALIDATED - Our view is aligned with market consensus
+          → Output: "DCF: VALIDATED"
 
-          B) IF NO ERRORS FOUND, EXPLAIN WHY YOUR VIEW DIFFERS:
-             - Are you more bullish/bearish on growth? WHY?
-             - Are you using different risk assumptions? WHY?
-             - What information do you have that brokers may not?
-             - What catalysts are you pricing in differently?
-             - Is the broker research dated? (check publication dates)
+          CASE B: OUR PWV IS OUTSIDE BROKER RANGE BUT WE CAN JUSTIFY
+          If we differ significantly, we MUST provide STRONG justification:
+          1. Identify SPECIFIC reasons our assumptions differ
+          2. Reference SPECIFIC data or analysis that supports our view
+          3. Explain WHY we believe brokers are wrong or outdated
+          4. Rate our CONVICTION: HIGH (strong evidence) / MEDIUM / LOW
+
+          If conviction is HIGH and justification is clear:
+          → Output: "DCF: VALIDATED - DIVERGENT BUT JUSTIFIED"
+
+          CASE C: OUR PWV IS OUTSIDE BROKER RANGE AND WE CANNOT JUSTIFY
+          If we cannot articulate WHY we differ from professional analysts:
+          → Our assumptions may be wrong
+          → Output: "DCF: NEEDS_PARAMETER_REVISION"
+          → This will kick back to Dot Connector to revise assumptions
+          → Include WHAT parameters need revision (growth? WACC? margins?)
+
+          ============================================
+          SELF-AUDIT CHECKLIST
+          ============================================
+          Before validating, check for common errors:
+          [✓] WACC: Is it between 8-15%? (Outside this range = FLAG)
+          [✓] Revenue Growth Y1-3: Is it realistic for the sector?
+          [✓] Target Margin: Is it achievable given current margins?
+          [✓] Terminal Growth: Is it 0-3%? (Higher = FLAG)
+          [✓] PWV Ratio: Is PWV/Current Price between 0.5x and 3x? (Outside = FLAG)
 
           OUTPUT FORMAT (MANDATORY - MACHINE PARSED):
           ```
@@ -1281,12 +1363,33 @@ graph:
           CONVICTION LEVEL: HIGH / MEDIUM / LOW
           ==========================================
 
-          VALIDATION_STATUS: VALIDATED / NEEDS_REVISION
+          VALIDATION_STATUS: VALIDATED / VALIDATED_DIVERGENT / NEEDS_PARAMETER_REVISION
+
+          PARAMETER_REVISION_NEEDED (if applicable):
+          - Parameter: [which parameter needs revision]
+          - Current Value: [our value]
+          - Broker Reference: [broker value]
+          - Suggested Direction: [increase/decrease]
           ```
 
+          ============================================
           YOUR LAST LINE MUST BE EXACTLY ONE OF:
-          - "DCF: VALIDATED" (if aligned with brokers OR divergent but well-justified)
-          - "DCF: NEEDS REVISION - [specific error found]" (if calculation errors found)
+          ============================================
+          - "DCF: VALIDATED"
+            (our PWV is within broker range, aligned with consensus)
+
+          - "DCF: VALIDATED - DIVERGENT BUT JUSTIFIED"
+            (our PWV differs from brokers but we have HIGH conviction justification)
+
+          - "DCF: NEEDS_PARAMETER_REVISION - [WACC/GROWTH/MARGIN] - REASON: [brief reason]"
+            (our PWV differs AND we cannot justify - kick back to Dot Connector)
+            Examples:
+            * "DCF: NEEDS_PARAMETER_REVISION - WACC - REASON: Our WACC 15% vs broker 9%"
+            * "DCF: NEEDS_PARAMETER_REVISION - GROWTH - REASON: Our growth 5% vs broker 25%"
+            * "DCF: NEEDS_PARAMETER_REVISION - MARGIN - REASON: Target margin unrealistic"
+
+          IMPORTANT: Only output NEEDS_PARAMETER_REVISION if you genuinely cannot justify the difference.
+          It's OK to have a different view IF you can articulate why with evidence.
         api_key: ${OPENAI_API_KEY}
       context_window: 25
 
@@ -1643,8 +1746,15 @@ graph:
           - "ROUTE: Synthesizer" (when all checks passed - research is ready for synthesis)
           - "ROUTE: Research Supervisor" (when data issues found)
           - "ROUTE: Financial Modeler" (when valuation/logic issues found)
+          - "ROUTE: Dot Connector" (when DCF parameters need revision - e.g., WACC, growth assumptions)
           - "ROUTE: Data Checkpoint" (when data needs re-verification)
           - "ROUTE: Debate Moderator" (when debate issues found)
+
+          WHEN TO ROUTE TO DOT CONNECTOR:
+          - DCF Validator said "NEEDS_PARAMETER_REVISION"
+          - Significant divergence from broker consensus without justification
+          - WACC or growth assumptions seem unrealistic
+          - Parameters don't align with qualitative analysis
 
           YOU MUST ALWAYS OUTPUT A "ROUTE: X" LINE. This is required for workflow continuation.
           If everything looks good, output "ROUTE: Synthesizer" to proceed to final report.
@@ -2099,6 +2209,18 @@ graph:
       condition: 'true'
       carry_data: true
 
+    # === FEEDBACK LOOP: DCF Validator → Dot Connector ===
+    # When DCF validation fails due to parameter issues, kick back to Dot Connector
+    - from: DCF Validator
+      to: Dot Connector
+      trigger: true
+      condition:
+        type: keyword
+        config:
+          any: ["DCF: NEEDS_PARAMETER_REVISION", "NEEDS_PARAMETER_REVISION"]
+          case_sensitive: false
+      carry_data: true
+
     # === Phase 13: Quality gates and Bird's Eye feed into Quality Supervisor ===
     - from: Data Verification Gate
       to: Quality Supervisor
@@ -2190,5 +2312,16 @@ graph:
         type: keyword
         config:
           any: ["ROUTE: Debate Moderator"]
+          case_sensitive: false
+      carry_data: true
+
+    # Back to Dot Connector for parameter revision
+    - from: Quality Supervisor
+      to: Dot Connector
+      trigger: true
+      condition:
+        type: keyword
+        config:
+          any: ["ROUTE: Dot Connector"]
           case_sensitive: false
       carry_data: true
