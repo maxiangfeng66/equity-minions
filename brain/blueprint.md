@@ -17,7 +17,27 @@ A multi-AI equity research platform that produces comprehensive investment repor
 
 ---
 
-## Current Architecture (v4.3)
+## Current Architecture (v4.4)
+
+### Key Changes in v4.4 (2026-01-27)
+
+1. **LEGN_US Valuation Emergency Fix** - Manual report correction after catastrophic AI failure
+2. **Quality Gate Design Flaw Investigation** - Identified 6 critical architectural issues
+3. **6682_HK Shares Outstanding Correction** - Fixed from 519M to 320M (HKEx official filing)
+4. **Multi-Source Shares Validator** - New utility for cross-validating shares data
+
+### Design Flaws Identified (v4.4 Investigation)
+
+The investigation revealed why 36 rounds of debate and multiple quality gates failed to catch obvious errors:
+
+| Flaw | Description | Impact |
+|------|-------------|--------|
+| **Validation Data Isolation** | `*_investigation.json` and `*_validation.json` files exist but gates don't read them | Gates re-ask AI instead of using verified data |
+| **AI-Based Gates Instead of Hard Checks** | Gates ask "Is this reasonable?" instead of checking "Is target within 0.5x-2.0x of price?" | AI can hallucinate "looks good" for garbage data |
+| **No Pre-Flight Validation** | Workflow starts debate without verifying basic data (price, shares, market cap) | Garbage in → garbage out |
+| **Force-Approval After Max Iterations** | `quality_loop_iteration` hits MAX → forces approval even if broken | Bad reports get published |
+| **Investigation Results Never Checked** | Investigation files created but never read by quality gates | Duplicated effort, no integration |
+| **Four Independent Systems** | ContextManager, Validation, Investigation, Quality Gates don't coordinate | Each system works in isolation |
 
 ### Key Changes in v4.3 (2026-01-27)
 
@@ -466,6 +486,7 @@ python run_chief_engineer.py dcf AAPL    # Test DCF agent
 
 | Version | Date | Changes |
 |---------|------|---------|
+| v4.4 | 2026-01-27 | **Quality Gate Investigation**: Identified 6 critical design flaws explaining why errors pass; **LEGN_US Emergency Fix**: Manual correction from $4.24 garbage to $60 target; **6682_HK Shares Fix**: 519M→320M via HKEx filing; **Multi-Source Shares Validator**: New utility (`utils/shares_validator.py`) |
 | v4.3 | 2026-01-27 | **Dot Connector agent** bridges debate→DCF; **Python DCF Engine** (PythonValuationExecutor); DCF→Dot Connector feedback loop; Terminal growth hardcoded 0%; AgentExecutor disabled (interface issues); Multi-path LocalResearchLoader; Unicode fix ([✓]→[x]); Successful 6682 HK run (100/100 score) |
 | v4.2 | 2026-01-24 | Tool-equipped agents: DCFModelingAgent, MarketDataAgent, ValidationAgent; Oversight system: ChiefEngineer with sub-agents; Real DCF calculations with Yahoo Finance API |
 | v4.1 | 2026-01-24 | DCF assumptions chain, broker consensus comparison, parallel execution |
@@ -561,6 +582,33 @@ class LocalResearchLoader:
 ```
 
 ---
+
+## Latest Report Corrections (v4.4)
+
+### LEGN_US (Legend Biotech) - Manual Correction
+
+**Problem**: Workflow produced garbage values ($4.24 target, SELL rating) despite 36 debate rounds
+**Root Cause**: Quality gates isolated from validation data + force-approval after max iterations
+
+**Before Fix**:
+- Target: USD 4.24 (nonsensical)
+- Rating: SELL
+- Upside: -77.7%
+- All scenario values garbage ($3.07, $3.64, $4.23, etc.)
+
+**After Fix**:
+- Current Price: USD 19.00
+- Target: USD 60.00 (based on broker consensus and CARVYKTI analysis)
+- Rating: OUTPERFORM
+- Upside: +216%
+- Scenarios: $18 (5%) / $37.50 (20%) / $59 (50%) / $88 (20%) / $128 (5%)
+- PWV Calculation: 0.90 + 7.50 + 29.50 + 17.60 + 6.40 = $61.90 → $60
+
+### 6682 HK (Beijing Fourth Paradigm) - Shares Correction
+
+**Problem**: Yahoo Finance showed 519M shares, HKEx filing shows 320M
+**Fix**: Manual override via `shares_validator.py --set 320`
+**Impact**: PWV corrected to HKD 99.76
 
 ## Latest Successful Run (v4.3)
 

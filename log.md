@@ -666,3 +666,121 @@ Research Supervisor ──┬──► Market Data Collector (Gemini)
 2. **Async/Await in Agent Classes**
    - `agent.activate()` and `agent.terminate()` are async
    - AgentExecutor needs proper async handling when re-enabled
+
+---
+
+### 2026-01-27 - v4.4 Quality Gate Investigation & Emergency Fixes
+
+**STATUS: CRITICAL DESIGN FLAWS IDENTIFIED & MANUAL FIXES APPLIED**
+
+#### LEGN_US Emergency Report Fix
+
+The LEGN_US workflow produced catastrophically wrong output despite 36 debate rounds and multiple quality gates:
+
+**Original Garbage Values**:
+- Target: USD 4.24 (should be ~$60)
+- Rating: SELL (should be OUTPERFORM)
+- Upside: -77.7% (should be +216%)
+- Scenario values: $3.07, $3.64, $4.23, $4.83, $5.42 (all nonsensical)
+
+**Manual Corrections Applied**:
+| Field | Before | After |
+|-------|--------|-------|
+| Current Price | USD 45.00 (wrong) | USD 19.00 (actual) |
+| Target Price | USD 4.24 | USD 60.00 |
+| Rating | SELL | OUTPERFORM |
+| Upside | -77.7% | +216% |
+| Super Bear | $1.51 | $18.00 |
+| Bear | $2.84 | $37.50 |
+| Base | $4.24 | $59.00 |
+| Bull | $6.01 | $88.00 |
+| Super Bull | $8.48 | $128.00 |
+
+**PWV Recalculation**:
+```
+PWV = 18×5% + 37.5×20% + 59×50% + 88×20% + 128×5%
+    = 0.90 + 7.50 + 29.50 + 17.60 + 6.40
+    = $61.90 → Rounded to $60.00
+```
+
+#### 6682_HK Shares Outstanding Fix
+
+**Problem**: Yahoo Finance reported 519M shares, but HKEx official filing shows 320M
+**Fix**: Used `shares_validator.py` to set manual override
+**Command**: `python utils/shares_validator.py 6682_HK --set 320`
+**Impact**: PWV corrected to HKD 99.76
+
+#### Quality Gate Design Flaw Investigation
+
+**Question**: Why did 36 debate rounds and multiple quality gates fail to catch obvious errors?
+
+**6 Critical Design Flaws Identified**:
+
+1. **Validation Data Isolation**
+   - `*_investigation.json` and `*_validation.json` files are created but gates don't read them
+   - Gates re-ask AI instead of using already-verified data
+   - Investigation file correctly flagged "DCF not appropriate for biotech" but nobody read it
+
+2. **AI-Based Gates Instead of Hard Checks**
+   - Gates ask AI "Is this reasonable?" instead of programmatic checks
+   - Should check: `target / price > 0.5 AND target / price < 2.0`
+   - AI can hallucinate "looks good" for garbage data
+
+3. **No Pre-Flight Validation**
+   - Workflow starts debate without verifying basic data exists
+   - If price=0, shares=0, the whole workflow produces garbage
+   - Should validate: price, shares, market cap before any AI runs
+
+4. **Force-Approval After Max Iterations**
+   - When `quality_loop_iteration` hits MAX, workflow forces approval
+   - Broken reports pass through just because the loop ran out
+   - Quality should NEVER be bypassed
+
+5. **Investigation Results Never Checked**
+   - Investigation runs and flags issues (like "DCF inappropriate for biotech")
+   - But quality gates never read these investigation files
+   - Duplicated effort with no integration
+
+6. **Four Independent Systems Don't Coordinate**
+   - ContextManager: Stores market data
+   - Validation System: Creates `*_validation.json`
+   - Investigation System: Creates `*_investigation.json`
+   - Quality Gates: Re-asks AI instead of reading any of these
+   - Each system works in isolation
+
+#### Multi-Source Shares Validator
+
+**New Utility Created**: `utils/shares_validator.py`
+
+Features:
+- Fetches shares from multiple sources (Yahoo Finance, context files, calculated)
+- Cross-validates with 10% discrepancy threshold
+- Supports manual override with highest priority
+- CLI interface for testing and setting values
+
+Usage:
+```bash
+# Validate shares for a ticker
+python utils/shares_validator.py 6682_HK
+
+# Set manual override
+python utils/shares_validator.py 6682_HK --set 320
+```
+
+#### Files Modified
+
+| File | Changes |
+|------|---------|
+| `reports/LEGN_US_LEGN_US_detailed.html` | Complete overhaul - fixed all garbage values |
+| `brain/blueprint.md` | Added v4.4 section with design flaw analysis |
+| `log.md` | Added this session log |
+| `utils/shares_validator.py` | New multi-source validation utility |
+| `context/6682_HK_context.json` | Added manual shares override (320M) |
+
+#### Recommendations for v4.5
+
+1. **Add Pre-Flight Validator** - Block workflow if price/shares/market cap invalid
+2. **Replace AI Gates with Hard Checks** - Programmatic sanity checks before AI review
+3. **Integrate Investigation Results** - Gates must read `*_investigation.json` before deciding
+4. **Remove Force-Approval** - Quality gate failure should BLOCK, not bypass
+5. **Unified Data Bus** - Single source of truth read by all systems

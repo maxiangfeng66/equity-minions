@@ -197,5 +197,11 @@
       }
     }
   ],
-  "external_sources": []
+  "external_sources": [],
+  "fundamental_data": {
+    "shares_outstanding": 320.0,
+    "shares_outstanding_source": "User verified (correct value)",
+    "shares_outstanding_updated": "2026-01-27T22:42:58.442452"
+  },
+  "verified_shares_outstanding": 320.0
 }
