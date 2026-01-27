@@ -509,6 +509,160 @@ This file records key changes, development progress, and session notes.
 
 #### Remaining Work
 
-- [ ] Phase 4: Real DCF Calculation Module (deterministic math)
-- [ ] Phase 5: Scenario Formula Enforcement (instead of multipliers)
-- [ ] Integration testing with fresh workflow runs
+- [x] Phase 4: Real DCF Calculation Module (deterministic math) - **DONE via PythonValuationExecutor**
+- [x] Phase 5: Scenario Formula Enforcement (instead of multipliers) - **DONE with WACC/growth adjustments**
+- [x] Integration testing with fresh workflow runs - **DONE: 6682 HK 100/100 score**
+
+---
+
+### 2026-01-27 - v4.3 Major Update: Python DCF Engine & Fixes
+
+**STATUS: SUCCESSFUL - Full workflow run completed with 100/100 quality score**
+
+#### New Features
+
+1. **Dot Connector Agent** (new node in workflow)
+   - Bridges qualitative debate analysis to quantitative DCF parameters
+   - Extracts growth rates, WACC inputs, margins from debate output
+   - References broker research for parameter validation
+   - Handles revision feedback with explicit parameter adjustments
+
+2. **Python DCF Valuation Engine** (`PythonValuationExecutor`)
+   - Real mathematical DCF calculations (not AI-generated numbers)
+   - 5-scenario analysis with formula-based adjustments
+   - Terminal growth hardcoded to 0% (conservative assumption)
+   - Broker consensus injection from local research files
+
+3. **DCF → Dot Connector Feedback Loop**
+   - DCF Validator checks divergence from broker consensus
+   - If >30% divergence: outputs "NEEDS_PARAMETER_REVISION"
+   - Workflow routes back to Dot Connector for parameter adjustment
+   - Prevents unrealistic valuations from passing through
+
+4. **Multi-Path Local Research Loader**
+   - Supports both C: and E: drive paths for broker research files
+   - Automatically detects which path exists on current machine
+   - Enables workflow to run on different computers seamlessly
+
+#### Bug Fixes
+
+1. **AI Provider Import Error** (`workflow/agent_executor.py`)
+   - Changed `GPTProvider` to `OpenAIProvider`
+   - Removed non-existent `DeepSeekProvider` import
+
+2. **VisualizerBridge.update_agent_task() Missing Parameter**
+   - Added `progress: int = None` parameter to method signature
+
+3. **Async Methods Not Awaited**
+   - Added `await` before `agent.activate()` and `agent.terminate()` calls
+
+4. **Abstract Class Instantiation**
+   - Removed `MarketDataAgent` and `ValidationAgent` from NODE_TO_AGENT mapping
+   - These abstract classes now fall back to NodeExecutor
+
+5. **Unicode Encoding Error (Windows GBK)**
+   - Replaced `[✓]` with `[x]` in equity_research_v4.yaml
+   - Prevents `'gbk' codec can't encode character '\u2713'` errors
+
+6. **AgentExecutor Hybrid Approach Disabled**
+   - Set `create_agent_executor_if_applicable()` to always return None
+   - Interface mismatches between agent classes and workflow system need resolution
+
+#### Files Modified
+
+| File | Changes |
+|------|---------|
+| `workflow/agent_executor.py` | Fixed imports, disabled hybrid approach, removed abstract classes from mapping |
+| `workflow/node_executor.py` | PythonValuationExecutor integration |
+| `workflow/definitions/equity_research_v4.yaml` | Added Dot Connector node, DCF feedback loop, Unicode fix |
+| `visualizer/visualizer_bridge.py` | Added `progress` parameter to `update_agent_task()` |
+| `utils/local_research_loader.py` | Multi-path support for C: and E: drives |
+| `config.py` | API keys configuration (all 4 providers) |
+
+#### Test Results
+
+**6682 HK (Beijing Fourth Paradigm Technology)**:
+- Workflow completed in **1009.2 seconds** (~17 minutes)
+- **36 iterations**, **25 nodes** executed
+- Report Quality Score: **100/100** - PASSED
+- PWV: HKD 40.59
+- Current Price: HKD 51.70
+- Implied Upside: **-21.5%** (stock appears overvalued)
+- WACC: **10.7%** (Rf=3.5%, β=1.2, ERP=6.0%, CRP=1.5%)
+- Generated report: `reports/6682_HK_Beijing_Fourth_Paradigm_Techno_detailed.html`
+
+#### Workflow Architecture (v4.3)
+
+```
+START
+  │
+  ▼
+Research Supervisor ──┬──► Market Data Collector (Gemini)
+                      ├──► Industry Deep Dive (GPT-4o)
+                      ├──► Company Deep Dive (GPT-4o)
+                      └──► Data Verifier (GPT-4o)
+                              │
+                              ▼
+                      Data Checkpoint Gate
+                              │
+                              ▼
+                      Debate Moderator (GPT-4o)
+                              │
+                      ┌───────┴───────┐
+                      ▼               ▼
+               Bull R1 (Grok)   Bear R1 (Qwen)
+                      │               │
+                      └───────┬───────┘
+                              ▼
+                      Devils Advocate (GPT-4o)
+                              │
+                      ┌───────┴───────┐
+                      ▼               ▼
+               Bull R2 (Grok)   Bear R2 (Qwen)
+                      │               │
+                      └───────┬───────┘
+                              ▼
+                      Debate Critic (GPT-4o)
+                              │
+                              ▼
+                      Pre-Model Validator
+                              │
+                              ▼
+┌─────────────────► Dot Connector (GPT-4o) ◄────────────────────┐
+│                          │                                     │
+│                          ▼                                     │
+│              Financial Modeler (Gemini + Python DCF)           │
+│                          │                                     │
+│                ┌─────────┼─────────┐                          │
+│                ▼         ▼         ▼                          │
+│          DCF Validator  Assumption  Comparable                │
+│          (GPT-4o)       Challenger  Validator                 │
+│                │                                               │
+│                │ "NEEDS_PARAMETER_REVISION" ──────────────────┘
+│                │
+│                ▼ "DCF: VALIDATED"
+│          Quality Gates
+│                │
+│                ▼
+│          Quality Supervisor
+│                │
+│                ▼
+│          Synthesizer (GPT-4o)
+│                │
+│                ▼
+│     Research Supervisor Final Sign-off
+│                │
+│                ▼
+└────────────  END
+```
+
+#### Known Issues (To Fix Later)
+
+1. **AgentExecutor Hybrid Approach**
+   - Currently disabled due to interface mismatches
+   - Need to align SpawnableAgent interfaces with workflow system
+   - Abstract classes (MarketDataAgent, ValidationAgent) need concrete implementations
+
+2. **Async/Await in Agent Classes**
+   - `agent.activate()` and `agent.terminate()` are async
+   - AgentExecutor needs proper async handling when re-enabled

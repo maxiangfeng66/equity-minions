@@ -1,8 +1,8 @@
 # Multi-AI Equity Research System - Blueprint
 
-**Version**: 4.1
-**Last Updated**: 2026-01-24
-**Architecture**: YAML-based Workflow Engine with Multi-AI Debate
+**Version**: 4.3
+**Last Updated**: 2026-01-27
+**Architecture**: YAML-based Workflow Engine with Multi-AI Debate + Python DCF Engine
 
 ---
 
@@ -17,7 +17,17 @@ A multi-AI equity research platform that produces comprehensive investment repor
 
 ---
 
-## Current Architecture (v4.1)
+## Current Architecture (v4.3)
+
+### Key Changes in v4.3 (2026-01-27)
+
+1. **Python DCF Valuation Engine** - Real mathematical calculations replace AI-generated numbers
+2. **Dot Connector Agent** - Bridges qualitative analysis to quantitative DCF parameters
+3. **DCF → Dot Connector Feedback Loop** - Kicks back parameters if broker divergence >30%
+4. **AgentExecutor Hybrid Approach** - Temporarily disabled (interface alignment needed)
+5. **Multi-Path Local Research Loader** - Supports both C: and E: drive paths
+6. **Unicode Fix** - Replaced [✓] with [x] for Windows GBK encoding compatibility
+7. **Terminal Growth Hardcoded to 0%** - Conservative assumption for all scenarios
 
 ### Complete System Flow
 ```
@@ -111,24 +121,52 @@ A multi-AI equity research platform that produces comprehensive investment repor
 │  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                              │
 │  ┌─────────────────────────────────────────────────────────────────────┐    │
-│  │                  TIER 3A: VALUATION MODELS                           │    │
+│  │                  TIER 3A: VALUATION MODELS (v4.3)                    │    │
 │  │                                                                      │    │
 │  │  Pre-Model Validator (GPT-4o)                                        │    │
 │  │  Validates: Price confirmed? Assumptions reasonable?                 │    │
 │  │           │                                                          │    │
-│  │    ┌──────┼──────────────┬──────────────┐                            │    │
-│  │    ▼      ▼              ▼              ▼                            │    │
-│  │  Financial  Relative     SOTP          DCF                           │    │
-│  │  Modeler    Valuation    Valuation     Validator                     │    │
-│  │  (Gemini)   (GPT-4o)     (GPT-4o)      (GPT-4o)                       │    │
-│  │  DCF Model  Peer Comps   Sum-of-Parts  Broker Compare                │    │
-│  │    │          │            │             │                           │    │
-│  │    └──────────┴────────────┴─────────────┘                           │    │
-│  │                       │                                              │    │
+│  │           ▼                                                          │    │
+│  │  ┌────────────────────────────────────────────────────────────┐     │    │
+│  │  │ DOT CONNECTOR (GPT-4o) - NEW in v4.3                       │     │    │
+│  │  │ Bridges qualitative debate → quantitative DCF parameters   │     │    │
+│  │  │ Extracts: Growth rates, WACC inputs, margins from debate   │     │    │
+│  │  │ References broker research for parameter validation        │     │    │
+│  │  └────────────────────────┬───────────────────────────────────┘     │    │
+│  │                           │                                          │    │
+│  │                           ▼                                          │    │
+│  │  ┌────────────────────────────────────────────────────────────┐     │    │
+│  │  │ FINANCIAL MODELER (Gemini 2.0) + PYTHON DCF ENGINE         │     │    │
+│  │  │ Uses PythonValuationExecutor for real DCF calculations     │     │    │
+│  │  │ - DCF math: NPV, WACC, FCF projections                     │     │    │
+│  │  │ - 5 scenarios: Super Bear / Bear / Base / Bull / Super Bull│     │    │
+│  │  │ - Terminal growth hardcoded to 0% (conservative)           │     │    │
+│  │  │ - Broker consensus injected from local research            │     │    │
+│  │  └────────────────────────┬───────────────────────────────────┘     │    │
+│  │                           │                                          │    │
+│  │    ┌──────────────────────┼────────────────────┐                    │    │
+│  │    ▼                      ▼                    ▼                    │    │
+│  │  DCF Validator      Assumption          Comparable                  │    │
+│  │  (GPT-4o)          Challenger          Validator                    │    │
+│  │  Broker Compare     (GPT-4o)           (GPT-4o)                      │    │
+│  │    │                   │                  │                          │    │
+│  │    │                   │                  │                          │    │
+│  │    │   ┌───────────────┴──────────────────┘                         │    │
+│  │    │   │                                                             │    │
+│  │    ▼   ▼                                                             │    │
+│  │  ╔═══════════════════════════════════════════════════════════╗      │    │
+│  │  ║ FEEDBACK LOOP: DCF Validator → Dot Connector              ║      │    │
+│  │  ║ If "NEEDS_PARAMETER_REVISION" (divergence >30%):          ║      │    │
+│  │  ║   → Kicks back to Dot Connector for parameter adjustment  ║      │    │
+│  │  ╚═══════════════════════════════════════════════════════════╝      │    │
+│  │                                                                      │    │
 │  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                              │
 │  ┌─────────────────────────────────────────────────────────────────────┐    │
 │  │                  TIER 3B: VALUATION QC (PARALLEL)                    │    │
+│  │                                                                      │    │
+│  │  NOTE: Valuation Committee REMOVED in v4.3 - it was corrupting      │    │
+│  │  Python DCF output. QC agents now feed directly to Quality Gates.    │    │
 │  │                                                                      │    │
 │  │  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐   │    │
 │  │  │ Assumption       │  │ Comparable       │  │ Sensitivity      │   │    │
@@ -138,12 +176,8 @@ A multi-AI equity research platform that produces comprehensive investment repor
 │  │  └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘   │    │
 │  │           │                     │                     │              │    │
 │  │           └─────────────────────┼─────────────────────┘              │    │
-│  │                                 ▼                                    │    │
-│  │  ╔══════════════════════════════════════════════════════════════╗   │    │
-│  │  ║ VALUATION COMMITTEE (GPT-4o)                                 ║   │    │
-│  │  ║ Checks: All prices match? Methods converge? QC issues?       ║   │    │
-│  │  ║ Output: "VALUATION: APPROVED" or "VALUATION: REVISE"         ║   │    │
-│  │  ╚══════════════════════════════════════════════════════════════╝   │    │
+│  │                                 │                                    │    │
+│  │                          (Direct to Quality Gates)                   │    │
 │  │                                                                      │    │
 │  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                              │
@@ -202,11 +236,12 @@ A multi-AI equity research platform that produces comprehensive investment repor
 
 | Provider | Model | Use Cases |
 |----------|-------|-----------|
-| OpenAI | gpt-4o | Research Supervisor, QC Gates, Debate Critic, Valuation Committee |
-| xAI | grok-4-0709 | Bull Advocate (optimistic viewpoint) |
-| Alibaba | qwen-max | Bear Advocate (risk-focused viewpoint), Company Deep Dive |
-| Google | gemini-2.0-flash | Market Data Collector (web search), Financial Modeler |
-| DeepSeek | deepseek-chat | Alternative for cost-sensitive tasks |
+| OpenAI | gpt-4o | Research Supervisor, QC Gates, Debate Critic, Dot Connector, Quality Gates |
+| xAI | grok-4-0709 | Bull Advocate R1/R2 (optimistic viewpoint) |
+| Alibaba | qwen-max | Bear Advocate R1/R2 (risk-focused viewpoint) |
+| Google | gemini-2.0-flash | Market Data Collector (web search), Financial Modeler + Python DCF Engine |
+
+**Note**: DeepSeek provider removed from agent_executor.py (interface incompatibility).
 
 ---
 
@@ -431,9 +466,114 @@ python run_chief_engineer.py dcf AAPL    # Test DCF agent
 
 | Version | Date | Changes |
 |---------|------|---------|
+| v4.3 | 2026-01-27 | **Dot Connector agent** bridges debate→DCF; **Python DCF Engine** (PythonValuationExecutor); DCF→Dot Connector feedback loop; Terminal growth hardcoded 0%; AgentExecutor disabled (interface issues); Multi-path LocalResearchLoader; Unicode fix ([✓]→[x]); Successful 6682 HK run (100/100 score) |
 | v4.2 | 2026-01-24 | Tool-equipped agents: DCFModelingAgent, MarketDataAgent, ValidationAgent; Oversight system: ChiefEngineer with sub-agents; Real DCF calculations with Yahoo Finance API |
 | v4.1 | 2026-01-24 | DCF assumptions chain, broker consensus comparison, parallel execution |
 | v4.0 | 2026-01-23 | Data Verifier, Data Checkpoint, Pre-Model Validator, Birds Eye Reviewer |
 | v3.0 | 2026-01-23 | Quality Control gates, routing loop |
 | v2.0 | 2026-01-22 | DCF moved after debates |
 | v1.0 | 2026-01-21 | Initial YAML workflow engine |
+
+---
+
+## Python DCF Engine (v4.3)
+
+The Financial Modeler node now uses `PythonValuationExecutor` for real mathematical DCF calculations:
+
+```
+workflow/node_executor.py → PythonValuationExecutor
+    │
+    ├── Reads Dot Connector parameters (WACC, growth rates, margins)
+    ├── Fetches verified price from Yahoo Finance
+    ├── Loads broker consensus from local research (Excel/PDF)
+    ├── Runs 5-scenario DCF with formula-based calculations:
+    │   - Super Bear: WACC+3%, Growth-15%, Terminal=0%
+    │   - Bear: WACC+1.5%, Growth-8%, Terminal=0%
+    │   - Base: WACC from Dot Connector, Terminal=0%
+    │   - Bull: WACC-1%, Growth+10%, Terminal=0%
+    │   - Super Bull: WACC-2%, Growth+20%, Terminal=0%
+    │
+    └── Outputs: PWV (Probability-Weighted Value), scenario table, broker comparison
+```
+
+### DCF Validation Flow
+
+```
+Dot Connector → Financial Modeler → DCF Validator
+                                         │
+                                   ┌─────┴─────┐
+                                   │ Divergence │
+                                   │ Check     │
+                                   └─────┬─────┘
+                                         │
+                    ┌────────────────────┴────────────────────┐
+                    │                                         │
+              <15% ALIGNED                           >30% SIGNIFICANT
+                    │                                         │
+                    ▼                                         ▼
+            "DCF: VALIDATED"               "DCF: NEEDS_PARAMETER_REVISION"
+                    │                                         │
+                    ▼                                         ▼
+            Quality Gates                           Dot Connector (loop back)
+```
+
+---
+
+## AgentExecutor Status (v4.3)
+
+**Status**: TEMPORARILY DISABLED
+
+The hybrid AgentExecutor approach (using real Agent classes instead of NodeExecutor) is disabled in `workflow/agent_executor.py`:
+
+```python
+def create_agent_executor_if_applicable(...) -> Optional[AgentExecutor]:
+    # Temporarily disabled - hybrid approach needs agent class interface alignment
+    return None  # Fall back to standard NodeExecutor for all nodes
+```
+
+**Reason**: Interface mismatches between SpawnableAgent classes and the YAML workflow system:
+- MarketDataAgent and ValidationAgent are abstract classes
+- Agent.activate()/terminate() require async await
+- Some agents have different constructor signatures
+
+**To Re-enable**: Fix agent class interfaces to match AgentExecutor expectations.
+
+---
+
+## Local Research Loader (v4.3)
+
+Multi-path support for broker research files across different machines:
+
+```python
+# utils/local_research_loader.py
+class LocalResearchLoader:
+    POSSIBLE_PATHS = [
+        Path("C:/Users/MaXiangFeng/Desktop/平衡表/平衡表/Equities"),
+        Path("E:/其他计算机/My Computer/平衡表/平衡表/Equities"),
+    ]
+
+    def __init__(self):
+        # Tries each path, uses first one that exists
+        for path in self.POSSIBLE_PATHS:
+            if path.exists():
+                self.base_path = path
+                break
+```
+
+---
+
+## Latest Successful Run (v4.3)
+
+**Ticker**: 6682 HK (Beijing Fourth Paradigm Technology)
+**Date**: 2026-01-27
+**Duration**: 1009.2 seconds (~17 minutes)
+**Iterations**: 36
+**Nodes Executed**: 25
+
+**Results**:
+- Report Quality Score: **100/100** - PASSED
+- PWV: HKD 40.59
+- Current Price: HKD 51.70
+- Implied Upside: -21.5% (overvalued)
+- WACC: 10.7% (Rf=3.5%, β=1.2, ERP=6.0%, CRP=1.5%)
+- Report: `reports/6682_HK_Beijing_Fourth_Paradigm_Techno_detailed.html`

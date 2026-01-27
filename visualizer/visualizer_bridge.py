@@ -297,3 +297,103 @@ class VisualizerBridge:
         if self.server_process:
             self.server_process.terminate()
             self.server_process = None
+
+    # ==========================================
+    # SpawnableAgent Integration Methods
+    # ==========================================
+    # These methods are called by SpawnableAgent for dynamic agent spawning
+
+    def spawn_agent(
+        self,
+        agent_type: str,
+        name: str,
+        parent_id: Optional[str] = None,
+        supervisor_id: Optional[str] = None,
+        tier: int = 2,
+        task: str = None,
+        agent_id: str = None
+    ):
+        """
+        Register a newly spawned agent in the visualizer.
+        Called by SpawnableAgent.__init__() when an agent is created.
+        """
+        display_id = agent_id or name
+
+        # Create agent entry with hierarchy info
+        self._state["agents"][display_id] = {
+            "status": "spawning",
+            "provider": agent_type,
+            "message": task or "Initializing...",
+            "start_time": datetime.now().isoformat(),
+            "task": task,
+            "output": None,
+            "parent_id": parent_id,
+            "supervisor_id": supervisor_id,
+            "tier": tier,
+            "is_spawned": True  # Mark as dynamically spawned (not from YAML)
+        }
+
+        # Log spawn event
+        parent_info = f" (child of {parent_id})" if parent_id else ""
+        self._add_chat(display_id, f"Spawned{parent_info}", agent_type)
+        self._save_state()
+
+    def activate_agent(self, agent_id: str, task: str = None):
+        """
+        Mark an agent as active/thinking.
+        Called when SpawnableAgent transitions to ACTIVE state.
+        """
+        if agent_id in self._state["agents"]:
+            self._state["agents"][agent_id]["status"] = "thinking"
+            if task:
+                self._state["agents"][agent_id]["task"] = task
+                self._state["agents"][agent_id]["message"] = task[:50]
+            else:
+                self._state["agents"][agent_id]["message"] = "Working..."
+            self._save_state()
+
+    def update_agent_task(self, agent_id: str, task: str, progress: int = None):
+        """
+        Update the current task of an agent.
+        Called when SpawnableAgent.set_task() or complete_task() is called.
+        """
+        if agent_id in self._state["agents"]:
+            self._state["agents"][agent_id]["task"] = task
+            self._state["agents"][agent_id]["message"] = task[:50] if task else "Idle"
+            if progress is not None:
+                self._state["agents"][agent_id]["progress"] = progress
+            self._save_state()
+
+    def suspend_agent(self, agent_id: str, reason: str = None):
+        """
+        Mark an agent as suspended.
+        Called when SpawnableAgent transitions to SUSPENDED state.
+        """
+        if agent_id in self._state["agents"]:
+            self._state["agents"][agent_id]["status"] = "suspended"
+            self._state["agents"][agent_id]["message"] = reason or "Suspended"
+            self._add_chat(agent_id, f"Suspended: {reason or 'paused'}", "system")
+            self._save_state()
+
+    def terminate_agent(self, agent_id: str, reason: str = None):
+        """
+        Mark an agent as terminated.
+        Called when SpawnableAgent.terminate() is called.
+        """
+        if agent_id in self._state["agents"]:
+            self._state["agents"][agent_id]["status"] = "terminated"
+            self._state["agents"][agent_id]["message"] = "Terminated"
+            self._add_chat(agent_id, f"Terminated: {reason or 'complete'}", "system")
+            self._save_state()
+
+    def agent_error(self, agent_id: str, error: str):
+        """
+        Mark an agent as errored.
+        Called when SpawnableAgent encounters an error.
+        """
+        if agent_id in self._state["agents"]:
+            self._state["agents"][agent_id]["status"] = "error"
+            self._state["agents"][agent_id]["message"] = "ERROR!"
+            self._state["agents"][agent_id]["output"] = f"Error: {error}"
+            self._add_chat(agent_id, f"Error: {error[:50]}", "error")
+            self._save_state()

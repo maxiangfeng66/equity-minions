@@ -1295,11 +1295,11 @@ graph:
           SELF-AUDIT CHECKLIST
           ============================================
           Before validating, check for common errors:
-          [✓] WACC: Is it between 8-15%? (Outside this range = FLAG)
-          [✓] Revenue Growth Y1-3: Is it realistic for the sector?
-          [✓] Target Margin: Is it achievable given current margins?
-          [✓] Terminal Growth: Is it 0-3%? (Higher = FLAG)
-          [✓] PWV Ratio: Is PWV/Current Price between 0.5x and 3x? (Outside = FLAG)
+          [x] WACC: Is it between 8-15%? (Outside this range = FLAG)
+          [x] Revenue Growth Y1-3: Is it realistic for the sector?
+          [x] Target Margin: Is it achievable given current margins?
+          [x] Terminal Growth: Is it 0-3%? (Higher = FLAG)
+          [x] PWV Ratio: Is PWV/Current Price between 0.5x and 3x? (Outside = FLAG)
 
           OUTPUT FORMAT (MANDATORY - MACHINE PARSED):
           ```
@@ -1334,11 +1334,11 @@ graph:
           IF DIVERGENCE > 20%:
 
           SELF-AUDIT OF CALCULATIONS:
-          [✓] Revenue growth rates: REASONABLE / FLAG
-          [✓] WACC calculation: CORRECT / FLAG
-          [✓] Terminal value proportion: OK (<70%) / HIGH (>70%)
-          [✓] FCF calculations: VERIFIED / FLAG
-          [✓] Per-share math: CORRECT / FLAG
+          [x] Revenue growth rates: REASONABLE / FLAG
+          [x] WACC calculation: CORRECT / FLAG
+          [x] Terminal value proportion: OK (<70%) / HIGH (>70%)
+          [x] FCF calculations: VERIFIED / FLAG
+          [x] Per-share math: CORRECT / FLAG
 
           ERRORS IDENTIFIED: [NONE / List specific errors]
 
@@ -1880,11 +1880,11 @@ graph:
           - Verified Price: [price]
 
           CHECKLIST:
-          [✓] Company Identity: CORRECT / INCORRECT
-          [✓] Price Verification: CORRECT / INCORRECT
-          [✓] Research Quality: ACCEPTABLE / NEEDS WORK
-          [✓] Completeness: COMPLETE / INCOMPLETE
-          [✓] Logical Consistency: CONSISTENT / INCONSISTENT
+          [x] Company Identity: CORRECT / INCORRECT
+          [x] Price Verification: CORRECT / INCORRECT
+          [x] Research Quality: ACCEPTABLE / NEEDS WORK
+          [x] Completeness: COMPLETE / INCOMPLETE
+          [x] Logical Consistency: CONSISTENT / INCONSISTENT
 
           OVERALL ASSESSMENT: [summary]
 

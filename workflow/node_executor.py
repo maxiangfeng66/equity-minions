@@ -909,5 +909,16 @@ def get_executor(node_config: NodeConfig, api_keys: Dict[str, str], context: Dic
     if node_config.provider.lower() == "passthrough":
         return PassthroughExecutor(node_config)
 
+    # Check if this node should use AgentExecutor (hybrid approach)
+    # AgentExecutor enables dynamic spawning, lifecycle management, and specialists
+    try:
+        from .agent_executor import AgentExecutor, create_agent_executor_if_applicable
+        agent_executor = create_agent_executor_if_applicable(node_config, api_keys, context)
+        if agent_executor:
+            print(f"  [Agent Executor] Using agent class for {node_config.id}")
+            return agent_executor
+    except ImportError:
+        pass  # AgentExecutor not available, fall through to default
+
     # Default to AI-based executor
     return NodeExecutor(node_config, api_keys)

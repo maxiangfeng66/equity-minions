@@ -61,8 +61,12 @@ class LocalResearchContext:
 class LocalResearchLoader:
     """Loads equity research from local file system"""
 
-    # Base path for research files
-    BASE_PATH = Path("E:/其他计算机/My Computer/平衡表/平衡表/Equities")
+    # Possible base paths for research files - will try each in order
+    # Override with LOCAL_RESEARCH_PATH environment variable or pass to __init__
+    POSSIBLE_PATHS = [
+        Path("C:/Users/MaXiangFeng/Desktop/平衡表/平衡表/Equities"),
+        Path("E:/其他计算机/My Computer/平衡表/平衡表/Equities"),
+    ]
 
     # Ticker to folder name mapping
     TICKER_FOLDERS = {
@@ -81,10 +85,28 @@ class LocalResearchLoader:
         if base_path:
             self.base_path = Path(base_path)
         else:
-            self.base_path = self.BASE_PATH
+            # Check environment variable first
+            env_path = os.environ.get("LOCAL_RESEARCH_PATH")
+            if env_path:
+                self.base_path = Path(env_path)
+            else:
+                # Try each possible path and use the first one that exists
+                self.base_path = None
+                for path in self.POSSIBLE_PATHS:
+                    if path.exists():
+                        self.base_path = path
+                        break
+
+                # If none exist, use the first one as default (will be handled gracefully)
+                if self.base_path is None:
+                    self.base_path = self.POSSIBLE_PATHS[0] if self.POSSIBLE_PATHS else Path("research")
 
     def get_folder_for_ticker(self, ticker: str) -> Optional[Path]:
         """Get the research folder path for a ticker"""
+        # Check if base path exists
+        if not self.base_path.exists():
+            return None
+
         # Normalize ticker: replace dots and underscores with spaces
         ticker_clean = ticker.upper().replace(".", " ").replace("_", " ").strip()
 
@@ -97,9 +119,12 @@ class LocalResearchLoader:
 
         # Try partial match
         ticker_num = ticker_clean.split()[0] if " " in ticker_clean else ticker_clean
-        for folder in self.base_path.iterdir():
-            if folder.is_dir() and ticker_num in folder.name:
-                return folder
+        try:
+            for folder in self.base_path.iterdir():
+                if folder.is_dir() and ticker_num in folder.name:
+                    return folder
+        except (OSError, FileNotFoundError):
+            return None
 
         return None
 
