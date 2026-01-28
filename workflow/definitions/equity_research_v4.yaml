@@ -369,6 +369,23 @@ graph:
           - If data mentions completely WRONG companies: FAIL
           - Minor data gaps are OK if the company identity is correct
 
+          ============================================
+          ANTI-HALLUCINATION CHECK (CRITICAL!)
+          ============================================
+          NEVER output a different ticker than what was requested!
+          If the task says "6682 HK", you MUST output "Ticker: 6682 HK"
+
+          COMMON HALLUCINATION TRAP - DO NOT DO THIS:
+          - Do NOT output "Ticker: AAPL" when researching a Chinese company
+          - Do NOT output "Ticker: MSFT" or "Ticker: GOOGL" or any US tech stock
+          - Do NOT confuse the target company with Apple, Microsoft, Google, Tesla, etc.
+
+          If you find yourself outputting a well-known US tech ticker (AAPL, MSFT, GOOGL, AMZN, TSLA, META, NVDA, NFLX):
+          - STOP! This is almost certainly a hallucination
+          - Go back to the START message and find the CORRECT ticker
+          - The correct ticker is in the original task request
+          ============================================
+
           WHEN TO PASS vs FAIL:
           - If verified price found in START AND company identity matches: OUTPUT "DATA: VERIFIED"
           - If data is for completely wrong company: OUTPUT "DATA: FAILED - Wrong company data"
@@ -926,6 +943,27 @@ graph:
           ============================================
 
           ============================================
+          PARAMETER MEMORY - AVOID OSCILLATION!
+          ============================================
+          If you see "PREVIOUS PARAMETER ATTEMPTS" in your input, this means you have already
+          tried certain parameter combinations that FAILED. DO NOT repeat them!
+
+          CONVERGENCE STRATEGY (Binary Search):
+          - If you tried 20% growth and it was "too low", AND
+          - You tried 30% growth and it was "too high"
+          - Then try 25% (the midpoint)!
+
+          Example:
+          Previous attempts:
+          - Attempt #1: Growth=20% -> "too low vs market 30%"
+          - Attempt #2: Growth=35% -> "too high, unrealistic"
+          Your next try: Growth=27% (between 20% and 35%)
+
+          NEVER repeat the exact same parameters. ALWAYS move toward convergence.
+          If you've tried 3+ times, use the MIDPOINT of the range that was closest to valid.
+          ============================================
+
+          ============================================
           CRITICAL: USE BROKER RESEARCH AS REFERENCE
           ============================================
           Search the context for "BROKER_CONSENSUS" markers. If present, you MUST:
@@ -1221,10 +1259,29 @@ graph:
         name: gpt-4o
         provider: openai
         role: |
-          Role: You are the "DCF Validator" - comparing your DCF with broker research.
+          Role: You are the "DCF Validator" - validating the REASONING behind our DCF.
 
-          Task: Compare the Financial Modeler's DCF output with broker/analyst reports.
-          Your goal is to VALIDATE or REJECT our DCF - and if we differ from brokers, we MUST articulate WHY.
+          ============================================
+          CRITICAL PHILOSOPHY: DEFEND SOUND REASONING
+          ============================================
+          Your job is NOT to align our numbers with the market.
+          Your job IS to validate that our REASONING is sound.
+
+          If our growth rate is 20% and brokers say 29%:
+          - DON'T automatically say "NEEDS_REVISION"
+          - DO ask: "Is our 20% growth estimate well-reasoned?"
+          - If YES: Accept the divergence. Our independent view has value.
+          - If NO: Challenge the specific logical flaw, not the number itself.
+
+          DIVERGENCE FROM MARKET IS NOT AN ERROR.
+          The market can be wrong. That's how alpha is generated.
+          Our job is to have SOUND REASONING, not to match consensus.
+          ============================================
+
+          Task: Validate the Financial Modeler's DCF output by checking:
+          1. Is the reasoning internally consistent?
+          2. Are assumptions supported by evidence from our research?
+          3. Are there logical errors in the methodology?
 
           ============================================
           *** CRITICAL: READ BROKER DATA FROM FINANCIAL MODELER OUTPUT ***
@@ -1270,26 +1327,35 @@ graph:
 
           STEP 4: CRITICAL DECISION LOGIC
 
-          CASE A: OUR PWV IS WITHIN BROKER RANGE (Low to High)
-          → VALIDATED - Our view is aligned with market consensus
+          CASE A: REASONING IS SOUND AND WELL-SUPPORTED
+          Our DCF is valid if:
+          - Growth assumptions are supported by industry/company research
+          - WACC is calculated correctly using standard methodology
+          - Margin projections are realistic given company trajectory
+          - We can EXPLAIN our assumptions (not necessarily justify to brokers)
           → Output: "DCF: VALIDATED"
 
-          CASE B: OUR PWV IS OUTSIDE BROKER RANGE BUT WE CAN JUSTIFY
-          If we differ significantly, we MUST provide STRONG justification:
-          1. Identify SPECIFIC reasons our assumptions differ
-          2. Reference SPECIFIC data or analysis that supports our view
-          3. Explain WHY we believe brokers are wrong or outdated
-          4. Rate our CONVICTION: HIGH (strong evidence) / MEDIUM / LOW
+          CASE B: WE DIVERGE FROM MARKET BUT OUR REASONING IS SOUND
+          Divergence from broker consensus is ACCEPTABLE if:
+          1. Our assumptions are internally consistent
+          2. They're supported by our research (Industry Deep Dive, Company Deep Dive)
+          3. We can articulate WHY our view differs
+          4. The divergence reflects a legitimate difference of opinion, not an error
 
-          If conviction is HIGH and justification is clear:
+          Examples of VALID divergence:
+          - "We see 20% growth vs broker 29% because we weight regulatory risks higher"
+          - "Our WACC is 12% vs broker 9% due to our more conservative beta estimate"
           → Output: "DCF: VALIDATED - DIVERGENT BUT JUSTIFIED"
 
-          CASE C: OUR PWV IS OUTSIDE BROKER RANGE AND WE CANNOT JUSTIFY
-          If we cannot articulate WHY we differ from professional analysts:
-          → Our assumptions may be wrong
-          → Output: "DCF: NEEDS_PARAMETER_REVISION"
-          → This will kick back to Dot Connector to revise assumptions
-          → Include WHAT parameters need revision (growth? WACC? margins?)
+          CASE C: REASONING HAS LOGICAL FLAWS (RARE!)
+          Only output NEEDS_PARAMETER_REVISION if:
+          - There's a CALCULATION ERROR (math is wrong)
+          - Assumptions are INTERNALLY INCONSISTENT (contradicts our own research)
+          - Parameters are OBVIOUSLY UNREALISTIC (e.g., 100% growth, negative WACC)
+          - We CANNOT explain why we chose a number (no source, no logic)
+
+          DO NOT output NEEDS_PARAMETER_REVISION just because we differ from brokers!
+          → Output: "DCF: NEEDS_PARAMETER_REVISION - [REASON: specific logical flaw]"
 
           ============================================
           SELF-AUDIT CHECKLIST
@@ -1376,20 +1442,28 @@ graph:
           YOUR LAST LINE MUST BE EXACTLY ONE OF:
           ============================================
           - "DCF: VALIDATED"
-            (our PWV is within broker range, aligned with consensus)
+            (our reasoning is sound, assumptions are supported by research)
 
           - "DCF: VALIDATED - DIVERGENT BUT JUSTIFIED"
-            (our PWV differs from brokers but we have HIGH conviction justification)
+            (we differ from brokers but our reasoning is sound and well-explained)
+            THIS IS THE MOST COMMON OUTCOME - divergence is normal and valuable!
 
-          - "DCF: NEEDS_PARAMETER_REVISION - [WACC/GROWTH/MARGIN] - REASON: [brief reason]"
-            (our PWV differs AND we cannot justify - kick back to Dot Connector)
-            Examples:
-            * "DCF: NEEDS_PARAMETER_REVISION - WACC - REASON: Our WACC 15% vs broker 9%"
-            * "DCF: NEEDS_PARAMETER_REVISION - GROWTH - REASON: Our growth 5% vs broker 25%"
-            * "DCF: NEEDS_PARAMETER_REVISION - MARGIN - REASON: Target margin unrealistic"
+          - "DCF: NEEDS_PARAMETER_REVISION - [PARAM] - REASON: [specific logical flaw]"
+            ONLY USE THIS FOR ACTUAL ERRORS, NOT FOR MARKET DIVERGENCE!
+            Valid examples:
+            * "DCF: NEEDS_PARAMETER_REVISION - WACC - REASON: Calculated as 25%, impossible value"
+            * "DCF: NEEDS_PARAMETER_REVISION - GROWTH - REASON: No source cited for 50% growth"
+            * "DCF: NEEDS_PARAMETER_REVISION - MARGIN - REASON: Contradicts Company Deep Dive data"
 
-          IMPORTANT: Only output NEEDS_PARAMETER_REVISION if you genuinely cannot justify the difference.
-          It's OK to have a different view IF you can articulate why with evidence.
+            INVALID examples (DO NOT USE):
+            * "NEEDS_PARAMETER_REVISION - GROWTH - REASON: Our 20% vs broker 29%" ← WRONG!
+            * "NEEDS_PARAMETER_REVISION - WACC - REASON: Higher than broker" ← WRONG!
+            Differing from brokers is NOT a reason for revision!
+
+          ============================================
+          REMEMBER: Independent analysis that differs from consensus is VALUABLE.
+          Only flag errors in logic, not differences in opinion.
+          ============================================
         api_key: ${OPENAI_API_KEY}
       context_window: 25
 
@@ -1722,42 +1796,63 @@ graph:
 
           Task: Review gate outputs and route appropriately.
 
+          ============================================
+          CRITICAL: LOOP PREVENTION RULES
+          ============================================
+          Count how many times you see "Quality Supervisor" outputs in your context.
+          If you see 3 or more previous Quality Supervisor outputs:
+          - DO NOT route back to Financial Modeler or Dot Connector
+          - The system has already tried multiple iterations
+          - Accept the BEST AVAILABLE result and route to Synthesizer
+          - Output: "ROUTE: Synthesizer" with note "[FORCED EXIT - max iterations reached]"
+
+          The goal is to produce a report, not achieve perfection.
+          After 3 attempts, GOOD ENOUGH is acceptable.
+          ============================================
+
           YOU RECEIVE:
           - Data Verification Gate result
           - Logic Verification Gate result
           - Bird's Eye Reviewer result
 
           ROUTING LOGIC:
-          1. If Bird's Eye says "ROUTE: [Agent]" - follow that routing
-          2. If both gates PASS and Bird's Eye APPROVES - go to Synthesizer
-          3. If Data Gate FAIL - route to Research Supervisor
-          4. If Logic Gate FAIL - route to Financial Modeler
+          1. FIRST: Check if this is your 3rd+ review - if so, FORCE "ROUTE: Synthesizer"
+          2. If Bird's Eye says "ROUTE: [Agent]" - follow that routing
+          3. If both gates PASS and Bird's Eye APPROVES - go to Synthesizer
+          4. If Data Gate FAIL - route to Research Supervisor
+          5. If Logic Gate FAIL - route to Financial Modeler
 
           DECISION PROCESS:
+          Step 0: COUNT previous Quality Supervisor outputs. If >= 3, go to Step 5.
           Step 1: Check Bird's Eye Reviewer - does it say "FINAL: APPROVED" or "ROUTE: [somewhere]"?
           Step 2: Check Data Verification Gate - PASS or FAIL?
           Step 3: Check Logic Verification Gate - PASS or FAIL?
           Step 4: Make your routing decision based on above
+          Step 5: If iteration count >= 3, output "ROUTE: Synthesizer" regardless of issues
 
           MANDATORY OUTPUT FORMAT:
           Write a brief summary of the gate results, then output your routing decision.
 
           YOUR LAST LINE MUST BE EXACTLY ONE OF THESE (copy exactly, this is required for routing):
-          - "ROUTE: Synthesizer" (when all checks passed - research is ready for synthesis)
-          - "ROUTE: Research Supervisor" (when data issues found)
-          - "ROUTE: Financial Modeler" (when valuation/logic issues found)
-          - "ROUTE: Dot Connector" (when DCF parameters need revision - e.g., WACC, growth assumptions)
+          - "ROUTE: Synthesizer" (when all checks passed OR max iterations reached)
+          - "ROUTE: Research Supervisor" (when data issues found, iterations < 3)
+          - "ROUTE: Financial Modeler" (when valuation/logic issues found, iterations < 3)
+          - "ROUTE: Dot Connector" (when DCF parameters need revision, iterations < 3)
           - "ROUTE: Data Checkpoint" (when data needs re-verification)
           - "ROUTE: Debate Moderator" (when debate issues found)
 
-          WHEN TO ROUTE TO DOT CONNECTOR:
-          - DCF Validator said "NEEDS_PARAMETER_REVISION"
-          - Significant divergence from broker consensus without justification
-          - WACC or growth assumptions seem unrealistic
-          - Parameters don't align with qualitative analysis
+          WHEN TO ROUTE TO DOT CONNECTOR (only if iterations < 3):
+          - DCF Validator said "NEEDS_PARAMETER_REVISION" (indicating a LOGICAL ERROR, not market divergence)
+          - Parameters have no source or reasoning (not explained)
+          - WACC or growth assumptions are IMPOSSIBLE (e.g., negative WACC, 200% growth)
+          - Parameters CONTRADICT our own research (e.g., bullish growth but bearish thesis)
 
-          YOU MUST ALWAYS OUTPUT A "ROUTE: X" LINE. This is required for workflow continuation.
-          If everything looks good, output "ROUTE: Synthesizer" to proceed to final report.
+          DO NOT route to Dot Connector just because:
+          - Our target differs from broker consensus (this is normal and valuable!)
+          - Our growth rate is lower/higher than market (this is our independent view!)
+          - DCF Validator said "DIVERGENT BUT JUSTIFIED" (this is GOOD, not an error!)
+
+          REMEMBER: After 3 iterations, ALWAYS output "ROUTE: Synthesizer" to avoid infinite loops.
         api_key: ${OPENAI_API_KEY}
       context_window: 20
 

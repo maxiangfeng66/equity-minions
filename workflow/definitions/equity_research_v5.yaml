@@ -1,0 +1,768 @@
+# Equity Research Workflow v5 - Simplified Oversight Structure
+# Key Changes from v4:
+#   1. Reduced oversight agents from 13 to 6 (54% reduction)
+#   2. Single Data Gate (merged Data Verifier + Checkpoint + Verification Gate)
+#   3. Single Quality Gate (merged Birds Eye + Logic Gate + Quality Supervisor)
+#   4. Research Supervisor handles both start and final sign-off
+#   5. DCF Validator includes assumption challenging
+#   6. Cleaner feedback loops with fewer routing paths
+#
+# Philosophy: Defend sound reasoning, don't blindly align with market
+
+graph:
+  id: equity_research_v5
+  description: Streamlined equity research with consolidated quality control.
+  log_level: DEBUG
+  is_majority_voting: false
+  max_iterations: 25  # Reduced - fewer loops needed with consolidated agents
+
+  nodes:
+    # ==================== TIER 0: ORCHESTRATION ====================
+
+    - id: START
+      type: passthrough
+      config:
+        only_last_message: true
+      description: Entry point
+      context_window: 0
+
+    - id: Research Supervisor
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Research Supervisor" - the SINGLE point of authority for research quality.
+
+          You have TWO modes:
+
+          MODE 1 - INITIATION (when you receive the initial task):
+          - Review the equity ticker and create a research plan
+          - Identify key questions, data sources, and red flags
+          - Establish EXPECTED_PRICE_RANGE for verification
+          - Dispatch workers to collect data
+
+          MODE 2 - FINAL SIGN-OFF (when you receive a completed report from Synthesizer):
+          - Verify the report is about the CORRECT company (ticker matches)
+          - Check that VERIFIED price is used consistently
+          - Ensure investment thesis is clear and well-supported
+          - Confirm all required sections are present
+          - Give FINAL APPROVAL or request specific fixes
+
+          FINAL SIGN-OFF CHECKLIST:
+          1. Company identity correct? (ticker, name, business description)
+          2. Price verified and consistent throughout?
+          3. Investment thesis clear? (bull/bear balanced)
+          4. Valuation methodology sound? (DCF + cross-checks)
+          5. All sections complete? (Summary, Thesis, Company, Industry, Financials, Valuation, Risks)
+
+          OUTPUT:
+          - In MODE 1: Output research plan, end with "RESEARCH: INITIATED"
+          - In MODE 2: Output approval, end with "FINAL: APPROVED" or "FINAL: NEEDS_REVISION - [specific issue]"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 10
+
+    # ==================== TIER 1: PRIMARY RESEARCH WORKERS ====================
+
+    - id: Market Data Collector
+      type: agent
+      config:
+        name: gemini-2.0-flash
+        provider: google
+        role: |
+          Role: You are the "Market Data Collector" - gathering quantitative market data.
+
+          Task: Collect comprehensive market data for the target equity.
+
+          REQUIRED DATA:
+          1. PRICE DATA: Current price, 52-week range, market cap, volume, beta
+          2. FINANCIAL DATA: Revenue, margins, EPS, FCF, debt, cash, returns (3-5 years)
+          3. VALUATION: P/E, P/S, P/B, EV/EBITDA, EV/Revenue
+          4. ANALYST DATA: Consensus rating, target prices, analyst count
+
+          CRITICAL: Verify current stock price from the START message.
+          Use the VERIFIED_CURRENT_PRICE provided - do not substitute.
+
+          Output format: Structured data with sources cited.
+          End with: "DATA: COLLECTED"
+        api_key: ${GOOGLE_API_KEY}
+      context_window: 5
+
+    - id: Industry Deep Dive
+      type: agent
+      config:
+        name: gemini-2.0-flash
+        provider: google
+        role: |
+          Role: You are the "Industry Analyst" - expert in sector dynamics.
+
+          Task: Analyze the industry context for this equity.
+
+          REQUIRED ANALYSIS:
+          1. MARKET SIZE: TAM, SAM, SOM with growth rates
+          2. COMPETITIVE LANDSCAPE: Key players, market shares, moats
+          3. INDUSTRY TRENDS: Tailwinds and headwinds
+          4. REGULATORY ENVIRONMENT: Key regulations, upcoming changes
+          5. GROWTH DRIVERS: What will drive industry growth?
+
+          Be specific about the TARGET COMPANY's position within this industry.
+          Do NOT confuse with other companies - stay focused on the requested ticker.
+
+          End with: "INDUSTRY: ANALYZED"
+        api_key: ${GOOGLE_API_KEY}
+      context_window: 5
+
+    - id: Company Deep Dive
+      type: agent
+      config:
+        name: gemini-2.0-flash
+        provider: google
+        role: |
+          Role: You are the "Company Analyst" - expert in business analysis.
+
+          Task: Deep dive into the specific company.
+
+          REQUIRED ANALYSIS:
+          1. BUSINESS MODEL: How does the company make money?
+          2. COMPETITIVE POSITION: Moat, advantages, weaknesses
+          3. MANAGEMENT: Track record, alignment, strategy
+          4. FINANCIALS: Historical performance, trends, quality
+          5. RISKS: Company-specific risks and mitigants
+
+          CRITICAL: Focus ONLY on the requested company.
+          Do NOT substitute data from other companies.
+
+          End with: "COMPANY: ANALYZED"
+        api_key: ${GOOGLE_API_KEY}
+      context_window: 5
+
+    # ==================== CONSOLIDATED DATA GATE ====================
+    # Replaces: Data Verifier + Data Checkpoint + Data Verification Gate
+
+    - id: Data Gate
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Data Gate" - the SINGLE checkpoint for all data quality.
+
+          This node consolidates three previous checks into one:
+          1. Data Verification (price accuracy, financial data)
+          2. Data Checkpoint (company identity, blocking bad data)
+          3. Final Data Verification (pre-synthesis accuracy)
+
+          ============================================
+          STEP 1: EXTRACT VERIFIED PRICE
+          ============================================
+          Find "VERIFIED CURRENT PRICE" or "VERIFIED_CURRENT_PRICE" in the START message.
+          This is the ONLY correct price. Use it throughout.
+
+          ============================================
+          STEP 2: VERIFY COMPANY IDENTITY
+          ============================================
+          - Is all data about the CORRECT company?
+          - Does the ticker match the original request?
+          - Are there any signs of wrong company contamination?
+
+          ANTI-HALLUCINATION CHECK:
+          If you see Apple, Microsoft, Google, Tesla, Amazon, Meta, Netflix, Nvidia
+          being treated as the MAIN subject (not as a comparison), this is WRONG.
+          Block this data immediately.
+
+          ============================================
+          STEP 3: VERIFY DATA CONSISTENCY
+          ============================================
+          - Does market cap = price × shares outstanding?
+          - Are financial figures internally consistent?
+          - Do sources agree on key metrics?
+
+          ============================================
+          OUTPUT FORMAT
+          ============================================
+          DATA GATE RESULT
+          ================
+          Ticker: [ticker]
+          Company: [company name]
+
+          VERIFIED_CURRENT_PRICE: [currency] [price]
+
+          Company Identity: VERIFIED / FAILED
+          Price Verification: VERIFIED / FAILED
+          Data Consistency: VERIFIED / FAILED
+
+          Issues Found: [list any issues]
+
+          GATE DECISION: PASS / FAIL
+          ============================================
+
+          YOUR LAST LINE MUST BE:
+          - "DATA: VERIFIED" (all checks passed)
+          - "DATA: FAILED - [reason]" (any check failed)
+        api_key: ${OPENAI_API_KEY}
+      context_window: 15
+
+    # ==================== TIER 2: DEBATE ====================
+
+    - id: Debate Moderator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Debate Moderator" - facilitating bull/bear debate.
+
+          Task: Set up a structured debate on the investment case.
+
+          MANDATORY FIRST LINE:
+          "VERIFIED_CURRENT_PRICE: [price from Data Gate]"
+
+          Provide context for both sides:
+          1. Key data points from research
+          2. Industry context
+          3. Company strengths and weaknesses
+          4. Valuation context
+
+          End with: "DEBATE: INITIATED"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 10
+
+    - id: Bull Advocate
+      type: agent
+      config:
+        name: grok-3-fast
+        provider: xai
+        role: |
+          Role: You are the "Bull Advocate" - arguing the investment case.
+
+          USE THE VERIFIED_CURRENT_PRICE from Debate Moderator. No other price.
+
+          Present your strongest bull case:
+          1. Growth catalysts (with evidence)
+          2. Competitive advantages
+          3. Valuation upside
+          4. Positive industry trends
+          5. Management execution
+
+          Be specific. Cite data. Quantify upside potential.
+          End with: "BULL: COMPLETE"
+        api_key: ${XAI_API_KEY}
+      context_window: 10
+
+    - id: Bear Advocate
+      type: agent
+      config:
+        name: grok-3-fast
+        provider: xai
+        role: |
+          Role: You are the "Bear Advocate" - arguing against the investment.
+
+          USE THE VERIFIED_CURRENT_PRICE from Debate Moderator. No other price.
+
+          Present your strongest bear case:
+          1. Growth risks (with evidence)
+          2. Competitive threats
+          3. Valuation concerns
+          4. Negative industry trends
+          5. Execution risks
+
+          Be specific. Cite data. Quantify downside risk.
+          End with: "BEAR: COMPLETE"
+        api_key: ${XAI_API_KEY}
+      context_window: 10
+
+    - id: Debate Synthesizer
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Debate Synthesizer" - distilling the debate.
+
+          Task: Synthesize bull and bear arguments into balanced view.
+
+          OUTPUT:
+          1. Strongest bull points (ranked by conviction)
+          2. Strongest bear points (ranked by conviction)
+          3. Key uncertainties that could swing the thesis
+          4. Your preliminary lean (bull/bear/neutral) and why
+          5. Key assumptions that need validation in the DCF
+
+          End with: "DEBATE: SYNTHESIZED"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 15
+
+    # ==================== TIER 3: VALUATION ====================
+
+    - id: Dot Connector
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Dot Connector" - bridging qualitative to quantitative.
+
+          Task: Extract DCF parameters from the research and debate.
+
+          ============================================
+          PARAMETER MEMORY - AVOID OSCILLATION
+          ============================================
+          If you see "PREVIOUS PARAMETER ATTEMPTS" in your input,
+          you have already tried certain parameters. DO NOT repeat them.
+          Use binary search: try values BETWEEN previous attempts.
+          ============================================
+
+          FOR EACH PARAMETER, PROVIDE:
+          1. VALUE chosen
+          2. SOURCE (which research node)
+          3. REASONING (why this value)
+
+          REQUIRED PARAMETERS:
+          - REVENUE_GROWTH_Y1_3: [X]%
+          - REVENUE_GROWTH_Y4_5: [X]%
+          - REVENUE_GROWTH_Y6_10: [X]%
+          - CURRENT_EBIT_MARGIN: [X]%
+          - TARGET_EBIT_MARGIN: [X]%
+          - WACC: [X]% (show calculation)
+          - TERMINAL_GROWTH: 0% (conservative)
+
+          SCENARIO PROBABILITIES:
+          - Super Bear: 10%
+          - Bear: 20%
+          - Base: 40%
+          - Bull: 20%
+          - Super Bull: 10%
+
+          End with: "PARAMETERS: CONNECTED"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 20
+
+    - id: Financial Modeler
+      type: python_valuation
+      config:
+        name: dcf_engine
+        description: Python DCF calculation engine
+      context_window: 10
+
+    # ==================== CONSOLIDATED DCF VALIDATOR ====================
+    # Replaces: DCF Validator + Assumption Challenger
+
+    - id: DCF Validator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "DCF Validator" - validating reasoning AND challenging assumptions.
+
+          This node consolidates:
+          1. DCF Validation (reasoning check)
+          2. Assumption Challenging (stress testing)
+
+          ============================================
+          CRITICAL PHILOSOPHY: DEFEND SOUND REASONING
+          ============================================
+          Your job is NOT to align with market consensus.
+          Your job IS to validate that reasoning is sound.
+
+          Divergence from brokers is ACCEPTABLE if reasoning is solid.
+          Only flag LOGICAL ERRORS, not differences of opinion.
+          ============================================
+
+          PART 1: REASONING VALIDATION
+          - Are assumptions internally consistent?
+          - Are they supported by our research?
+          - Can we articulate WHY we chose each parameter?
+
+          PART 2: ASSUMPTION STRESS TEST
+          - What if growth is 50% lower?
+          - What if margins don't expand?
+          - What if WACC is 2% higher?
+          - What breaks the thesis?
+
+          PART 3: CROSS-CHECK
+          - Does our target make sense given the business quality?
+          - Is implied growth rate reasonable for this industry?
+          - Are we missing any major risks?
+
+          ============================================
+          DECISION LOGIC
+          ============================================
+          VALIDATED: Reasoning is sound, assumptions supported
+          VALIDATED - DIVERGENT: We differ from market but reasoning is solid
+          NEEDS_REVISION: There's a LOGICAL ERROR (not just market divergence)
+
+          Only output NEEDS_REVISION for:
+          - Calculation errors
+          - Internally inconsistent assumptions
+          - Parameters with no reasoning/source
+          - Obviously impossible values
+          ============================================
+
+          End with exactly one of:
+          - "DCF: VALIDATED"
+          - "DCF: VALIDATED - DIVERGENT BUT JUSTIFIED"
+          - "DCF: NEEDS_REVISION - [specific logical flaw]"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 20
+
+    - id: Comparable Validator
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Comparable Validator" - cross-checking with peers.
+
+          Task: Validate DCF against comparable company valuations.
+
+          ANALYSIS:
+          1. Identify 3-5 true peers (similar business, size, geography)
+          2. Gather their valuation multiples (P/E, EV/EBITDA, EV/Revenue)
+          3. Calculate what our company "should" trade at based on peers
+          4. Compare to our DCF target
+          5. Explain any divergence
+
+          End with: "COMPS: VALIDATED" or "COMPS: DIVERGENT - [reason]"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 15
+
+    - id: Sensitivity Auditor
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Sensitivity Auditor" - testing model robustness.
+
+          Task: Analyze sensitivity of DCF to key assumptions.
+
+          SENSITIVITY TESTS:
+          1. Revenue growth: ±5%, ±10%
+          2. EBIT margin: ±2%, ±5%
+          3. WACC: ±1%, ±2%
+          4. Terminal growth: 0% vs 2%
+
+          OUTPUT:
+          - Impact table for each sensitivity
+          - Key driver ranking (what matters most)
+          - Break-even analysis (what kills the thesis)
+          - Confidence assessment (high/medium/low)
+
+          End with: "SENSITIVITY: COMPLETE"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 15
+
+    # ==================== CONSOLIDATED QUALITY GATE ====================
+    # Replaces: Birds Eye Reviewer + Logic Verification Gate + Quality Supervisor
+
+    - id: Quality Gate
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Quality Gate" - the SINGLE holistic quality checkpoint.
+
+          This node consolidates:
+          1. Bird's Eye Review (holistic quality)
+          2. Logic Verification (consistency check)
+          3. Quality Supervision (routing decision)
+
+          ============================================
+          LOOP PREVENTION
+          ============================================
+          Count your previous outputs in context.
+          If you've run 3+ times: FORCE route to Synthesizer.
+          Accept "good enough" rather than infinite perfection.
+          ============================================
+
+          PART 1: HOLISTIC REVIEW (Bird's Eye)
+          - Does everything make sense together?
+          - Is the recommendation supported by the analysis?
+          - Are there any glaring omissions?
+          - Would a senior analyst approve this?
+
+          PART 2: LOGIC CHECK
+          - Is the thesis internally consistent?
+          - Do the numbers support the narrative?
+          - Are there any contradictions?
+
+          PART 3: ROUTING DECISION
+          Based on above, decide next step:
+          - If quality is acceptable → Synthesizer
+          - If data issues (rare) → Data Gate
+          - If valuation logic errors → DCF Validator
+          - If 3+ iterations → FORCE to Synthesizer
+
+          ============================================
+          OUTPUT FORMAT
+          ============================================
+          QUALITY GATE ASSESSMENT
+          =======================
+          Iteration Count: [X]
+
+          Holistic Review: PASS / CONCERNS
+          Logic Check: PASS / ISSUES
+
+          Key Findings:
+          - [finding 1]
+          - [finding 2]
+
+          ROUTING DECISION: [destination]
+          ============================================
+
+          YOUR LAST LINE MUST BE ONE OF:
+          - "ROUTE: Synthesizer" (ready for final report)
+          - "ROUTE: Data Gate" (data issues - rare)
+          - "ROUTE: DCF Validator" (logic errors - not market divergence)
+          - "ROUTE: Dot Connector" (parameter errors - not market divergence)
+        api_key: ${OPENAI_API_KEY}
+      context_window: 25
+
+    # ==================== TIER 4: SYNTHESIS ====================
+
+    - id: Synthesizer
+      type: agent
+      config:
+        name: gpt-4o
+        provider: openai
+        role: |
+          Role: You are the "Synthesizer" - creating the final research report.
+
+          Task: Create a comprehensive, well-structured equity research report.
+
+          USE THE VERIFIED_CURRENT_PRICE consistently throughout.
+
+          REPORT STRUCTURE:
+          1. EXECUTIVE SUMMARY
+             - Ticker, Company, Current Price, Target Price
+             - Recommendation (BUY/HOLD/SELL)
+             - Key thesis (2-3 sentences)
+
+          2. INVESTMENT THESIS
+             - Bull case summary
+             - Bear case summary
+             - Our lean and why
+
+          3. COMPANY OVERVIEW
+             - Business description
+             - Competitive position
+
+          4. INDUSTRY ANALYSIS
+             - Market size and growth
+             - Key trends
+
+          5. FINANCIAL ANALYSIS
+             - Historical performance
+             - Key metrics
+
+          6. VALUATION
+             - DCF methodology and result
+             - Scenario analysis
+             - Comparable check
+
+          7. RISKS
+             - Key risks to thesis
+             - Monitoring points
+
+          8. RECOMMENDATION
+             - Final rating and target
+             - Investment horizon
+
+          End with: "REPORT: COMPLETE"
+        api_key: ${OPENAI_API_KEY}
+      context_window: 30
+
+  # ==================== EDGES ====================
+
+  edges:
+    # Start → Research Supervisor
+    - from: START
+      to: Research Supervisor
+      trigger: true
+      carry_data: true
+
+    # Research Supervisor → Workers (parallel)
+    - from: Research Supervisor
+      to: Market Data Collector
+      trigger: true
+      carry_data: true
+
+    - from: Research Supervisor
+      to: Industry Deep Dive
+      trigger: true
+      carry_data: true
+
+    - from: Research Supervisor
+      to: Company Deep Dive
+      trigger: true
+      carry_data: true
+
+    # Workers → Data Gate
+    - from: Market Data Collector
+      to: Data Gate
+      trigger: true
+      carry_data: true
+
+    - from: Industry Deep Dive
+      to: Data Gate
+      trigger: true
+      carry_data: true
+
+    - from: Company Deep Dive
+      to: Data Gate
+      trigger: true
+      carry_data: true
+
+    # Data Gate → Debate (on pass)
+    - from: Data Gate
+      to: Debate Moderator
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "DATA: VERIFIED"
+
+    # Data Gate → Research Supervisor (on fail)
+    - from: Data Gate
+      to: Research Supervisor
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "DATA: FAILED"
+
+    # Debate flow
+    - from: Debate Moderator
+      to: Bull Advocate
+      trigger: true
+      carry_data: true
+
+    - from: Debate Moderator
+      to: Bear Advocate
+      trigger: true
+      carry_data: true
+
+    - from: Bull Advocate
+      to: Debate Synthesizer
+      trigger: true
+      carry_data: true
+
+    - from: Bear Advocate
+      to: Debate Synthesizer
+      trigger: true
+      carry_data: true
+
+    # Debate → Valuation
+    - from: Debate Synthesizer
+      to: Dot Connector
+      trigger: true
+      carry_data: true
+
+    - from: Dot Connector
+      to: Financial Modeler
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "PARAMETERS: CONNECTED"
+
+    # Financial Modeler → Validators (parallel)
+    - from: Financial Modeler
+      to: DCF Validator
+      trigger: true
+      carry_data: true
+
+    - from: Financial Modeler
+      to: Comparable Validator
+      trigger: true
+      carry_data: true
+
+    - from: Financial Modeler
+      to: Sensitivity Auditor
+      trigger: true
+      carry_data: true
+
+    # Validators → Quality Gate
+    - from: DCF Validator
+      to: Quality Gate
+      trigger: true
+      carry_data: true
+
+    - from: Comparable Validator
+      to: Quality Gate
+      trigger: true
+      carry_data: true
+
+    - from: Sensitivity Auditor
+      to: Quality Gate
+      trigger: true
+      carry_data: true
+
+    # Quality Gate routing
+    - from: Quality Gate
+      to: Synthesizer
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "ROUTE: Synthesizer"
+
+    - from: Quality Gate
+      to: Data Gate
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "ROUTE: Data Gate"
+
+    - from: Quality Gate
+      to: DCF Validator
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "ROUTE: DCF Validator"
+
+    - from: Quality Gate
+      to: Dot Connector
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "ROUTE: Dot Connector"
+
+    # DCF Validator feedback loop
+    - from: DCF Validator
+      to: Dot Connector
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "DCF: NEEDS_REVISION"
+
+    # Synthesizer → Research Supervisor (final sign-off)
+    - from: Synthesizer
+      to: Research Supervisor
+      trigger: true
+      carry_data: true
+      condition:
+        type: keyword
+        config:
+          keyword: "REPORT: COMPLETE"
+
+  # Define end nodes
+  end_nodes:
+    - Research Supervisor  # Ends when Research Supervisor gives final approval
+
+  start_nodes:
+    - START

@@ -74,6 +74,13 @@ class GraphExecutor:
     """Executes a workflow graph with support for parallel execution and feedback loops"""
 
     MAX_ITERATIONS = 36  # Maximum feedback loop iterations (increased for complex workflows with feedback loops)
+    MAX_NODE_EXECUTIONS = 5  # Maximum times a single node can execute before forced exit
+
+    # Common hallucination targets - companies AI models often confuse with
+    HALLUCINATION_BLOCKLIST = [
+        'Apple', 'AAPL', 'Microsoft', 'MSFT', 'Google', 'GOOGL', 'Amazon', 'AMZN',
+        'Tesla', 'TSLA', 'Meta', 'META', 'Netflix', 'NFLX', 'Nvidia', 'NVDA'
+    ]
 
     def __init__(
         self,
@@ -99,6 +106,10 @@ class GraphExecutor:
         # Execution tracking
         self.execution_log: List[Dict[str, Any]] = []
         self.iteration_count = 0
+
+        # Loop prevention tracking
+        self.parameter_history: List[Dict[str, Any]] = []  # Track DCF parameters tried
+        self.node_loop_counts: Dict[str, int] = {}  # Track per-node execution counts for loop detection
 
     def _build_execution_layers(self) -> List[List[str]]:
         """Build execution layers using topological sort"""
@@ -264,10 +275,43 @@ class GraphExecutor:
         # Reset trigger for next iteration
         state.reset_triggers()
 
+        # Check loop limit for feedback loop nodes
+        if node_id in ["Quality Supervisor", "Dot Connector", "Financial Modeler"]:
+            if self._check_loop_limit(node_id):
+                # Force exit by creating a synthetic "ROUTE: Synthesizer" output
+                self.log("forcing_synthesizer_route", node_id, details={
+                    "reason": "loop_limit_exceeded"
+                })
+                result = Message(
+                    role="assistant",
+                    content=f"[LOOP LIMIT REACHED after {self.MAX_NODE_EXECUTIONS} attempts]\n\n"
+                            f"Forcing exit to Synthesizer with best available result.\n\n"
+                            f"ROUTE: Synthesizer",
+                    source=node_id,
+                    metadata={"forced_exit": True}
+                )
+                state.add_output(result)
+                state.executed = True
+                state.execution_count += 1
+                await self._process_edges(node_id, result)
+                return
+
         try:
             # Use factory function to get appropriate executor
             # This handles Python valuation nodes, passthrough, and AI nodes
             executor = get_executor(node_config, self.api_keys, self.context)
+
+            # For Dot Connector, inject parameter history into inputs
+            if node_id == "Dot Connector" and self.parameter_history:
+                history_prompt = self._get_parameter_history_prompt()
+                if state.inputs:
+                    # Prepend history to first input
+                    state.inputs[0] = Message(
+                        role=state.inputs[0].role,
+                        content=history_prompt + state.inputs[0].content,
+                        source=state.inputs[0].source,
+                        metadata=state.inputs[0].metadata
+                    )
 
             # Execute the node
             # For valuation nodes, pass prior outputs for context extraction
@@ -276,6 +320,26 @@ class GraphExecutor:
                 result = await executor.execute(state.inputs, prior_outputs)
             else:
                 result = await executor.execute(state.inputs)
+
+            # Validate output for ticker hallucination
+            is_valid, error_msg = self._validate_ticker_output(node_id, result)
+            if not is_valid:
+                self.log("output_rejected_hallucination", node_id, details={
+                    "error": error_msg,
+                    "action": "blocking_propagation"
+                })
+                # Don't propagate this output - it's contaminated
+                # Create an error message instead
+                result = Message(
+                    role="assistant",
+                    content=f"[OUTPUT REJECTED - WRONG COMPANY DETECTED]\n{error_msg}\n\n"
+                            f"Please re-run analysis for the correct ticker: {self.context.get('ticker', 'unknown')}",
+                    source=node_id,
+                    metadata={"rejected": True, "reason": "hallucination"}
+                )
+
+            # Track parameters if this is Dot Connector
+            self._track_parameter_attempt(node_id, result)
 
             # Record output
             state.add_output(result)
@@ -295,8 +359,14 @@ class GraphExecutor:
             await self._process_edges(node_id, result)
 
             # Clear inputs after processing (unless context window is -1)
+            # IMPROVEMENT: Limit context accumulation to prevent pollution
             if node_config.context_window != -1:
-                state.inputs = []
+                # Keep only the most recent inputs to prevent context pollution
+                max_inputs = node_config.context_window if node_config.context_window > 0 else 10
+                if len(state.inputs) > max_inputs:
+                    state.inputs = state.inputs[-max_inputs:]
+                else:
+                    state.inputs = []
 
         except Exception as e:
             self.log("node_error", node_id, details={"error": str(e)})
@@ -319,6 +389,117 @@ class GraphExecutor:
 
         content = output.content[:500]  # Only check first 500 chars
         return any(pattern in content for pattern in error_patterns)
+
+    def _validate_ticker_output(self, node_id: str, output: Message) -> tuple:
+        """
+        Validate that output doesn't contain hallucinated wrong companies.
+        Returns (is_valid, error_message)
+        """
+        expected_ticker = self.context.get("ticker", "")
+        if not expected_ticker:
+            return True, None  # No ticker to validate against
+
+        content = output.content
+
+        # Check for hallucinated companies
+        for wrong_company in self.HALLUCINATION_BLOCKLIST:
+            if wrong_company in content:
+                # Check if it's a false positive (e.g., comparing to competitors)
+                comparison_contexts = [
+                    f"competitor", f"compared to", f"unlike", f"versus",
+                    f"similar to", f"peers like", f"such as"
+                ]
+                # Look for context around the mention
+                idx = content.find(wrong_company)
+                context_window = content[max(0, idx-50):idx+len(wrong_company)+50].lower()
+
+                # If it's in a comparison context, allow it
+                if any(ctx in context_window for ctx in comparison_contexts):
+                    continue
+
+                # Check if this appears to be the MAIN subject (dangerous)
+                main_subject_indicators = [
+                    f"Ticker: {wrong_company}",
+                    f"Company: {wrong_company}",
+                    f"for {wrong_company}",
+                    f"{wrong_company} Inc",
+                    f"VERIFIED_CURRENT_PRICE: USD"  # Wrong currency for HK stocks
+                ]
+
+                for indicator in main_subject_indicators:
+                    if indicator in content:
+                        self.log("ticker_validation_failed", node_id, details={
+                            "expected_ticker": expected_ticker,
+                            "found_wrong_company": wrong_company,
+                            "indicator": indicator
+                        })
+                        return False, f"Output appears to be about {wrong_company} instead of {expected_ticker}"
+
+        return True, None
+
+    def _track_parameter_attempt(self, node_id: str, output: Message):
+        """Track DCF parameters for the Dot Connector to enable convergence"""
+        if node_id != "Dot Connector":
+            return
+
+        import re
+        content = output.content
+
+        # Extract key parameters
+        params = {}
+        growth_match = re.search(r'REVENUE_GROWTH_Y1_3[:\s]*([\d.]+)%?', content)
+        wacc_match = re.search(r'CALCULATED_WACC[:\s]*([\d.]+)%?', content)
+
+        if growth_match:
+            params['growth_y1_3'] = float(growth_match.group(1))
+        if wacc_match:
+            params['wacc'] = float(wacc_match.group(1))
+
+        if params:
+            params['attempt'] = len(self.parameter_history) + 1
+            params['timestamp'] = datetime.now().isoformat()
+            self.parameter_history.append(params)
+
+            self.log("parameter_tracked", node_id, details={
+                "attempt": params['attempt'],
+                "params": params
+            })
+
+    def _get_parameter_history_prompt(self) -> str:
+        """Generate a prompt section showing previous parameter attempts"""
+        if not self.parameter_history:
+            return ""
+
+        lines = [
+            "\n============================================",
+            "PREVIOUS PARAMETER ATTEMPTS (DO NOT REPEAT!)",
+            "============================================"
+        ]
+
+        for attempt in self.parameter_history:
+            lines.append(f"Attempt #{attempt.get('attempt', '?')}: Growth={attempt.get('growth_y1_3', '?')}%, WACC={attempt.get('wacc', '?')}%")
+
+        lines.append("")
+        lines.append("You MUST try DIFFERENT values. If previous attempts failed,")
+        lines.append("try values BETWEEN what you tried before (binary search).")
+        lines.append("============================================\n")
+
+        return "\n".join(lines)
+
+    def _check_loop_limit(self, node_id: str) -> bool:
+        """Check if a node has exceeded its loop limit. Returns True if should force exit."""
+        # Track this execution
+        self.node_loop_counts[node_id] = self.node_loop_counts.get(node_id, 0) + 1
+        count = self.node_loop_counts[node_id]
+
+        if count >= self.MAX_NODE_EXECUTIONS:
+            self.log("loop_limit_reached", node_id, details={
+                "execution_count": count,
+                "max_allowed": self.MAX_NODE_EXECUTIONS,
+                "action": "forcing_exit"
+            })
+            return True
+        return False
 
     async def _process_edges(self, from_node: str, output: Message):
         """Process all outgoing edges from a node"""
